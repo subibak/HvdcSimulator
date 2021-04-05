@@ -1,0 +1,339 @@
+\hypertarget{_hal_timer_8h}{}\section{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Timer.h File Reference}
+\label{_hal_timer_8h}\index{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Timer.\+h@{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Timer.\+h}}
+{\ttfamily \#include \char`\"{}Hw\+Def/\+Hw\+Def\+Type.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{Indent}\textbf{ Symbolic Constants}\par
+{\em \mbox{\hyperlink{_hal_timer_8h}{Hal\+Timer.\+h}} Hal\+Timer Device Driver Module Definition Symbolic Constants }\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_hal_timer_8h_addec7d88e04ddfe6ac90caf602636c51}{C\+C\+LK}}~500000000
+\begin{DoxyCompactList}\small\item\em Core Clock. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_timer_8h_a1b39f68c76d4942d903c0a16f1882728}{S\+C\+LK}}~250000000
+\begin{DoxyCompactList}\small\item\em System Clock. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_timer_8h_aa12f51f53e5073ee4a3bdae8cc2981e0}{T\+C\+LK}}~\mbox{\hyperlink{_hal_timer_8h_a1b39f68c76d4942d903c0a16f1882728}{S\+C\+LK}}
+\begin{DoxyCompactList}\small\item\em Timer Clock. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_timer_8h_aefa271a9e7446f2892bf574b2a9116c4}{T\+I\+C\+K1\+US}}~(\mbox{\hyperlink{_hal_timer_8h_aa12f51f53e5073ee4a3bdae8cc2981e0}{T\+C\+LK}}/1000000)
+\begin{DoxyCompactList}\small\item\em 1uS, 1000000\+Hz \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_timer_8h_a63ddc35af0fc18ba3d45215ab7bcfd0c}{T\+I\+C\+K5\+US}}~(5 $\ast$ \mbox{\hyperlink{_hal_timer_8h_aefa271a9e7446f2892bf574b2a9116c4}{T\+I\+C\+K1\+US}})
+\begin{DoxyCompactList}\small\item\em 1uS, 1000000\+Hz \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_timer_8h_af1b7f0e0df81b2297b22b1b71ef37edc}{T\+I\+C\+K100\+US}}~(100 $\ast$ \mbox{\hyperlink{_hal_timer_8h_aefa271a9e7446f2892bf574b2a9116c4}{T\+I\+C\+K1\+US}})
+\begin{DoxyCompactList}\small\item\em 1uS, 1000000\+Hz \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_timer_8h_ae1069ed98880ae5c42b50dec4cfe4042}{T\+I\+C\+K1\+MS}}~(\mbox{\hyperlink{_hal_timer_8h_aefa271a9e7446f2892bf574b2a9116c4}{T\+I\+C\+K1\+US}}$\ast$1000)
+\begin{DoxyCompactList}\small\item\em 1mS, 1000\+Hz \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_timer_8h_a1e1e7a8f39e3c5489726f6c4fb0efd43}{T\+I\+C\+K1S}}~(1000$\ast$\mbox{\hyperlink{_hal_timer_8h_ae1069ed98880ae5c42b50dec4cfe4042}{T\+I\+C\+K1\+MS}})
+\begin{DoxyCompactList}\small\item\em 1S, 1000000\+Hz \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_timer_8h_a0419354c90bcac54881a3abed8f7868f}{T\+I\+M\+E\+O\+U\+T\+\_\+\+P\+E\+R\+I\+OD}}~\mbox{\hyperlink{_hal_timer_8h_a63ddc35af0fc18ba3d45215ab7bcfd0c}{T\+I\+C\+K5\+US}}
+\begin{DoxyCompactList}\small\item\em Timer Period. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_timer_8h_a7230b4ecf744439164eaac3fa0053e51}{M\+S\+E\+C\+\_\+\+C\+O\+U\+NT}}~(\mbox{\hyperlink{_hal_timer_8h_aa12f51f53e5073ee4a3bdae8cc2981e0}{T\+C\+LK}} / (1000 $\ast$ \mbox{\hyperlink{_hal_timer_8h_a0419354c90bcac54881a3abed8f7868f}{T\+I\+M\+E\+O\+U\+T\+\_\+\+P\+E\+R\+I\+OD}}))
+\begin{DoxyCompactList}\small\item\em 1mS Tick Count \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_timer_8h_aecc7f5d10fea5273a871eefb8f0eff8c}{T1\+S\+E\+C\+\_\+\+C\+O\+U\+NT}}~(\mbox{\hyperlink{_hal_timer_8h_aa12f51f53e5073ee4a3bdae8cc2981e0}{T\+C\+LK}} / \mbox{\hyperlink{_hal_timer_8h_a0419354c90bcac54881a3abed8f7868f}{T\+I\+M\+E\+O\+U\+T\+\_\+\+P\+E\+R\+I\+OD}})
+\item 
+\#define \mbox{\hyperlink{_hal_timer_8h_ac65c0f0d4c6cf078f8cd3e23b7a92116}{M\+A\+X\+\_\+\+T\+I\+C\+K\+\_\+\+C\+NT}}~86400000
+\begin{DoxyCompactList}\small\item\em 1day = 86400000msec \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_hal_timer_8h_afe8e4fd7913076c206815a0ec5ab5b7a}{Hal\+Timer\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Timer Module 초기화 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_timer_8h_a81f3e52897a3fe0eb867bd9307dfa7bc}{Hal\+Timer\+Configure}} (uint32\+\_\+t \mbox{\hyperlink{_dsp_manager_main_8c_ae6552dc8846d4607fa010eb270dd8977}{ul\+Period}})
+\begin{DoxyCompactList}\small\item\em Timer 설정값을 입력하는 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_timer_8h_a8befdbbecbc2c3dac045b462cc489ec3}{Hal\+Timer\+Int\+Init}} (void($\ast$func)(int))
+\begin{DoxyCompactList}\small\item\em Timer 모둘의 인터럽트 설정 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_timer_8h_a3bb9d83fc183740fb01e328506e84e8f}{Hal\+Timer\+Re\+Start}} (uint32\+\_\+t \mbox{\hyperlink{_dsp_manager_main_8c_ae6552dc8846d4607fa010eb270dd8977}{ul\+Period}})
+\begin{DoxyCompactList}\small\item\em Timer 를 새 주기로 재시작하는 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_timer_8h_a93bcba00b4fba3ebbba8e0679dc2caec}{Hal\+Timer\+Start}} (uint32\+\_\+t \mbox{\hyperlink{_dsp_manager_main_8c_ae6552dc8846d4607fa010eb270dd8977}{ul\+Period}})
+\begin{DoxyCompactList}\small\item\em Timer 를 새 주기로 시작하는 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_timer_8h_a82a40dbbf8dfb45d38783e076c929651}{Hal\+Timer\+Proc}} (void)
+\begin{DoxyCompactList}\small\item\em 경과 시간을 누적하는 함수 \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{_hal_timer_8h_a3adb8173210f57ea8e25490dc0d403ac}{Hal\+Timer\+Get\+Time}} (void)
+\begin{DoxyCompactList}\small\item\em 시스템 시작 이후 누적된 시간(m\+S)을 반환하는 함수 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_hal_timer_8h_addec7d88e04ddfe6ac90caf602636c51}\label{_hal_timer_8h_addec7d88e04ddfe6ac90caf602636c51}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!C\+C\+LK@{C\+C\+LK}}
+\index{C\+C\+LK@{C\+C\+LK}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{C\+C\+LK}{CCLK}}
+{\footnotesize\ttfamily \#define C\+C\+LK~500000000}
+
+
+
+Core Clock. 
+
+\mbox{\Hypertarget{_hal_timer_8h_ac65c0f0d4c6cf078f8cd3e23b7a92116}\label{_hal_timer_8h_ac65c0f0d4c6cf078f8cd3e23b7a92116}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!M\+A\+X\+\_\+\+T\+I\+C\+K\+\_\+\+C\+NT@{M\+A\+X\+\_\+\+T\+I\+C\+K\+\_\+\+C\+NT}}
+\index{M\+A\+X\+\_\+\+T\+I\+C\+K\+\_\+\+C\+NT@{M\+A\+X\+\_\+\+T\+I\+C\+K\+\_\+\+C\+NT}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+T\+I\+C\+K\+\_\+\+C\+NT}{MAX\_TICK\_CNT}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+T\+I\+C\+K\+\_\+\+C\+NT~86400000}
+
+
+
+1day = 86400000msec 
+
+\mbox{\Hypertarget{_hal_timer_8h_a7230b4ecf744439164eaac3fa0053e51}\label{_hal_timer_8h_a7230b4ecf744439164eaac3fa0053e51}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!M\+S\+E\+C\+\_\+\+C\+O\+U\+NT@{M\+S\+E\+C\+\_\+\+C\+O\+U\+NT}}
+\index{M\+S\+E\+C\+\_\+\+C\+O\+U\+NT@{M\+S\+E\+C\+\_\+\+C\+O\+U\+NT}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{M\+S\+E\+C\+\_\+\+C\+O\+U\+NT}{MSEC\_COUNT}}
+{\footnotesize\ttfamily \#define M\+S\+E\+C\+\_\+\+C\+O\+U\+NT~(\mbox{\hyperlink{_hal_timer_8h_aa12f51f53e5073ee4a3bdae8cc2981e0}{T\+C\+LK}} / (1000 $\ast$ \mbox{\hyperlink{_hal_timer_8h_a0419354c90bcac54881a3abed8f7868f}{T\+I\+M\+E\+O\+U\+T\+\_\+\+P\+E\+R\+I\+OD}}))}
+
+
+
+1mS Tick Count 
+
+\mbox{\Hypertarget{_hal_timer_8h_a1b39f68c76d4942d903c0a16f1882728}\label{_hal_timer_8h_a1b39f68c76d4942d903c0a16f1882728}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!S\+C\+LK@{S\+C\+LK}}
+\index{S\+C\+LK@{S\+C\+LK}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{S\+C\+LK}{SCLK}}
+{\footnotesize\ttfamily \#define S\+C\+LK~250000000}
+
+
+
+System Clock. 
+
+\mbox{\Hypertarget{_hal_timer_8h_aecc7f5d10fea5273a871eefb8f0eff8c}\label{_hal_timer_8h_aecc7f5d10fea5273a871eefb8f0eff8c}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!T1\+S\+E\+C\+\_\+\+C\+O\+U\+NT@{T1\+S\+E\+C\+\_\+\+C\+O\+U\+NT}}
+\index{T1\+S\+E\+C\+\_\+\+C\+O\+U\+NT@{T1\+S\+E\+C\+\_\+\+C\+O\+U\+NT}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{T1\+S\+E\+C\+\_\+\+C\+O\+U\+NT}{T1SEC\_COUNT}}
+{\footnotesize\ttfamily \#define T1\+S\+E\+C\+\_\+\+C\+O\+U\+NT~(\mbox{\hyperlink{_hal_timer_8h_aa12f51f53e5073ee4a3bdae8cc2981e0}{T\+C\+LK}} / \mbox{\hyperlink{_hal_timer_8h_a0419354c90bcac54881a3abed8f7868f}{T\+I\+M\+E\+O\+U\+T\+\_\+\+P\+E\+R\+I\+OD}})}
+
+\mbox{\Hypertarget{_hal_timer_8h_aa12f51f53e5073ee4a3bdae8cc2981e0}\label{_hal_timer_8h_aa12f51f53e5073ee4a3bdae8cc2981e0}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!T\+C\+LK@{T\+C\+LK}}
+\index{T\+C\+LK@{T\+C\+LK}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{T\+C\+LK}{TCLK}}
+{\footnotesize\ttfamily \#define T\+C\+LK~\mbox{\hyperlink{_hal_timer_8h_a1b39f68c76d4942d903c0a16f1882728}{S\+C\+LK}}}
+
+
+
+Timer Clock. 
+
+\mbox{\Hypertarget{_hal_timer_8h_af1b7f0e0df81b2297b22b1b71ef37edc}\label{_hal_timer_8h_af1b7f0e0df81b2297b22b1b71ef37edc}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!T\+I\+C\+K100\+US@{T\+I\+C\+K100\+US}}
+\index{T\+I\+C\+K100\+US@{T\+I\+C\+K100\+US}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{T\+I\+C\+K100\+US}{TICK100US}}
+{\footnotesize\ttfamily \#define T\+I\+C\+K100\+US~(100 $\ast$ \mbox{\hyperlink{_hal_timer_8h_aefa271a9e7446f2892bf574b2a9116c4}{T\+I\+C\+K1\+US}})}
+
+
+
+1uS, 1000000\+Hz 
+
+\mbox{\Hypertarget{_hal_timer_8h_ae1069ed98880ae5c42b50dec4cfe4042}\label{_hal_timer_8h_ae1069ed98880ae5c42b50dec4cfe4042}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!T\+I\+C\+K1\+MS@{T\+I\+C\+K1\+MS}}
+\index{T\+I\+C\+K1\+MS@{T\+I\+C\+K1\+MS}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{T\+I\+C\+K1\+MS}{TICK1MS}}
+{\footnotesize\ttfamily \#define T\+I\+C\+K1\+MS~(\mbox{\hyperlink{_hal_timer_8h_aefa271a9e7446f2892bf574b2a9116c4}{T\+I\+C\+K1\+US}}$\ast$1000)}
+
+
+
+1mS, 1000\+Hz 
+
+\mbox{\Hypertarget{_hal_timer_8h_a1e1e7a8f39e3c5489726f6c4fb0efd43}\label{_hal_timer_8h_a1e1e7a8f39e3c5489726f6c4fb0efd43}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!T\+I\+C\+K1S@{T\+I\+C\+K1S}}
+\index{T\+I\+C\+K1S@{T\+I\+C\+K1S}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{T\+I\+C\+K1S}{TICK1S}}
+{\footnotesize\ttfamily \#define T\+I\+C\+K1S~(1000$\ast$\mbox{\hyperlink{_hal_timer_8h_ae1069ed98880ae5c42b50dec4cfe4042}{T\+I\+C\+K1\+MS}})}
+
+
+
+1S, 1000000\+Hz 
+
+\mbox{\Hypertarget{_hal_timer_8h_aefa271a9e7446f2892bf574b2a9116c4}\label{_hal_timer_8h_aefa271a9e7446f2892bf574b2a9116c4}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!T\+I\+C\+K1\+US@{T\+I\+C\+K1\+US}}
+\index{T\+I\+C\+K1\+US@{T\+I\+C\+K1\+US}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{T\+I\+C\+K1\+US}{TICK1US}}
+{\footnotesize\ttfamily \#define T\+I\+C\+K1\+US~(\mbox{\hyperlink{_hal_timer_8h_aa12f51f53e5073ee4a3bdae8cc2981e0}{T\+C\+LK}}/1000000)}
+
+
+
+1uS, 1000000\+Hz 
+
+\mbox{\Hypertarget{_hal_timer_8h_a63ddc35af0fc18ba3d45215ab7bcfd0c}\label{_hal_timer_8h_a63ddc35af0fc18ba3d45215ab7bcfd0c}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!T\+I\+C\+K5\+US@{T\+I\+C\+K5\+US}}
+\index{T\+I\+C\+K5\+US@{T\+I\+C\+K5\+US}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{T\+I\+C\+K5\+US}{TICK5US}}
+{\footnotesize\ttfamily \#define T\+I\+C\+K5\+US~(5 $\ast$ \mbox{\hyperlink{_hal_timer_8h_aefa271a9e7446f2892bf574b2a9116c4}{T\+I\+C\+K1\+US}})}
+
+
+
+1uS, 1000000\+Hz 
+
+\mbox{\Hypertarget{_hal_timer_8h_a0419354c90bcac54881a3abed8f7868f}\label{_hal_timer_8h_a0419354c90bcac54881a3abed8f7868f}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!T\+I\+M\+E\+O\+U\+T\+\_\+\+P\+E\+R\+I\+OD@{T\+I\+M\+E\+O\+U\+T\+\_\+\+P\+E\+R\+I\+OD}}
+\index{T\+I\+M\+E\+O\+U\+T\+\_\+\+P\+E\+R\+I\+OD@{T\+I\+M\+E\+O\+U\+T\+\_\+\+P\+E\+R\+I\+OD}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{T\+I\+M\+E\+O\+U\+T\+\_\+\+P\+E\+R\+I\+OD}{TIMEOUT\_PERIOD}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+O\+U\+T\+\_\+\+P\+E\+R\+I\+OD~\mbox{\hyperlink{_hal_timer_8h_a63ddc35af0fc18ba3d45215ab7bcfd0c}{T\+I\+C\+K5\+US}}}
+
+
+
+Timer Period. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_hal_timer_8h_a81f3e52897a3fe0eb867bd9307dfa7bc}\label{_hal_timer_8h_a81f3e52897a3fe0eb867bd9307dfa7bc}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!Hal\+Timer\+Configure@{Hal\+Timer\+Configure}}
+\index{Hal\+Timer\+Configure@{Hal\+Timer\+Configure}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Configure()}{HalTimerConfigure()}}
+{\footnotesize\ttfamily void Hal\+Timer\+Configure (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ul\+Period }\end{DoxyParamCaption})}
+
+
+
+Timer 설정값을 입력하는 함수 
+
+Timer 동작 주기(u\+S) 를 설정한다. 
+\begin{DoxyParams}{Parameters}
+{\em ul\+Period} & 동작 주기 를 uS 단위로 입력한다. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_timer_8h_a3adb8173210f57ea8e25490dc0d403ac}\label{_hal_timer_8h_a3adb8173210f57ea8e25490dc0d403ac}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!Hal\+Timer\+Get\+Time@{Hal\+Timer\+Get\+Time}}
+\index{Hal\+Timer\+Get\+Time@{Hal\+Timer\+Get\+Time}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Get\+Time()}{HalTimerGetTime()}}
+{\footnotesize\ttfamily uint32\+\_\+t Hal\+Timer\+Get\+Time (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+시스템 시작 이후 누적된 시간(m\+S)을 반환하는 함수 
+
+시스템 시작 이후, mS 단위로 누적된 시간을 반환한다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+시스템 시작 이후 누적 시간(m\+S) 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_timer_8h_afe8e4fd7913076c206815a0ec5ab5b7a}\label{_hal_timer_8h_afe8e4fd7913076c206815a0ec5ab5b7a}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!Hal\+Timer\+Init@{Hal\+Timer\+Init}}
+\index{Hal\+Timer\+Init@{Hal\+Timer\+Init}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Init()}{HalTimerInit()}}
+{\footnotesize\ttfamily void Hal\+Timer\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Timer Module 초기화 함수 
+
+Timer 동작을 초기화 한다. 호출 뒤, Timer 를 다시 시작해야 한다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_timer_8h_a8befdbbecbc2c3dac045b462cc489ec3}\label{_hal_timer_8h_a8befdbbecbc2c3dac045b462cc489ec3}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!Hal\+Timer\+Int\+Init@{Hal\+Timer\+Int\+Init}}
+\index{Hal\+Timer\+Int\+Init@{Hal\+Timer\+Int\+Init}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Int\+Init()}{HalTimerIntInit()}}
+{\footnotesize\ttfamily void Hal\+Timer\+Int\+Init (\begin{DoxyParamCaption}\item[{void($\ast$)(int)}]{func }\end{DoxyParamCaption})}
+
+
+
+Timer 모둘의 인터럽트 설정 함수 
+
+인터럽트 동작 여부와 핸들러를 설정한다. 
+\begin{DoxyParams}{Parameters}
+{\em func} & 핸들러 함수 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_timer_8h_a82a40dbbf8dfb45d38783e076c929651}\label{_hal_timer_8h_a82a40dbbf8dfb45d38783e076c929651}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!Hal\+Timer\+Proc@{Hal\+Timer\+Proc}}
+\index{Hal\+Timer\+Proc@{Hal\+Timer\+Proc}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Proc()}{HalTimerProc()}}
+{\footnotesize\ttfamily void Hal\+Timer\+Proc (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+경과 시간을 누적하는 함수 
+
+mS 단위로 결과 시간을 누적한다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_timer_8h_a3bb9d83fc183740fb01e328506e84e8f}\label{_hal_timer_8h_a3bb9d83fc183740fb01e328506e84e8f}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!Hal\+Timer\+Re\+Start@{Hal\+Timer\+Re\+Start}}
+\index{Hal\+Timer\+Re\+Start@{Hal\+Timer\+Re\+Start}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Re\+Start()}{HalTimerReStart()}}
+{\footnotesize\ttfamily void Hal\+Timer\+Re\+Start (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ul\+Period }\end{DoxyParamCaption})}
+
+
+
+Timer 를 새 주기로 재시작하는 함수 
+
+입력된 주기를 로딩하여 Timer 모듈을 재시작한다 
+\begin{DoxyParams}{Parameters}
+{\em ul\+Period} & 동작 주기를 uS 단위로 입력한다. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_timer_8h_a93bcba00b4fba3ebbba8e0679dc2caec}\label{_hal_timer_8h_a93bcba00b4fba3ebbba8e0679dc2caec}} 
+\index{Hal\+Timer.\+h@{Hal\+Timer.\+h}!Hal\+Timer\+Start@{Hal\+Timer\+Start}}
+\index{Hal\+Timer\+Start@{Hal\+Timer\+Start}!Hal\+Timer.\+h@{Hal\+Timer.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Start()}{HalTimerStart()}}
+{\footnotesize\ttfamily void Hal\+Timer\+Start (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ul\+Period }\end{DoxyParamCaption})}
+
+
+
+Timer 를 새 주기로 시작하는 함수 
+
+입력된 주기를 로딩하여 Timer 모듈을 시작한다 
+\begin{DoxyParams}{Parameters}
+{\em ul\+Period} & 동작 주기를 uS 단위로 입력한다. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}

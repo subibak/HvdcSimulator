@@ -1,0 +1,92 @@
+\hypertarget{_hal_dio_8c}{}\section{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Dio.c File Reference}
+\label{_hal_dio_8c}\index{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Dio.\+c@{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Dio.\+c}}
+{\ttfamily \#include \char`\"{}Hal\+Dio.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_hal_dio_8c_a4e9049abaac52debf17ef0d46bdd8b2a}{Hal\+Dio\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 초기화 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_dio_8c_a909c8675e2f2e66236fa44f0551b072d}{Hal\+Dio\+Check\+Sub\+Board}} (void)
+\begin{DoxyCompactList}\small\item\em Mezzanine 보드와 Terminal 보드의 상태를 확인하는 함수 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_hal_dio_8h_ab162240541c0aa0006e22c2c1ee57507}{S\+T\+\_\+\+D\+I\+O\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{_hal_dio_8c_ae08a9b75c41254732b51a02c6e90504c}{t\+\_\+st\+Dio\+Config}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_hal_dio_8c_a909c8675e2f2e66236fa44f0551b072d}\label{_hal_dio_8c_a909c8675e2f2e66236fa44f0551b072d}} 
+\index{Hal\+Dio.\+c@{Hal\+Dio.\+c}!Hal\+Dio\+Check\+Sub\+Board@{Hal\+Dio\+Check\+Sub\+Board}}
+\index{Hal\+Dio\+Check\+Sub\+Board@{Hal\+Dio\+Check\+Sub\+Board}!Hal\+Dio.\+c@{Hal\+Dio.\+c}}
+\subsubsection{\texorpdfstring{Hal\+Dio\+Check\+Sub\+Board()}{HalDioCheckSubBoard()}}
+{\footnotesize\ttfamily void Hal\+Dio\+Check\+Sub\+Board (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Mezzanine 보드와 Terminal 보드의 상태를 확인하는 함수 
+
+Mezzanine 보드와 Terminal 보드의 상태를 확인하는 함수. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_dio_8c_a4e9049abaac52debf17ef0d46bdd8b2a}\label{_hal_dio_8c_a4e9049abaac52debf17ef0d46bdd8b2a}} 
+\index{Hal\+Dio.\+c@{Hal\+Dio.\+c}!Hal\+Dio\+Init@{Hal\+Dio\+Init}}
+\index{Hal\+Dio\+Init@{Hal\+Dio\+Init}!Hal\+Dio.\+c@{Hal\+Dio.\+c}}
+\subsubsection{\texorpdfstring{Hal\+Dio\+Init()}{HalDioInit()}}
+{\footnotesize\ttfamily void Hal\+Dio\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+초기화 함수 
+
+Hal 기능을 초기화 한다. 모든 채널의 초기 설정으로 바꾼다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_hal_dio_8c_ae08a9b75c41254732b51a02c6e90504c}\label{_hal_dio_8c_ae08a9b75c41254732b51a02c6e90504c}} 
+\index{Hal\+Dio.\+c@{Hal\+Dio.\+c}!t\+\_\+st\+Dio\+Config@{t\+\_\+st\+Dio\+Config}}
+\index{t\+\_\+st\+Dio\+Config@{t\+\_\+st\+Dio\+Config}!Hal\+Dio.\+c@{Hal\+Dio.\+c}}
+\subsubsection{\texorpdfstring{t\+\_\+st\+Dio\+Config}{t\_stDioConfig}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_hal_dio_8h_ab162240541c0aa0006e22c2c1ee57507}{S\+T\+\_\+\+D\+I\+O\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+T\+Y\+PE}} t\+\_\+st\+Dio\+Config}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+     \{\{\mbox{\hyperlink{_d_i_o_8h_a25dbdafefcf1120bc98563f9cbee3f4b}{HWREG\_DIO\_CTRL\_BANK0\_DIR\_IN}}, 
+      \mbox{\hyperlink{_d_i_o_8h_a4dd3b63c1ae72e6557f4a762d27d7ec3}{HWREG\_DIO\_CTRL\_BANK0\_ENA\_YES}}\}
+    ,\{\mbox{\hyperlink{_d_i_o_8h_ac88b0ee0e5b3e5997ceb51d8129e9abc}{HWREG\_DIO\_CTRL\_BANK1\_DIR\_IN}}, 
+      \mbox{\hyperlink{_d_i_o_8h_a3a69c4c8700d3230833c2c75fd8bd61d}{HWREG\_DIO\_CTRL\_BANK1\_ENA\_YES}}\}
+    ,\{\mbox{\hyperlink{_d_i_o_8h_adc0f0ab256c129bed047f0302e751229}{HWREG\_DIO\_CTRL\_BANK2\_DIR\_IN}}, 
+      \mbox{\hyperlink{_d_i_o_8h_a567df0c05434f358de8ce40b329d49fb}{HWREG\_DIO\_CTRL\_BANK2\_ENA\_YES}}\}
+    ,\{\mbox{\hyperlink{_d_i_o_8h_a917f0d392520a55bea4861472f8d6614}{HWREG\_DIO\_CTRL\_BANK3\_DIR\_IN}}, 
+      \mbox{\hyperlink{_d_i_o_8h_afaca077ffce1b60daeb6ae23e53ece89}{HWREG\_DIO\_CTRL\_BANK3\_ENA\_YES}}\}\}
+    ,\mbox{\hyperlink{_hal_dio_8h_a3f36d8e8fff42d9e417c33065c8e4f8f}{HALDIO\_OUT\_DEFAULT}}
+    ,0x0
+    ,\mbox{\hyperlink{_system_8h_a562d0bd5a1bc25dda8971f6c7060486a}{SYSTEM\_ERROR\_NONE}}
+\}
+\end{DoxyCode}
+\mbox{\hyperlink{_hal_dio_8c}{Hal\+Dio.\+c}} Hal\+Dio Device Driver Module Body 

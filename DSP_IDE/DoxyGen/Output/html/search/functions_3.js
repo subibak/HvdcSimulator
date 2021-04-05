@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['halaihandle',['HalAiHandle',['../_hal_ai_8c.html#afbda5156c3158b9761d8d78372d04ddc',1,'HalAiHandle(void):&#160;HalAi.c'],['../_hal_ai_8h.html#afbda5156c3158b9761d8d78372d04ddc',1,'HalAiHandle(void):&#160;HalAi.c']]],
+  ['halaiinit',['HalAiInit',['../_hal_ai_8c.html#ae40de33f27b13de128a5a89fd12556b9',1,'HalAiInit(void):&#160;HalAi.c'],['../_hal_ai_8h.html#ae40de33f27b13de128a5a89fd12556b9',1,'HalAiInit(void):&#160;HalAi.c']]],
+  ['halairead',['HalAiRead',['../_hal_ai_8c.html#a7f699ed0c1a5751e6ab7c4e503e65005',1,'HalAiRead(uint32_t ulChNum):&#160;HalAi.c'],['../_hal_ai_8h.html#a7f699ed0c1a5751e6ab7c4e503e65005',1,'HalAiRead(uint32_t ulChNum):&#160;HalAi.c']]],
+  ['halaohandle',['HalAoHandle',['../_hal_ao_8c.html#a757dc436a04fb8e5f6610a68aedb8f14',1,'HalAo.c']]],
+  ['halaoinit',['HalAoInit',['../_hal_ao_8c.html#a071392165d2154bb09a6c794fad31e84',1,'HalAo.c']]],
+  ['halaowrite',['HalAoWrite',['../_hal_ao_8c.html#a5e9dd34e7ed5974b850d13f2712f640c',1,'HalAo.c']]],
+  ['haldiochecksubboard',['HalDioCheckSubBoard',['../_hal_dio_8c.html#a909c8675e2f2e66236fa44f0551b072d',1,'HalDioCheckSubBoard(void):&#160;HalDio.c'],['../_hal_dio_8h.html#a909c8675e2f2e66236fa44f0551b072d',1,'HalDioCheckSubBoard(void):&#160;HalDio.c']]],
+  ['haldiohandle',['HalDioHandle',['../_hal_dio_8h.html#ab875fdc66144a61bc479946f9169236c',1,'HalDio.h']]],
+  ['haldioinit',['HalDioInit',['../_hal_dio_8c.html#a4e9049abaac52debf17ef0d46bdd8b2a',1,'HalDioInit(void):&#160;HalDio.c'],['../_hal_dio_8h.html#a4e9049abaac52debf17ef0d46bdd8b2a',1,'HalDioInit(void):&#160;HalDio.c']]],
+  ['haldioread',['HalDioRead',['../_hal_dio_8h.html#a9978a6b36334c74624de584221c6fec2',1,'HalDio.h']]],
+  ['haldiotoggleled',['HalDioToggleLed',['../_hal_dio_8h.html#ad3b785c026ef2e7c972bbf94bc13eb10',1,'HalDio.h']]],
+  ['haldiowrite',['HalDioWrite',['../_hal_dio_8h.html#a5122aa151f28fd6583252c79e1cb6c09',1,'HalDio.h']]],
+  ['haltimerconfigure',['HalTimerConfigure',['../_hal_timer_8c.html#a81f3e52897a3fe0eb867bd9307dfa7bc',1,'HalTimerConfigure(uint32_t ulPeriod):&#160;HalTimer.c'],['../_hal_timer_8h.html#a81f3e52897a3fe0eb867bd9307dfa7bc',1,'HalTimerConfigure(uint32_t ulPeriod):&#160;HalTimer.c']]],
+  ['haltimergettime',['HalTimerGetTime',['../_hal_timer_8c.html#a3adb8173210f57ea8e25490dc0d403ac',1,'HalTimerGetTime(void):&#160;HalTimer.c'],['../_hal_timer_8h.html#a3adb8173210f57ea8e25490dc0d403ac',1,'HalTimerGetTime(void):&#160;HalTimer.c']]],
+  ['haltimerinit',['HalTimerInit',['../_hal_timer_8c.html#afe8e4fd7913076c206815a0ec5ab5b7a',1,'HalTimerInit(void):&#160;HalTimer.c'],['../_hal_timer_8h.html#afe8e4fd7913076c206815a0ec5ab5b7a',1,'HalTimerInit(void):&#160;HalTimer.c']]],
+  ['haltimerintinit',['HalTimerIntInit',['../_hal_timer_8c.html#a8befdbbecbc2c3dac045b462cc489ec3',1,'HalTimerIntInit(void(*func)(int)):&#160;HalTimer.c'],['../_hal_timer_8h.html#a8befdbbecbc2c3dac045b462cc489ec3',1,'HalTimerIntInit(void(*func)(int)):&#160;HalTimer.c']]],
+  ['haltimerproc',['HalTimerProc',['../_hal_timer_8c.html#a82a40dbbf8dfb45d38783e076c929651',1,'HalTimerProc(void):&#160;HalTimer.c'],['../_hal_timer_8h.html#a82a40dbbf8dfb45d38783e076c929651',1,'HalTimerProc(void):&#160;HalTimer.c']]],
+  ['haltimerrestart',['HalTimerReStart',['../_hal_timer_8c.html#a3bb9d83fc183740fb01e328506e84e8f',1,'HalTimerReStart(uint32_t ulPeriod):&#160;HalTimer.c'],['../_hal_timer_8h.html#a3bb9d83fc183740fb01e328506e84e8f',1,'HalTimerReStart(uint32_t ulPeriod):&#160;HalTimer.c']]],
+  ['haltimerstart',['HalTimerStart',['../_hal_timer_8c.html#a93bcba00b4fba3ebbba8e0679dc2caec',1,'HalTimerStart(uint32_t ulPeriod):&#160;HalTimer.c'],['../_hal_timer_8h.html#a93bcba00b4fba3ebbba8e0679dc2caec',1,'HalTimerStart(uint32_t ulPeriod):&#160;HalTimer.c']]],
+  ['haluarthandledata',['HalUartHandleData',['../_hal_uart_8c.html#ae455d6e6f0017f917fcb0d471ef31912',1,'HalUart.c']]],
+  ['haluartinit',['HalUartInit',['../_hal_uart_8c.html#a9e82d9fa745c4689a262e56da6305c3c',1,'HalUart.c']]],
+  ['haluartread',['HalUartRead',['../_hal_uart_8c.html#a529f1e6f7face69040591b2c42f21994',1,'HalUart.c']]],
+  ['haluartwrite',['HalUartWrite',['../_hal_uart_8c.html#a7c7591ad2de791f3796c146dde023949',1,'HalUart.c']]]
+];

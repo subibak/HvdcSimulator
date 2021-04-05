@@ -1,0 +1,36 @@
+\hypertarget{_hw_def_type_8h}{}\section{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hw\+Def/\+Hw\+Def\+Type.h File Reference}
+\label{_hw_def_type_8h}\index{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hw\+Def/\+Hw\+Def\+Type.\+h@{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hw\+Def/\+Hw\+Def\+Type.\+h}}
+{\ttfamily \#include \char`\"{}System/\+System.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}A\+D\+C.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}D\+A\+C.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}D\+I\+O.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}U\+A\+R\+T.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{Indent}\textbf{ Macro Definition}\par
+{\em \mbox{\hyperlink{_hw_def_type_8h}{Hw\+Def\+Type.\+h}} Hw\+Def\+Type Device Module Definition Macro Definition }\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_hw_def_type_8h_a3e5f272def6e8bc0f555e6f90207ff72}{Write\+Reg}}(p\+Addr,  ul\+Data)~$\ast$(volatile uint32\+\_\+t $\ast$)p\+Addr = ul\+Data
+\begin{DoxyCompactList}\small\item\em $<$ 레지스트 쓰기 함수 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hw_def_type_8h_a4d56787f85680d550012001a9709a3eb}{Read\+Reg}}(p\+Addr)~$\ast$(volatile uint32\+\_\+t $\ast$)p\+Addr
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_hw_def_type_8h_a4d56787f85680d550012001a9709a3eb}\label{_hw_def_type_8h_a4d56787f85680d550012001a9709a3eb}} 
+\index{Hw\+Def\+Type.\+h@{Hw\+Def\+Type.\+h}!Read\+Reg@{Read\+Reg}}
+\index{Read\+Reg@{Read\+Reg}!Hw\+Def\+Type.\+h@{Hw\+Def\+Type.\+h}}
+\subsubsection{\texorpdfstring{Read\+Reg}{ReadReg}}
+{\footnotesize\ttfamily \#define Read\+Reg(\begin{DoxyParamCaption}\item[{}]{p\+Addr }\end{DoxyParamCaption})~$\ast$(volatile uint32\+\_\+t $\ast$)p\+Addr}
+
+\mbox{\Hypertarget{_hw_def_type_8h_a3e5f272def6e8bc0f555e6f90207ff72}\label{_hw_def_type_8h_a3e5f272def6e8bc0f555e6f90207ff72}} 
+\index{Hw\+Def\+Type.\+h@{Hw\+Def\+Type.\+h}!Write\+Reg@{Write\+Reg}}
+\index{Write\+Reg@{Write\+Reg}!Hw\+Def\+Type.\+h@{Hw\+Def\+Type.\+h}}
+\subsubsection{\texorpdfstring{Write\+Reg}{WriteReg}}
+{\footnotesize\ttfamily \#define Write\+Reg(\begin{DoxyParamCaption}\item[{}]{p\+Addr,  }\item[{}]{ul\+Data }\end{DoxyParamCaption})~$\ast$(volatile uint32\+\_\+t $\ast$)p\+Addr = ul\+Data}
+
+
+
+$<$ 레지스트 쓰기 함수 
+
+레지스트 읽기 함수 

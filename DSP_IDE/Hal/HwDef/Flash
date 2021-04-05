@@ -1,0 +1,29 @@
+
+
+
+#ifndef _FLASH_H_
+
+#define _FLASH_H_
+
+
+
+#define HWREG_FLASH_BASE_ADDR		0x90000000
+#define HWREG_FLASH_SIZE			0x80000
+
+
+
+#define HWREG_FLASH_BASE_ADDR		0x90000000
+
+
+
+
+#define HWREG_FLASH_WP_MASK			0x00000100
+#define HWREG_FLASH_WP_YES			0x00000100
+#define HWREG_FLASH_WP_NO			0x00000000
+
+
+
+#endif
+
+
+

@@ -1,0 +1,52 @@
+
+/**
+ * HalIfDef.h
+ * HalIfDef Interface Module Difinition
+ */
+
+
+#ifndef _HALIFDEF_H_
+#define _HALIFDEF_H_
+
+#include "Core/Core.h"
+#include "Core/Queue.h"
+#include "HwDef/HwIfDef.h"
+
+#include "HalTS201.h"
+
+
+/** @name HAL Error Cause
+ * HAL Error
+ */
+///@{
+typedef enum {
+	 HAL_NOERR
+	 
+//	,HALFCOMM_TXBUFFER_FULL
+//	,HALFCOMM_RXBUFFER_FULL
+	,HALFCOMM_DISABLED_ERROR
+	,HALFCOMM_RXLOSS_ERROR
+	,HALFCOMM_SEQNUM_ERROR
+	,HALFCOMM_CRC_ERROR
+	,HALFCOMM_NOSYNC_ERROR
+
+	,HALVME_TXBUFFER_FULL
+	,HALVME_RXBUFFER_FULL
+
+	,HALUART_TXBUFFER_FULL
+	,HALUART_RXBUFFER_FULL
+	,HALUART_RXBUFFER_NODATA
+
+	,HALFLASH_ERASE_ERR
+	,HALFLASH_WRITE_ERR
+	
+	,HAL_ERR_NUM
+
+} HAL_ERROR;
+///@}
+
+
+
+
+#endif
+

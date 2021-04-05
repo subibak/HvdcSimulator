@@ -1,0 +1,142 @@
+\hypertarget{_hal_ai_8h}{}\section{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Ai.h File Reference}
+\label{_hal_ai_8h}\index{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Ai.\+h@{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Ai.\+h}}
+{\ttfamily \#include \char`\"{}Hw\+Def/\+Hw\+Def\+Type.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structst_ai_conf_type}{st\+Ai\+Conf\+Type}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{Indent}\textbf{ Symbolic Constants}\par
+{\em \mbox{\hyperlink{_hal_ai_8h}{Hal\+Ai.\+h}} Hal\+Ai Device Driver Module Definition Symbolic Constants }\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_hal_ai_8h_ad1dcdbb982b361f20d308cbf2d496560}{H\+A\+L\+A\+I\+\_\+\+C\+H\+\_\+\+N\+UM}}~16
+\begin{DoxyCompactList}\small\item\em 채널 개수 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Typedefs}
+\begin{Indent}\textbf{ Type Definition}\par
+{\em Type Definition }\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structst_ai_conf_type}{st\+Ai\+Conf\+Type}} \mbox{\hyperlink{_hal_ai_8h_a5bd73804b429f26b2afe718af2ed0ae5}{S\+T\+\_\+\+A\+I\+\_\+\+C\+O\+N\+F\+\_\+\+T\+Y\+PE}}
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_hal_ai_8h_ae40de33f27b13de128a5a89fd12556b9}{Hal\+Ai\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 초기화 함수 \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{_hal_ai_8h_a7f699ed0c1a5751e6ab7c4e503e65005}{Hal\+Ai\+Read}} (uint32\+\_\+t ul\+Ch\+Num)
+\begin{DoxyCompactList}\small\item\em Analog Input 값을 읽는 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_ai_8h_afbda5156c3158b9761d8d78372d04ddc}{Hal\+Ai\+Handle}} (void)
+\begin{DoxyCompactList}\small\item\em Analog Input 값을 전체를 읽는 함수 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_hal_ai_8h_a5bd73804b429f26b2afe718af2ed0ae5}{S\+T\+\_\+\+A\+I\+\_\+\+C\+O\+N\+F\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{_hal_ai_8h_a8a48a4bd7934d96a8cbe869f9124e5e7}{t\+\_\+st\+Ai\+Config\+Data}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_hal_ai_8h_ad1dcdbb982b361f20d308cbf2d496560}\label{_hal_ai_8h_ad1dcdbb982b361f20d308cbf2d496560}} 
+\index{Hal\+Ai.\+h@{Hal\+Ai.\+h}!H\+A\+L\+A\+I\+\_\+\+C\+H\+\_\+\+N\+UM@{H\+A\+L\+A\+I\+\_\+\+C\+H\+\_\+\+N\+UM}}
+\index{H\+A\+L\+A\+I\+\_\+\+C\+H\+\_\+\+N\+UM@{H\+A\+L\+A\+I\+\_\+\+C\+H\+\_\+\+N\+UM}!Hal\+Ai.\+h@{Hal\+Ai.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+L\+A\+I\+\_\+\+C\+H\+\_\+\+N\+UM}{HALAI\_CH\_NUM}}
+{\footnotesize\ttfamily \#define H\+A\+L\+A\+I\+\_\+\+C\+H\+\_\+\+N\+UM~16}
+
+
+
+채널 개수 
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{_hal_ai_8h_a5bd73804b429f26b2afe718af2ed0ae5}\label{_hal_ai_8h_a5bd73804b429f26b2afe718af2ed0ae5}} 
+\index{Hal\+Ai.\+h@{Hal\+Ai.\+h}!S\+T\+\_\+\+A\+I\+\_\+\+C\+O\+N\+F\+\_\+\+T\+Y\+PE@{S\+T\+\_\+\+A\+I\+\_\+\+C\+O\+N\+F\+\_\+\+T\+Y\+PE}}
+\index{S\+T\+\_\+\+A\+I\+\_\+\+C\+O\+N\+F\+\_\+\+T\+Y\+PE@{S\+T\+\_\+\+A\+I\+\_\+\+C\+O\+N\+F\+\_\+\+T\+Y\+PE}!Hal\+Ai.\+h@{Hal\+Ai.\+h}}
+\subsubsection{\texorpdfstring{S\+T\+\_\+\+A\+I\+\_\+\+C\+O\+N\+F\+\_\+\+T\+Y\+PE}{ST\_AI\_CONF\_TYPE}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structst_ai_conf_type}{st\+Ai\+Conf\+Type}} \mbox{\hyperlink{_hal_ai_8h_a5bd73804b429f26b2afe718af2ed0ae5}{S\+T\+\_\+\+A\+I\+\_\+\+C\+O\+N\+F\+\_\+\+T\+Y\+PE}}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_hal_ai_8h_afbda5156c3158b9761d8d78372d04ddc}\label{_hal_ai_8h_afbda5156c3158b9761d8d78372d04ddc}} 
+\index{Hal\+Ai.\+h@{Hal\+Ai.\+h}!Hal\+Ai\+Handle@{Hal\+Ai\+Handle}}
+\index{Hal\+Ai\+Handle@{Hal\+Ai\+Handle}!Hal\+Ai.\+h@{Hal\+Ai.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Ai\+Handle()}{HalAiHandle()}}
+{\footnotesize\ttfamily void Hal\+Ai\+Handle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Analog Input 값을 전체를 읽는 함수 
+
+모든 채널의 입력값을 한 번에 읽는다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_ai_8h_ae40de33f27b13de128a5a89fd12556b9}\label{_hal_ai_8h_ae40de33f27b13de128a5a89fd12556b9}} 
+\index{Hal\+Ai.\+h@{Hal\+Ai.\+h}!Hal\+Ai\+Init@{Hal\+Ai\+Init}}
+\index{Hal\+Ai\+Init@{Hal\+Ai\+Init}!Hal\+Ai.\+h@{Hal\+Ai.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Ai\+Init()}{HalAiInit()}}
+{\footnotesize\ttfamily void Hal\+Ai\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+초기화 함수 
+
+Hal 기능을 초기화 한다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_ai_8h_a7f699ed0c1a5751e6ab7c4e503e65005}\label{_hal_ai_8h_a7f699ed0c1a5751e6ab7c4e503e65005}} 
+\index{Hal\+Ai.\+h@{Hal\+Ai.\+h}!Hal\+Ai\+Read@{Hal\+Ai\+Read}}
+\index{Hal\+Ai\+Read@{Hal\+Ai\+Read}!Hal\+Ai.\+h@{Hal\+Ai.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Ai\+Read()}{HalAiRead()}}
+{\footnotesize\ttfamily uint32\+\_\+t Hal\+Ai\+Read (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ul\+Ch\+Num }\end{DoxyParamCaption})}
+
+
+
+Analog Input 값을 읽는 함수 
+
+각 채널별로 입력값을 읽는다. 
+\begin{DoxyParams}{Parameters}
+{\em ul\+Ch\+Num} & \+: Channel 번호 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+채널값 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_hal_ai_8h_a8a48a4bd7934d96a8cbe869f9124e5e7}\label{_hal_ai_8h_a8a48a4bd7934d96a8cbe869f9124e5e7}} 
+\index{Hal\+Ai.\+h@{Hal\+Ai.\+h}!t\+\_\+st\+Ai\+Config\+Data@{t\+\_\+st\+Ai\+Config\+Data}}
+\index{t\+\_\+st\+Ai\+Config\+Data@{t\+\_\+st\+Ai\+Config\+Data}!Hal\+Ai.\+h@{Hal\+Ai.\+h}}
+\subsubsection{\texorpdfstring{t\+\_\+st\+Ai\+Config\+Data}{t\_stAiConfigData}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_hal_ai_8h_a5bd73804b429f26b2afe718af2ed0ae5}{S\+T\+\_\+\+A\+I\+\_\+\+C\+O\+N\+F\+\_\+\+T\+Y\+PE}} t\+\_\+st\+Ai\+Config\+Data}
+

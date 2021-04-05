@@ -1,0 +1,101 @@
+\hypertarget{_hal_ai_8c}{}\section{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Ai.c File Reference}
+\label{_hal_ai_8c}\index{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Ai.\+c@{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Ai.\+c}}
+{\ttfamily \#include \char`\"{}Hal\+Ai.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_hal_ai_8c_ae40de33f27b13de128a5a89fd12556b9}{Hal\+Ai\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 초기화 함수 \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{_hal_ai_8c_a7f699ed0c1a5751e6ab7c4e503e65005}{Hal\+Ai\+Read}} (uint32\+\_\+t ul\+Ch\+Num)
+\begin{DoxyCompactList}\small\item\em Analog Input 값을 읽는 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_ai_8c_afbda5156c3158b9761d8d78372d04ddc}{Hal\+Ai\+Handle}} (void)
+\begin{DoxyCompactList}\small\item\em Analog Input 값을 전체를 읽는 함수 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_hal_ai_8h_a5bd73804b429f26b2afe718af2ed0ae5}{S\+T\+\_\+\+A\+I\+\_\+\+C\+O\+N\+F\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{_hal_ai_8c_a8a48a4bd7934d96a8cbe869f9124e5e7}{t\+\_\+st\+Ai\+Config\+Data}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_hal_ai_8c_afbda5156c3158b9761d8d78372d04ddc}\label{_hal_ai_8c_afbda5156c3158b9761d8d78372d04ddc}} 
+\index{Hal\+Ai.\+c@{Hal\+Ai.\+c}!Hal\+Ai\+Handle@{Hal\+Ai\+Handle}}
+\index{Hal\+Ai\+Handle@{Hal\+Ai\+Handle}!Hal\+Ai.\+c@{Hal\+Ai.\+c}}
+\subsubsection{\texorpdfstring{Hal\+Ai\+Handle()}{HalAiHandle()}}
+{\footnotesize\ttfamily void Hal\+Ai\+Handle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Analog Input 값을 전체를 읽는 함수 
+
+모든 채널의 입력값을 한 번에 읽는다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_ai_8c_ae40de33f27b13de128a5a89fd12556b9}\label{_hal_ai_8c_ae40de33f27b13de128a5a89fd12556b9}} 
+\index{Hal\+Ai.\+c@{Hal\+Ai.\+c}!Hal\+Ai\+Init@{Hal\+Ai\+Init}}
+\index{Hal\+Ai\+Init@{Hal\+Ai\+Init}!Hal\+Ai.\+c@{Hal\+Ai.\+c}}
+\subsubsection{\texorpdfstring{Hal\+Ai\+Init()}{HalAiInit()}}
+{\footnotesize\ttfamily void Hal\+Ai\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+초기화 함수 
+
+Hal 기능을 초기화 한다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_ai_8c_a7f699ed0c1a5751e6ab7c4e503e65005}\label{_hal_ai_8c_a7f699ed0c1a5751e6ab7c4e503e65005}} 
+\index{Hal\+Ai.\+c@{Hal\+Ai.\+c}!Hal\+Ai\+Read@{Hal\+Ai\+Read}}
+\index{Hal\+Ai\+Read@{Hal\+Ai\+Read}!Hal\+Ai.\+c@{Hal\+Ai.\+c}}
+\subsubsection{\texorpdfstring{Hal\+Ai\+Read()}{HalAiRead()}}
+{\footnotesize\ttfamily uint32\+\_\+t Hal\+Ai\+Read (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ul\+Ch\+Num }\end{DoxyParamCaption})}
+
+
+
+Analog Input 값을 읽는 함수 
+
+각 채널별로 입력값을 읽는다. 
+\begin{DoxyParams}{Parameters}
+{\em ul\+Ch\+Num} & \+: Channel 번호 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+채널값 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_hal_ai_8c_a8a48a4bd7934d96a8cbe869f9124e5e7}\label{_hal_ai_8c_a8a48a4bd7934d96a8cbe869f9124e5e7}} 
+\index{Hal\+Ai.\+c@{Hal\+Ai.\+c}!t\+\_\+st\+Ai\+Config\+Data@{t\+\_\+st\+Ai\+Config\+Data}}
+\index{t\+\_\+st\+Ai\+Config\+Data@{t\+\_\+st\+Ai\+Config\+Data}!Hal\+Ai.\+c@{Hal\+Ai.\+c}}
+\subsubsection{\texorpdfstring{t\+\_\+st\+Ai\+Config\+Data}{t\_stAiConfigData}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_hal_ai_8h_a5bd73804b429f26b2afe718af2ed0ae5}{S\+T\+\_\+\+A\+I\+\_\+\+C\+O\+N\+F\+\_\+\+T\+Y\+PE}} t\+\_\+st\+Ai\+Config\+Data}
+

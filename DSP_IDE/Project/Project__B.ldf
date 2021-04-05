@@ -1,0 +1,354 @@
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Copyright (c) LK Eleven Co., Ltd. 2019~ All Rights Reserved.
+// Design Units : LKV-440(Phase Control Board)
+// Link Description File
+// File Name : lkv-440.ldf
+// 2013. 9. 10. Tuesday
+// Compile Tools : VisualDSP++ 5.0
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ARCHITECTURE(ADSP-TS201)
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#ifndef __NO_STD_LIB
+SEARCH_DIR( $ADI_DSP/TS/lib/ts20x_rev_any )
+#endif
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$IOLIB     = libio_TS201.dlb;
+$IOLIB_MT  = libio_TS201_mt.dlb;
+
+$LIBC    = libc_TS201.dlb;
+$LIBC_MT = libc_TS201_mt.dlb;
+$LIBDSP  = libdsp_TS201.dlb;
+$LIBCPP    = libcpprt_TS201.dlb;
+$LIBCPP_MT = libcpprt_TS201_mt.dlb;
+
+$MEMINIT = meminit_ts20x.doj;
+$EXIT      = ts_exit_TS201.doj;
+$EXIT_MT   = ts_exit_TS201_mt.doj;
+$HDR       = ts_hdr_TS201.doj;
+$HDR_MT    = ts_hdr_TS201_mt.doj;
+
+$LIBRARIES = $LIBC, $IOLIB,  $LIBDSP, $LIBCPP, libsim_TS201.dlb;
+
+$OBJECTS = $HDR, $MEMINIT, $EXIT;
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// User Defined Objects
+$CORE_OBJECTS = Queue.doj, Utility.doj, Signal.doj, Core.doj;       
+$HALA_OBJECTS = HalAi.doj, HalFComm.doj, HalLed.doj, HalNvRam.doj, HalTimer.doj, HalTS201.doj, HalUart.doj, HalVme.doj, HalFlash.doj;       
+$HALB_OBJECTS = HalAi.doj, HalFComm.doj, HalLed.doj, HalNvRam.doj, HalTimer.doj, HalTS201.doj, HalVme.doj, Crc.doj, Protocol.doj;       
+
+$IALA_OBJECTS = IalConfig.doj, IalDebug.doj, IalDiag.doj, IalHmi.doj;       
+$IALB_OBJECTS = IalControl.doj;       
+$APPA_OBJECTS = ConfigApp.doj, DebugApp.doj, DebugCmdExe.doj, DebugCmdParser.doj, DebugCmdTable.doj, DiagApp.doj, HmiApp.doj, xmodem.doj;       
+$APPB_OBJECTS = ControlApp.doj, CcsApp.doj, MisApp.doj, VbcApp.doj;       
+$USER_OBJECTS = UserApp.doj;       
+$COMMA_OBJECTS = $CORE_OBJECTS, $HALA_OBJECTS, $IALA_OBJECTS, $APPA_OBJECTS;
+$COMMB_OBJECTS = $CORE_OBJECTS, $HALB_OBJECTS, $IALB_OBJECTS, $APPB_OBJECTS, $USER_OBJECTS;			 
+
+$DSPA_OBJECTS = ManagerMain.doj, $COMMA_OBJECTS;
+
+$DSPB_OBJECTS = ControlMain.doj, $COMMB_OBJECTS;
+
+   
+   
+// Internal memory blocks are 0x20000 (128k)
+
+MEMORY
+{
+	M0Code      { TYPE(RAM) START(0x00000000) END(0x0001FF9F) WIDTH(32) }
+	M2DataA     { TYPE(RAM) START(0x00040000) END(0x0004FFFF) WIDTH(32) }
+	M2DataB     { TYPE(RAM) START(0x00050000) END(0x0005FFFF) WIDTH(32) }
+	M4Heap      { TYPE(RAM) START(0x00080000) END(0x00083FFF) WIDTH(32) }
+//	M4DataA     { TYPE(RAM) START(0x00080000) END(0x0008FFFF) WIDTH(32) }
+//	M4DataB     { TYPE(RAM) START(0x00090000) END(0x0009BFFF) WIDTH(32) }
+//	M4Heap      { TYPE(RAM) START(0x0009C000) END(0x0009C7FF) WIDTH(32) }
+//	M4Stack     { TYPE(RAM) START(0x0009C800) END(0x0009FFFF) WIDTH(32) }
+	M4Stack     { TYPE(RAM) START(0x00084000) END(0x0009FFFF) WIDTH(32) }
+	M6DataA     { TYPE(RAM) START(0x000C0000) END(0x000CFFFF) WIDTH(32) }
+//	M6DataB     { TYPE(RAM) START(0x000D0000) END(0x000DC7FF) WIDTH(32) }
+//	M6Stack     { TYPE(RAM) START(0x000DC800) END(0x000DFFFF) WIDTH(32) }
+	M6Stack     { TYPE(RAM) START(0x000DC000) END(0x000DFFFF) WIDTH(32) }
+	M8DataA     { TYPE(RAM) START(0x00100000) END(0x0010FFFF) WIDTH(32) }
+	M8DataB     { TYPE(RAM) START(0x00110000) END(0x0011FFFF) WIDTH(32) }
+	M10DataA    { TYPE(RAM) START(0x00140000) END(0x0014FFFF) WIDTH(32) }
+	M10DataB    { TYPE(RAM) START(0x00150000) END(0x0015FFFF) WIDTH(32) }
+
+	// DSP_HW_VERSION 3 : 2M에서 4M로 변경 =================================
+	// SRAM       	{ TYPE(RAM) START(0x30000000) END(0x301FFFFF) WIDTH(32) }
+	SRAM       	{ TYPE(RAM) START(0x30000000) END(0x303FFFFF) WIDTH(32) }
+
+	FLASH       { TYPE(RAM) START(0x90000000) END(0x9007FFFF) WIDTH(32) }
+	MRAM        { TYPE(RAM) START(0x92000000) END(0x920FFFFF) WIDTH(32) }
+	VMESM       { TYPE(RAM) START(0xb0000000) END(0xb0001FFF) WIDTH(32) }
+}
+
+MPMEMORY
+{
+	P0 { START(0x10000000) }
+	P1 { START(0x14000000) }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+PROCESSOR P0
+{
+          RESOLVE( _____system_start, 0x00000000 )
+          KEEP( _____system_start, _main, ___ctor_end, __sw_handler_ctor )
+
+    OUTPUT( $COMMAND_LINE_OUTPUT_DIRECTORY\P0.dxe )
+    LINK_AGAINST($COMMAND_LINE_OUTPUT_DIRECTORY\P1.dxe)
+
+    SECTIONS
+    {
+        code
+        {
+            FILL(0xb3c00000) // Fill any gaps with NOPs.
+            INPUT_SECTION_ALIGN(4)
+            INPUT_SECTIONS( $OBJECTS(program) $LIBRARIES(program) $DSPA_OBJECTS(program) )
+         . = . + 10;
+        } >M0Code
+
+        ctor
+        {
+            INPUT_SECTIONS( $OBJECTS(ctor0) $LIBRARIES(ctor0)  )
+            INPUT_SECTIONS( $OBJECTS(ctor1) $LIBRARIES(ctor1)  )
+            INPUT_SECTIONS( $OBJECTS(ctor2) $LIBRARIES(ctor2)  )
+            INPUT_SECTIONS( $OBJECTS(ctor3) $LIBRARIES(ctor3)  )
+            INPUT_SECTIONS( $OBJECTS(ctor4) $LIBRARIES(ctor4)  )
+            INPUT_SECTIONS( $OBJECTS(ctor)  $LIBRARIES(ctor)  )
+            INPUT_SECTIONS( $OBJECTS(ctorl) $LIBRARIES(ctorl)  )
+        } >M6DataA
+//
+        heaptab
+        {
+            INPUT_SECTIONS( $OBJECTS(heaptab) $LIBRARIES(heaptab) $DSPA_OBJECTS(heaptab))
+        } >M6DataA
+//
+        data1
+        {
+            INPUT_SECTIONS( $OBJECTS(data1) $LIBRARIES(data1) $DSPA_OBJECTS(data1) )
+        } >M6DataA
+//
+        bsz_init
+        {
+            INPUT_SECTIONS( $OBJECTS(bsz_init) $LIBRARIES(bsz_init))
+        } >M6DataA
+//
+        .meminit {} >M6DataA
+//    
+        bsz ZERO_INIT
+        {
+            INPUT_SECTIONS( $OBJECTS(bsz) $LIBRARIES(bsz) )
+        } >M6DataA
+//
+        MEM_ARGV
+        {
+            INPUT_SECTIONS( $OBJECTS(MEM_ARGV) $LIBRARIES(MEM_ARGV) )
+        } >M6DataA
+//
+        data2
+        {
+            INPUT_SECTIONS( $OBJECTS(data2) $LIBRARIES(data2) $DSPA_OBJECTS(data2) )
+        } >M8DataA
+
+        data2a
+        {
+            INPUT_SECTIONS( $OBJECTS(data2a) $LIBRARIES(data2a) $DSPA_OBJECTS(data2a) )
+        } >M2DataA
+
+        data2b
+        {
+            INPUT_SECTIONS( $OBJECTS(data2b) $LIBRARIES(data2b) $DSPA_OBJECTS(data2b) )
+        } >M2DataB
+
+        data4a
+        {
+            INPUT_SECTIONS( $OBJECTS(data4a) $LIBRARIES(data4a) $DSPA_OBJECTS(data4a) )
+        } >M6DataA
+//
+        data4b
+        {
+            INPUT_SECTIONS( $OBJECTS(data4b) $LIBRARIES(data4b) $DSPA_OBJECTS(data4b ))
+        } >M8DataB
+//
+        data6a
+        {
+            INPUT_SECTIONS( $OBJECTS(data6a) $LIBRARIES(data6a)  $DSPA_OBJECTS(data6a ))
+        } >M6DataA
+
+        data6b
+        {
+            INPUT_SECTIONS( $OBJECTS(data6b) $LIBRARIES(data6b) $DSPA_OBJECTS(data6b) )
+        } >M8DataB
+//
+        data8a
+        {
+            INPUT_SECTIONS( $OBJECTS(data8a) $LIBRARIES(data8a) $DSPA_OBJECTS(data8a) )
+        } >M8DataA
+
+        data8b
+        {
+            INPUT_SECTIONS( $OBJECTS(data8b) $LIBRARIES(data8b) $DSPA_OBJECTS(data8b) )
+        } >M8DataB
+
+        data10a
+        {
+            INPUT_SECTIONS( $OBJECTS(data10a) $LIBRARIES(data10a) $DSPA_OBJECTS(data10a) )
+        } >M10DataA
+
+        data10b
+        {
+            INPUT_SECTIONS( $OBJECTS(data10b) $LIBRARIES(data10b) $DSPA_OBJECTS(data10b) )
+        } >M10DataB
+
+        jstackseg
+        {
+            ldf_jstack_limit = .;
+            ldf_jstack_base = . + MEMORY_SIZEOF(M4Stack);
+        } >M4Stack
+
+        kstackseg
+        {
+            ldf_kstack_limit = .;
+            ldf_kstack_base = . + MEMORY_SIZEOF(M6Stack);
+        } >M6Stack
+
+        defheapseg
+        {
+            ldf_defheap_base = .;
+            ldf_defheap_size = MEMORY_SIZEOF(M4Heap);
+        } >M4Heap
+    }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+PROCESSOR P1
+{
+	RESOLVE( _____system_start, 0x00000000 )
+	KEEP(_____system_start, _main, ___ctor_end, __sw_handler_ctor)
+
+	OUTPUT($COMMAND_LINE_OUTPUT_DIRECTORY\P1.dxe)
+  LINK_AGAINST($COMMAND_LINE_OUTPUT_DIRECTORY\P0.dxe)
+
+	SECTIONS
+    {
+		code
+        {
+			FILL(0xb3c00000)
+			INPUT_SECTION_ALIGN(4)
+            INPUT_SECTIONS( $OBJECTS(program) $LIBRARIES(program) $DSPB_OBJECTS(program) )
+			. = . + 10;
+		}>M0Code
+
+		ctor
+        {
+			INPUT_SECTIONS($OBJECTS(ctor0) $LIBRARIES(ctor0))
+			INPUT_SECTIONS($OBJECTS(ctor1) $LIBRARIES(ctor1))
+			INPUT_SECTIONS($OBJECTS(ctor2) $LIBRARIES(ctor2))
+			INPUT_SECTIONS($OBJECTS(ctor3) $LIBRARIES(ctor3))
+			INPUT_SECTIONS($OBJECTS(ctor4) $LIBRARIES(ctor4))
+			INPUT_SECTIONS($OBJECTS(ctor) $LIBRARIES(ctor))
+			INPUT_SECTIONS($OBJECTS(ctorl) $LIBRARIES(ctorl))
+		}>M6DataA
+//
+        heaptab
+        {
+			INPUT_SECTIONS($OBJECTS(heaptab) $LIBRARIES(heaptab) $DSPB_OBJECTS(heaptab))
+		}>M6DataA
+//
+        data1
+        {
+            INPUT_SECTIONS( $OBJECTS(data1) $LIBRARIES(data1) $DSPB_OBJECTS(data1) )
+        } >M6DataA
+//
+        bsz_init
+        {
+            INPUT_SECTIONS( $OBJECTS(bsz_init) $LIBRARIES(bsz_init) )
+		}>M6DataA
+//    
+        .meminit {} >M6DataA
+//    
+        bsz ZERO_INIT
+        {
+			INPUT_SECTIONS($OBJECTS(bsz) $LIBRARIES(bsz))
+		}>M6DataA
+//
+        MEM_ARGV
+        {
+			INPUT_SECTIONS($OBJECTS(MEM_ARGV) $LIBRARIES(MEM_ARGV))
+		}>M6DataA
+//
+        data2
+        {
+            INPUT_SECTIONS( $OBJECTS(data2) $LIBRARIES(data2) $DSPB_OBJECTS(data2) )
+		}>M8DataA
+
+        data2a
+        {
+            INPUT_SECTIONS( $OBJECTS(data2a) $LIBRARIES(data2a) $DSPB_OBJECTS(data2a) )
+		}>M2DataA
+
+        data2b
+        {
+            INPUT_SECTIONS( $OBJECTS(data2b) $LIBRARIES(data2b) $DSPB_OBJECTS(data2b) )
+		}>M2DataB
+
+        data4a
+        {
+            INPUT_SECTIONS( $OBJECTS(data4a) $LIBRARIES(data4a) $DSPB_OBJECTS(data4a) )
+		}>M6DataA
+//
+        data4b
+        {
+			INPUT_SECTIONS($OBJECTS(data4b) $LIBRARIES(data4b) $DSPB_OBJECTS(data4b))
+		}>M8DataB
+//
+        data6a
+        {
+			INPUT_SECTIONS($OBJECTS(data6a) $LIBRARIES(data6a) $DSPB_OBJECTS(data6a))
+		}>M6DataA
+
+        data6b
+        {
+            INPUT_SECTIONS( $OBJECTS(data6b) $LIBRARIES(data6b) $DSPB_OBJECTS(data6b) )
+        } >M8DataB
+//
+        data8a
+        {
+            INPUT_SECTIONS( $OBJECTS(data8a) $LIBRARIES(data8a) $DSPB_OBJECTS(data8a) )
+		}>M8DataA
+
+        data8b
+        {
+            INPUT_SECTIONS( $OBJECTS(data8b) $LIBRARIES(data8b) $DSPB_OBJECTS(data8b) )
+		}>M8DataB
+
+        data10a
+        {
+            INPUT_SECTIONS( $OBJECTS(data10a) $LIBRARIES(data10a) $DSPB_OBJECTS(data10a) )
+		}>M10DataA
+
+        data10b
+        {
+            INPUT_SECTIONS( $OBJECTS(data10b) $LIBRARIES(data10b) $DSPB_OBJECTS(data10b) )
+		}>M10DataB
+
+        jstackseg
+        {
+            ldf_jstack_limit = .;
+            ldf_jstack_base = . + MEMORY_SIZEOF(M4Stack);
+        } >M4Stack
+
+        kstackseg
+        {
+            ldf_kstack_limit = .;
+            ldf_kstack_base = . + MEMORY_SIZEOF(M6Stack);
+        } >M6Stack
+
+        defheapseg
+        {
+            ldf_defheap_base = .;
+            ldf_defheap_size = MEMORY_SIZEOF(M4Heap);
+        } >M4Heap
+	}
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+

@@ -1,0 +1,267 @@
+\hypertarget{_system_8h}{}\section{D\+:/\+Root\+\_\+\+Dual\+System/\+System/\+System.h File Reference}
+\label{_system_8h}\index{D\+:/\+Root\+\_\+\+Dual\+System/\+System/\+System.\+h@{D\+:/\+Root\+\_\+\+Dual\+System/\+System/\+System.\+h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$sysreg.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$builtins.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}defts201.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{Indent}\textbf{ System Configuration}\par
+{\em System Configuration }\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_system_8h_ad5a2bc8fb196337e0488bf9e639d95d0}{S\+Y\+S\+T\+E\+M\+\_\+\+M\+A\+S\+T\+ER}}~0
+\begin{DoxyCompactList}\small\item\em Master 시스템 정의 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_system_8h_a441daa961db9d730aef0626aa4500ed6}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+L\+A\+VE}}~1
+\begin{DoxyCompactList}\small\item\em Slave 시스템 정의 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ System Error Cause}\par
+{\em System Error Cause }\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_system_8h_a562d0bd5a1bc25dda8971f6c7060486a}{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+NE}}~0x00000000
+\begin{DoxyCompactList}\small\item\em No Error. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_system_8h_a17fd5990fb89ad58eeb1044a37031123}{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+N\+I\+T\+F\+A\+IL}}~0x00000001
+\begin{DoxyCompactList}\small\item\em 초기화 실패 Error \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_system_8h_a8ac84676822d3d7fe152b9f8e08399bb}{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+A\+S\+K\+O\+V\+E\+R\+T\+I\+ME}}~0x00000010
+\begin{DoxyCompactList}\small\item\em 주기 실행 시간 초과 Error \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_system_8h_a6acacaa2c9bbef602013e0d22fa0d5e0}{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+\_\+\+S\+Y\+N\+C\+S\+I\+G\+N\+AL}}~0x00000020
+\begin{DoxyCompactList}\small\item\em 동기 신호 소실 Error \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_system_8h_aa020f0d730dceb72a27e86af97c164aa}{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+M\+M\+F\+A\+IL}}~0x00000040
+\begin{DoxyCompactList}\small\item\em 통신 실패 Error \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_system_8h_aa7fcb43256f5dd32b033c737e7ef1029}{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+N\+A\+L\+O\+G\+F\+A\+IL}}~0x00000100
+\begin{DoxyCompactList}\small\item\em 아날로그 입력 Error \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_system_8h_a55d5108f784f737b5111edc3376b78e9}{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+D\+I\+S\+C\+ON}}~0x10000000
+\begin{DoxyCompactList}\small\item\em Mezzanine 보드 연결 실패 Error. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_system_8h_aad15b534398e036d0ae7c9078e7c8780}{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+D\+I\+S\+C\+ON}}~0x20000000
+\begin{DoxyCompactList}\small\item\em Terminal 보드 연결 실패 Error. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_system_8h_ae6bfdd717ce47a3b8c9880340162b713}{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+B\+A\+C\+K\+P\+L\+A\+N\+E\+\_\+\+N\+O\+R\+E\+SP}}~0x40000000
+\begin{DoxyCompactList}\small\item\em Backplane 통신 실패 Error. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Enumerations}
+\begin{Indent}\textbf{ Type Definition}\par
+{\em Type Definition }\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}} \{ \newline
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a98d2a2153b4ae0445fa0b114d65b94d9}{S\+T\+A\+T\+E\+\_\+\+I\+N\+IT}} = 0, 
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a6d611fdcd78bc0763a7e75d3fa355c0a}{S\+T\+A\+T\+E\+\_\+\+W\+A\+I\+T\+\_\+\+I\+N\+IT}}, 
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71aa08643559ef8156b5b88f898b6c5470d}{S\+T\+A\+T\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+O\+NE}}, 
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a873eb4e373abc5aeda42033517b38e12}{S\+T\+A\+T\+E\+\_\+\+W\+A\+I\+T\+\_\+\+B\+US}}, 
+\newline
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a471eef2c45f21956647b48834b4f4941}{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+R\+M\+AL}}, 
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71ae0c0a9a07bc7b5a880f6fff81bacef9a}{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L2}}, 
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71ac52e58a376efcb4aa7b3a014e63653cf}{S\+T\+A\+T\+E\+\_\+\+S\+L\+A\+V\+E\+\_\+\+N\+O\+R\+M\+AL}}, 
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a168da73e9959c8004174d549093388bc}{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+N\+B\+US}}, 
+\newline
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a7e60c9bc4af1f3cdb512b9d661166e9b}{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+N\+B\+U\+S2}}, 
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a997de2f48cf499acc39946c03b10d4ae}{S\+T\+A\+T\+E\+\_\+\+S\+L\+A\+V\+E\+\_\+\+N\+O\+N\+B\+US}}, 
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71aaade5e53e88cf231292cd1142cce2afe}{S\+T\+A\+T\+E\+\_\+\+I\+D\+LE}}, 
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71ab4ac6058e02d26a4a3b64885bb66e180}{S\+T\+A\+T\+E\+\_\+\+F\+A\+U\+LT}}
+ \}
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_system_8h_a1f4f3c6c68622f0e54d46a676e013b14}{Set\+Error\+Cause}} (uint32\+\_\+t $\ast$ul\+Error\+Flag, uint32\+\_\+t \mbox{\hyperlink{_dsp_manager_main_8c_a6390379288f013e144db13946e59f276}{ul\+Error\+Cause}})
+\item 
+void \mbox{\hyperlink{_system_8h_a75f4aecaaf16ebb117bdb29c61031c86}{Set\+State}} (\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}} $\ast$e\+Prev\+State, \mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}} $\ast$e\+State, \mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}} e\+Next\+State)
+\item 
+void \mbox{\hyperlink{_system_8h_a39a04caeb6cca23dbd06cd02693f3d53}{Delay\+Us}} (const unsigned long ul\+Us)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_system_8h_aa7fcb43256f5dd32b033c737e7ef1029}\label{_system_8h_aa7fcb43256f5dd32b033c737e7ef1029}} 
+\index{System.\+h@{System.\+h}!S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+N\+A\+L\+O\+G\+F\+A\+IL@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+N\+A\+L\+O\+G\+F\+A\+IL}}
+\index{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+N\+A\+L\+O\+G\+F\+A\+IL@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+N\+A\+L\+O\+G\+F\+A\+IL}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+N\+A\+L\+O\+G\+F\+A\+IL}{SYSTEM\_ERROR\_ANALOGFAIL}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+N\+A\+L\+O\+G\+F\+A\+IL~0x00000100}
+
+
+
+아날로그 입력 Error 
+
+\mbox{\Hypertarget{_system_8h_ae6bfdd717ce47a3b8c9880340162b713}\label{_system_8h_ae6bfdd717ce47a3b8c9880340162b713}} 
+\index{System.\+h@{System.\+h}!S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+B\+A\+C\+K\+P\+L\+A\+N\+E\+\_\+\+N\+O\+R\+E\+SP@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+B\+A\+C\+K\+P\+L\+A\+N\+E\+\_\+\+N\+O\+R\+E\+SP}}
+\index{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+B\+A\+C\+K\+P\+L\+A\+N\+E\+\_\+\+N\+O\+R\+E\+SP@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+B\+A\+C\+K\+P\+L\+A\+N\+E\+\_\+\+N\+O\+R\+E\+SP}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+B\+A\+C\+K\+P\+L\+A\+N\+E\+\_\+\+N\+O\+R\+E\+SP}{SYSTEM\_ERROR\_BACKPLANE\_NORESP}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+B\+A\+C\+K\+P\+L\+A\+N\+E\+\_\+\+N\+O\+R\+E\+SP~0x40000000}
+
+
+
+Backplane 통신 실패 Error. 
+
+\mbox{\Hypertarget{_system_8h_aa020f0d730dceb72a27e86af97c164aa}\label{_system_8h_aa020f0d730dceb72a27e86af97c164aa}} 
+\index{System.\+h@{System.\+h}!S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+M\+M\+F\+A\+IL@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+M\+M\+F\+A\+IL}}
+\index{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+M\+M\+F\+A\+IL@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+M\+M\+F\+A\+IL}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+M\+M\+F\+A\+IL}{SYSTEM\_ERROR\_COMMFAIL}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+M\+M\+F\+A\+IL~0x00000040}
+
+
+
+통신 실패 Error 
+
+\mbox{\Hypertarget{_system_8h_a17fd5990fb89ad58eeb1044a37031123}\label{_system_8h_a17fd5990fb89ad58eeb1044a37031123}} 
+\index{System.\+h@{System.\+h}!S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+N\+I\+T\+F\+A\+IL@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+N\+I\+T\+F\+A\+IL}}
+\index{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+N\+I\+T\+F\+A\+IL@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+N\+I\+T\+F\+A\+IL}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+N\+I\+T\+F\+A\+IL}{SYSTEM\_ERROR\_INITFAIL}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+N\+I\+T\+F\+A\+IL~0x00000001}
+
+
+
+초기화 실패 Error 
+
+\mbox{\Hypertarget{_system_8h_a55d5108f784f737b5111edc3376b78e9}\label{_system_8h_a55d5108f784f737b5111edc3376b78e9}} 
+\index{System.\+h@{System.\+h}!S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+D\+I\+S\+C\+ON@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+D\+I\+S\+C\+ON}}
+\index{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+D\+I\+S\+C\+ON@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+D\+I\+S\+C\+ON}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+D\+I\+S\+C\+ON}{SYSTEM\_ERROR\_MEZZANINE\_DISCON}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+D\+I\+S\+C\+ON~0x10000000}
+
+
+
+Mezzanine 보드 연결 실패 Error. 
+
+\mbox{\Hypertarget{_system_8h_a6acacaa2c9bbef602013e0d22fa0d5e0}\label{_system_8h_a6acacaa2c9bbef602013e0d22fa0d5e0}} 
+\index{System.\+h@{System.\+h}!S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+\_\+\+S\+Y\+N\+C\+S\+I\+G\+N\+AL@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+\_\+\+S\+Y\+N\+C\+S\+I\+G\+N\+AL}}
+\index{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+\_\+\+S\+Y\+N\+C\+S\+I\+G\+N\+AL@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+\_\+\+S\+Y\+N\+C\+S\+I\+G\+N\+AL}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+\_\+\+S\+Y\+N\+C\+S\+I\+G\+N\+AL}{SYSTEM\_ERROR\_NO\_SYNCSIGNAL}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+\_\+\+S\+Y\+N\+C\+S\+I\+G\+N\+AL~0x00000020}
+
+
+
+동기 신호 소실 Error 
+
+\mbox{\Hypertarget{_system_8h_a562d0bd5a1bc25dda8971f6c7060486a}\label{_system_8h_a562d0bd5a1bc25dda8971f6c7060486a}} 
+\index{System.\+h@{System.\+h}!S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+NE@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+NE}}
+\index{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+NE@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+NE}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+NE}{SYSTEM\_ERROR\_NONE}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+NE~0x00000000}
+
+
+
+No Error. 
+
+\mbox{\Hypertarget{_system_8h_a8ac84676822d3d7fe152b9f8e08399bb}\label{_system_8h_a8ac84676822d3d7fe152b9f8e08399bb}} 
+\index{System.\+h@{System.\+h}!S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+A\+S\+K\+O\+V\+E\+R\+T\+I\+ME@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+A\+S\+K\+O\+V\+E\+R\+T\+I\+ME}}
+\index{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+A\+S\+K\+O\+V\+E\+R\+T\+I\+ME@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+A\+S\+K\+O\+V\+E\+R\+T\+I\+ME}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+A\+S\+K\+O\+V\+E\+R\+T\+I\+ME}{SYSTEM\_ERROR\_TASKOVERTIME}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+A\+S\+K\+O\+V\+E\+R\+T\+I\+ME~0x00000010}
+
+
+
+주기 실행 시간 초과 Error 
+
+\mbox{\Hypertarget{_system_8h_aad15b534398e036d0ae7c9078e7c8780}\label{_system_8h_aad15b534398e036d0ae7c9078e7c8780}} 
+\index{System.\+h@{System.\+h}!S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+D\+I\+S\+C\+ON@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+D\+I\+S\+C\+ON}}
+\index{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+D\+I\+S\+C\+ON@{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+D\+I\+S\+C\+ON}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+D\+I\+S\+C\+ON}{SYSTEM\_ERROR\_TERMINAL\_DISCON}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+T\+E\+M\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+D\+I\+S\+C\+ON~0x20000000}
+
+
+
+Terminal 보드 연결 실패 Error. 
+
+\mbox{\Hypertarget{_system_8h_ad5a2bc8fb196337e0488bf9e639d95d0}\label{_system_8h_ad5a2bc8fb196337e0488bf9e639d95d0}} 
+\index{System.\+h@{System.\+h}!S\+Y\+S\+T\+E\+M\+\_\+\+M\+A\+S\+T\+ER@{S\+Y\+S\+T\+E\+M\+\_\+\+M\+A\+S\+T\+ER}}
+\index{S\+Y\+S\+T\+E\+M\+\_\+\+M\+A\+S\+T\+ER@{S\+Y\+S\+T\+E\+M\+\_\+\+M\+A\+S\+T\+ER}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+T\+E\+M\+\_\+\+M\+A\+S\+T\+ER}{SYSTEM\_MASTER}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+T\+E\+M\+\_\+\+M\+A\+S\+T\+ER~0}
+
+
+
+Master 시스템 정의 
+
+\mbox{\Hypertarget{_system_8h_a441daa961db9d730aef0626aa4500ed6}\label{_system_8h_a441daa961db9d730aef0626aa4500ed6}} 
+\index{System.\+h@{System.\+h}!S\+Y\+S\+T\+E\+M\+\_\+\+S\+L\+A\+VE@{S\+Y\+S\+T\+E\+M\+\_\+\+S\+L\+A\+VE}}
+\index{S\+Y\+S\+T\+E\+M\+\_\+\+S\+L\+A\+VE@{S\+Y\+S\+T\+E\+M\+\_\+\+S\+L\+A\+VE}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+T\+E\+M\+\_\+\+S\+L\+A\+VE}{SYSTEM\_SLAVE}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+T\+E\+M\+\_\+\+S\+L\+A\+VE~1}
+
+
+
+Slave 시스템 정의 
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}} 
+\index{System.\+h@{System.\+h}!S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE@{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}}
+\index{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE@{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}{SYSTEM\_STATE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+T\+E\+\_\+\+I\+N\+IT@{S\+T\+A\+T\+E\+\_\+\+I\+N\+IT}!System.\+h@{System.\+h}}\index{System.\+h@{System.\+h}!S\+T\+A\+T\+E\+\_\+\+I\+N\+IT@{S\+T\+A\+T\+E\+\_\+\+I\+N\+IT}}}\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a98d2a2153b4ae0445fa0b114d65b94d9}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a98d2a2153b4ae0445fa0b114d65b94d9}} 
+S\+T\+A\+T\+E\+\_\+\+I\+N\+IT&State Type 정의 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+T\+E\+\_\+\+W\+A\+I\+T\+\_\+\+I\+N\+IT@{S\+T\+A\+T\+E\+\_\+\+W\+A\+I\+T\+\_\+\+I\+N\+IT}!System.\+h@{System.\+h}}\index{System.\+h@{System.\+h}!S\+T\+A\+T\+E\+\_\+\+W\+A\+I\+T\+\_\+\+I\+N\+IT@{S\+T\+A\+T\+E\+\_\+\+W\+A\+I\+T\+\_\+\+I\+N\+IT}}}\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a6d611fdcd78bc0763a7e75d3fa355c0a}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a6d611fdcd78bc0763a7e75d3fa355c0a}} 
+S\+T\+A\+T\+E\+\_\+\+W\+A\+I\+T\+\_\+\+I\+N\+IT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+T\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+O\+NE@{S\+T\+A\+T\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+O\+NE}!System.\+h@{System.\+h}}\index{System.\+h@{System.\+h}!S\+T\+A\+T\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+O\+NE@{S\+T\+A\+T\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+O\+NE}}}\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71aa08643559ef8156b5b88f898b6c5470d}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71aa08643559ef8156b5b88f898b6c5470d}} 
+S\+T\+A\+T\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+O\+NE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+T\+E\+\_\+\+W\+A\+I\+T\+\_\+\+B\+US@{S\+T\+A\+T\+E\+\_\+\+W\+A\+I\+T\+\_\+\+B\+US}!System.\+h@{System.\+h}}\index{System.\+h@{System.\+h}!S\+T\+A\+T\+E\+\_\+\+W\+A\+I\+T\+\_\+\+B\+US@{S\+T\+A\+T\+E\+\_\+\+W\+A\+I\+T\+\_\+\+B\+US}}}\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a873eb4e373abc5aeda42033517b38e12}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a873eb4e373abc5aeda42033517b38e12}} 
+S\+T\+A\+T\+E\+\_\+\+W\+A\+I\+T\+\_\+\+B\+US&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+R\+M\+AL@{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+R\+M\+AL}!System.\+h@{System.\+h}}\index{System.\+h@{System.\+h}!S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+R\+M\+AL@{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+R\+M\+AL}}}\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a471eef2c45f21956647b48834b4f4941}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a471eef2c45f21956647b48834b4f4941}} 
+S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+R\+M\+AL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L2@{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L2}!System.\+h@{System.\+h}}\index{System.\+h@{System.\+h}!S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L2@{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L2}}}\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71ae0c0a9a07bc7b5a880f6fff81bacef9a}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71ae0c0a9a07bc7b5a880f6fff81bacef9a}} 
+S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+T\+E\+\_\+\+S\+L\+A\+V\+E\+\_\+\+N\+O\+R\+M\+AL@{S\+T\+A\+T\+E\+\_\+\+S\+L\+A\+V\+E\+\_\+\+N\+O\+R\+M\+AL}!System.\+h@{System.\+h}}\index{System.\+h@{System.\+h}!S\+T\+A\+T\+E\+\_\+\+S\+L\+A\+V\+E\+\_\+\+N\+O\+R\+M\+AL@{S\+T\+A\+T\+E\+\_\+\+S\+L\+A\+V\+E\+\_\+\+N\+O\+R\+M\+AL}}}\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71ac52e58a376efcb4aa7b3a014e63653cf}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71ac52e58a376efcb4aa7b3a014e63653cf}} 
+S\+T\+A\+T\+E\+\_\+\+S\+L\+A\+V\+E\+\_\+\+N\+O\+R\+M\+AL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+N\+B\+US@{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+N\+B\+US}!System.\+h@{System.\+h}}\index{System.\+h@{System.\+h}!S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+N\+B\+US@{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+N\+B\+US}}}\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a168da73e9959c8004174d549093388bc}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a168da73e9959c8004174d549093388bc}} 
+S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+N\+B\+US&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+N\+B\+U\+S2@{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+N\+B\+U\+S2}!System.\+h@{System.\+h}}\index{System.\+h@{System.\+h}!S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+N\+B\+U\+S2@{S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+N\+B\+U\+S2}}}\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a7e60c9bc4af1f3cdb512b9d661166e9b}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a7e60c9bc4af1f3cdb512b9d661166e9b}} 
+S\+T\+A\+T\+E\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+N\+B\+U\+S2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+T\+E\+\_\+\+S\+L\+A\+V\+E\+\_\+\+N\+O\+N\+B\+US@{S\+T\+A\+T\+E\+\_\+\+S\+L\+A\+V\+E\+\_\+\+N\+O\+N\+B\+US}!System.\+h@{System.\+h}}\index{System.\+h@{System.\+h}!S\+T\+A\+T\+E\+\_\+\+S\+L\+A\+V\+E\+\_\+\+N\+O\+N\+B\+US@{S\+T\+A\+T\+E\+\_\+\+S\+L\+A\+V\+E\+\_\+\+N\+O\+N\+B\+US}}}\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a997de2f48cf499acc39946c03b10d4ae}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a997de2f48cf499acc39946c03b10d4ae}} 
+S\+T\+A\+T\+E\+\_\+\+S\+L\+A\+V\+E\+\_\+\+N\+O\+N\+B\+US&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+T\+E\+\_\+\+I\+D\+LE@{S\+T\+A\+T\+E\+\_\+\+I\+D\+LE}!System.\+h@{System.\+h}}\index{System.\+h@{System.\+h}!S\+T\+A\+T\+E\+\_\+\+I\+D\+LE@{S\+T\+A\+T\+E\+\_\+\+I\+D\+LE}}}\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71aaade5e53e88cf231292cd1142cce2afe}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71aaade5e53e88cf231292cd1142cce2afe}} 
+S\+T\+A\+T\+E\+\_\+\+I\+D\+LE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+A\+T\+E\+\_\+\+F\+A\+U\+LT@{S\+T\+A\+T\+E\+\_\+\+F\+A\+U\+LT}!System.\+h@{System.\+h}}\index{System.\+h@{System.\+h}!S\+T\+A\+T\+E\+\_\+\+F\+A\+U\+LT@{S\+T\+A\+T\+E\+\_\+\+F\+A\+U\+LT}}}\mbox{\Hypertarget{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71ab4ac6058e02d26a4a3b64885bb66e180}\label{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71ab4ac6058e02d26a4a3b64885bb66e180}} 
+S\+T\+A\+T\+E\+\_\+\+F\+A\+U\+LT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_system_8h_a39a04caeb6cca23dbd06cd02693f3d53}\label{_system_8h_a39a04caeb6cca23dbd06cd02693f3d53}} 
+\index{System.\+h@{System.\+h}!Delay\+Us@{Delay\+Us}}
+\index{Delay\+Us@{Delay\+Us}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{Delay\+Us()}{DelayUs()}}
+{\footnotesize\ttfamily void Delay\+Us (\begin{DoxyParamCaption}\item[{const unsigned long}]{ul\+Us }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{_system_8h_a1f4f3c6c68622f0e54d46a676e013b14}\label{_system_8h_a1f4f3c6c68622f0e54d46a676e013b14}} 
+\index{System.\+h@{System.\+h}!Set\+Error\+Cause@{Set\+Error\+Cause}}
+\index{Set\+Error\+Cause@{Set\+Error\+Cause}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{Set\+Error\+Cause()}{SetErrorCause()}}
+{\footnotesize\ttfamily void Set\+Error\+Cause (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{ul\+Error\+Flag,  }\item[{uint32\+\_\+t}]{ul\+Error\+Cause }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{_system_8h_a75f4aecaaf16ebb117bdb29c61031c86}\label{_system_8h_a75f4aecaaf16ebb117bdb29c61031c86}} 
+\index{System.\+h@{System.\+h}!Set\+State@{Set\+State}}
+\index{Set\+State@{Set\+State}!System.\+h@{System.\+h}}
+\subsubsection{\texorpdfstring{Set\+State()}{SetState()}}
+{\footnotesize\ttfamily void Set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}} $\ast$}]{e\+Prev\+State,  }\item[{\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}} $\ast$}]{e\+State,  }\item[{\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}}}]{e\+Next\+State }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+

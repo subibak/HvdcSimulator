@@ -1,0 +1,315 @@
+\hypertarget{_hal_dio_8h}{}\section{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Dio.h File Reference}
+\label{_hal_dio_8h}\index{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Dio.\+h@{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Dio.\+h}}
+{\ttfamily \#include \char`\"{}Hw\+Def/\+Hw\+Def\+Type.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structst_dio_bank_type}{st\+Dio\+Bank\+Type}}
+\item 
+struct \mbox{\hyperlink{structst_dio_config_type}{st\+Dio\+Config\+Type}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{Indent}\textbf{ Symbolic Constants}\par
+{\em \mbox{\hyperlink{_hal_dio_8h}{Hal\+Dio.\+h}} Hal\+Dio Device Driver Module Definition Symbolic Constants }\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_hal_dio_8h_a2b3f07ddb4384ed60fac01eb325ef785}{H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+B\+O\+A\+RD}}~0x1
+\begin{DoxyCompactList}\small\item\em Mezzanine Board Error. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_dio_8h_a9d5959c945e30b1353deb2c92647e5a4}{H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+B\+O\+A\+RD}}~0x2
+\begin{DoxyCompactList}\small\item\em Terminal Board Error. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_dio_8h_a94973dd2f20e4cd2c5de1de2bfc6bfac}{H\+A\+L\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+N\+UM}}~4
+\begin{DoxyCompactList}\small\item\em Bank 개수 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_dio_8h_ac6e2f770c2b1f48c09e8f7ce7d2cafff}{H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+N\+UM}}~32
+\begin{DoxyCompactList}\small\item\em 채널 개수(0$\sim$31) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_dio_8h_a7e96a588b8bd38e6702203bb894aef06}{H\+A\+L\+D\+I\+O\+\_\+\+ON}}~0x1
+\begin{DoxyCompactList}\small\item\em 채널 On 상태 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_dio_8h_a04725b24a0927def121583075333dab3}{H\+A\+L\+D\+I\+O\+\_\+\+O\+FF}}~0x0
+\begin{DoxyCompactList}\small\item\em 채널 Off 상태 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_dio_8h_a3f36d8e8fff42d9e417c33065c8e4f8f}{H\+A\+L\+D\+I\+O\+\_\+\+O\+U\+T\+\_\+\+D\+E\+F\+A\+U\+LT}}~0x0
+\begin{DoxyCompactList}\small\item\em 채널 출력 초기값 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_hal_dio_8h_a880dfa266f18cadf9857fe6710fd8228}{H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+M\+A\+SK}}(x)~(0x1$<$$<$x)
+\begin{DoxyCompactList}\small\item\em 채널 Mask \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Typedefs}
+\begin{Indent}\textbf{ Type Definition}\par
+{\em Type Definition }\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structst_dio_bank_type}{st\+Dio\+Bank\+Type}} \mbox{\hyperlink{_hal_dio_8h_a264031ef9e065b0d942b5cd1af5c9a53}{S\+T\+\_\+\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+T\+Y\+PE}}
+\item 
+typedef struct \mbox{\hyperlink{structst_dio_config_type}{st\+Dio\+Config\+Type}} \mbox{\hyperlink{_hal_dio_8h_ab162240541c0aa0006e22c2c1ee57507}{S\+T\+\_\+\+D\+I\+O\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+T\+Y\+PE}}
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_hal_dio_8h_a9978a6b36334c74624de584221c6fec2}{Hal\+Dio\+Read}} (uint32\+\_\+t ul\+Ch\+Num)
+\begin{DoxyCompactList}\small\item\em Digital 값을 읽는 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_dio_8h_a5122aa151f28fd6583252c79e1cb6c09}{Hal\+Dio\+Write}} (uint32\+\_\+t ul\+Ch\+Num, uint32\+\_\+t ul\+On\+Off)
+\begin{DoxyCompactList}\small\item\em Digital Output을 쓰는 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_dio_8h_ab875fdc66144a61bc479946f9169236c}{Hal\+Dio\+Handle}} (void)
+\begin{DoxyCompactList}\small\item\em Digital Input 값을 전체를 읽고 쓰는 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_dio_8h_ad3b785c026ef2e7c972bbf94bc13eb10}{Hal\+Dio\+Toggle\+Led}} (void)
+\begin{DoxyCompactList}\small\item\em L\+ED 출력을 Toggle 하는 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_dio_8h_a4e9049abaac52debf17ef0d46bdd8b2a}{Hal\+Dio\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 초기화 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_dio_8h_a909c8675e2f2e66236fa44f0551b072d}{Hal\+Dio\+Check\+Sub\+Board}} (void)
+\begin{DoxyCompactList}\small\item\em Mezzanine 보드와 Terminal 보드의 상태를 확인하는 함수 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_hal_dio_8h_ab162240541c0aa0006e22c2c1ee57507}{S\+T\+\_\+\+D\+I\+O\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{_hal_dio_8h_ae08a9b75c41254732b51a02c6e90504c}{t\+\_\+st\+Dio\+Config}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_hal_dio_8h_a94973dd2f20e4cd2c5de1de2bfc6bfac}\label{_hal_dio_8h_a94973dd2f20e4cd2c5de1de2bfc6bfac}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!H\+A\+L\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+N\+UM@{H\+A\+L\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+N\+UM}}
+\index{H\+A\+L\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+N\+UM@{H\+A\+L\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+N\+UM}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+L\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+N\+UM}{HALDIO\_BANK\_NUM}}
+{\footnotesize\ttfamily \#define H\+A\+L\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+N\+UM~4}
+
+
+
+Bank 개수 
+
+\mbox{\Hypertarget{_hal_dio_8h_a880dfa266f18cadf9857fe6710fd8228}\label{_hal_dio_8h_a880dfa266f18cadf9857fe6710fd8228}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+M\+A\+SK@{H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+M\+A\+SK}}
+\index{H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+M\+A\+SK@{H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+M\+A\+SK}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+M\+A\+SK}{HALDIO\_CH\_MASK}}
+{\footnotesize\ttfamily \#define H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+M\+A\+SK(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(0x1$<$$<$x)}
+
+
+
+채널 Mask 
+
+\mbox{\Hypertarget{_hal_dio_8h_ac6e2f770c2b1f48c09e8f7ce7d2cafff}\label{_hal_dio_8h_ac6e2f770c2b1f48c09e8f7ce7d2cafff}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+N\+UM@{H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+N\+UM}}
+\index{H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+N\+UM@{H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+N\+UM}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+N\+UM}{HALDIO\_CH\_NUM}}
+{\footnotesize\ttfamily \#define H\+A\+L\+D\+I\+O\+\_\+\+C\+H\+\_\+\+N\+UM~32}
+
+
+
+채널 개수(0$\sim$31) 
+
+\mbox{\Hypertarget{_hal_dio_8h_a2b3f07ddb4384ed60fac01eb325ef785}\label{_hal_dio_8h_a2b3f07ddb4384ed60fac01eb325ef785}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+B\+O\+A\+RD@{H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+B\+O\+A\+RD}}
+\index{H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+B\+O\+A\+RD@{H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+B\+O\+A\+RD}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+B\+O\+A\+RD}{HALDIO\_ERR\_MEZZANINE\_BOARD}}
+{\footnotesize\ttfamily \#define H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+M\+E\+Z\+Z\+A\+N\+I\+N\+E\+\_\+\+B\+O\+A\+RD~0x1}
+
+
+
+Mezzanine Board Error. 
+
+\mbox{\Hypertarget{_hal_dio_8h_a9d5959c945e30b1353deb2c92647e5a4}\label{_hal_dio_8h_a9d5959c945e30b1353deb2c92647e5a4}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+B\+O\+A\+RD@{H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+B\+O\+A\+RD}}
+\index{H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+B\+O\+A\+RD@{H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+B\+O\+A\+RD}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+B\+O\+A\+RD}{HALDIO\_ERR\_TERMINAL\_BOARD}}
+{\footnotesize\ttfamily \#define H\+A\+L\+D\+I\+O\+\_\+\+E\+R\+R\+\_\+\+T\+E\+R\+M\+I\+N\+A\+L\+\_\+\+B\+O\+A\+RD~0x2}
+
+
+
+Terminal Board Error. 
+
+\mbox{\Hypertarget{_hal_dio_8h_a04725b24a0927def121583075333dab3}\label{_hal_dio_8h_a04725b24a0927def121583075333dab3}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!H\+A\+L\+D\+I\+O\+\_\+\+O\+FF@{H\+A\+L\+D\+I\+O\+\_\+\+O\+FF}}
+\index{H\+A\+L\+D\+I\+O\+\_\+\+O\+FF@{H\+A\+L\+D\+I\+O\+\_\+\+O\+FF}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+L\+D\+I\+O\+\_\+\+O\+FF}{HALDIO\_OFF}}
+{\footnotesize\ttfamily \#define H\+A\+L\+D\+I\+O\+\_\+\+O\+FF~0x0}
+
+
+
+채널 Off 상태 
+
+\mbox{\Hypertarget{_hal_dio_8h_a7e96a588b8bd38e6702203bb894aef06}\label{_hal_dio_8h_a7e96a588b8bd38e6702203bb894aef06}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!H\+A\+L\+D\+I\+O\+\_\+\+ON@{H\+A\+L\+D\+I\+O\+\_\+\+ON}}
+\index{H\+A\+L\+D\+I\+O\+\_\+\+ON@{H\+A\+L\+D\+I\+O\+\_\+\+ON}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+L\+D\+I\+O\+\_\+\+ON}{HALDIO\_ON}}
+{\footnotesize\ttfamily \#define H\+A\+L\+D\+I\+O\+\_\+\+ON~0x1}
+
+
+
+채널 On 상태 
+
+\mbox{\Hypertarget{_hal_dio_8h_a3f36d8e8fff42d9e417c33065c8e4f8f}\label{_hal_dio_8h_a3f36d8e8fff42d9e417c33065c8e4f8f}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!H\+A\+L\+D\+I\+O\+\_\+\+O\+U\+T\+\_\+\+D\+E\+F\+A\+U\+LT@{H\+A\+L\+D\+I\+O\+\_\+\+O\+U\+T\+\_\+\+D\+E\+F\+A\+U\+LT}}
+\index{H\+A\+L\+D\+I\+O\+\_\+\+O\+U\+T\+\_\+\+D\+E\+F\+A\+U\+LT@{H\+A\+L\+D\+I\+O\+\_\+\+O\+U\+T\+\_\+\+D\+E\+F\+A\+U\+LT}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+L\+D\+I\+O\+\_\+\+O\+U\+T\+\_\+\+D\+E\+F\+A\+U\+LT}{HALDIO\_OUT\_DEFAULT}}
+{\footnotesize\ttfamily \#define H\+A\+L\+D\+I\+O\+\_\+\+O\+U\+T\+\_\+\+D\+E\+F\+A\+U\+LT~0x0}
+
+
+
+채널 출력 초기값 
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{_hal_dio_8h_a264031ef9e065b0d942b5cd1af5c9a53}\label{_hal_dio_8h_a264031ef9e065b0d942b5cd1af5c9a53}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!S\+T\+\_\+\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+T\+Y\+PE@{S\+T\+\_\+\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+T\+Y\+PE}}
+\index{S\+T\+\_\+\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+T\+Y\+PE@{S\+T\+\_\+\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+T\+Y\+PE}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{S\+T\+\_\+\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+T\+Y\+PE}{ST\_DIO\_BANK\_TYPE}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structst_dio_bank_type}{st\+Dio\+Bank\+Type}} \mbox{\hyperlink{_hal_dio_8h_a264031ef9e065b0d942b5cd1af5c9a53}{S\+T\+\_\+\+D\+I\+O\+\_\+\+B\+A\+N\+K\+\_\+\+T\+Y\+PE}}}
+
+\mbox{\Hypertarget{_hal_dio_8h_ab162240541c0aa0006e22c2c1ee57507}\label{_hal_dio_8h_ab162240541c0aa0006e22c2c1ee57507}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!S\+T\+\_\+\+D\+I\+O\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+T\+Y\+PE@{S\+T\+\_\+\+D\+I\+O\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+T\+Y\+PE}}
+\index{S\+T\+\_\+\+D\+I\+O\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+T\+Y\+PE@{S\+T\+\_\+\+D\+I\+O\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+T\+Y\+PE}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{S\+T\+\_\+\+D\+I\+O\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+T\+Y\+PE}{ST\_DIO\_CONFIG\_TYPE}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structst_dio_config_type}{st\+Dio\+Config\+Type}} \mbox{\hyperlink{_hal_dio_8h_ab162240541c0aa0006e22c2c1ee57507}{S\+T\+\_\+\+D\+I\+O\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+T\+Y\+PE}}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_hal_dio_8h_a909c8675e2f2e66236fa44f0551b072d}\label{_hal_dio_8h_a909c8675e2f2e66236fa44f0551b072d}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!Hal\+Dio\+Check\+Sub\+Board@{Hal\+Dio\+Check\+Sub\+Board}}
+\index{Hal\+Dio\+Check\+Sub\+Board@{Hal\+Dio\+Check\+Sub\+Board}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Dio\+Check\+Sub\+Board()}{HalDioCheckSubBoard()}}
+{\footnotesize\ttfamily void Hal\+Dio\+Check\+Sub\+Board (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Mezzanine 보드와 Terminal 보드의 상태를 확인하는 함수 
+
+Mezzanine 보드와 Terminal 보드의 상태를 확인하는 함수. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_dio_8h_ab875fdc66144a61bc479946f9169236c}\label{_hal_dio_8h_ab875fdc66144a61bc479946f9169236c}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!Hal\+Dio\+Handle@{Hal\+Dio\+Handle}}
+\index{Hal\+Dio\+Handle@{Hal\+Dio\+Handle}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Dio\+Handle()}{HalDioHandle()}}
+{\footnotesize\ttfamily void Hal\+Dio\+Handle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Digital Input 값을 전체를 읽고 쓰는 함수 
+
+모든 채널의 입력값과 출력값을 한 번에 처리한다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_dio_8h_a4e9049abaac52debf17ef0d46bdd8b2a}\label{_hal_dio_8h_a4e9049abaac52debf17ef0d46bdd8b2a}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!Hal\+Dio\+Init@{Hal\+Dio\+Init}}
+\index{Hal\+Dio\+Init@{Hal\+Dio\+Init}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Dio\+Init()}{HalDioInit()}}
+{\footnotesize\ttfamily void Hal\+Dio\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+초기화 함수 
+
+Hal 기능을 초기화 한다. 모든 채널의 초기 설정으로 바꾼다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_dio_8h_a9978a6b36334c74624de584221c6fec2}\label{_hal_dio_8h_a9978a6b36334c74624de584221c6fec2}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!Hal\+Dio\+Read@{Hal\+Dio\+Read}}
+\index{Hal\+Dio\+Read@{Hal\+Dio\+Read}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Dio\+Read()}{HalDioRead()}}
+{\footnotesize\ttfamily uint32\+\_\+t Hal\+Dio\+Read (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ul\+Ch\+Num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Digital 값을 읽는 함수 
+
+각 채널별로 In/\+Out 상태와 무관하게 값을 읽는다. 
+\begin{DoxyParams}{Parameters}
+{\em ul\+Ch\+Num} & \+: Channel 번호 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+채널값 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_dio_8h_ad3b785c026ef2e7c972bbf94bc13eb10}\label{_hal_dio_8h_ad3b785c026ef2e7c972bbf94bc13eb10}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!Hal\+Dio\+Toggle\+Led@{Hal\+Dio\+Toggle\+Led}}
+\index{Hal\+Dio\+Toggle\+Led@{Hal\+Dio\+Toggle\+Led}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Dio\+Toggle\+Led()}{HalDioToggleLed()}}
+{\footnotesize\ttfamily void Hal\+Dio\+Toggle\+Led (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+L\+ED 출력을 Toggle 하는 함수 
+
+보드의 상태 L\+E\+D를 Toggle 한다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_dio_8h_a5122aa151f28fd6583252c79e1cb6c09}\label{_hal_dio_8h_a5122aa151f28fd6583252c79e1cb6c09}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!Hal\+Dio\+Write@{Hal\+Dio\+Write}}
+\index{Hal\+Dio\+Write@{Hal\+Dio\+Write}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{Hal\+Dio\+Write()}{HalDioWrite()}}
+{\footnotesize\ttfamily void Hal\+Dio\+Write (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ul\+Ch\+Num,  }\item[{uint32\+\_\+t}]{ul\+On\+Off }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Digital Output을 쓰는 함수 
+
+각 채널별로 출력값을 쓴다(In 으로 설정되어 있으면 실제 신호에는 반영되지 않음) 
+\begin{DoxyParams}{Parameters}
+{\em ul\+Ch\+Num} & \+: Channel 번호 ul\+On\+Off \+: On/\+Off 상태 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_hal_dio_8h_ae08a9b75c41254732b51a02c6e90504c}\label{_hal_dio_8h_ae08a9b75c41254732b51a02c6e90504c}} 
+\index{Hal\+Dio.\+h@{Hal\+Dio.\+h}!t\+\_\+st\+Dio\+Config@{t\+\_\+st\+Dio\+Config}}
+\index{t\+\_\+st\+Dio\+Config@{t\+\_\+st\+Dio\+Config}!Hal\+Dio.\+h@{Hal\+Dio.\+h}}
+\subsubsection{\texorpdfstring{t\+\_\+st\+Dio\+Config}{t\_stDioConfig}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_hal_dio_8h_ab162240541c0aa0006e22c2c1ee57507}{S\+T\+\_\+\+D\+I\+O\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+T\+Y\+PE}} t\+\_\+st\+Dio\+Config}
+
+\mbox{\hyperlink{_hal_dio_8c}{Hal\+Dio.\+c}} Hal\+Dio Device Driver Module Body 

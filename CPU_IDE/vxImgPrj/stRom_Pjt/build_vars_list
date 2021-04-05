@@ -1,0 +1,5 @@
+set WIND_BASE D:/Tornado690/vxworks-6.9
+set VSB_DIR D:/Tornado690/vxworks-6.9/target/lib
+set BSP_DIR D:/Tornado690/vxworks-6.9/target/config/lk11_lkv_120
+set ANALYSIS_DKM_DIR D:/Tornado690/vxworks-6.9/target/lib/ppc/PPC32/e500v2common/dkm/analysis
+set PRJ_FULL_PATH D:/HVDC_Simulator/CPU_IDE/vxImgPrj/stRom_Pjt

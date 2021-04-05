@@ -1,0 +1,196 @@
+\hypertarget{cache__macros_8h}{}\section{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/cache\+\_\+macros.h File Reference}
+\label{cache__macros_8h}\index{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/cache\+\_\+macros.\+h@{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/cache\+\_\+macros.\+h}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{cache__macros_8h_a4fe2a1b3bd52c3b913f80fc91a2a5a3e}{wait\+\_\+cache}}(C\+A\+S\+T\+AT)
+\item 
+\#define \mbox{\hyperlink{cache__macros_8h_ab89dd9cc9db04226641b4bb680cd1340}{test\+\_\+cache\+\_\+enabled}}(C\+A\+S\+T\+AT,  jump\+\_\+label)
+\item 
+\#define \mbox{\hyperlink{cache__macros_8h_a6a50aeaaa77feed58f2684b8198a3e99}{invalidate}}(C\+C\+A\+IR,  C\+A\+C\+MD,  C\+A\+S\+T\+AT)
+\item 
+\#define \mbox{\hyperlink{cache__macros_8h_a9444fc3580f2f88f3392114a19075d96}{cache\+\_\+enable}}(refresh\+\_\+rate)
+\item 
+\#define \mbox{\hyperlink{cache__macros_8h_a5cf223b19bff9517f07aa2f04bbca19f}{ini\+\_\+cycle\+\_\+count}}
+\item 
+\#define \mbox{\hyperlink{cache__macros_8h_abe07e8133752c53b667be7cbe822d00e}{comp\+\_\+cycle\+\_\+count}}
+\item 
+\#define \mbox{\hyperlink{cache__macros_8h_a5e6437611585b162800cac783fc5e98a}{comp\+\_\+program\+\_\+memory}}
+\item 
+\#define \mbox{\hyperlink{cache__macros_8h_a77c6241eb81e6637248da06ed0fc8e33}{ini\+\_\+linear\+\_\+addressing}}
+\item 
+\#define \mbox{\hyperlink{cache__macros_8h_a3654dfdf96bfe284c7645323eff2fbef}{ini\+\_\+cycle\+\_\+count\+\_\+multiple}}
+\item 
+\#define \mbox{\hyperlink{cache__macros_8h_a5b0b336954a398917ebe4b51a3427211}{comp\+\_\+cycle\+\_\+count\+\_\+multiple}}
+\item 
+\#define \mbox{\hyperlink{cache__macros_8h_ac183f89d9fa7d8e7969d532e679f93ec}{ini\+\_\+cycle\+\_\+count\+\_\+xpr0}}
+\item 
+\#define \mbox{\hyperlink{cache__macros_8h_a3f43600daf320dc9e8a323b3f088bee0}{comp\+\_\+cycle\+\_\+count\+\_\+xpr0}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{cache__macros_8h_a9444fc3580f2f88f3392114a19075d96}\label{cache__macros_8h_a9444fc3580f2f88f3392114a19075d96}} 
+\index{cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}!cache\+\_\+enable@{cache\+\_\+enable}}
+\index{cache\+\_\+enable@{cache\+\_\+enable}!cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}}
+\subsubsection{\texorpdfstring{cache\+\_\+enable}{cache\_enable}}
+{\footnotesize\ttfamily \#define cache\+\_\+enable(\begin{DoxyParamCaption}\item[{}]{refresh\+\_\+rate }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{cache__macros_8h_abe07e8133752c53b667be7cbe822d00e}\label{cache__macros_8h_abe07e8133752c53b667be7cbe822d00e}} 
+\index{cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}!comp\+\_\+cycle\+\_\+count@{comp\+\_\+cycle\+\_\+count}}
+\index{comp\+\_\+cycle\+\_\+count@{comp\+\_\+cycle\+\_\+count}!cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}}
+\subsubsection{\texorpdfstring{comp\+\_\+cycle\+\_\+count}{comp\_cycle\_count}}
+{\footnotesize\ttfamily \#define comp\+\_\+cycle\+\_\+count}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+xr1 = CCNT0;; \(\backslash\)
+  xr0 =  [j31 + cycle\_count];; \(\backslash\)
+  xr0 = r1 - r0;; \(\backslash\)
+  [j31 + cycle\_count] = xr0;
+\end{DoxyCode}
+\mbox{\Hypertarget{cache__macros_8h_a5b0b336954a398917ebe4b51a3427211}\label{cache__macros_8h_a5b0b336954a398917ebe4b51a3427211}} 
+\index{cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}!comp\+\_\+cycle\+\_\+count\+\_\+multiple@{comp\+\_\+cycle\+\_\+count\+\_\+multiple}}
+\index{comp\+\_\+cycle\+\_\+count\+\_\+multiple@{comp\+\_\+cycle\+\_\+count\+\_\+multiple}!cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}}
+\subsubsection{\texorpdfstring{comp\+\_\+cycle\+\_\+count\+\_\+multiple}{comp\_cycle\_count\_multiple}}
+{\footnotesize\ttfamily \#define comp\+\_\+cycle\+\_\+count\+\_\+multiple}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+xr1 = CCNT0;; \(\backslash\)
+  xr0 =  [j30 + 0];; \(\backslash\)
+  xr0 = r1 - r0;; \(\backslash\)
+  [j30+=1] = xr0;
+\end{DoxyCode}
+\mbox{\Hypertarget{cache__macros_8h_a3f43600daf320dc9e8a323b3f088bee0}\label{cache__macros_8h_a3f43600daf320dc9e8a323b3f088bee0}} 
+\index{cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}!comp\+\_\+cycle\+\_\+count\+\_\+xpr0@{comp\+\_\+cycle\+\_\+count\+\_\+xpr0}}
+\index{comp\+\_\+cycle\+\_\+count\+\_\+xpr0@{comp\+\_\+cycle\+\_\+count\+\_\+xpr0}!cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}}
+\subsubsection{\texorpdfstring{comp\+\_\+cycle\+\_\+count\+\_\+xpr0}{comp\_cycle\_count\_xpr0}}
+{\footnotesize\ttfamily \#define comp\+\_\+cycle\+\_\+count\+\_\+xpr0}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+xr2 = CCNT0;;               \(\backslash\)
+  xr1:0 =  pr1:0;;            \(\backslash\)
+  xr0 = r2 - r0;;             \(\backslash\)
+  xpr1:0 = r1:0;              \(\backslash\)
+\end{DoxyCode}
+\mbox{\Hypertarget{cache__macros_8h_a5e6437611585b162800cac783fc5e98a}\label{cache__macros_8h_a5e6437611585b162800cac783fc5e98a}} 
+\index{cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}!comp\+\_\+program\+\_\+memory@{comp\+\_\+program\+\_\+memory}}
+\index{comp\+\_\+program\+\_\+memory@{comp\+\_\+program\+\_\+memory}!cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}}
+\subsubsection{\texorpdfstring{comp\+\_\+program\+\_\+memory}{comp\_program\_memory}}
+{\footnotesize\ttfamily \#define comp\+\_\+program\+\_\+memory}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+xr1 = Benchmark;; \(\backslash\)
+  xr0 = Benchmark.end;; \(\backslash\)
+  xr0 = r0 - r1;; \(\backslash\)
+  [j31 + pm\_count] = xr0;
+\end{DoxyCode}
+\mbox{\Hypertarget{cache__macros_8h_a5cf223b19bff9517f07aa2f04bbca19f}\label{cache__macros_8h_a5cf223b19bff9517f07aa2f04bbca19f}} 
+\index{cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}!ini\+\_\+cycle\+\_\+count@{ini\+\_\+cycle\+\_\+count}}
+\index{ini\+\_\+cycle\+\_\+count@{ini\+\_\+cycle\+\_\+count}!cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}}
+\subsubsection{\texorpdfstring{ini\+\_\+cycle\+\_\+count}{ini\_cycle\_count}}
+{\footnotesize\ttfamily \#define ini\+\_\+cycle\+\_\+count}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+xr0 = CCNT0;; \(\backslash\)
+  xr1 = 0x5;; \(\backslash\)
+  xr0 = r0 + r1;; \(\backslash\)
+  [j31 + cycle\_count] = xr0;
+\end{DoxyCode}
+\mbox{\Hypertarget{cache__macros_8h_a3654dfdf96bfe284c7645323eff2fbef}\label{cache__macros_8h_a3654dfdf96bfe284c7645323eff2fbef}} 
+\index{cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}!ini\+\_\+cycle\+\_\+count\+\_\+multiple@{ini\+\_\+cycle\+\_\+count\+\_\+multiple}}
+\index{ini\+\_\+cycle\+\_\+count\+\_\+multiple@{ini\+\_\+cycle\+\_\+count\+\_\+multiple}!cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}}
+\subsubsection{\texorpdfstring{ini\+\_\+cycle\+\_\+count\+\_\+multiple}{ini\_cycle\_count\_multiple}}
+{\footnotesize\ttfamily \#define ini\+\_\+cycle\+\_\+count\+\_\+multiple}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+xr0 = CCNT0;; \(\backslash\)
+  xr1 = 0x5;; \(\backslash\)
+  xr0 = r0 + r1;; \(\backslash\)
+  [j30+0] = xr0;
+\end{DoxyCode}
+\mbox{\Hypertarget{cache__macros_8h_ac183f89d9fa7d8e7969d532e679f93ec}\label{cache__macros_8h_ac183f89d9fa7d8e7969d532e679f93ec}} 
+\index{cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}!ini\+\_\+cycle\+\_\+count\+\_\+xpr0@{ini\+\_\+cycle\+\_\+count\+\_\+xpr0}}
+\index{ini\+\_\+cycle\+\_\+count\+\_\+xpr0@{ini\+\_\+cycle\+\_\+count\+\_\+xpr0}!cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}}
+\subsubsection{\texorpdfstring{ini\+\_\+cycle\+\_\+count\+\_\+xpr0}{ini\_cycle\_count\_xpr0}}
+{\footnotesize\ttfamily \#define ini\+\_\+cycle\+\_\+count\+\_\+xpr0}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+xr1:0 = pr1:0;;            \(\backslash\)
+  xr0 = CCNT0;;              \(\backslash\)
+  xr2 = 0x6;;                \(\backslash\)
+  nop;;                      \(\backslash\)
+  xr0 = r0 + r2;;            \(\backslash\)
+  nop;;                      \(\backslash\)
+  xpr1:0 = r1:0;             \(\backslash\)
+\end{DoxyCode}
+\mbox{\Hypertarget{cache__macros_8h_a77c6241eb81e6637248da06ed0fc8e33}\label{cache__macros_8h_a77c6241eb81e6637248da06ed0fc8e33}} 
+\index{cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}!ini\+\_\+linear\+\_\+addressing@{ini\+\_\+linear\+\_\+addressing}}
+\index{ini\+\_\+linear\+\_\+addressing@{ini\+\_\+linear\+\_\+addressing}!cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}}
+\subsubsection{\texorpdfstring{ini\+\_\+linear\+\_\+addressing}{ini\_linear\_addressing}}
+{\footnotesize\ttfamily \#define ini\+\_\+linear\+\_\+addressing}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+jl0=j31+0;;   kl0=k31+0;; \(\backslash\)
+  jl1=j31+0;;   kl1=k31+0;;  \(\backslash\)
+  jl2=j31+0;;   kl2=k31+0;; \(\backslash\)
+  jl3=j31+0;;   kl3=k31+0;
+\end{DoxyCode}
+\mbox{\Hypertarget{cache__macros_8h_a6a50aeaaa77feed58f2684b8198a3e99}\label{cache__macros_8h_a6a50aeaaa77feed58f2684b8198a3e99}} 
+\index{cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}!invalidate@{invalidate}}
+\index{invalidate@{invalidate}!cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}}
+\subsubsection{\texorpdfstring{invalidate}{invalidate}}
+{\footnotesize\ttfamily \#define invalidate(\begin{DoxyParamCaption}\item[{}]{C\+C\+A\+IR,  }\item[{}]{C\+A\+C\+MD,  }\item[{}]{C\+A\+S\+T\+AT }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+j0 =  j31 + 0;;                                                 \(\backslash\)
+  CCAIR = j0;;                                                        \(\backslash\)
+  j0 = j31 + CACMD\_INV |                            \(\backslash\)
+             (127 << CACMD\_LEN\_P) |                 \(\backslash\)
+              CACMD\_NOSTALL;;                       \(\backslash\)
+  CACMD = j0;;                                      \(\backslash\)
+.align\_code 4;                                      \(\backslash\)
+\_chk\_castat\_inv?:                                   \(\backslash\)
+    xr0 = CASTAT;;                                  \(\backslash\)
+    xbitest r0 by CASTAT\_COM\_ACTIVE\_P;;             \(\backslash\)
+.align\_code 4;                                      \(\backslash\)
+    if nxseq, jump \_chk\_castat\_inv? (NP);nop;nop;nop;;\(\backslash\)
+    nop;;nop;;nop;;nop;;nop;
+\end{DoxyCode}
+\mbox{\Hypertarget{cache__macros_8h_ab89dd9cc9db04226641b4bb680cd1340}\label{cache__macros_8h_ab89dd9cc9db04226641b4bb680cd1340}} 
+\index{cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}!test\+\_\+cache\+\_\+enabled@{test\+\_\+cache\+\_\+enabled}}
+\index{test\+\_\+cache\+\_\+enabled@{test\+\_\+cache\+\_\+enabled}!cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}}
+\subsubsection{\texorpdfstring{test\+\_\+cache\+\_\+enabled}{test\_cache\_enabled}}
+{\footnotesize\ttfamily \#define test\+\_\+cache\+\_\+enabled(\begin{DoxyParamCaption}\item[{}]{C\+A\+S\+T\+AT,  }\item[{}]{jump\+\_\+label }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+xr0 = CASTAT;;                              \(\backslash\)
+  xbitest r0 by CASTAT\_ENBL\_P;;               \(\backslash\)
+  if nxseq, jump jump\_label (NP);;             \(\backslash\)
+    nop;;nop;;nop;;nop;;nop;
+\end{DoxyCode}
+\mbox{\Hypertarget{cache__macros_8h_a4fe2a1b3bd52c3b913f80fc91a2a5a3e}\label{cache__macros_8h_a4fe2a1b3bd52c3b913f80fc91a2a5a3e}} 
+\index{cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}!wait\+\_\+cache@{wait\+\_\+cache}}
+\index{wait\+\_\+cache@{wait\+\_\+cache}!cache\+\_\+macros.\+h@{cache\+\_\+macros.\+h}}
+\subsubsection{\texorpdfstring{wait\+\_\+cache}{wait\_cache}}
+{\footnotesize\ttfamily \#define wait\+\_\+cache(\begin{DoxyParamCaption}\item[{}]{C\+A\+S\+T\+AT }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+.align\_code 4;                                      \(\backslash\)
+\_chk\_castat?:                                       \(\backslash\)
+    xr0 = CASTAT;;                                  \(\backslash\)
+    xbitest r0 by CASTAT\_COM\_ACTIVE\_P;;             \(\backslash\)
+.align\_code 4;                                      \(\backslash\)
+    if nxseq, jump \_chk\_castat? (NP);nop;nop;nop;;  \(\backslash\)
+    nop;;nop;;nop;;nop;;nop;
+\end{DoxyCode}

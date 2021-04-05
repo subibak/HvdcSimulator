@@ -1,0 +1,191 @@
+\hypertarget{_hal_timer_8c}{}\section{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Timer.c File Reference}
+\label{_hal_timer_8c}\index{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Timer.\+c@{D\+:/\+Root\+\_\+\+Dual\+System/\+Hal/\+Hal\+Timer.\+c}}
+{\ttfamily \#include \char`\"{}Hal\+Timer.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_hal_timer_8c_afe8e4fd7913076c206815a0ec5ab5b7a}{Hal\+Timer\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Timer Module 초기화 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_timer_8c_a81f3e52897a3fe0eb867bd9307dfa7bc}{Hal\+Timer\+Configure}} (uint32\+\_\+t \mbox{\hyperlink{_dsp_manager_main_8c_ae6552dc8846d4607fa010eb270dd8977}{ul\+Period}})
+\begin{DoxyCompactList}\small\item\em Timer 설정값을 입력하는 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_timer_8c_a8befdbbecbc2c3dac045b462cc489ec3}{Hal\+Timer\+Int\+Init}} (void($\ast$func)(int))
+\begin{DoxyCompactList}\small\item\em Timer 모둘의 인터럽트 설정 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_timer_8c_a3bb9d83fc183740fb01e328506e84e8f}{Hal\+Timer\+Re\+Start}} (uint32\+\_\+t \mbox{\hyperlink{_dsp_manager_main_8c_ae6552dc8846d4607fa010eb270dd8977}{ul\+Period}})
+\begin{DoxyCompactList}\small\item\em Timer 를 새 주기로 재시작하는 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_timer_8c_a93bcba00b4fba3ebbba8e0679dc2caec}{Hal\+Timer\+Start}} (uint32\+\_\+t \mbox{\hyperlink{_dsp_manager_main_8c_ae6552dc8846d4607fa010eb270dd8977}{ul\+Period}})
+\begin{DoxyCompactList}\small\item\em Timer 를 새 주기로 시작하는 함수 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hal_timer_8c_a82a40dbbf8dfb45d38783e076c929651}{Hal\+Timer\+Proc}} (void)
+\begin{DoxyCompactList}\small\item\em 경과 시간을 누적하는 함수 \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{_hal_timer_8c_a3adb8173210f57ea8e25490dc0d403ac}{Hal\+Timer\+Get\+Time}} (void)
+\begin{DoxyCompactList}\small\item\em 시스템 시작 이후 누적된 시간(m\+S)을 반환하는 함수 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_hal_timer_8c_a81f3e52897a3fe0eb867bd9307dfa7bc}\label{_hal_timer_8c_a81f3e52897a3fe0eb867bd9307dfa7bc}} 
+\index{Hal\+Timer.\+c@{Hal\+Timer.\+c}!Hal\+Timer\+Configure@{Hal\+Timer\+Configure}}
+\index{Hal\+Timer\+Configure@{Hal\+Timer\+Configure}!Hal\+Timer.\+c@{Hal\+Timer.\+c}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Configure()}{HalTimerConfigure()}}
+{\footnotesize\ttfamily void Hal\+Timer\+Configure (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ul\+Period }\end{DoxyParamCaption})}
+
+
+
+Timer 설정값을 입력하는 함수 
+
+Timer 동작 주기(u\+S) 를 설정한다. 
+\begin{DoxyParams}{Parameters}
+{\em ul\+Period} & 동작 주기 를 uS 단위로 입력한다. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_timer_8c_a3adb8173210f57ea8e25490dc0d403ac}\label{_hal_timer_8c_a3adb8173210f57ea8e25490dc0d403ac}} 
+\index{Hal\+Timer.\+c@{Hal\+Timer.\+c}!Hal\+Timer\+Get\+Time@{Hal\+Timer\+Get\+Time}}
+\index{Hal\+Timer\+Get\+Time@{Hal\+Timer\+Get\+Time}!Hal\+Timer.\+c@{Hal\+Timer.\+c}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Get\+Time()}{HalTimerGetTime()}}
+{\footnotesize\ttfamily uint32\+\_\+t Hal\+Timer\+Get\+Time (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+시스템 시작 이후 누적된 시간(m\+S)을 반환하는 함수 
+
+시스템 시작 이후, mS 단위로 누적된 시간을 반환한다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+시스템 시작 이후 누적 시간(m\+S) 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_timer_8c_afe8e4fd7913076c206815a0ec5ab5b7a}\label{_hal_timer_8c_afe8e4fd7913076c206815a0ec5ab5b7a}} 
+\index{Hal\+Timer.\+c@{Hal\+Timer.\+c}!Hal\+Timer\+Init@{Hal\+Timer\+Init}}
+\index{Hal\+Timer\+Init@{Hal\+Timer\+Init}!Hal\+Timer.\+c@{Hal\+Timer.\+c}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Init()}{HalTimerInit()}}
+{\footnotesize\ttfamily void Hal\+Timer\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Timer Module 초기화 함수 
+
+Timer 동작을 초기화 한다. 호출 뒤, Timer 를 다시 시작해야 한다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_timer_8c_a8befdbbecbc2c3dac045b462cc489ec3}\label{_hal_timer_8c_a8befdbbecbc2c3dac045b462cc489ec3}} 
+\index{Hal\+Timer.\+c@{Hal\+Timer.\+c}!Hal\+Timer\+Int\+Init@{Hal\+Timer\+Int\+Init}}
+\index{Hal\+Timer\+Int\+Init@{Hal\+Timer\+Int\+Init}!Hal\+Timer.\+c@{Hal\+Timer.\+c}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Int\+Init()}{HalTimerIntInit()}}
+{\footnotesize\ttfamily void Hal\+Timer\+Int\+Init (\begin{DoxyParamCaption}\item[{void($\ast$)(int)}]{func }\end{DoxyParamCaption})}
+
+
+
+Timer 모둘의 인터럽트 설정 함수 
+
+인터럽트 동작 여부와 핸들러를 설정한다. 
+\begin{DoxyParams}{Parameters}
+{\em func} & 핸들러 함수 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_timer_8c_a82a40dbbf8dfb45d38783e076c929651}\label{_hal_timer_8c_a82a40dbbf8dfb45d38783e076c929651}} 
+\index{Hal\+Timer.\+c@{Hal\+Timer.\+c}!Hal\+Timer\+Proc@{Hal\+Timer\+Proc}}
+\index{Hal\+Timer\+Proc@{Hal\+Timer\+Proc}!Hal\+Timer.\+c@{Hal\+Timer.\+c}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Proc()}{HalTimerProc()}}
+{\footnotesize\ttfamily void Hal\+Timer\+Proc (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+경과 시간을 누적하는 함수 
+
+mS 단위로 결과 시간을 누적한다. 
+\begin{DoxyParams}{Parameters}
+{\em N/A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_timer_8c_a3bb9d83fc183740fb01e328506e84e8f}\label{_hal_timer_8c_a3bb9d83fc183740fb01e328506e84e8f}} 
+\index{Hal\+Timer.\+c@{Hal\+Timer.\+c}!Hal\+Timer\+Re\+Start@{Hal\+Timer\+Re\+Start}}
+\index{Hal\+Timer\+Re\+Start@{Hal\+Timer\+Re\+Start}!Hal\+Timer.\+c@{Hal\+Timer.\+c}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Re\+Start()}{HalTimerReStart()}}
+{\footnotesize\ttfamily void Hal\+Timer\+Re\+Start (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ul\+Period }\end{DoxyParamCaption})}
+
+
+
+Timer 를 새 주기로 재시작하는 함수 
+
+입력된 주기를 로딩하여 Timer 모듈을 재시작한다 
+\begin{DoxyParams}{Parameters}
+{\em ul\+Period} & 동작 주기를 uS 단위로 입력한다. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\mbox{\Hypertarget{_hal_timer_8c_a93bcba00b4fba3ebbba8e0679dc2caec}\label{_hal_timer_8c_a93bcba00b4fba3ebbba8e0679dc2caec}} 
+\index{Hal\+Timer.\+c@{Hal\+Timer.\+c}!Hal\+Timer\+Start@{Hal\+Timer\+Start}}
+\index{Hal\+Timer\+Start@{Hal\+Timer\+Start}!Hal\+Timer.\+c@{Hal\+Timer.\+c}}
+\subsubsection{\texorpdfstring{Hal\+Timer\+Start()}{HalTimerStart()}}
+{\footnotesize\ttfamily void Hal\+Timer\+Start (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ul\+Period }\end{DoxyParamCaption})}
+
+
+
+Timer 를 새 주기로 시작하는 함수 
+
+입력된 주기를 로딩하여 Timer 모듈을 시작한다 
+\begin{DoxyParams}{Parameters}
+{\em ul\+Period} & 동작 주기를 uS 단위로 입력한다. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+2018-\/11-\/24 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}

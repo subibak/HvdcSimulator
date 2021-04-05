@@ -1,0 +1,111 @@
+\hypertarget{_dsp_control_main_8c}{}\section{D\+:/\+Root\+\_\+\+Dual\+System/\+Dsp\+Control\+Main.c File Reference}
+\label{_dsp_control_main_8c}\index{D\+:/\+Root\+\_\+\+Dual\+System/\+Dsp\+Control\+Main.\+c@{D\+:/\+Root\+\_\+\+Dual\+System/\+Dsp\+Control\+Main.\+c}}
+{\ttfamily \#include \char`\"{}Dsp\+Control\+Main.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_dsp_control_main_8c_a6288eba0f8e8ad3ab1544ad731eb7667}{main}} (void)
+\item 
+void \mbox{\hyperlink{_dsp_control_main_8c_a7486dd89c8771b2d854359ab58f91683}{Isr\+Control\+Timer0}} (int l\+Arg)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_dsp_control_main_8c_a213668dc601d67603af34b9151244e45}{ul\+Signal\+Qof\+Manager}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_dsp_control_main_8c_a13d79d6acd30d3e044a9b23028707845}{ul\+Master\+Slave}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_dsp_control_main_8c_ae6552dc8846d4607fa010eb270dd8977}{ul\+Period}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_dsp_control_main_8c_a6390379288f013e144db13946e59f276}{ul\+Error\+Cause}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_dsp_control_main_8c_ab9cd0bdf0a01b40b1130259b84e5f4dc}{ul\+Signal\+Qof\+Control}} = \mbox{\hyperlink{_ial_signal_8h_a0aee53a7a3a4f83abc2ea06cba31ebb4}{S\+I\+G\+N\+A\+L\+\_\+\+N\+O\+NE}}
+\item 
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}} \mbox{\hyperlink{_dsp_control_main_8c_a327c20f092757f22954e628c562d96df}{e\+Control\+State}} = \mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a98d2a2153b4ae0445fa0b114d65b94d9}{S\+T\+A\+T\+E\+\_\+\+I\+N\+IT}}
+\item 
+\mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}} \mbox{\hyperlink{_dsp_control_main_8c_a304c7ebc5ef36f26db19cdf196939528}{e\+Prev\+Control\+State}} = \mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a98d2a2153b4ae0445fa0b114d65b94d9}{S\+T\+A\+T\+E\+\_\+\+I\+N\+IT}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_dsp_control_main_8c_ab443719f4962a69eb7dd57744b16aa51}{ul\+Syn\+Cnt}} = 0
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_dsp_control_main_8c_a1309fe769e397f5fab57a292c4fb0420}{ul\+Rcv\+Cnt}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_dsp_control_main_8c_a984d512f2897dac75a39a04422a76869}{ul\+Algorithm\+Period}} = 81
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_dsp_control_main_8c_a7486dd89c8771b2d854359ab58f91683}\label{_dsp_control_main_8c_a7486dd89c8771b2d854359ab58f91683}} 
+\index{Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}!Isr\+Control\+Timer0@{Isr\+Control\+Timer0}}
+\index{Isr\+Control\+Timer0@{Isr\+Control\+Timer0}!Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}}
+\subsubsection{\texorpdfstring{Isr\+Control\+Timer0()}{IsrControlTimer0()}}
+{\footnotesize\ttfamily void Isr\+Control\+Timer0 (\begin{DoxyParamCaption}\item[{int}]{l\+Arg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_dsp_control_main_8c_a6288eba0f8e8ad3ab1544ad731eb7667}\label{_dsp_control_main_8c_a6288eba0f8e8ad3ab1544ad731eb7667}} 
+\index{Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}!main@{main}}
+\index{main@{main}!Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily void main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_dsp_control_main_8c_a327c20f092757f22954e628c562d96df}\label{_dsp_control_main_8c_a327c20f092757f22954e628c562d96df}} 
+\index{Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}!e\+Control\+State@{e\+Control\+State}}
+\index{e\+Control\+State@{e\+Control\+State}!Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}}
+\subsubsection{\texorpdfstring{e\+Control\+State}{eControlState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}} e\+Control\+State = \mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a98d2a2153b4ae0445fa0b114d65b94d9}{S\+T\+A\+T\+E\+\_\+\+I\+N\+IT}}}
+
+\mbox{\Hypertarget{_dsp_control_main_8c_a304c7ebc5ef36f26db19cdf196939528}\label{_dsp_control_main_8c_a304c7ebc5ef36f26db19cdf196939528}} 
+\index{Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}!e\+Prev\+Control\+State@{e\+Prev\+Control\+State}}
+\index{e\+Prev\+Control\+State@{e\+Prev\+Control\+State}!Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}}
+\subsubsection{\texorpdfstring{e\+Prev\+Control\+State}{ePrevControlState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71}{S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+TE}} e\+Prev\+Control\+State = \mbox{\hyperlink{_system_8h_afeac06fb8e1e94bfba7df88a6e219d71a98d2a2153b4ae0445fa0b114d65b94d9}{S\+T\+A\+T\+E\+\_\+\+I\+N\+IT}}}
+
+\mbox{\Hypertarget{_dsp_control_main_8c_a984d512f2897dac75a39a04422a76869}\label{_dsp_control_main_8c_a984d512f2897dac75a39a04422a76869}} 
+\index{Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}!ul\+Algorithm\+Period@{ul\+Algorithm\+Period}}
+\index{ul\+Algorithm\+Period@{ul\+Algorithm\+Period}!Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}}
+\subsubsection{\texorpdfstring{ul\+Algorithm\+Period}{ulAlgorithmPeriod}}
+{\footnotesize\ttfamily uint32\+\_\+t ul\+Algorithm\+Period = 81}
+
+\mbox{\Hypertarget{_dsp_control_main_8c_a6390379288f013e144db13946e59f276}\label{_dsp_control_main_8c_a6390379288f013e144db13946e59f276}} 
+\index{Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}!ul\+Error\+Cause@{ul\+Error\+Cause}}
+\index{ul\+Error\+Cause@{ul\+Error\+Cause}!Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}}
+\subsubsection{\texorpdfstring{ul\+Error\+Cause}{ulErrorCause}}
+{\footnotesize\ttfamily uint32\+\_\+t ul\+Error\+Cause}
+
+\mbox{\Hypertarget{_dsp_control_main_8c_a13d79d6acd30d3e044a9b23028707845}\label{_dsp_control_main_8c_a13d79d6acd30d3e044a9b23028707845}} 
+\index{Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}!ul\+Master\+Slave@{ul\+Master\+Slave}}
+\index{ul\+Master\+Slave@{ul\+Master\+Slave}!Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}}
+\subsubsection{\texorpdfstring{ul\+Master\+Slave}{ulMasterSlave}}
+{\footnotesize\ttfamily uint32\+\_\+t ul\+Master\+Slave}
+
+\mbox{\Hypertarget{_dsp_control_main_8c_ae6552dc8846d4607fa010eb270dd8977}\label{_dsp_control_main_8c_ae6552dc8846d4607fa010eb270dd8977}} 
+\index{Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}!ul\+Period@{ul\+Period}}
+\index{ul\+Period@{ul\+Period}!Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}}
+\subsubsection{\texorpdfstring{ul\+Period}{ulPeriod}}
+{\footnotesize\ttfamily uint32\+\_\+t ul\+Period}
+
+\mbox{\Hypertarget{_dsp_control_main_8c_a1309fe769e397f5fab57a292c4fb0420}\label{_dsp_control_main_8c_a1309fe769e397f5fab57a292c4fb0420}} 
+\index{Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}!ul\+Rcv\+Cnt@{ul\+Rcv\+Cnt}}
+\index{ul\+Rcv\+Cnt@{ul\+Rcv\+Cnt}!Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}}
+\subsubsection{\texorpdfstring{ul\+Rcv\+Cnt}{ulRcvCnt}}
+{\footnotesize\ttfamily uint32\+\_\+t ul\+Rcv\+Cnt}
+
+\mbox{\Hypertarget{_dsp_control_main_8c_ab9cd0bdf0a01b40b1130259b84e5f4dc}\label{_dsp_control_main_8c_ab9cd0bdf0a01b40b1130259b84e5f4dc}} 
+\index{Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}!ul\+Signal\+Qof\+Control@{ul\+Signal\+Qof\+Control}}
+\index{ul\+Signal\+Qof\+Control@{ul\+Signal\+Qof\+Control}!Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}}
+\subsubsection{\texorpdfstring{ul\+Signal\+Qof\+Control}{ulSignalQofControl}}
+{\footnotesize\ttfamily uint32\+\_\+t ul\+Signal\+Qof\+Control = \mbox{\hyperlink{_ial_signal_8h_a0aee53a7a3a4f83abc2ea06cba31ebb4}{S\+I\+G\+N\+A\+L\+\_\+\+N\+O\+NE}}}
+
+\mbox{\Hypertarget{_dsp_control_main_8c_a213668dc601d67603af34b9151244e45}\label{_dsp_control_main_8c_a213668dc601d67603af34b9151244e45}} 
+\index{Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}!ul\+Signal\+Qof\+Manager@{ul\+Signal\+Qof\+Manager}}
+\index{ul\+Signal\+Qof\+Manager@{ul\+Signal\+Qof\+Manager}!Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}}
+\subsubsection{\texorpdfstring{ul\+Signal\+Qof\+Manager}{ulSignalQofManager}}
+{\footnotesize\ttfamily uint32\+\_\+t ul\+Signal\+Qof\+Manager}
+
+\mbox{\Hypertarget{_dsp_control_main_8c_ab443719f4962a69eb7dd57744b16aa51}\label{_dsp_control_main_8c_ab443719f4962a69eb7dd57744b16aa51}} 
+\index{Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}!ul\+Syn\+Cnt@{ul\+Syn\+Cnt}}
+\index{ul\+Syn\+Cnt@{ul\+Syn\+Cnt}!Dsp\+Control\+Main.\+c@{Dsp\+Control\+Main.\+c}}
+\subsubsection{\texorpdfstring{ul\+Syn\+Cnt}{ulSynCnt}}
+{\footnotesize\ttfamily uint32\+\_\+t ul\+Syn\+Cnt = 0}
+
