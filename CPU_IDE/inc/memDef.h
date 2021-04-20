@@ -26,10 +26,8 @@
 #define		MAX_DUAL_MEM_SIZE	(0x400)			
 #define		MAX_SYS_MEM_SIZE	(0x400)		
 
-#define		MEM_MPU_AUTOVAR_NUM		(16*1024)
-
-/* [V105] : HMI 메모리 매핑때문에 16K */  	
-#define 	MEM_MPU_MMEM_NUM		(80*1024)  
+#define		MEM_MPU_AUTOVAR_NUM		(16*1024) 	
+#define 	MEM_MPU_MMEM_NUM		(16*1024)  
 
 
 uint32  MAX_MEMORY_SIZE;

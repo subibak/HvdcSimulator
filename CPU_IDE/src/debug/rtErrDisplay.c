@@ -206,7 +206,7 @@ static uint8 *funcArguErrString[MAX_FUNC_ARGU_ERR_NUM+1] = {
 };
 
 
-#define	MAX_APP_ACCESS_ERR_NUM	0x8e
+#define	MAX_APP_ACCESS_ERR_NUM	0x8d
 static uint8 *appAccessErrString[MAX_APP_ACCESS_ERR_NUM+1] = {
 (uint8 *)"NO Error",
 (uint8 *)"SEG_GROUP_NUM_EXCEED_ERR",					
@@ -349,8 +349,7 @@ static uint8 *appAccessErrString[MAX_APP_ACCESS_ERR_NUM+1] = {
 (uint8 *)"IO_BOARD_ACCESS_ERR",
 (uint8 *)"IO_BOARD_MISMATCH_ERR",
 (uint8 *)"IO_BOARD_READY_ERR",
-(uint8 *)"IO_BOARD_LIVE_COUNT_ERR",				
-(uint8 *)"DSP_BOARD_READY_ERR"
+(uint8 *)"IO_BOARD_LIVE_COUNT_ERR"				
 };
 
 

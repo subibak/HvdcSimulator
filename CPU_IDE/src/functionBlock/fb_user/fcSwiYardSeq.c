@@ -18,7 +18,6 @@ extern uint32	readRuntimeFbData(uint32, uint32, uint32, uint32 *);
 extern uint32	writeRuntimeFbData(uint32, uint32, uint32, uint32 *);
 extern void 	setErrorCode(uint8 *, uint32,uint8 *,uint32);
 extern uint32 	getLogicTaskCycletime(uint32 , uint32 , float *);
-extern void 	funcSeq0000(strFC0740Info *);
 
 /*********************************************************************
 **	
@@ -162,18 +161,18 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 	{
 		
 		fb.CurrStep = fb.NextStep;
-		if(fb.seqOp.all == SO_SEQOP_START)
+		if(fb.seqOp == SO_SEQOP_START)
 		{
-			switch(fb.CurrStep)
+			switch(CurrStep)
 			{
 				case Seq0000 : 	// Undefined
 					funcSeq0000(&fb);	break;
 				case Seq0200 : 	// 	
-					funcSeq0000(&fb);	break;
+					funcSeq0200(&fb);	break;
 				case Seq0210 :	//	
-					funcSeq0000(&fb);	break;
+					funcSeq0210(&fb);	break;
 				case Seq0220 :	//	
-					funcSeq0000(&fb);	break;
+					funcSeq0220(&fb);	break;
 				default : 				break;
 			}
 		}

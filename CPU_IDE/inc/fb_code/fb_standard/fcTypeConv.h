@@ -45,10 +45,10 @@ extern uint32	stdI2DRunFunc	(uint32 , uint32 );
 **	Bool To Rea1 Type 변환 FB 정의
 **	
 **********************************************************************/
-#define	B2R_CODE			131
-#define	B2R_SPEC_NUM		1
-#define	B2R_VAR_NUM			0
-#define	B2R_OUTPUT_NUM		1
+#define	BOOL2REAL_CODE			131
+#define	BOOL2REAL_SPEC_NUM		1
+#define	BOOL2REAL_VAR_NUM		0
+#define	BOOL2REAL_OUTPUT_NUM	1
 		
 typedef struct {		
 	/* 스펙 */	
@@ -65,10 +65,10 @@ typedef struct {
 **	Real To Bool Type 변환 FB 정의
 **
 **********************************************************************/
-#define	R2B_CODE			132
-#define	R2B_SPEC_NUM		1
-#define	R2B_VAR_NUM			0
-#define	R2B_OUTPUT_NUM		1
+#define	REAL2BOOL_CODE			132
+#define	REAL2BOOL_SPEC_NUM		1
+#define	REAL2BOOL_VAR_NUM		0
+#define	REAL2BOOL_OUTPUT_NUM	1
 		
 typedef struct {		
 	/* 스펙 */	
@@ -85,10 +85,10 @@ typedef struct {
 **	Bool To int32 Type 변환 FB 정의
 **
 **********************************************************************/
-#define	B2DI_CODE			133
-#define	B2DI_SPEC_NUM		1
-#define	B2DI_VAR_NUM		0
-#define	B2DI_OUTPUT_NUM		1
+#define	BOOL2DINT_CODE			133
+#define	BOOL2DINT_SPEC_NUM		1
+#define	BOOL2DINT_VAR_NUM		0
+#define	BOOL2DINT_OUTPUT_NUM	1
 		
 typedef struct {		
 	/* 스펙 */	
@@ -105,10 +105,10 @@ typedef struct {
 **	Int32 TO Bool Type 변환 FB 정의
 **
 **********************************************************************/
-#define	DI2B_CODE			134
-#define	DI2B_SPEC_NUM		1
-#define	DI2B_VAR_NUM		0
-#define	DI2B_OUTPUT_NUM	1
+#define	DINT2BOOL_CODE			134
+#define	DINT2BOOL_SPEC_NUM		1
+#define	DINT2BOOL_VAR_NUM		0
+#define	DINT2BOOL_OUTPUT_NUM	1
 		
 typedef struct {		
 	/* 스펙 */	
@@ -125,10 +125,10 @@ typedef struct {
 **	Int32 TO Real Type 변환 FB 정의
 **
 **********************************************************************/
-#define	DI2R_CODE			135
-#define	DI2R_SPEC_NUM		1
-#define	DI2R_VAR_NUM		0
-#define	DI2R_OUTPUT_NUM		1
+#define	DINT2REAL_CODE			135
+#define	DINT2REAL_SPEC_NUM		1
+#define	DINT2REAL_VAR_NUM		0
+#define	DINT2REAL_OUTPUT_NUM	1
 		
 typedef struct {		
 	/* 스펙 */	
@@ -145,10 +145,10 @@ typedef struct {
 **	Real TO Int32 Type 변환 FB 정의
 **
 **********************************************************************/
-#define	R2DI_CODE			136
-#define	R2DI_SPEC_NUM		1
-#define	R2DI_VAR_NUM		0
-#define	R2DI_OUTPUT_NUM		1
+#define	REAL2DINT_CODE			136
+#define	REAL2DINT_SPEC_NUM		1
+#define	REAL2DINT_VAR_NUM		0
+#define	REAL2DINT_OUTPUT_NUM	1
 		
 typedef struct {		
 	/* 스펙 */	
@@ -165,10 +165,10 @@ typedef struct {
 **	Bool TO Int32 Type 변환 FB 정의
 **
 **********************************************************************/
-#define	MB2DI_CODE				137
-#define	MB2DI_SPEC_NUM			32
-#define	MB2DI_VAR_NUM			0
-#define	MB2DI_OUTPUT_NUM		1
+#define	M_BOOL_TO_DINT_CODE				137
+#define	M_BOOL_TO_DINT_SPEC_NUM			32
+#define	M_BOOL_TO_DINT_VAR_NUM			0
+#define	M_BOOL_TO_DINT_OUTPUT_NUM		1
 		
 typedef struct {		
 	/* 스펙 */	
@@ -186,10 +186,10 @@ typedef struct {
 **	Bool TO Int16 Type 변환 FB 정의
 **
 **********************************************************************/
-#define	B2I_CODE			138
-#define	B2I_SPEC_NUM		16
-#define	B2I_VAR_NUM			0
-#define	B2I_OUTPUT_NUM		1
+#define	BOOL_TO_INT_CODE			138
+#define	BOOL_TO_INT_SPEC_NUM		16
+#define	BOOL_TO_INT_VAR_NUM			0
+#define	BOOL_TO_INT_OUTPUT_NUM		1
 		
 typedef struct {		
 	/* 스펙 */	
@@ -207,10 +207,10 @@ typedef struct {
 **	Int32 TO Bool Type 변환 FB 정의
 **
 **********************************************************************/
-#define	DI2MB_CODE				139
-#define	DI2MB_SPEC_NUM			1
-#define	DI2MB_VAR_NUM			0
-#define	DI2MB_OUTPUT_NUM		32
+#define	DINT_TO_M_BOOL_CODE				139
+#define	DINT_TO_M_BOOL_SPEC_NUM			1
+#define	DINT_TO_M_BOOL_VAR_NUM			0
+#define	DINT_TO_M_BOOL_OUTPUT_NUM		32
 		
 typedef struct {		
 	/* 스펙 */	
@@ -227,10 +227,10 @@ typedef struct {
 **	Int32 TO int16 Type 변환 FB 정의
 **
 **********************************************************************/
-#define	DI2I_CODE			140
-#define	DI2I_SPEC_NUM		1
-#define	DI2I_VAR_NUM		0
-#define	DI2I_OUTPUT_NUM		1
+#define	DINT_TO_INT_CODE			140
+#define	DINT_TO_INT_SPEC_NUM		1
+#define	DINT_TO_INT_VAR_NUM			0
+#define	DINT_TO_INT_OUTPUT_NUM		1
 		
 typedef struct {		
 	/* 스펙 */	
@@ -247,10 +247,10 @@ typedef struct {
 **	Int16 TO Bool Type 변환 FB 정의
 **
 **********************************************************************/
-#define	I2B_CODE			141
-#define	I2B_SPEC_NUM		1
-#define	I2B_VAR_NUM			0
-#define	I2B_OUTPUT_NUM		16
+#define	INT_TO_BOOL_CODE			141
+#define	INT_TO_BOOL_SPEC_NUM		1
+#define	INT_TO_BOOL_VAR_NUM			0
+#define	INT_TO_BOOL_OUTPUT_NUM		16
 		
 typedef struct {		
 	/* 스펙 */	
@@ -267,10 +267,10 @@ typedef struct {
 **	Int16 TO Int32 Type 변환 FB 정의
 **
 **********************************************************************/
-#define	I2DI_CODE			142
-#define	I2DI_SPEC_NUM		1
-#define	I2DI_VAR_NUM		0
-#define	I2DI_OUTPUT_NUM		1
+#define	INT_TO_DINT_CODE		142
+#define	INT_TO_DINT_SPEC_NUM	1
+#define	INT_TO_DINT_VAR_NUM		0
+#define	INT_TO_DINT_OUTPUT_NUM	1
 		
 typedef struct {		
 	/* 스펙 */	
