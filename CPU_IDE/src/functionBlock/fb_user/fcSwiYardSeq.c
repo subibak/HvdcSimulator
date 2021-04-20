@@ -17,7 +17,6 @@
 extern uint32	readRuntimeFbData(uint32, uint32, uint32, uint32 *);
 extern uint32	writeRuntimeFbData(uint32, uint32, uint32, uint32 *);
 extern void 	setErrorCode(uint8 *, uint32,uint8 *,uint32);
-extern uint32 	getLogicTaskCycletime(uint32 , uint32 , float *);
 
 /*********************************************************************
 **	
@@ -47,51 +46,23 @@ uint32	stdZ4_SwiYardSeqInitFunc
 	**************************************************/
 	*inputTypePtr++			= UINT_TYPE|SIZE32_TYPE;
 	*inputTypePtr++			= UINT_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr			= REAL_TYPE|SIZE32_TYPE;
+	*inputTypePtr++			= UINT_TYPE|SIZE32_TYPE;
+	*inputTypePtr++			= UINT_TYPE|SIZE32_TYPE;
+	*inputTypePtr++			= UINT_TYPE|SIZE32_TYPE;
+	*inputTypePtr			= UINT_TYPE|SIZE32_TYPE;
 
 	/**************************************************
 	**	FB 내부 변수 타입 정의
 	**************************************************/
-	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr 		= REAL_TYPE|SIZE32_TYPE;
+	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
+	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
+	*intlVarTypePtr 		= UINT_TYPE|SIZE32_TYPE;
 	
 	/**************************************************
 	**	FB 출력 타입 정의
 	**************************************************/
 	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;
 	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;
-	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;
-	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;
-	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;
-	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;
-	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;
-	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;
-	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;
-	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;
-	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;	
 	*outputTypePtr			= UINT_TYPE|SIZE32_TYPE;		
 		
     return(status);
@@ -100,10 +71,7 @@ uint32	stdZ4_SwiYardSeqInitFunc
 uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 {
 	uint32	status = NO_ERROR;
-	float	cycleTimeSec;
 	uint32	sysStatus;
-	float	reset;
-	float	enable;
 
 	strFC0740Info	fb;
 	
@@ -122,18 +90,10 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 	/* Yard Switch Sequcenc Algorithm */
 	sysStatus = 0x3 & fb.sysMode.bit.status;
 
-	if(sysStatus == SM_STS_ERROR)
-	{
 
-	} 
-	else if(sysStatus == SM_STS_UNREADY)
+	if(fb.sysMode.bit.status == SM_STS_UNREADY | fb.sysMode.bit.status == SM_STS_ERROR)
    	{
 	   	/* System Initialization */
-	   	// State Initialization - Earth, Standy ... 
-	   	fb.PrevState = Seq0000;
-	   	fb.CurrState = Seq0000;
-	   	fb.NextState = Seq0000;
-
 	   	// Step Initialization - Seq0000, 0200 ...
 	   	fb.PrevStep = Seq0000;
 	   	fb.CurrStep = Seq0000;
@@ -145,25 +105,54 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 
     	// Yard Switch Command  
 	   	fb.yardSwiComm.bit.cbx01 = YARD_SWITCH_COMM_OPEN;
+	   	fb.yardSwiComm.bit.cbx91 = YARD_SWITCH_COMM_OPEN;
 	   	fb.yardSwiComm.bit.dsx01 = YARD_SWITCH_COMM_OPEN;
-	   	fb.yardSwiComm.bit.ds311 = YARD_SWITCH_COMM_OPEN;
-	   	fb.yardSwiComm.bit.ds321 = YARD_SWITCH_COMM_OPEN;
-	    fb.yardSwiComm.bit.dsx02 = YARD_SWITCH_COMM_OPEN;
+	   	fb.yardSwiComm.bit.dsx02 = YARD_SWITCH_COMM_OPEN;
+	    fb.yardSwiComm.bit.ds3x1 = YARD_SWITCH_COMM_OPEN;
 
-	   	fb.yardSwiComm.bit.esx01 = YARD_SWITCH_COMM_CLOSE;
-	   	fb.yardSwiComm.bit.esx02 = YARD_SWITCH_COMM_CLOSE;
-	   	fb.yardSwiComm.bit.esx11 = YARD_SWITCH_COMM_CLOSE;
-	   	fb.yardSwiComm.bit.esx12 = YARD_SWITCH_COMM_CLOSE;
-	   	fb.yardSwiComm.bit.esx21 = YARD_SWITCH_COMM_CLOSE;
-	   	fb.yardSwiComm.bit.esx22 = YARD_SWITCH_COMM_CLOSE;
+	   	fb.yardSwiComm.bit.esx01_02 = YARD_SWITCH_COMM_CLOSE;
+	   	fb.yardSwiComm.bit.esx11_21 = YARD_SWITCH_COMM_CLOSE;
+	   	fb.yardSwiComm.bit.esx12_22 = YARD_SWITCH_COMM_CLOSE;
 	}
-	else if(sysStatus == SM_STS_READY)
+	else if(fb.sysMode.bit.status == SM_STS_READY)
 	{
-		
 		fb.CurrStep = fb.NextStep;
-		if(fb.seqOp == SO_SEQOP_START)
+		if(fb.sysMode.bit.seqOp == SM_SEQOP_START)
 		{
-			switch(CurrStep)
+			// Active Power Mode(P Mode, Vdc Mode) 
+			if(fb.sysMode.bit.actPwr == SM_ACTPWR_P) // P Mode
+			{
+				// Sequence Direction(Start, Stop, Hold)
+				if(fb.sysMode.bit.seqDir == SM_SEQDIR_START)
+				{
+					// Opposite Converter Status
+					if(fb.oSeqSts2.bit.seq0800 == SEQ_COMM_COMPLETE)
+						fb.CurrStep = fb.NextStep;
+					else
+						fb.CurrStep = Seq0000;
+				}
+				else if(fb.sysMode.bit.seqDir == SM_SEQDIR_STOP)
+					
+				else if(fb.sysMode.bit.seqDir == SM_SEQDIR_NODIR)
+				else
+					fb.CurrStep = Seq0000;
+				
+			}	
+			else // Vdc Mode
+			{
+				// Sequence Direction(Start, Stop, Hold)
+				if(fb.sysMode.bit.seqDir == SM_SEQDIR_START)
+				{
+					fb.CurrStep = fb.NextStep;
+				}
+				else if(fb.sysMode.bit.seqDir == SM_SEQDIR_STOP)
+					
+				else if(fb.sysMode.bit.seqDir == SM_SEQDIR_NODIR)
+				else
+			}
+
+				
+			switch(fb.CurrStep)
 			{
 				case Seq0000 : 	// Undefined
 					funcSeq0000(&fb);	break;
@@ -173,15 +162,66 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 					funcSeq0210(&fb);	break;
 				case Seq0220 :	//	
 					funcSeq0220(&fb);	break;
+				case Seq0230 : 	// 
+					funcSeq0230(&fb);	break;
+				case Seq0240 : 	// 	
+					funcSeq0240(&fb);	break;
+				case Seq0250 :	//	
+					funcSeq0250(&fb);	break;
+				case Seq0260 :	//	
+					funcSeq0260(&fb);	break;
+				case Seq0320 : 	// 	
+					funcSeq0320(&fb);	break;
+				case Seq0330 :	//	
+					funcSeq0330(&fb);	break;
+				case Seq0340 :	//	
+					funcSeq0340(&fb);	break;
+				case Seq0350 : 	// 
+					funcSeq0350(&fb);	break;
+				case Seq0360 : 	// 	
+					funcSeq0360(&fb);	break;
+				case Seq0400 :	//	
+					funcSeq0400(&fb);	break;
+				case Seq0410 :	//	
+					funcSeq0410(&fb);	break;	
+				case Seq0510 : 	// 	
+					funcSeq0510(&fb);	break;
+				case Seq0520 :	//	
+					funcSeq0520(&fb);	break;
+				case Seq0600 :	//	
+					funcSeq0600(&fb);	break;
+				case Seq0610 : 	// 
+					funcSeq0610(&fb);	break;
+				case Seq0620 : 	// 	
+					funcSeq0620(&fb);	break;
+				case Seq0630 :	//	
+					funcSeq0630(&fb);	break;
+				case Seq0640 :	//	
+					funcSeq0640(&fb);	break;
+				case Seq0650 : 	// 	
+					funcSeq0650(&fb);	break;
+				case Seq0660 :	//	
+					funcSeq0660(&fb);	break;
+				case Seq0670 :	//	
+					funcSeq0670(&fb);	break;	
+				case Seq0720 : 	// 	
+					funcSeq0720(&fb);	break;
+				case Seq0730 :	//	
+					funcSeq0730(&fb);	break;
+				case Seq0740 :	//	
+					funcSeq0740(&fb);	break;
+				case Seq0760 : 	// 
+					funcSeq0760(&fb);	break;
+				case Seq0770 : 	// 	
+					funcSeq0770(&fb);	break;
+				case Seq0800 :	//	
+					funcSeq0800(&fb);	break;															
 				default : 				break;
 			}
 		}
 	}
 
-
-
-	/*  */
-    
+	/*  */   
     status = writeRuntimeFbData(taskId,
     							LOGIC_ID,
                                 fbMemAddr,

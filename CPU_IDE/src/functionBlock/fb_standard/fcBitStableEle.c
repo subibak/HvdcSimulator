@@ -25,8 +25,8 @@ uint32	stdRsInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTyp
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= RS_CODE;
-    paraInfoPtr->inputNo		= RS_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= RS_VAR_NUM;
+    paraInfoPtr->inputNo	= RS_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= RS_VAR_NUM;
     paraInfoPtr->outputNo	= RS_OUTPUT_NUM;
 
 	/* 입력 - 2개 */
@@ -130,8 +130,8 @@ uint32	stdSrInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTyp
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= SR_CODE;
-    paraInfoPtr->inputNo		= SR_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= SR_VAR_NUM;
+    paraInfoPtr->inputNo	= SR_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= SR_VAR_NUM;
     paraInfoPtr->outputNo	= SR_OUTPUT_NUM;
 
 	/* 입력 - 2개 */

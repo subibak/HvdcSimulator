@@ -24,10 +24,10 @@ uint32	stdB2RInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 {
 	uint32	status = NO_ERROR;
 
-	paraInfoPtr->fbId		= BOOL2REAL_CODE;
-    paraInfoPtr->inputNo		= BOOL2REAL_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= BOOL2REAL_VAR_NUM;
-    paraInfoPtr->outputNo	= BOOL2REAL_OUTPUT_NUM;
+	paraInfoPtr->fbId		= B2R_CODE;
+    paraInfoPtr->inputNo	= B2R_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= B2R_VAR_NUM;
+    paraInfoPtr->outputNo	= B2R_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
 	*specTypePtr++			= BOOL_TYPE | SIZE32_TYPE;
@@ -84,10 +84,10 @@ uint32	stdR2BInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 {
 	uint32	status = NO_ERROR;
 
-	paraInfoPtr->fbId		= REAL2BOOL_CODE;
-    paraInfoPtr->inputNo		= REAL2BOOL_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= REAL2BOOL_VAR_NUM;
-    paraInfoPtr->outputNo	= REAL2BOOL_OUTPUT_NUM;
+	paraInfoPtr->fbId		= R2B_CODE;
+    paraInfoPtr->inputNo	= R2B_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= R2B_VAR_NUM;
+    paraInfoPtr->outputNo	= R2B_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
 	*specTypePtr++			= REAL_TYPE | SIZE32_TYPE;
@@ -143,10 +143,10 @@ uint32	stdB2DInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 {
 	uint32	status = NO_ERROR;
 
-	paraInfoPtr->fbId		= BOOL2DINT_CODE;
-    paraInfoPtr->inputNo		= BOOL2DINT_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= BOOL2DINT_VAR_NUM;
-    paraInfoPtr->outputNo	= BOOL2DINT_OUTPUT_NUM;
+	paraInfoPtr->fbId		= B2DI_CODE;
+    paraInfoPtr->inputNo	= B2DI_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= B2DI_VAR_NUM;
+    paraInfoPtr->outputNo	= B2DI_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
 	*specTypePtr++			= BOOL_TYPE | SIZE32_TYPE;
@@ -202,10 +202,10 @@ uint32	stdD2BInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 {
 	uint32	status = NO_ERROR;
 
-	paraInfoPtr->fbId		= DINT2BOOL_CODE;
-    paraInfoPtr->inputNo		= DINT2BOOL_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= DINT2BOOL_VAR_NUM;
-    paraInfoPtr->outputNo	= DINT2BOOL_OUTPUT_NUM;
+	paraInfoPtr->fbId		= DI2B_CODE;
+    paraInfoPtr->inputNo	= DI2B_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= DI2B_VAR_NUM;
+    paraInfoPtr->outputNo	= DI2B_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
 	*specTypePtr++			= INT_TYPE | SIZE32_TYPE;
@@ -263,10 +263,10 @@ uint32	stdD2RInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 {
 	uint32	status = NO_ERROR;
 
-	paraInfoPtr->fbId		= DINT2REAL_CODE;
-    paraInfoPtr->inputNo		= DINT2REAL_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= DINT2REAL_VAR_NUM;
-    paraInfoPtr->outputNo	= DINT2REAL_OUTPUT_NUM;
+	paraInfoPtr->fbId		= DI2R_CODE;
+    paraInfoPtr->inputNo	= DI2R_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= DI2R_VAR_NUM;
+    paraInfoPtr->outputNo	= DI2R_OUTPUT_NUM;
 
 	/* 입력 - 1개 */
 	*specTypePtr++			= INT_TYPE | SIZE32_TYPE;
@@ -324,10 +324,10 @@ uint32	stdR2DInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 {
 	uint32	status = NO_ERROR;
 
-	paraInfoPtr->fbId		= REAL2DINT_CODE;
-    paraInfoPtr->inputNo		= REAL2DINT_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= REAL2DINT_VAR_NUM;
-    paraInfoPtr->outputNo	= REAL2DINT_OUTPUT_NUM;
+	paraInfoPtr->fbId		= R2DI_CODE;
+    paraInfoPtr->inputNo	= R2DI_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= R2DI_VAR_NUM;
+    paraInfoPtr->outputNo	= R2DI_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
 	*specTypePtr++			= REAL_TYPE | SIZE32_TYPE;
@@ -385,13 +385,13 @@ uint32	stdMb2DInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	status = NO_ERROR;
 	uint32	iLoop;
 	
-	paraInfoPtr->fbId		= M_BOOL_TO_DINT_CODE;
-    paraInfoPtr->inputNo		= M_BOOL_TO_DINT_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= M_BOOL_TO_DINT_VAR_NUM;
-    paraInfoPtr->outputNo	= M_BOOL_TO_DINT_OUTPUT_NUM;
+	paraInfoPtr->fbId		= MB2DI_CODE;
+    paraInfoPtr->inputNo	= MB2DI_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= MB2DI_VAR_NUM;
+    paraInfoPtr->outputNo	= MB2DI_OUTPUT_NUM;
 
 	/* 입력 - 32개 */
-	for(iLoop = 0; iLoop < M_BOOL_TO_DINT_SPEC_NUM; iLoop++)
+	for(iLoop = 0; iLoop < MB2DI_SPEC_NUM; iLoop++)
 		*specTypePtr++	= BOOL_TYPE | SIZE32_TYPE;
 
 	/* 내부변수 - 0개 */		
@@ -423,7 +423,7 @@ uint32	stdMb2DRunFunc	(uint32 taskId, uint32 fbBlockAddr)
     
     fd.out = 0;
 
-    for(i= 0;i<(M_BOOL_TO_DINT_SPEC_NUM-1); i++)
+    for(i= 0;i<(MB2DI_SPEC_NUM-1); i++)
         fd.out |= (fd.in[i]&0x1)<<i;
         
 	if(fd.sign == 1)
@@ -456,13 +456,13 @@ uint32	stdB2IInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 	uint32	iLoop;
 	
-	paraInfoPtr->fbId		= BOOL_TO_INT_CODE;
-    paraInfoPtr->inputNo		= BOOL_TO_INT_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= BOOL_TO_INT_VAR_NUM;
-    paraInfoPtr->outputNo	= BOOL_TO_INT_OUTPUT_NUM;
+	paraInfoPtr->fbId		= B2I_CODE;
+    paraInfoPtr->inputNo	= B2I_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= B2I_VAR_NUM;
+    paraInfoPtr->outputNo	= B2I_OUTPUT_NUM;
 
 	/* 입력 - 16개 */
-	for(iLoop = 0; iLoop < BOOL_TO_INT_SPEC_NUM; iLoop++)
+	for(iLoop = 0; iLoop < B2I_SPEC_NUM; iLoop++)
 		*specTypePtr++	= BOOL_TYPE | SIZE32_TYPE;
 
 	/* 내부변수 - 0개 */		
@@ -492,7 +492,7 @@ uint32	stdB2IRunFunc	(uint32 taskId, uint32 fbBlockAddr)
     }
     
     fd.out = 0;
-    for(i=0;i<(BOOL_TO_INT_SPEC_NUM-1);i++)
+    for(i=0;i<(B2I_SPEC_NUM-1);i++)
         fd.out |= (fd.in[i]&0x1)<<i;
         
 	if(fd.sign == 1)
@@ -525,10 +525,10 @@ uint32	stdD2MbInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	status = NO_ERROR;
 	uint32	iLoop;
 	
-	paraInfoPtr->fbId		= DINT_TO_M_BOOL_CODE;
-    paraInfoPtr->inputNo		= DINT_TO_M_BOOL_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= DINT_TO_M_BOOL_VAR_NUM;
-    paraInfoPtr->outputNo	= DINT_TO_M_BOOL_OUTPUT_NUM;
+	paraInfoPtr->fbId		= DI2MB_CODE;
+    paraInfoPtr->inputNo	= DI2MB_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= DI2MB_VAR_NUM;
+    paraInfoPtr->outputNo	= DI2MB_OUTPUT_NUM;
 
 	/* 입력 - 1개 */
 	*specTypePtr++	= INT_TYPE | SIZE32_TYPE;
@@ -536,7 +536,7 @@ uint32	stdD2MbInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	/* 내부변수 - 0개 */		
 
     /* 출력 - 32개 */
-    for(iLoop = 0; iLoop < DINT_TO_M_BOOL_OUTPUT_NUM; iLoop++)
+    for(iLoop = 0; iLoop < DI2MB_OUTPUT_NUM; iLoop++)
 		*outputTypePtr++	= BOOL_TYPE | SIZE32_TYPE;
 	
 	return (status);
@@ -560,7 +560,7 @@ uint32	stdD2MbRunFunc	(uint32 taskId, uint32 fbBlockAddr)
 		return(status);
     }
     
-    for(i=0;i<(DINT_TO_M_BOOL_OUTPUT_NUM);i++)
+    for(i=0;i<(DI2MB_OUTPUT_NUM);i++)
         fd.out[i] = (fd.in>>i)&0x1;
 	
 
@@ -589,10 +589,10 @@ uint32	stdD2IInifFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 {
 	uint32	status = NO_ERROR;
 
-	paraInfoPtr->fbId		= DINT_TO_INT_CODE;
-    paraInfoPtr->inputNo		= DINT_TO_INT_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= DINT_TO_INT_VAR_NUM;
-    paraInfoPtr->outputNo	= DINT_TO_INT_OUTPUT_NUM;
+	paraInfoPtr->fbId		= DI2I_CODE;
+    paraInfoPtr->inputNo	= DI2I_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= DI2I_VAR_NUM;
+    paraInfoPtr->outputNo	= DI2I_OUTPUT_NUM;
 
 	/* 입력 - 1개 */
 	*specTypePtr++	= INT_TYPE | SIZE32_TYPE;
@@ -655,10 +655,10 @@ uint32	stdI2BInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 	uint32	iLoop;
 
-	paraInfoPtr->fbId		= INT_TO_BOOL_CODE;
-    paraInfoPtr->inputNo		= INT_TO_BOOL_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= INT_TO_BOOL_VAR_NUM;
-    paraInfoPtr->outputNo	= INT_TO_BOOL_OUTPUT_NUM;
+	paraInfoPtr->fbId		= I2B_CODE;
+    paraInfoPtr->inputNo	= I2B_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= I2B_VAR_NUM;
+    paraInfoPtr->outputNo	= I2B_OUTPUT_NUM;
 
 	/* 입력 - 1개 */
 	*specTypePtr++	= INT_TYPE | SIZE32_TYPE;
@@ -666,7 +666,7 @@ uint32	stdI2BInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	/* 내부변수 - 0개 */		
 
     /* 출력 - ?개 */
-    for(iLoop = 0; iLoop < INT_TO_BOOL_OUTPUT_NUM; iLoop++)
+    for(iLoop = 0; iLoop < I2B_OUTPUT_NUM; iLoop++)
 		*outputTypePtr++	= BOOL_TYPE | SIZE32_TYPE;
 
 	return (status);
@@ -691,7 +691,7 @@ uint32	stdI2BRunFunc	(uint32 taskId, uint32 fbBlockAddr)
 		return(status);
     }
     
-    for(i = 0;i < INT_TO_BOOL_OUTPUT_NUM; i++)
+    for(i = 0;i < I2B_OUTPUT_NUM; i++)
         fd.out[i] = (fd.in>>i)&0x1;
 	
 
@@ -720,10 +720,10 @@ uint32	stdI2DInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 {
 	uint32	status = NO_ERROR;
 
-	paraInfoPtr->fbId		= INT_TO_DINT_CODE;
-    paraInfoPtr->inputNo		= INT_TO_DINT_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= INT_TO_DINT_VAR_NUM;
-    paraInfoPtr->outputNo	= INT_TO_DINT_OUTPUT_NUM;
+	paraInfoPtr->fbId		= I2DI_CODE;
+    paraInfoPtr->inputNo	= I2DI_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= I2DI_VAR_NUM;
+    paraInfoPtr->outputNo	= I2DI_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
 	*specTypePtr++			= INT_TYPE | SIZE32_TYPE;
