@@ -20,27 +20,13 @@
 #include	"usrDefBuf.h"
 #include	"usrQueData.h"
 
-#include	"fbMem.h"
-
 #ifdef VXWORKS
 #include    "..\MHCAP\project_def.h"
 #endif
 
-/* [V105] : SM의 CAP. 전압 및 상태 관련 정의 함수 */
-#define	DSP_BOARD_START_VME_ADDR			0x82B00000
-#define	DSP_BOARD_VME_ADDR_OFFSET			0x00010000
+#define	FBC_RAS_BUF_LENGTH	448
+#define	TMTC_RAS_BUF_LENGTH	448
 
-#define	MAX_SUB_MODULE_NUM_PER_ARM			108
-
-#define	SUB_MODULE_CAP_VLTG_START_INDEX		(0x010 * 4) /* 바이트 주소 */
-
-#define	SUB_MODULE_STATUS_START_INDEX		(	SUB_MODULE_CAP_VLTG_START_INDEX +\
-												(MAX_SUB_MODULE_NUM_PER_ARM * 2 * 4)\
-											)	/* 바이트 주소 */
-
-
-#define	M_REGION_SM_CAP_VLTG_START_INDEX	10000	/* A Phase */
-#define	M_REGION_SM_STATUS_START_INDEX		11000	/* A Phase */
 
 strSystemRunningStatusInfo	gSysRunningStatusInfo;
 strSysRunningConfigInfo		*gSysRunningInfoPtr =
@@ -56,9 +42,19 @@ strNetRunningStatusInfo	   *gNetRasInfoPtr =
 static uint32	sWDCRasSeqNum = 0;
 static uint32	sEWSRasSeqNum = 0;
 
+
+
 static uint32	gPrevNetCommCount = 0;
 
 static uint32	gPrevRmtShelfNetCommCount = 0;
+
+
+static uint32	gFbcRasDebugFlag = 0;
+static uint8	gFbcRasBuf[FBC_RAS_BUF_LENGTH];
+
+
+static uint32	gTmtcRasDebugFlag = 0;
+static uint8	gTmtcRasBuf[TMTC_RAS_BUF_LENGTH];
 
 static uint32 sModuleLiveCount 	= 0;
 static uint32 sIncreIndex 		= 0;
@@ -71,10 +67,14 @@ static uint32 sStbyShelfNetErrCnt = 0;
 static uint32 sRunShelfNetErrCnt = 0;
 extern int32 gDebugPortFd;
 
+
 extern uint32 romSwVersion;
 extern uint32 releaseDate;
 
+
+
 extern uint32 gCurNetCommCount;
+
 
 extern uint32 gRmtShelfCurNetCommCount;
 
@@ -165,9 +165,9 @@ extern uint32 rmtShelfLiveCntUpdateAndCheck (void);
 IMPORT uint	vme_start_flag;
 IMPORT VME_DATA			gstVmeData[VME_MAX_SLOT];
 IMPORT VME_CONTROL		gstVmeCtrl[VME_MAX_SLOT];
-
 //IMPORT uint	link_delay_time;
 IMPORT int vme_debug_flag;
+
 
 static STATUS mhcap_vme_DoReadProc1 (int slotId);
 static STATUS mhcap_vme_DiProc1 (int slotId);
@@ -175,11 +175,9 @@ STATUS mhcap_vme_AioProc1 (int32 slotId);
 
 #endif
 
+
 void systemRasInfoGet(uint32 , uint32 *);
 
-extern void longDataConversion( uint32 *, uint32 *, uint32 );
-extern uint32 fbMemPointerGet(uint32, strMemPointerInfo*);
-static uint32 subModuleInfoReadAndWriteToMregion(uint32);
 
 void moduleLiveCountAndFbcStatusCheck(void)
 {
@@ -849,6 +847,7 @@ void moduleRasSummaryBitMake
 	                ||  gunHvdcCpuRasInfo.cpuM.aioBoardErrStat[3]
 	                ||  gunHvdcCpuRasInfo.cpuM.aioBoardErrStat[4]
 	                ||  gunHvdcCpuRasInfo.cpuM.aioBoardErrStat[5]
+	                ||  gunHvdcCpuRasInfo.cpuM.odmBoardErrStat
 	            )
 	                cpuErrSummary |= 1<<5;
 	                
@@ -1281,6 +1280,9 @@ void rmtNetworkCommErrCheck(void)
 	netErrStatus = 0;
 	                     
 	if(sysStatusInfoPtr->sysRedundancyStatus == SYS_RAS_REDUNDANCY_STANDBY){
+		
+		
+		
 		 
     	if( (gRmtShelfCurNetCommCount == gPrevRmtShelfNetCommCount)&&
 		    (sysStatusInfoPtr->sysOperationMode == SYS_RAS_SYSTEM_AUTO_MODE)
@@ -1707,78 +1709,78 @@ void hvdcCcbBaseIoCheck(void)
 
 void hvdcVcbBaseIoCheck(void)
 {
-	uint32	status = NO_ERROR;
-	
 	uint32	slotIndex = 0;
 	strSysConfigInfo	sysCnfgInfo;
 
     memoryClear ( (uint8 *) &sysCnfgInfo, sizeof(strSysConfigInfo));
-    
     (void)systemCnfgInfoRead( &sysCnfgInfo);
     
-    for(slotIndex = 0;slotIndex < 6; slotIndex++)
+	/* 알고리즘 연산부 시작 */
+    for(slotIndex=0;slotIndex<6;slotIndex++)
     {
-	    if(((sysCnfgInfo.hvdcVcbConfig>>slotIndex)&0x1) == 0x1)
+	    if(((sysCnfgInfo.hvdcVcbConfig>>slotIndex)&0x1)==0x1)
 	    {
 #ifndef _WIN32
-
-			/****************************************************************** 
-			** 보드 자체의 진단 정보 Set : 광통신 상태, 보드 정상동작 여부 등
-			*******************************************************************/
+		if((slotIndex>=0)&&(slotIndex<=5))
+		{
 	        mhcap_vme_AioProc1(slotIndex);
 	
 	        if(gstVmeCtrl[slotIndex].slave_status != TRUE) 
-	            gBio.vcb[slotIndex].errCode = 1; // (입력범위에러:-1/정상:0/ 보드접근에러:1/종류불일치:2,미준비상태:3,다운상태:4)
+	            gBio.vcb[slotIndex].errCode = 1; // 펑션블록 에러 (입력범위에러:-1/정상:0/ 보드접근에러:1/종류불일치:2,미준비상태:3,다운상태:4)
 	        else if(gstVmeCtrl[slotIndex].slave_board_type != AIO_BOARD_ID) 
-	            gBio.vcb[slotIndex].errCode = 2; // (입력범위에러:-1/정상:0/ 보드접근에러:1/종류불일치:2,미준비상태:3,다운상태:4)
+	            gBio.vcb[slotIndex].errCode = 2; // 펑션블록 에러 (입력범위에러:-1/정상:0/ 보드접근에러:1/종류불일치:2,미준비상태:3,다운상태:4)
 	        else if(gstVmeCtrl[slotIndex].stat.slave_init_flag_ok == 0)
-	            gBio.vcb[slotIndex].errCode = 3; // (입력범위에러:-1/정상:0/ 보드접근에러:1/종류불일치:2,미준비상태:3,다운상태:4)
+	            gBio.vcb[slotIndex].errCode = 3; // 펑션블록 에러 (입력범위에러:-1/정상:0/ 보드접근에러:1/종류불일치:2,미준비상태:3,다운상태:4)
 	        else
 	            gBio.vcb[slotIndex].errCode = 0;
-	            
-			if((gBio.vcb[slotIndex].errCode==0)&&(gBio.vcb[slotIndex].liveCnt == gstVmeCtrl[slotIndex].slave_run_count))
+			if((gBio.vcb[slotIndex].errCode==0)&&(gBio.vcb[slotIndex].liveCnt ==  gstVmeCtrl[slotIndex].slave_run_count))
 			{
-	    		gBio.vcb[slotIndex].errCode = 4;	// (입력범위에러:-1/정상:0/ 보드접근에러:1/종류불일치:2,미준비상태:3,다운상태:4)	
+	    		gBio.vcb[slotIndex].errCode = 4;	// 펑션블록 에러 (입력범위에러:-1/정상:0/ 보드접근에러:1/종류불일치:2,미준비상태:3,다운상태:4)	
 	    		gstVmeCtrl[slotIndex].slave_status = FALSE;
 	    	}	
 	    		
 	        gBio.vcb[slotIndex].liveCnt = gstVmeCtrl[slotIndex].slave_run_count;
-
+		}
+		else
+		{
+			gBio.vcb[slotIndex].errCode = 0;
+		}
 		
-    	    gunHvdcCpuRasInfo.cpuV.aioBoardCfgStat &= ~(0x1<<slotIndex);
-    	    gunHvdcCpuRasInfo.cpuV.aioBoardCfgStat |= (0x1<<slotIndex);
-
-		    if((gBio.vcb[slotIndex].errCode == 1)||(gBio.vcb[slotIndex].errCode == 2))
-		        gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex] = 0x1|(gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex]&0xFFFC);
-
-		    else if((gBio.vcb[slotIndex].errCode == 0)&&((gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex]&0xFFFC) != 0))
-		        gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex] &= 0xFFFC;
-
-		    else if(gBio.vcb[slotIndex].errCode == 0)
-		        gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex] = 0;
-
-		    else /*if((gBio.vcb[slotIndex].errCode == 3)||(gBio.vcb[slotIndex].errCode == 4))*/ 
-		        gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex] = 0x2|(gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex]&0xFFFC);
-
-			/*
-			gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex] = (((gstVmeCtrl[slotIndex].vme_comm_stat>>9)&0x7)<<8)|
-																((gstVmeCtrl[slotIndex].vme_comm_stat&0x3F)<<2)|
-																(gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex]&0x3);
-			*/
-			gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex] = ((gstVmeCtrl[slotIndex].vme_comm_stat&0x3FFF)<<2)
-			                                                    |(gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex]&0x3);
+		switch(gunHvdcCpuRasInfo.cpuV.cpuType)
+		{
+		    case HVDC_CPU_C_TYPE:
+		        break;
+		    case HVDC_CPU_P_TYPE:
+		        break;
+		    case HVDC_CPU_V_TYPE:
+		        if(     (slotIndex>=0)
+		            &&  (slotIndex<MAX_CPU_V_AIO_BOARD_NUM)   )
+		        {
+	        	    gunHvdcCpuRasInfo.cpuV.aioBoardCfgStat &= ~(0x1<<slotIndex);
+	        	    gunHvdcCpuRasInfo.cpuV.aioBoardCfgStat |= (0x1<<slotIndex);
+	
+	    		    if((gBio.vcb[slotIndex].errCode == 1)||(gBio.vcb[slotIndex].errCode == 2))
+	    		        gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex] = 0x1|(gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex]&0xFFFC);
+	    		    else if((gBio.vcb[slotIndex].errCode == 0)&&((gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex]&0xFFFC) != 0))
+	    		        gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex] &= 0xFFFC;
+	    		    else if(gBio.vcb[slotIndex].errCode == 0)
+	    		        gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex] = 0;
+	    		    else /*if((gBio.vcb[slotIndex].errCode == 3)||(gBio.vcb[slotIndex].errCode == 4))*/ 
+	    		        gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex] = 0x2|(gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex]&0xFFFC);
+	            }
+		        break;
+		    case HVDC_CPU_M_TYPE:
+		        break;
+		    default:
+		        break;
+		}
 		
-			/****************************************************************** 
-			** [V105] RTDS에서 통신한 서버 모듈의의 CAP. 전압 및 상태를 M영역에 Write
-			*******************************************************************/
-			status = subModuleInfoReadAndWriteToMregion(slotIndex);
-			if(status != NO_ERROR)
-		        setErrorCodeWithVal(__FILE__,__LINE__,__FUNCTION__,status,
-									"slotIndex",slotIndex,
-									"Not Using",0,
-									"Not Using",0 
-							  	);
-
+		/*
+		gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex] = (((gstVmeCtrl[slotIndex].vme_comm_stat>>9)&0x7)<<8)|((gstVmeCtrl[slotIndex].vme_comm_stat&0x3F)<<2)|(gunHvdcCpuRasInfo.cpuV.aioBoardErrStat[slotIndex]&0x3);
+		*/
+		gunHvdcCpuRasInfo.cpuM.aioBoardErrStat[slotIndex] = ((gstVmeCtrl[slotIndex].vme_comm_stat&0xFFF)<<2)
+		                                                    |(gunHvdcCpuRasInfo.cpuM.aioBoardErrStat[slotIndex]&0x3);
+		
 #endif
 	    }
 	    else
@@ -1786,114 +1788,8 @@ void hvdcVcbBaseIoCheck(void)
 			gunHvdcCpuRasInfo.cpuV.aioBoardCfgStat &= ~(0x1<<slotIndex);
 	    }
     }
-    
-    return;
+    /* 알고리즘 연산부 끝 */
 }
-
-static uint32 subModuleInfoReadAndWriteToMregion(uint32 slotIndex)
-{
-	uint32	status = NO_ERROR;
-	strMemPointerInfo	memInfo;
-	
-	uint8	*vmeDataPtr;
-	uint32	*mRegionPtr;
-	float	readSMCapVltgData[MAX_SUB_MODULE_NUM_PER_ARM * 2]; 	/* upper and lower ARM */
-	uint32	readSMStatusData[MAX_SUB_MODULE_NUM_PER_ARM]; 		/* upper and lower ARM */
-
-	/******************************************************************
-	**	0. 해당 보드가 정상일 경우만 Access 한다
-	******************************************************************/
-	if(gBio.vcb[slotIndex].errCode != NO_ERROR)
-	{
-		status = DSP_BOARD_READY_ERR;
-        setErrorCodeWithVal(__FILE__,__LINE__,__FUNCTION__,status,
-							"slotIndex",slotIndex,
-							"Not Using",0,
-							"Not Using",0 
-					  	);
-		
-		return (status);
-	}
-		
-	/******************************************************************
-	**	1. Read upper/lower Sub Module Capacitor Voltage from DSP 보드
-	******************************************************************/
-	memoryClear(	(uint8 *)readSMCapVltgData,
-					MAX_SUB_MODULE_NUM_PER_ARM * 2 * 4
-				);
-				 
-	/* Slot Index 는 '0' 부터 시작 */
-	vmeDataPtr  = (uint8 *)DSP_BOARD_START_VME_ADDR;
-	vmeDataPtr += (DSP_BOARD_VME_ADDR_OFFSET * slotIndex);
-	vmeDataPtr += SUB_MODULE_CAP_VLTG_START_INDEX;
-	
-	
-	/* Upper/Lower Arm CAP. VLTG. VME Read */
-	memoryCopy( (uint8 *) readSMCapVltgData,
-				(uint8 *) vmeDataPtr,
-				MAX_SUB_MODULE_NUM_PER_ARM * 2 * 4
-			  );
-			 		
-	/******************************************************************
-	**	2. Write Sub Module Capacitor Voltage to M region
-	**
-	**	[주의 사항] M-RAM(즉, NVRAM)에 Write할 필요가 있는지 검토
-	**			 현재는 Local RAM에만 Write 함
-	******************************************************************/
-	(void)fbMemPointerGet(LOGIC_ID, &memInfo);
-
-	mRegionPtr  = (uint32 *)memInfo.flagMemPtr;
-	mRegionPtr += M_REGION_SM_CAP_VLTG_START_INDEX;
-	
-	/* A, B, C상 차례로 Upper, Lower ARM의 CAP. 전압이 위치 함 */
-	mRegionPtr += (MAX_SUB_MODULE_NUM_PER_ARM * 2 * slotIndex);
-
-	/* Swapping 함, 4바이트 단위로 */
-	longDataConversion(	mRegionPtr, 
-						readSMCapVltgData,
-						MAX_SUB_MODULE_NUM_PER_ARM * 2 *4 /*  바이트 단위 임 */
-					  );
-		  
-	/******************************************************************
-	**	3. Read Sub module Status : 2byte/Submodule
-	******************************************************************/
-	memoryClear(	(uint8 *)readSMStatusData,
-					MAX_SUB_MODULE_NUM_PER_ARM  * 4
-				);
-				 
-	/* Slot Index 는 '0' 부터 시작 */
-	vmeDataPtr = (uint8 *)DSP_BOARD_START_VME_ADDR;
-	vmeDataPtr += (DSP_BOARD_VME_ADDR_OFFSET * slotIndex);
-	vmeDataPtr += SUB_MODULE_STATUS_START_INDEX;
-	
-	memoryCopy( (uint8 *) readSMStatusData,
-				(uint8 *) vmeDataPtr,
-				MAX_SUB_MODULE_NUM_PER_ARM * 4
-			  );
-	
-	/******************************************************************
-	**	4. Write Sub Module Status to M region
-	**
-	**	[주의 사항] M-RAM(즉, NVRAM)에 Write할 필요가 있는지 검토
-	**			 현재는 Local RAM에만 Write 함
-	******************************************************************/
-	(void)fbMemPointerGet(LOGIC_ID, &memInfo);
-
-	mRegionPtr  = (uint32 *)memInfo.flagMemPtr;
-	mRegionPtr += M_REGION_SM_STATUS_START_INDEX;
-	
-	/* A, B, C상 차례로 Upper, Lower ARM의 Status(2bytes/SM) 위치 함 */
-	mRegionPtr += (MAX_SUB_MODULE_NUM_PER_ARM * slotIndex);
-	
-	/* Swapping 함, 4바이트 단위로 */
-	shortDataConversion((uint16 *)mRegionPtr, 
-						(uint16 *)readSMStatusData,
-						MAX_SUB_MODULE_NUM_PER_ARM * 2 * 2 /* 바이트 단위 임 */
-					   );
-
-	 
-	return(status);
-}	
 
 void hvdcAiCardBaseIoCheck(void)
 {
@@ -2010,8 +1906,9 @@ void hvdcAiCardBaseIoCheck(void)
 			        break;
 			}
 			
-			gunHvdcCpuRasInfo.cpuM.aioBoardErrStat[slotIndex] = ((gstVmeCtrl[slotIndex].vme_comm_stat&0x3FFF)<<2)
-			                                                    |(gunHvdcCpuRasInfo.cpuM.aioBoardErrStat[slotIndex]&0x3);			
+			gunHvdcCpuRasInfo.cpuM.aioBoardErrStat[slotIndex] = ((gstVmeCtrl[slotIndex].vme_comm_stat&0xFFF)<<2)
+			                                                    |(gunHvdcCpuRasInfo.cpuM.aioBoardErrStat[slotIndex]&0x3);
+			
 #endif
 	    }
 	    else
@@ -2019,8 +1916,7 @@ void hvdcAiCardBaseIoCheck(void)
 			gunHvdcCpuRasInfo.cpuM.aioBoardCfgStat &= ~(0x1<<slotIndex);
 	    }
     }
-	
-	return;
+    /* 알고리즘 연산부 끝 */
 }
 
 static STATUS mhcap_vme_DoReadProc1 (int slotId)
@@ -2128,7 +2024,7 @@ STATUS mhcap_vme_AioProc1 (int32 slotId)
 
 	if(mhcap_checkVmeSlaveStatus (slotId, TRUE) == OK)
 	{
-        gstVmeCtrl[slotId].vme_comm_stat = 	(*(uint8*)(gstVmeCtrl[slotId].vme_addr + 0x840))<<24;
+        gstVmeCtrl[slotId].vme_comm_stat = *(uint8*)(gstVmeCtrl[slotId].vme_addr + 0x840)<<24;
         gstVmeCtrl[slotId].vme_comm_stat |= (*(uint8*)(gstVmeCtrl[slotId].vme_addr + 0x841))<<16;
         gstVmeCtrl[slotId].vme_comm_stat |= (*(uint8*)(gstVmeCtrl[slotId].vme_addr + 0x842))<<8;
         gstVmeCtrl[slotId].vme_comm_stat |= (*(uint8*)(gstVmeCtrl[slotId].vme_addr + 0x843))<<0;

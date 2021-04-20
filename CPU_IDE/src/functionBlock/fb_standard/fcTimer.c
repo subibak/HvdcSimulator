@@ -142,8 +142,8 @@ uint32	stdTonInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= TON_CODE;
-    paraInfoPtr->inputNo	= TON_SPEC_NUM;
-    paraInfoPtr->intlVarNo	= TON_VAR_NUM;
+    paraInfoPtr->inputNo		= TON_SPEC_NUM;
+    paraInfoPtr->intlVarNo		= TON_VAR_NUM;
     paraInfoPtr->outputNo	= TON_OUTPUT_NUM;
 
 	/* ภิทย - ?ฐณ */

@@ -51,8 +51,8 @@ uint32	diRdInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputType
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= IOB_DI_CODE;
-    paraInfoPtr->inputNo	= IOB_DI_SPEC_NUM;
-    paraInfoPtr->intlVarNo	= IOB_DI_VAR_NUM;
+    paraInfoPtr->inputNo		= IOB_DI_SPEC_NUM;
+    paraInfoPtr->intlVarNo		= IOB_DI_VAR_NUM;
     paraInfoPtr->outputNo	= IOB_DI_OUTPUT_NUM;
 
 	/* ภิทย - ?ฐณ */

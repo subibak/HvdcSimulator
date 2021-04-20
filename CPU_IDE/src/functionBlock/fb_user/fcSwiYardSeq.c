@@ -91,7 +91,7 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 	sysStatus = 0x3 & fb.sysMode.bit.status;
 
 
-	if(fb.sysMode.bit.status == SM_STS_UNREADY | fb.sysMode.bit.status == SM_STS_ERROR)
+	if(sysStatus == SM_STS_UNREADY | sysStatus == SM_STS_ERROR)
    	{
 	   	/* System Initialization */
 	   	// Step Initialization - Seq0000, 0200 ...
@@ -114,44 +114,12 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 	   	fb.yardSwiComm.bit.esx11_21 = YARD_SWITCH_COMM_CLOSE;
 	   	fb.yardSwiComm.bit.esx12_22 = YARD_SWITCH_COMM_CLOSE;
 	}
-	else if(fb.sysMode.bit.status == SM_STS_READY)
+	else if(sysStatus == SM_STS_READY)
 	{
+		
 		fb.CurrStep = fb.NextStep;
 		if(fb.sysMode.bit.seqOp == SM_SEQOP_START)
 		{
-			// Active Power Mode(P Mode, Vdc Mode) 
-			if(fb.sysMode.bit.actPwr == SM_ACTPWR_P) // P Mode
-			{
-				// Sequence Direction(Start, Stop, Hold)
-				if(fb.sysMode.bit.seqDir == SM_SEQDIR_START)
-				{
-					// Opposite Converter Status
-					if(fb.oSeqSts2.bit.seq0800 == SEQ_COMM_COMPLETE)
-						fb.CurrStep = fb.NextStep;
-					else
-						fb.CurrStep = Seq0000;
-				}
-				else if(fb.sysMode.bit.seqDir == SM_SEQDIR_STOP)
-					
-				else if(fb.sysMode.bit.seqDir == SM_SEQDIR_NODIR)
-				else
-					fb.CurrStep = Seq0000;
-				
-			}	
-			else // Vdc Mode
-			{
-				// Sequence Direction(Start, Stop, Hold)
-				if(fb.sysMode.bit.seqDir == SM_SEQDIR_START)
-				{
-					fb.CurrStep = fb.NextStep;
-				}
-				else if(fb.sysMode.bit.seqDir == SM_SEQDIR_STOP)
-					
-				else if(fb.sysMode.bit.seqDir == SM_SEQDIR_NODIR)
-				else
-			}
-
-				
 			switch(fb.CurrStep)
 			{
 				case Seq0000 : 	// Undefined
@@ -221,7 +189,10 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 		}
 	}
 
-	/*  */   
+
+
+	/*  */
+    
     status = writeRuntimeFbData(taskId,
     							LOGIC_ID,
                                 fbMemAddr,

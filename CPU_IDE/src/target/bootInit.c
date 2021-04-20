@@ -695,40 +695,40 @@ STATION_NUM_SETUP:
 DLU_IF_TYPE_SETUP:
         usrParaPtr->dluIfKind = DLU_IF_AUTO;	
         
-MB_SLAVE_IF_SETUP:
-        printf( "Modbus Slave Mapping Interface Set Up? [1:DWORD_FIX,2:WORD,3:DWORD_WSWAP]: ");
-
-        ioRead(gDebugPortFd, line, sizeof(line));
-        cPtr = line;
-        spaceSkip(&cPtr);
-
-        switch(*cPtr) 
-        {
-            case '1': 
-                usrParaPtr->mbSlaveMapIf = MB_SLV_IF_DWORD_FIX;
-            break;
-            case ENDOFSTR:
-                printf( "\t** Default setting was selected!!(2:WORD)\n");
-            case '2':
-                usrParaPtr->mbSlaveMapIf = MB_SLV_IF_WORD;
-            break;
-            case '3':
-                usrParaPtr->mbSlaveMapIf = MB_SLV_IF_DWORD_WSWAP;
-            break;
-            case '.': 
-                goto MODULE_END;
-            break;
-            default :
-                printf( "\t** Modbus Slave Mapping Interface is invalid(0 ~ 2) !!\n");
-                goto MB_SLAVE_IF_SETUP;
-            break;
-        }			
-
   		if( (usrParaPtr->hvdcCpuType == HVDC_CPU_C_TYPE)
-      		||  (usrParaPtr->hvdcCpuType == HVDC_CPU_P_TYPE))
+      		||  (usrParaPtr->hvdcCpuType == HVDC_CPU_P_TYPE)    )
 		{
+MB_SLAVE_IF_SETUP:
+	        printf( "Modbus Slave Mapping Interface Set Up? [1:DWORD_FIX,2:WORD,3:DWORD_WSWAP]: ");
+	
+	        ioRead(gDebugPortFd, line, sizeof(line));
+	        cPtr = line;
+	        spaceSkip(&cPtr);
+	
+	        switch(*cPtr) 
+	        {
+	            case '1': 
+	                usrParaPtr->mbSlaveMapIf = MB_SLV_IF_DWORD_FIX;
+	            break;
+	            case ENDOFSTR:
+	                printf( "\t** Default setting was selected!!(2:WORD)\n");
+	            case '2':
+	                usrParaPtr->mbSlaveMapIf = MB_SLV_IF_WORD;
+	            break;
+	            case '3':
+	                usrParaPtr->mbSlaveMapIf = MB_SLV_IF_DWORD_WSWAP;
+	            break;
+	            case '.': 
+	                goto MODULE_END;
+	            break;
+	            default :
+	                printf( "\t** Modbus Slave Mapping Interface is invalid(0 ~ 2) !!\n");
+	                goto MB_SLAVE_IF_SETUP;
+	            break;
+	        }			
+	
 SCHDULER_SETUP:
-  		
+	  		
 	        printf( "Scheduler Base Time ? [1: 100us, 2: 1ms] : ");
 	
 	        ioRead(gDebugPortFd, line, sizeof(line));
@@ -753,9 +753,10 @@ SCHDULER_SETUP:
 	                goto SCHDULER_SETUP;
 	            break;
 	        }
-	    }
+		}
         else
         {
+            usrParaPtr->mbSlaveMapIf 	= MB_SLV_IF_WORD;
             usrParaPtr->sysSchedlueType = ONEMS_SCHEDULE_CYCLE;
         }
 

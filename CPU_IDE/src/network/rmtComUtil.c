@@ -384,15 +384,13 @@ void longDataConversion( uint32 *destPtr, uint32 *srcPtr, uint32 dataLen)
     uint32 i;
     uint8 *ucDp, *ucSp;
 
-    for( i = 0; i < (dataLen/4); i++, destPtr++, srcPtr++)
-    {
+    for( i = 0; i < (dataLen/4); i++, destPtr++, srcPtr++){
         ucDp = (uint8 *)destPtr;
         ucSp = (uint8 *)srcPtr;
         COPYL(ucDp, ucSp);
     }
 	
-	if( (dataLen%4 == 2 ) )
-	{
+	if( (dataLen%4 == 2 ) ){
 		ucDp = (uint8 *)destPtr;
         ucSp = (uint8 *)srcPtr;
         COPYS(ucDp, ucSp);

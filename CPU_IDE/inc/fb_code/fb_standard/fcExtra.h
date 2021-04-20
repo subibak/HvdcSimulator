@@ -23,6 +23,9 @@ typedef struct {
 	uint32	in1;			
 	uint32	in2; 			
 
+	
+
+    
 	uint32	out;
 } strFC0681Info;
 

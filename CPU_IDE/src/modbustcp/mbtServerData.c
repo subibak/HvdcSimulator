@@ -250,7 +250,8 @@ int mbtsData__WriteSingleCoil (INF_CHANNEL_MBTS_ST *pCh,
 }
 
 
-int mbtsData__WriteSingleRegister (INF_CHANNEL_MBTS_ST *pCh, uint16 address, uint16 value)
+int mbtsData__WriteSingleRegister (INF_CHANNEL_MBTS_ST *pCh,
+				uint16 address, uint16 value)
 {
 	uint32	exceptionCode, writeVal;
 	uint16	wordWriteVal;
@@ -261,20 +262,17 @@ int mbtsData__WriteSingleRegister (INF_CHANNEL_MBTS_ST *pCh, uint16 address, uin
 	mapAddress += MIN_MB_AO_ADDR;
 
 	systemCnfgInfoRead((strSysConfigInfo *)&sysCnfgInfo);
-
 	if ((sysCnfgInfo.mbSlaveMapIf == MB_SLV_IF_DWORD_FIX) || (sysCnfgInfo.mbSlaveMapIf == MB_SLV_IF_DWORD_WSWAP))
 	{
 	
-		if(address%2)
-		{
-			setErrorCode(__FILE__, __LINE__, __FUNCTION__,MB_EC_ILLEGAL_DATA_ADDRESS); 
-			return (MB_EC_ILLEGAL_DATA_ADDRESS);
-		}
+	if(address%2)
+	{
+		setErrorCode(__FILE__, __LINE__, __FUNCTION__,MB_EC_ILLEGAL_DATA_ADDRESS); 
+		return (MB_EC_ILLEGAL_DATA_ADDRESS);
+	}
 	} 
 
-
 	systemCnfgInfoRead((strSysConfigInfo *)&sysCnfgInfo);
-	
 	if ((sysCnfgInfo.mbSlaveMapIf == MB_SLV_IF_DWORD_FIX) || (sysCnfgInfo.mbSlaveMapIf == MB_SLV_IF_DWORD_WSWAP))
 	{
 		writeVal = value;

@@ -25,8 +25,8 @@ uint32	stdFtrigInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *output
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= FTRIG_CODE;
-    paraInfoPtr->inputNo	= FTRIG_SPEC_NUM;
-    paraInfoPtr->intlVarNo	= FTRIG_VAR_NUM;
+    paraInfoPtr->inputNo		= FTRIG_SPEC_NUM;
+    paraInfoPtr->intlVarNo		= FTRIG_VAR_NUM;
     paraInfoPtr->outputNo	= FTRIG_OUTPUT_NUM;
 
 	/* 입력 - 1개 */
@@ -95,8 +95,8 @@ uint32	stdRtrigInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *output
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= RTRIG_CODE;
-    paraInfoPtr->inputNo	= RTRIG_SPEC_NUM;
-    paraInfoPtr->intlVarNo	= RTRIG_VAR_NUM;
+    paraInfoPtr->inputNo		= RTRIG_SPEC_NUM;
+    paraInfoPtr->intlVarNo		= RTRIG_VAR_NUM;
     paraInfoPtr->outputNo	= RTRIG_OUTPUT_NUM;
 
 	/* 입력 - 1개 */
