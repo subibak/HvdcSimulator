@@ -2287,7 +2287,7 @@ uint32	fbMemPointerGet
 			memInfoPtr->retainMemPtr 	= (uint32)gRetainVarInfoLocalPtr;
 			memInfoPtr->autoMemPtr 		= (uint32)gAutoVariableLocalPtr;
 			
-			memInfoPtr->flagMemPtr = (uint32)gMmemVariableLocalPtr;
+			memInfoPtr->flagMemPtr 		= (uint32)gMmemVariableLocalPtr;
 
         break;
 

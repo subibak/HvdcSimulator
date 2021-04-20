@@ -26,8 +26,8 @@ uint32	stdLimitInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *output
 	uint32	iLoop;
 
 	paraInfoPtr->fbId		= LIMIT_CODE;
-    paraInfoPtr->inputNo		= LIMIT_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= LIMIT_VAR_NUM;
+    paraInfoPtr->inputNo	= LIMIT_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= LIMIT_VAR_NUM;
     paraInfoPtr->outputNo	= LIMIT_OUTPUT_NUM;
 
 	/* 입력 - 3개 */
@@ -112,8 +112,8 @@ uint32	stdMax2InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= MAX2_CODE;
-    paraInfoPtr->inputNo		= MAX2_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= MAX2_VAR_NUM;
+    paraInfoPtr->inputNo	= MAX2_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= MAX2_VAR_NUM;
     paraInfoPtr->outputNo	= MAX2_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -190,8 +190,8 @@ uint32	stdMax4InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	iLoop;
 
 	paraInfoPtr->fbId		= MAX4_CODE;
-    paraInfoPtr->inputNo		= MAX4_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= MAX4_VAR_NUM;
+    paraInfoPtr->inputNo	= MAX4_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= MAX4_VAR_NUM;
     paraInfoPtr->outputNo	= MAX4_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -264,8 +264,8 @@ uint32	stdMax8InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	iLoop;
 
 	paraInfoPtr->fbId		= MAX8_CODE;
-    paraInfoPtr->inputNo		= MAX8_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= MAX8_VAR_NUM;
+    paraInfoPtr->inputNo	= MAX8_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= MAX8_VAR_NUM;
     paraInfoPtr->outputNo	= MAX8_OUTPUT_NUM;
 
 	/* 입력 - ?개 */

@@ -18,11 +18,12 @@ extern uint32	stdZ4_SwiYardSeqRunFunc(uint32, uint32);
 
 #define	FC0740_CODE					740
 
-/* Spec, Var, Output ¡Æ©ö¨ùo E¢çAI */
-#define	FC0740_SPEC_NUM				6
-#define	FC0740_VAR_NUM				3	
-#define	FC0740_OUTPUT_NUM			3
+/* Spec, Var, Output °¹¼ö È®ÀÎ */
+#define	FC0740_SPEC_NUM				8
+#define	FC0740_VAR_NUM				1	
+#define	FC0740_OUTPUT_NUM			1
 
+//
 
 // Input Variable
 //UNION NMAE_STRUCTURE NAME_STATE 
@@ -31,12 +32,6 @@ extern uint32	stdZ4_SwiYardSeqRunFunc(uint32, uint32);
 #define SM_STS_UNREADY				0
 #define SM_OP_AUTOMATIC				1
 #define SM_OP_MANUAL				0
-#define SM_SEQDIR_START				2
-#define SM_SEQDIR_STOP				1
-#define SM_SEQDIR_NODIR				0
-#define SM_SEQOP_HOLD				2
-#define SM_SEQOP_START				1
-#define SM_SEQOP_STOP				0
 #define SM_ACTPWR_P					1
 #define SM_ACTPWR_VDC				0
 #define SM_FREQ_EN					1
@@ -48,56 +43,48 @@ extern uint32	stdZ4_SwiYardSeqRunFunc(uint32, uint32);
 
 union UN_SYS_MODE
 {
-	uint32				all;
+	uint16				all;
 	struct {
-		uint32			status:2;		// System Status(2:Error, 1:Ready, 0:Unready)
-		uint32			rsvd0:1;		// Reserved
-	    uint32			operation:1;	// System Operation Mode(1:Automatic, 0:Manual)
-	   	uint32			seqDir:2;		// Sequence Direction(2:Start direction, 1:Stop direction, 0:No direction)
-	    uint32			seqOp:2;		// Sequence Operation(2:Hold, 1:Start, Stop:0)
-		uint32			actPwr:1;		// Active Power Mode(1:P Mode, 0:Vdc Mode)
-		uint32			freq:1;			// Frequency Mode(1:Enable, 0:Disable)
-		uint32			third:1;		// Third Harmonic Mode(1:Enable, 0:Disable)
-		uint32			rctPwr:1;		// Reactive Power Mode(1:Q Mode, 0:Vac Mode)
+		uint16			status:2;		// System Status(2:Error, 1:Ready, 0:Unready)
+	    uint16			operation:1;	// System Operation Mode(1:Automatic, 0:Manual)
+		uint16			actPwr:1;		// Active Power Mode(1:P Mode, 0:Vdc Mode)
+		uint16			freq:1;			// Frequency Mode(1:Enable, 0:Disable)
+		uint16			third:1;		// Third Harmonic Mode(1:Enable, 0:Disable)
+		uint16			rctPwr:1;		// Reactive Power Mode(1:Q Mode, 0:Vac Mode)
 	} bit;
 };
 
-#define SS_DOORINTLOCK_ERROR		2 
-#define SS_DOORINTLOCK_READY		1 
-#define SS_DOORINTLOCK_UNREADY		0 
-#define SS_SMSHORTSWI_ERROR			2
-#define SS_SMSHORTSWI_OPEN			1
-#define SS_SMSHORTSWI_CLOSE			0
-#define SS_CONVDISCHG_ERROR			2
-#define SS_CONVDISCHG_EXPIRED		1
-#define SS_CONVDISCHG_UNREADY		0
-#define SS_INTLCK_ERROR				2
-#define SS_INTLCK_COMPLETE			1
-#define SS_INTLCK_UNCOMPLETE		0
-#define SS_PASSIVECHG_ERROR			2
-#define SS_PASSIVECHG_COMPLETE		1
-#define SS_PASSIVECHG_UNCOMPLETE	0
-#define SS_ACTCHGSEQ_ERROR			2
-#define SS_ACTCHGSEQ_COMPLETE		1
-#define SS_ACTCHGSEQ_UNCOMPLETE		0
-#define SS_CONVBLKSEQ_ERROR			2
-#define SS_CONVBLKSEQ_COMPLETE		1
-#define SS_CONVBLKSEQ_UNCOMPLETE	0
 
-//System Status
+#define SQ_SEQDIR_START				2
+#define SQ_SEQDIR_STOP				1
+#define SQ_SEQDIR_NODIR				0
+#define SO_SEQOP_HOLD				2
+#define SO_SEQOP_START				1
+#define SO_SEQOP_STOP				0
+
+union UN_SEQ_OP
+{
+	uint16				all;
+	struct {
+	    uint16			seqDir:2;		// Sequence Direction(2:Start direction, 1:Stop direction, 0:No direction)
+	    uint16			seqOp:2;		// Sequence Operation(2:Hold, 1:Start, Stop:0)
+	} bit;
+};
+
+//Subsystem Status
 union UN_SS_STS 
 {
 	uint32				all;
 	struct {
-		uint32			doorIntLock:2;	// Door and Interlocking fulfilled(2:Error, 1:Ready, 0:Unready)
-		uint32			smSrtCirSwi:2;	// Submodule Short Circuit Switch Open(2:Fault, 1:Close, 0:Open)
+		uint32			doorIntLock:2;	// Door and Interlocking fullied(2:Error, 1:Ready, 0:Unready)
+		uint32			smSrtCirSwi:2;	// Submodule Short Circuit Siwth Open(2:Fault, 1:Close, 0:Open)
 		uint32			trCooling:2;	// TR. Cooling On(2:Fault, 1:ON, 0:OFF)
 		uint32			convCooling:2;	// Converter Cooling On(2:Fault, 1:Ready, 0:Unready)
 		uint32			cpSys:2;		// C&P System Ready(2:Fault, 1:Ready, 0:Unready)
 		uint32			tapChgPos:2;	// Tap Changer in Start Position(2:Fault, 1:In-position, 0:Out-position)
 		uint32			noEmy:2;		// No Emergency Switch Active(1:Active, 0:Inactive)
-		uint32			convDischg:2;	// Converter Discharge Time Expired(2: Error, 1: Expried, 0:Unready) 
-		uint32			passiveChg:2;	// Passive Charge(2:Error, 1:Complete, 0:Uncomplete)
+		uint32			convDischg:2;	// Converter Discharge Time Expired(2:Timer Expried, 1:Timer On, 0:Timer off) 
+		uint32			passiveChg:2;	// Passive Charge(2:Complete, 1:Processing, 0:Unprocessed)
 		uint32			convActchgSeq:2;// Converter Active Charging Sequence(3:Error, 2:Complete, 1:Processing, 0:Unprocessed)
 		uint32			convBlkSeq:2;	// Converter Block Sequence(3:Error, 2:Complete, 1:Processing, 0:Unprocessed)
 	} bit;
@@ -114,19 +101,22 @@ union UN_SS_STS
 
 union UN_YS { 
 	struct {
-		uint32			cbx01:1;		// TR Secondary CB, CB101 or CB201 Commnad or Status(1:Close, 0:Open), (1:Close, 0:Open)	
-		uint32			cbx91:1;		// TR Primary CB, CB191 or CB291 Commnad or Status(1:Close, 0:Open), (1:Close, 0:Open)	
-		uint32			dsx01:1;		// Zigzag TR DS, DS101 or DS201 Commnad or Status(1:Close, 0:Open), (1:Close, 0:Open)	
-		uint32			dsx02:1;		// Resistor Bypass Switch, DS102 or DS202 Commnad or Status(:Close, 0:Open), (1:Close, 0:Open)	
-		uint32			ds3x1:1;		// Busbar DS, DS311 or DS321 Commnad or Status(1:Close, 0:Open), (1:Close, 0:Open)	
-		uint32			esx01_02:1;		// AC ES, ES101&102 or ES201&202 Commnad or Status(1:Close, 0:Open), (1:Close, 0:Open)	
-		uint32			esx11_21:1;		// Converter Hall ES, ES111&121 or ES211&221 Commnad or Status(1:Close, 0:Open), (1:Close, 0:Open)	
-		uint32			esx12_22:1;		// DC Busbar ES, ES112&122 or ES212&222 Commnad or Status(1:Close, 0:Open), (1:Close, 0:Open)			
+		uint32			cbx01:2;		// CB101 or CB201 Commnad(2:Fault, 1:Close, 0:Open)	(1:Close, 0:Open)	
+		uint32			dsx01:2;		// DS101 or DS201 Commnad(2:Fault, 1:Close, 0:Open)	(1:Close, 0:Open)	
+		uint32			ds311:2;		// DS311 Commnad(2:Fault, 1:Close, 0:Open)	(1:Close, 0:Open)	
+		uint32			ds321:2;		// DS321 Commnad(2:Fault, 1:Close, 0:Open)	(1:Close, 0:Open)	
+		uint32			dsx02:2;		// DS102 or DS202 Commnad(2:Fault, 1:Close, 0:Open)	(1:Close, 0:Open)	
+		uint32			esx01:2;		// ES101 or ES201 Commnad(2:Fault, 1:Close, 0:Open)	(1:Close, 0:Open)	
+		uint32			esx02:2;		// ES201 or ES202 Commnad(2:Fault, 1:Close, 0:Open)	(1:Close, 0:Open)	
+		uint32			esx11:2;		// ES111 or ES211 Commnad(2:Fault, 1:Close, 0:Open)	(1:Close, 0:Open)	
+		uint32			esx12:2;		// ES112 or ES212 Commnad(2:Fault, 1:Close, 0:Open)	(1:Close, 0:Open)	
+		uint32			esx21:2;		// ES121 or ES221 Commnad(2:Fault, 1:Close, 0:Open)	(1:Close, 0:Open)	
+		uint32			esx22:2;		// ES122 or ES222 Commnad(2:Fault, 1:Close, 0:Open)	(1:Close, 0:Open)	
 	} bit;
 };
 
 // Trip Signals
-union UN_TRIP
+union UN_PRT_TRIP
 {
 	uint32				all;
 	struct {
@@ -137,6 +127,15 @@ union UN_TRIP
 	} bit;
 };
 
+union UN_HMI_TRIP
+{
+	uint32				all;
+	struct {
+		uint32			tripReset:1;	// All Trip Reset from HMI
+		uint32			convReset:1;	// Converter Reset from HMI
+		uint32			emst:1;			// Emergency Stop from HMI
+	} bit;
+};
 
 // Start/Stop Sequence 
 typedef enum {
@@ -170,13 +169,14 @@ typedef enum {
     Seq0720     	= 720,     	 	// Close Resistor Bypass Switch
     Seq0730     	= 730,      	// Check Tr. Primary Circuit Breaker Open
     Seq0740     	= 740,  	    // Open Tr. Secondary Circuit Breaker
-    Seq0760     	= 760,	      	// Open Resistor Bypass Switch
+    Seq0760     	= 760,	      	// Outputpen Resistor Bypass Switch
     Seq0770     	= 770,      	// Converter Block Sequence
     Seq0800     	= 800,  	    // In-Service or Coupled
 } SEQ_STEP;
 
 
 /* Output Variables */
+
 #define SEQ_COMM_ALL_RESET			0 
 #define SEQ_COMM_ERROR				3
 #define SEQ_COMM_COMPLETE			2
@@ -239,14 +239,17 @@ union UN_SEQSTS2{
 //FB Variable 
 typedef struct {
     // Input
-    union UN_SYS_MODE	sysMode;		// Operation Mode
-	union UN_SS_STS		sysSts;			// Subsystem Status
+    union UN_SYS_MODE	sysMode;		// Operation Mode 
+    union UN_SEQ_OP		seqOp;			// Sequence
+	union UN_SS_STS		subSysSts;		// Subsystem Status
 	union UN_YS			yardSwiSts;		// Yard Switch Status
-	union UN_SEQSTS1	oSeqSts1;		// Other Station Sequence Status1
-	union UN_SEQSTS2	oSeqSts2;		// Other StationSequence Status2
-	union UN_TRIP		trip;			// Trips from Protection 		
+	union UN_PRT_TRIP	prtTrip;		// Trips from Protection 		
+	union UN_HMI_TRIP   hmiTrip;		// Trips from HMI
 		
     // Inner variable
+	SEQ_STEP			PrevState;		// Previous State
+	SEQ_STEP			CurrState;		// Current State
+	SEQ_STEP			NextState;		// Next State
 	SEQ_STEP			PrevStep;		// Previous Step
 	SEQ_STEP			CurrStep;		// Current Step
 	SEQ_STEP			NextStep;		// Next Step	

@@ -249,13 +249,13 @@ uint32	stdOr2InitFunc
 	uint32	status = NO_ERROR;
 	uint32	iLoop;
 
-	paraInfoPtr->fbId		= OR2_BOOL_CODE;
-    paraInfoPtr->inputNo		= OR2_BOOL_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= OR2_BOOL_VAR_NUM;
-    paraInfoPtr->outputNo	= OR2_BOOL_OUTPUT_NUM;
+	paraInfoPtr->fbId		= OR2_CODE;
+    paraInfoPtr->inputNo	= OR2_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= OR2_VAR_NUM;
+    paraInfoPtr->outputNo	= OR2_OUTPUT_NUM;
 
 	/* 스펙 - 2개 */
-	for(iLoop = 0; iLoop < OR2_BOOL_SPEC_NUM; iLoop++)
+	for(iLoop = 0; iLoop < OR2_SPEC_NUM; iLoop++)
 		*specTypePtr++	= ANY_BIT_TYPE | SIZE32_TYPE;	
 
 	/* 내부변수 - 0개 */		
@@ -292,7 +292,7 @@ uint32	stdOr2RunFunc
 	/* 알고리즘 연산부 */
 	fd.output = 0;
 	
-	for(iLoop = 0; iLoop < OR2_BOOL_SPEC_NUM; iLoop++)
+	for(iLoop = 0; iLoop < OR2_SPEC_NUM; iLoop++)
 		fd.output |= fd.input[iLoop];
 
 
@@ -328,13 +328,13 @@ uint32	stdOr4InitFunc
 	uint32	status = NO_ERROR;
 	uint32	iLoop;
 
-	paraInfoPtr->fbId		= OR4_BOOL_CODE;
-    paraInfoPtr->inputNo		= OR4_BOOL_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= OR4_BOOL_VAR_NUM;
-    paraInfoPtr->outputNo	= OR4_BOOL_OUTPUT_NUM;
+	paraInfoPtr->fbId		= OR4_CODE;
+    paraInfoPtr->inputNo	= OR4_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= OR4_VAR_NUM;
+    paraInfoPtr->outputNo	= OR4_OUTPUT_NUM;
 
 	/* 스펙 - 4개 */
-	for(iLoop = 0; iLoop < OR4_BOOL_SPEC_NUM; iLoop++)
+	for(iLoop = 0; iLoop < OR4_SPEC_NUM; iLoop++)
 		*specTypePtr++	= ANY_BIT_TYPE | SIZE32_TYPE;	
 
 	/* 내부변수 - 0개 */		
@@ -371,7 +371,7 @@ uint32	stdOr4RunFunc
 	/* 알고리즘 연산부 */
 	fd.output = 0;
 	
-	for(iLoop = 0; iLoop < OR4_BOOL_SPEC_NUM; iLoop++)
+	for(iLoop = 0; iLoop < OR4_SPEC_NUM; iLoop++)
 		fd.output |= fd.input[iLoop];
 
     /* 출력 파라미터 쓰기 */
@@ -406,13 +406,13 @@ uint32	stdOr8InitFunc
 	uint32	status = NO_ERROR;
 	uint32	iLoop;
 	
-	paraInfoPtr->fbId		= OR8_BOOL_CODE;
-    paraInfoPtr->inputNo		= OR8_BOOL_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= OR8_BOOL_VAR_NUM;
-    paraInfoPtr->outputNo	= OR8_BOOL_OUTPUT_NUM;
+	paraInfoPtr->fbId		= OR8_CODE;
+    paraInfoPtr->inputNo	= OR8_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= OR8_VAR_NUM;
+    paraInfoPtr->outputNo	= OR8_OUTPUT_NUM;
 
 	/* 스펙 - 8개 */
-	for(iLoop = 0; iLoop < OR8_BOOL_SPEC_NUM; iLoop++)
+	for(iLoop = 0; iLoop < OR8_SPEC_NUM; iLoop++)
 		*specTypePtr++	= ANY_BIT_TYPE | SIZE32_TYPE;	
 
 
@@ -450,7 +450,7 @@ uint32	stdOr8RunFunc
 	/* 알고리즘 연산부 */
 	fd.output = 0;
 	
-	for(iLoop = 0; iLoop < OR8_BOOL_SPEC_NUM; iLoop++)
+	for(iLoop = 0; iLoop < OR8_SPEC_NUM; iLoop++)
 		fd.output |= fd.input[iLoop];
 
 
@@ -486,13 +486,13 @@ uint32	stdXor2InitFunc
 	uint32	status = NO_ERROR;
 	uint32	iLoop;
 
-	paraInfoPtr->fbId		= XOR2_BOOL_CODE;
-    paraInfoPtr->inputNo		= XOR2_BOOL_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= XOR2_BOOL_VAR_NUM;
-    paraInfoPtr->outputNo	= XOR2_BOOL_OUTPUT_NUM;
+	paraInfoPtr->fbId		= XOR2_CODE;
+    paraInfoPtr->inputNo	= XOR2_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= XOR2_VAR_NUM;
+    paraInfoPtr->outputNo	= XOR2_OUTPUT_NUM;
 
 	/* 스펙 - 2개 */
-	for(iLoop = 0; iLoop < XOR2_BOOL_SPEC_NUM; iLoop++)
+	for(iLoop = 0; iLoop < XOR2_SPEC_NUM; iLoop++)
 		*specTypePtr++	= ANY_BIT_TYPE | SIZE32_TYPE;
 
 	/* 내부변수 - 0개 */		

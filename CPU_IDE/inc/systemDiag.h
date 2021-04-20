@@ -446,34 +446,41 @@ typedef struct {
 	uint32 date;                /* Year(8bytes) | Month(8bytes) | Day(8bytes) | Hour(8bytes) */
 	uint32 time;                /* minute(8bytes) | second(8bytes) | milisecond(16bytes) */
 	uint32 dualSideId;
-#define HVDC_CPU_C_TYPE	(1)
-#define HVDC_CPU_P_TYPE	(2)
-#define HVDC_CPU_V_TYPE	(3)
-#define HVDC_CPU_M_TYPE	(4)
+
+#define HVDC_CPU_C_TYPE	(1)	/* Control */
+#define HVDC_CPU_P_TYPE	(2)	/* Protection */
+#define HVDC_CPU_V_TYPE	(3)	/* VBE */
+#define HVDC_CPU_M_TYPE	(4)	/* Measurement */
 	uint32 cpuType;
 	uint32 cpuErrSummary;
 	uint32 interStnCommStat;
 	uint32 fiberCommStat;
 	uint32 cpuRomVersion;       /* Reserved(16bytes) | major ver.(8bytes) | minor ver.(8bytes) */
 	uint32 taskStatus;          /* Task#8(4bytes) ~ Task#1(4bytes) */
+
 #define DIO_NONE_TYPE	(0)
 #define DIO_DI_TYPE	    (1)
 #define DIO_DO_TYPE	    (2)
 	uint32 dioBoardCfgStat;
+
 #define MAX_CPU_C_DIO_BOARD_NUM	(5)
 #define MAX_CPU_P_DIO_BOARD_NUM	(MAX_CPU_C_DIO_BOARD_NUM)
 	uint32 dioBoardErrStat[MAX_CPU_C_DIO_BOARD_NUM];
 	uint32 aioBoardCfgStat;
+
 #define MAX_CPU_C_AIO_BOARD_NUM	(1)
 #define MAX_CPU_P_AIO_BOARD_NUM	(0)
 	uint32 aioBoardErrStat;
+
 #define MAX_CPU_C_ODM_BOARD_NUM	(0)
 #define MAX_CPU_P_ODM_BOARD_NUM	(0)
 	uint32 ioComBrdStatSummary;
 	uint32 ioComBrdLiveCnt;
 	uint32 ioComBrdRomVersion;
+
 #define MAX_EXT_IO_SHELF_NUM	(8)
 	strIoShelfRasInfo ioShelfRasInfo[MAX_EXT_IO_SHELF_NUM];
+	
 } strCnPTypeCpuRasInfo;
 
 typedef struct {
@@ -486,13 +493,20 @@ typedef struct {
 	uint32 unusedPad2;
 	uint32 cpuRomVersion;       /* Reserved(16bytes) | major ver.(8bytes) | minor ver.(8bytes) */
 	uint32 unusedPad3;
+
 #define MAX_CPU_V_DIO_BOARD_NUM	(0)
 	uint32 aioBoardCfgStat;
+
 #define MAX_CPU_V_AIO_BOARD_NUM	(6)
 	uint32 aioBoardErrStat[MAX_CPU_V_AIO_BOARD_NUM];
+
 #define MAX_CPU_V_ODM_BOARD_NUM	(0)
+
+#if 0
+[V105] 진단 정보 제외 : m영역에 서버 모듈 진단 정보 및 전압 Write 함
 #define MAX_PHASE_SUB_MODULE_NUM	(768)
 	uint32 phaseModule[MAX_PHASE_SUB_MODULE_NUM];
+#endif
 } strVTypeCpuRasInfo;
 
 typedef struct {
@@ -505,13 +519,19 @@ typedef struct {
 	uint32 pFiberCommStat;
 	uint32 cpuRomVersion;       /* Reserved(16bytes) | major ver.(8bytes) | minor ver.(8bytes) */
 	uint32 unusedPad3;
+
 #define MAX_CPU_M_DIO_BOARD_NUM	(0)
 	uint32 aioBoardCfgStat;
+
 #define MAX_CPU_M_AIO_BOARD_NUM	(6)
 	uint32 aioBoardErrStat[MAX_CPU_M_AIO_BOARD_NUM];
-#define MAX_CPU_M_ODM_BOARD_NUM	(1)
+
+#if 0
+[V105] 사용 안함
+#define MAX_CPU_M_ODM_BOARD_NUM	(0)
 	uint32 odmBoardCfgStat;
 	uint32 odmBoardErrStat;
+#endif
 } strMTypeCpuRasInfo;
 
 typedef union {

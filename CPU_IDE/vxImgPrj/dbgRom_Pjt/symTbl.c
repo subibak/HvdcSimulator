@@ -2,7 +2,7 @@
 
 /* CREATED BY D:/Tornado690/vxworks-6.9/host/resource/hutils/tcl/makeSymTbl.tcl
  *  WITH ARGS ppc tmp.o symTbl.c
- *         ON Fri Feb 19 13:58:44 +1000 2021
+ *         ON Tue Feb 23 20:54:54 +1000 2021
  */
 
 #include "vxWorks.h"
@@ -20,7 +20,6 @@ IMPORT int CYCLIC_FB_EXEC_TIME_BASE;
 IMPORT int CodeAccessCmdOPFuncList;
 IMPORT int CompareSafelyD ();
 IMPORT int CompareSafelyS ();
-IMPORT int ConvReset ();
 IMPORT int CtrlModeAccessCmdOPFuncList;
 IMPORT int DIU_FB_MEMORY_START_BUS_ADDR;
 IMPORT int DUAL_NET_DEV_NAME;
@@ -132,7 +131,6 @@ IMPORT int STANDARDRtnTbl;
 IMPORT int S_MEMORY_AREA_MAX_SIZE;
 IMPORT int S_MEMORY_AREA_START_OFFSET;
 IMPORT int SetNewSeedtoRandomGenerator ();
-IMPORT int SysReset ();
 IMPORT int TAPE;
 IMPORT int TON_Timer ();
 IMPORT int Tcp_AcceptForServer ();
@@ -3973,7 +3971,6 @@ IMPORT int fstatfs ();
 IMPORT int fstatfs64 ();
 IMPORT int fsync ();
 IMPORT int ftOverDetect ();
-IMPORT int ftOverDetect_t ();
 IMPORT int ftUnderDetect ();
 IMPORT int ftell ();
 IMPORT int ftpCommand ();
@@ -3998,6 +3995,7 @@ IMPORT int ftplDebug;
 IMPORT int ftplPasvModeDisable;
 IMPORT int ftplTransientMaxRetryCount;
 IMPORT int ftplTransientRetryInterval;
+IMPORT int funcSeq0000 ();
 IMPORT int funcXbdBlkCacheAttach;
 IMPORT int funcXbdBlkCacheDetach;
 IMPORT int funcXbdBlkCacheStrategy;
@@ -10384,7 +10382,7 @@ IMPORT int zbufSockSendto ();
 IMPORT int zbufSplit ();
 IMPORT int zbuf_free ();
 
-SYMBOL standTbl [10839] =
+SYMBOL standTbl [10837] =
     {
         {{NULL}, "AddSafelyD", (char*) AddSafelyD, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "AddSafelyS", (char*) AddSafelyS, 0, 0,  SYM_GLOBAL | SYM_TEXT},
@@ -10398,7 +10396,6 @@ SYMBOL standTbl [10839] =
         {{NULL}, "CodeAccessCmdOPFuncList", (char*) &CodeAccessCmdOPFuncList, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "CompareSafelyD", (char*) CompareSafelyD, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "CompareSafelyS", (char*) CompareSafelyS, 0, 0,  SYM_GLOBAL | SYM_TEXT},
-        {{NULL}, "ConvReset", (char*) ConvReset, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "CtrlModeAccessCmdOPFuncList", (char*) &CtrlModeAccessCmdOPFuncList, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "DIU_FB_MEMORY_START_BUS_ADDR", (char*) &DIU_FB_MEMORY_START_BUS_ADDR, 0, 0,  SYM_GLOBAL | SYM_BSS},
         {{NULL}, "DUAL_NET_DEV_NAME", (char*) &DUAL_NET_DEV_NAME, 0, 0,  SYM_GLOBAL | SYM_BSS},
@@ -10510,7 +10507,6 @@ SYMBOL standTbl [10839] =
         {{NULL}, "S_MEMORY_AREA_MAX_SIZE", (char*) &S_MEMORY_AREA_MAX_SIZE, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "S_MEMORY_AREA_START_OFFSET", (char*) &S_MEMORY_AREA_START_OFFSET, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "SetNewSeedtoRandomGenerator", (char*) SetNewSeedtoRandomGenerator, 0, 0,  SYM_GLOBAL | SYM_TEXT},
-        {{NULL}, "SysReset", (char*) SysReset, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "TAPE", (char*) &TAPE, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "TON_Timer", (char*) TON_Timer, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "Tcp_AcceptForServer", (char*) Tcp_AcceptForServer, 0, 0,  SYM_GLOBAL | SYM_TEXT},
@@ -14813,7 +14809,6 @@ SYMBOL standTbl [10839] =
         {{NULL}, "fstatfs64", (char*) fstatfs64, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "fsync", (char*) fsync, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "ftOverDetect", (char*) ftOverDetect, 0, 0,  SYM_GLOBAL | SYM_TEXT},
-        {{NULL}, "ftOverDetect_t", (char*) ftOverDetect_t, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "ftUnderDetect", (char*) ftUnderDetect, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "ftell", (char*) ftell, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "ftpCommand", (char*) ftpCommand, 0, 0,  SYM_GLOBAL | SYM_TEXT},
@@ -14838,6 +14833,7 @@ SYMBOL standTbl [10839] =
         {{NULL}, "ftplPasvModeDisable", (char*) &ftplPasvModeDisable, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "ftplTransientMaxRetryCount", (char*) &ftplTransientMaxRetryCount, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "ftplTransientRetryInterval", (char*) &ftplTransientRetryInterval, 0, 0,  SYM_GLOBAL | SYM_DATA},
+        {{NULL}, "funcSeq0000", (char*) funcSeq0000, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "funcXbdBlkCacheAttach", (char*) &funcXbdBlkCacheAttach, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "funcXbdBlkCacheDetach", (char*) &funcXbdBlkCacheDetach, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "funcXbdBlkCacheStrategy", (char*) &funcXbdBlkCacheStrategy, 0, 0,  SYM_GLOBAL | SYM_DATA},
@@ -21228,4 +21224,4 @@ SYMBOL standTbl [10839] =
     };
 
 
-ULONG standTblSize = 10839;
+ULONG standTblSize = 10837;
