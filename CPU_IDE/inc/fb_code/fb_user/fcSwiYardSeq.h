@@ -20,7 +20,7 @@ extern uint32	stdZ4_SwiYardSeqRunFunc(uint32, uint32);
 
 /* Spec, Var, Output ¡Æ©ö¨ùo E¢çAI */
 #define	FC0740_SPEC_NUM				6
-#define	FC0740_VAR_NUM				3	
+#define	FC0740_VAR_NUM				5	
 #define	FC0740_OUTPUT_NUM			3
 
 
@@ -97,14 +97,14 @@ union UN_SS_STS
 	uint32				all;
 	struct {
 		uint32			rsvd:11;		// Reserved
-		uint32			RampVacInit:1	// Ramp Vac Init(1:Complete,:Uncomplete)
-		uint32			RampQInit:1		// Ramp Q Init(1:Complete,:Uncomplete)
-		uint32			RampVdcInit:1	// Ramp Vdc Init(1:Complete,:Uncomplete)
-		uint32			RampPInit:1		// Ramp P Init(1:Complete,:Uncomplete)		
-		uint32			RampVacRated:1	// Ramp Vac Rated(1:Complete,:Uncomplete)
-		uint32			RampQRated:1	// Ramp Q Rated(1:Complete,:Uncomplete)
-		uint32			RampVdcRated:1	// Ramp Vdc Rated(1:Complete,:Uncomplete)
-		uint32			RampPRated:1	// Ramp P Rated(1:Complete,:Uncomplete)
+		uint32			RampVacInit:1;	// Ramp Vac Init(1:Complete,:Uncomplete)
+		uint32			RampQInit:1;	// Ramp Q Init(1:Complete,:Uncomplete)
+		uint32			RampVdcInit:1;	// Ramp Vdc Init(1:Complete,:Uncomplete)
+		uint32			RampPInit:1;	// Ramp P Init(1:Complete,:Uncomplete)		
+		uint32			RampVacRated:1;	// Ramp Vac Rated(1:Complete,:Uncomplete)
+		uint32			RampQRated:1;	// Ramp Q Rated(1:Complete,:Uncomplete)
+		uint32			RampVdcRated:1;	// Ramp Vdc Rated(1:Complete,:Uncomplete)
+		uint32			RampPRated:1;	// Ramp P Rated(1:Complete,:Uncomplete)
 		uint32			convBlkSeq:2;	// Converter Block Sequence(3:Error, 2:Complete, 1:Processing, 0:Unprocessed)
 		uint32			convActchgSeq:2;// Converter Active Charging Sequence(3:Error, 2:Complete, 1:Processing, 0:Unprocessed)
 		uint32			passiveChg:1;	// Passive Charge(2:Error, 1:Complete, 0:Uncomplete)
@@ -275,7 +275,8 @@ typedef struct {
 	SEQ_STEP			PrevStep;		// Previous Step
 	SEQ_STEP			CurrStep;		// Current Step
 	SEQ_STEP			NextStep;		// Next Step	
-	uint32				flagSeqComlete;	// Results of Sequence Process(1:Complete, 0:Uncomplete)
+	uint32				flagSeqComlete;	// Flag Results of Sequence Process(1:Complete, 0:Uncomplete)
+    uint32				flagSeqOp;		// Flag Sequence Operation(1:Start, 0:Stop)
     
     // Output
 	union UN_SEQSTS1	seqSts1;		// Sequence Status1

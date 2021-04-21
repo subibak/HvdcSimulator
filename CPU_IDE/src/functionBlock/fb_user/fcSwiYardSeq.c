@@ -56,6 +56,8 @@ uint32	stdZ4_SwiYardSeqInitFunc
 	**************************************************/
 	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
 	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
+	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
+	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
 	*intlVarTypePtr 		= UINT_TYPE|SIZE32_TYPE;
 	
 	/**************************************************
@@ -115,10 +117,12 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 	   	fb.yardSwiComm.bit.esx12_22 = YARD_SWITCH_COMM_CLOSE;
 
 	   	// Flag Sequence Process Initialization
-	   	fb.flagSeqStatus == FLAG_SEQ_UNCOMPLETE;
+#if 0/*임시 */
+	   	fb.flagSeqStatus = FLAG_SEQ_UNCOMPLETE;
 
 	   	// Flag Sequence Opeation Initialization 
-	   	fb.flagSeqOp == FLAG_SEQ_STOP;
+	   	fb.flagSeqOp = FLAG_SEQ_STOP;
+#endif
 	}
 	else if(fb.sysMode.bit.status == SM_STS_READY)
 	{
@@ -158,7 +162,7 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 		// 	}
 
 		// System Mode Check
-		if(fb.sysMode.operation == SM_OP_AUTOMATIC)
+		if(fb.sysMode.bit.operation == SM_OP_AUTOMATIC)
 		{
 			// Automatic
 			
@@ -168,12 +172,12 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 			// Manual
 
 		}
-		
+
 		// Sequence Operation START/STOP/HOLD
 		if(fb.sysMode.bit.seqOp == SM_SEQOP_START)		// Sequence: Start
 		{
 			// System Mode Check
-			if(fb.sysMode.operation == SM_OP_MANUAL) 	// Manual Mode
+			if(fb.sysMode.bit.operation == SM_OP_MANUAL)// Manual Mode
 			{			
 				if(fb.flagSeqComlete == FLAG_SEQ_COMPLETE)
 					fb.flagSeqOp = FLAG_SEQ_STOP;
@@ -183,9 +187,9 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 			else 										// Automatic Mode
 				fb.flagSeqOp = FLAG_SEQ_START;			
 		}
+
 		else if(fb.sysMode.bit.seqOp == SM_SEQOP_STOP)	// Sequence: Stop
 			fb.flagSeqOp = FLAG_SEQ_STOP;
-
 		if(fb.flagSeqOp == FLAG_SEQ_START)
 			fb.CurrStep = fb.NextStep;
 		else if(fb.flagSeqOp == FLAG_SEQ_STOP)
