@@ -94,8 +94,8 @@ uint32	stdEq4InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= EQ4_CODE;
-    paraInfoPtr->inputNo		= EQ4_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= EQ4_VAR_NUM;
+    paraInfoPtr->inputNo	= EQ4_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= EQ4_VAR_NUM;
     paraInfoPtr->outputNo	= EQ4_OUTPUT_NUM;
 
 	/* 입력 - 4개 */
@@ -168,8 +168,8 @@ uint32	stdEq8InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= EQ8_CODE;
-    paraInfoPtr->inputNo		= EQ8_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= EQ8_VAR_NUM;
+    paraInfoPtr->inputNo	= EQ8_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= EQ8_VAR_NUM;
     paraInfoPtr->outputNo	= EQ8_OUTPUT_NUM;
 
 	/* 입력 - 8개 */
@@ -242,8 +242,8 @@ uint32	stdGe2InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= GE2_CODE;
-    paraInfoPtr->inputNo		= GE2_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= GE2_VAR_NUM;
+    paraInfoPtr->inputNo	= GE2_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= GE2_VAR_NUM;
     paraInfoPtr->outputNo	= GE2_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -316,8 +316,8 @@ uint32	stdGe4InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	iLoop;
 
 	paraInfoPtr->fbId		= GE4_CODE;
-    paraInfoPtr->inputNo		= GE4_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= GE4_VAR_NUM;
+    paraInfoPtr->inputNo	= GE4_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= GE4_VAR_NUM;
     paraInfoPtr->outputNo	= GE4_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -391,8 +391,8 @@ uint32	stdGe8InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= GE8_CODE;
-    paraInfoPtr->inputNo		= GE8_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= GE8_VAR_NUM;
+    paraInfoPtr->inputNo	= GE8_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= GE8_VAR_NUM;
     paraInfoPtr->outputNo	= GE8_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -465,8 +465,8 @@ uint32	stdGt2InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= GT2_CODE;
-    paraInfoPtr->inputNo		= GT2_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= GT2_VAR_NUM;
+    paraInfoPtr->inputNo	= GT2_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= GT2_VAR_NUM;
     paraInfoPtr->outputNo	= GT2_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -540,8 +540,8 @@ uint32	stdGt4InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	iLoop;
 
 	paraInfoPtr->fbId		= GT4_CODE;
-    paraInfoPtr->inputNo		= GT4_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= GT4_VAR_NUM;
+    paraInfoPtr->inputNo	= GT4_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= GT4_VAR_NUM;
     paraInfoPtr->outputNo	= GT4_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -609,8 +609,8 @@ uint32	stdGt8InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= GT8_CODE;
-    paraInfoPtr->inputNo		= GT8_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= GT8_VAR_NUM;
+    paraInfoPtr->inputNo	= GT8_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= GT8_VAR_NUM;
     paraInfoPtr->outputNo	= GT8_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -682,8 +682,8 @@ uint32	stdLe2InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= LE2_CODE;
-    paraInfoPtr->inputNo		= LE2_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= LE2_VAR_NUM;
+    paraInfoPtr->inputNo	= LE2_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= LE2_VAR_NUM;
     paraInfoPtr->outputNo	= LE2_OUTPUT_NUM;
 
 	/* 입력 - ?개 */

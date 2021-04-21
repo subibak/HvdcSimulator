@@ -25,8 +25,8 @@ uint32	stdCtdInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= CTD_CODE;
-    paraInfoPtr->inputNo		= CTD_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= CTD_VAR_NUM;
+    paraInfoPtr->inputNo	= CTD_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= CTD_VAR_NUM;
     paraInfoPtr->outputNo	= CTD_OUTPUT_NUM;
 
 	/* 입력 - 3개 */
@@ -115,8 +115,8 @@ uint32	stdCtuInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= CTU_CODE;
-    paraInfoPtr->inputNo		= CTU_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= CTU_VAR_NUM;
+    paraInfoPtr->inputNo	= CTU_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= CTU_VAR_NUM;
     paraInfoPtr->outputNo	= CTU_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -201,8 +201,8 @@ uint32	stdCtudInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= CTUD_CODE;
-    paraInfoPtr->inputNo		= CTUD_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= CTUD_VAR_NUM;
+    paraInfoPtr->inputNo	= CTUD_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= CTUD_VAR_NUM;
     paraInfoPtr->outputNo	= CTUD_OUTPUT_NUM;
 
 	/* 입력 - ?개 */

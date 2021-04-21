@@ -92,8 +92,8 @@ uint32	stdAdd2InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	iLoop;
 
 	paraInfoPtr->fbId		= ADD2_CODE;
-    paraInfoPtr->inputNo		= ADD2_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= ADD2_VAR_NUM;
+    paraInfoPtr->inputNo	= ADD2_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= ADD2_VAR_NUM;
     paraInfoPtr->outputNo	= ADD2_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -956,8 +956,8 @@ uint32	stdModInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= MOD_CODE;
-    paraInfoPtr->inputNo		= MOD_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= MOD_VAR_NUM;
+    paraInfoPtr->inputNo	= MOD_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= MOD_VAR_NUM;
     paraInfoPtr->outputNo	= MOD_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -1063,8 +1063,8 @@ uint32	stdExptInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= EXPT_CODE;
-    paraInfoPtr->inputNo		= EXPT_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= EXPT_VAR_NUM;
+    paraInfoPtr->inputNo	= EXPT_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= EXPT_VAR_NUM;
     paraInfoPtr->outputNo	= EXPT_OUTPUT_NUM;
 
 	/* 입력 - 2개 */

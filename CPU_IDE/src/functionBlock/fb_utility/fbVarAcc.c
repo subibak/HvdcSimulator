@@ -580,9 +580,10 @@ uint32 refDataCopyFromMem	(	uint32	*retSpecDataPtr,
 		}
 	}
 
+
 	if(status != NO_ERROR)
 		return(status);
-			
+		
 	if( CHK_IS_ANY_TYPE(specType) && (tcType==TYPECASTING_ENABLE) 
 						&&
 		( (GET_BASIC_DATA_TYPE(specActionData.dataType) != GET_BASIC_DATA_TYPE(specType)) 
@@ -603,7 +604,7 @@ uint32 refDataCopyFromMem	(	uint32	*retSpecDataPtr,
 			return(status);
 		}
 #endif
-		
+
 		
 #ifdef USED_BIT64
 		if( (specActionData.bitposFlag==1) &&(GET_TYPE_SIZE(specType)==SIZE64_TYPE) )
@@ -613,7 +614,6 @@ uint32 refDataCopyFromMem	(	uint32	*retSpecDataPtr,
 #else
 		kindTypeConversion = ((GET_BASIC_DATA_TYPE(specActionData.dataType))<<4) | GET_BASIC_DATA_TYPE(specType);
 #endif
-
 		
 		switch(kindTypeConversion) 
 		{
@@ -696,6 +696,7 @@ uint32 refDataCopyFromMem	(	uint32	*retSpecDataPtr,
 		}
 	}
 
+
 	return(status);
 }
 
@@ -775,8 +776,8 @@ uint32 refDataCopyToMem(uint32 *setSpecDataPtr,uint32 specData,
 				destPtr = (uint8*)gMmemVariableLocalPtr;
 			}
 			
-			
-			if(specActionData.bitposFlag==1)
+		
+			if(specActionData.bitposFlag == 1)
 			{
 				if((specActionData.bitPosition < 0)) 
 				{
@@ -859,40 +860,39 @@ uint32 refDataCopyToMem(uint32 *setSpecDataPtr,uint32 specData,
 
 			else 
 			{
-				if(specActionData.dataSize==SPEC_SIZE_BYTE) 
+				if(specActionData.dataSize == SPEC_SIZE_BYTE) 
 				{
 					destPtr += memoryAddress * 1 ; 
 					uint8Data = (uint8)(*setSpecDataPtr & 0xff);
 					memoryCopy ((uint8*)destPtr, (uint8*)&uint8Data, 1);
 				} 
-				else if(specActionData.dataSize==SPEC_SIZE_WORD) 
+				else if(specActionData.dataSize == SPEC_SIZE_WORD) 
 				{
 					destPtr += memoryAddress * 2; 
 					uint16Data = (uint16)(*setSpecDataPtr & 0xffff);
 					memoryCopy ((uint8*)destPtr, (uint8*)&uint16Data, 2);
 				} 
-				else if(specActionData.dataSize==SPEC_SIZE_DWORD) 
+				else if(specActionData.dataSize == SPEC_SIZE_DWORD) 
 				{
 					destPtr += memoryAddress * 4 ; 
 					memoryCopy ((uint8*)destPtr, (uint8*)setSpecDataPtr, 4);
 				} 
-				else if(specActionData.dataSize==SPEC_SIZE_LWORD) 
+				else if(specActionData.dataSize == SPEC_SIZE_LWORD) 
 				{
 					destPtr += memoryAddress * 8 ; 
 					memoryCopy ((uint8*)destPtr, (uint8*)setSpecDataPtr, 8);
 				} 
 				
-				else if(specActionData.dataSize==SPEC_SIZE_BIT) 
+				else if(specActionData.dataSize == SPEC_SIZE_BIT) 
 				{
 					destPtr += memoryAddress/8 ;  
 					
 					booldata = (*setSpecDataPtr)&0x01; 
 
 					if(booldata ==1) 
-						*destPtr |= (0x1 <<memoryAddress%8);
+						*destPtr |= (0x1 << memoryAddress%8);
 					else if(booldata ==0) 
-						*destPtr &= (~(0x1<< memoryAddress%8));
-
+						*destPtr &= (~(0x1 << memoryAddress%8));
 				} 
 				else 
 				{

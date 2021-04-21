@@ -117,14 +117,14 @@ typedef struct {
 **	2개 입력 OR FB 정의
 **
 **********************************************************************/
-#define	OR2_BOOL_CODE			40
-#define	OR2_BOOL_SPEC_NUM		2
-#define	OR2_BOOL_VAR_NUM		0	
-#define	OR2_BOOL_OUTPUT_NUM		1
+#define	OR2_CODE			40
+#define	OR2_SPEC_NUM		2
+#define	OR2_VAR_NUM			0	
+#define	OR2_OUTPUT_NUM		1
 
 typedef struct {
 	/* 스펙 - 2개*/
-	uint32	input[OR2_BOOL_SPEC_NUM];
+	uint32	input[OR2_SPEC_NUM];
 
 	/* 내부변수 - 0개 */
 
@@ -137,14 +137,14 @@ typedef struct {
 **	4개 입력 OR FB 정의
 **
 **********************************************************************/
-#define	OR4_BOOL_CODE			42
-#define	OR4_BOOL_SPEC_NUM		4
-#define	OR4_BOOL_VAR_NUM		0	
-#define	OR4_BOOL_OUTPUT_NUM		1
+#define	OR4_CODE			42
+#define	OR4_SPEC_NUM		4
+#define	OR4_VAR_NUM			0	
+#define	OR4_OUTPUT_NUM		1
 
 typedef struct {
 	/* 스펙 - 4개*/
-	uint32	input[OR4_BOOL_SPEC_NUM];
+	uint32	input[OR4_SPEC_NUM];
 
 	/* 내부변수 - 0개 */
 
@@ -157,14 +157,14 @@ typedef struct {
 **	8개 입력 OR FB 정의
 **
 **********************************************************************/
-#define	OR8_BOOL_CODE			46
-#define	OR8_BOOL_SPEC_NUM		8
-#define	OR8_BOOL_VAR_NUM		0	
-#define	OR8_BOOL_OUTPUT_NUM		1
+#define	OR8_CODE			46
+#define	OR8_SPEC_NUM		8
+#define	OR8_VAR_NUM			0	
+#define	OR8_OUTPUT_NUM		1
 
 typedef struct {
 	/* 스펙 - 8개*/
-	uint32	input[OR8_BOOL_SPEC_NUM];
+	uint32	input[OR8_SPEC_NUM];
 
 	/* 내부변수 - 0개 */
 
@@ -177,10 +177,10 @@ typedef struct {
 **	2개 입력 XOR FB 정의
 **
 **********************************************************************/
-#define	XOR2_BOOL_CODE			52
-#define	XOR2_BOOL_SPEC_NUM		2
-#define	XOR2_BOOL_VAR_NUM		0	
-#define	XOR2_BOOL_OUTPUT_NUM	1
+#define	XOR2_CODE			52
+#define	XOR2_SPEC_NUM		2
+#define	XOR2_VAR_NUM		0	
+#define	XOR2_OUTPUT_NUM		1
 
 typedef struct {
 	/* 스펙 - 2개*/

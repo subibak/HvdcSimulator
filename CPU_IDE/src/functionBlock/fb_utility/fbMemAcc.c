@@ -1969,8 +1969,7 @@ static uint32	fbParaCopyFromMem
 			return(status);
 		}
 	}
-
-	   
+   
 	for(i=0; i < fbMemPtr->inputNo; i++,
 				destPtr++, specStartPtr++, specTypePtr++, specActionDataPtr++)
 	{	
@@ -2287,7 +2286,7 @@ uint32	fbMemPointerGet
 			memInfoPtr->retainMemPtr 	= (uint32)gRetainVarInfoLocalPtr;
 			memInfoPtr->autoMemPtr 		= (uint32)gAutoVariableLocalPtr;
 			
-			memInfoPtr->flagMemPtr = (uint32)gMmemVariableLocalPtr;
+			memInfoPtr->flagMemPtr 		= (uint32)gMmemVariableLocalPtr;
 
         break;
 

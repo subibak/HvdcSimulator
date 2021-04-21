@@ -57,10 +57,10 @@ uint32	ethDSndInitFunc
 {
 	uint32	status = NO_ERROR;
 
-	paraInfoPtr->fbId		= ETH_DATA_SEND_CODE;
-    paraInfoPtr->inputNo		= ETH_DATA_SEND_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= ETH_DATA_SEND_VAR_NUM;
-    paraInfoPtr->outputNo	= ETH_DATA_SEND_OUTPUT_NUM;
+	paraInfoPtr->fbId		= ETH_SEND_CODE;
+    paraInfoPtr->inputNo	= ETH_SEND_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= ETH_SEND_VAR_NUM;
+    paraInfoPtr->outputNo	= ETH_SEND_OUTPUT_NUM;
 
 	
 	*specTypePtr++	= INT_TYPE|SIZE32_TYPE;	
@@ -607,10 +607,10 @@ uint32	ethDBrdInitFunc
 {
 	uint32	status = NO_ERROR;
 
-	paraInfoPtr->fbId		= ETH_DATA_BROAD_CODE;
-    paraInfoPtr->inputNo		= ETH_DATA_BROAD_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= ETH_DATA_BROAD_VAR_NUM;
-    paraInfoPtr->outputNo	= ETH_DATA_BROAD_OUTPUT_NUM;
+	paraInfoPtr->fbId		= ETH_BROAD_CODE;
+    paraInfoPtr->inputNo	= ETH_BROAD_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= ETH_BROAD_VAR_NUM;
+    paraInfoPtr->outputNo	= ETH_BROAD_OUTPUT_NUM;
 
 	
 	*specTypePtr++	= INT_TYPE|SIZE32_TYPE;	
@@ -822,8 +822,8 @@ uint32	pmc502RdInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *output
 	uint32	iLoop;
 
 	paraInfoPtr->fbId		= PMC502_RD_CODE;
-    paraInfoPtr->inputNo		= PMC502_RD_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= PMC502_RD_VAR_NUM;
+    paraInfoPtr->inputNo	= PMC502_RD_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= PMC502_RD_VAR_NUM;
     paraInfoPtr->outputNo	= PMC502_RD_OUTPUT_NUM;
 
 	for(iLoop = 0; iLoop < PMC502_RD_SPEC_NUM; iLoop++, specTypePtr++)
@@ -1112,8 +1112,8 @@ uint32	sysStaCpInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *output
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= SYSCFG_CODE;
-    paraInfoPtr->inputNo		= SYSCFG_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= SYSCFG_VAR_NUM;
+    paraInfoPtr->inputNo	= SYSCFG_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= SYSCFG_VAR_NUM;
     paraInfoPtr->outputNo	= SYSCFG_OUTPUT_NUM;
 
 	/* ÀÔ·Â - ?°³ */

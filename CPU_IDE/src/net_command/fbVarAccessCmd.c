@@ -1181,6 +1181,7 @@ CHECK_END:
 		readVarNum = *reqDataPtr++;
 		*respDataPtr++ = readVarNum;
 		respMsgPtr->dataLen +=  DOUBLE_SIZE;
+		
 		for(i=0;i<readVarNum;i++)
 		{
 			specAction = (strFbSpecActionInfo*)reqDataPtr++;

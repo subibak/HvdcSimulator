@@ -44,6 +44,7 @@ void funcSeq0800(strFC0740Info *);
 void funcSeq0000(strFC0740Info *fb)
 {
 	fb->NextStep = Seq0200;
+	fb->seqSts1.bit.seq0000 = SEQ_COMM_COMPLETE;
 }
 
 void funcSeq0200(strFC0740Info *fb)
@@ -231,7 +232,7 @@ void funcSeq0250(strFC0740Info *fb)
 		else
 		{
 			fb->NextStep = Seq0260;
-			fb->seqSts1.bit.seq0250 = SEQ_COMM_PROCESSING;
+			fb->seqSts1.bit.seq0250 = SEQ_COMM_COMPLETE;
 		}
 
 	}
@@ -525,7 +526,7 @@ void funcSeq0510(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		fb->NextStep = Seq0510;
-		fb->seqSts1.bit.seq0510 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0510 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
@@ -534,23 +535,23 @@ void funcSeq0510(strFC0740Info *fb)
 		if((fb->yardSwiSts.bit.ds3x1 == YARD_SWITCH_STATUS_OPEN))
 		{
 			fb->NextStep = Seq0400;
-			fb->seqSts1.bit.seq0510 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0510 = SEQ_COMM_COMPLETE;
 		}
 		else
 		{
 			fb->NextStep = Seq0510;
-			fb->seqSts1.bit.seq0510 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0510 = SEQ_COMM_PROCESSING;
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0510;
-		fb->seqSts1.bit.seq0510 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0510 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0510;
-		fb->seqSts1.bit.seq0510 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0510 = SEQ_COMM_UNPROCESSED;
 	}	
 }
 
@@ -559,30 +560,30 @@ void funcSeq0520(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		fb->NextStep = Seq0600;
-		fb->seqSts1.bit.seq0520 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0520 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		if((fb->sysSts.bit.convDischg == SS_CONVDISCHG_EXPIRED))
 		{
 			fb->NextStep = Seq0510;
-			fb->seqSts1.bit.seq0520 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0520 = SEQ_COMM_PROCESSING;
 		}
 		else
 		{
 			fb->NextStep = Seq0520;
-			fb->seqSts1.bit.seq0520 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0520 = SEQ_COMM_COMPLETE;
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0520;
-		fb->seqSts1.bit.seq0520 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0520 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0520;
-		fb->seqSts1.bit.seq0520 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0520 = SEQ_COMM_UNPROCESSED;
 	}	
 }
 
@@ -591,22 +592,22 @@ void funcSeq0600(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		fb->NextStep = Seq0610;
-		fb->seqSts1.bit.seq0600 = SEQ_COMM_COMPLETE;
+		fb->seqSts2.bit.seq0600 = SEQ_COMM_COMPLETE;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		fb->NextStep = Seq0520;
-		fb->seqSts1.bit.seq0600 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0600 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0600;
-		fb->seqSts1.bit.seq0600 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0600 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0600;
-		fb->seqSts1.bit.seq0600 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0600 = SEQ_COMM_UNPROCESSED;
 	}
 }
 
@@ -637,28 +638,28 @@ void funcSeq0610(strFC0740Info *fb)
 		if((condition == SS_INTLCK_COMPLETE))
 		{
 			fb->NextStep = Seq0620;
-			fb->seqSts1.bit.seq0610 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0610 = SEQ_COMM_COMPLETE;
 		}
 		else
 		{
 			fb->NextStep = Seq0610;
-			fb->seqSts1.bit.seq0610 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0610 = SEQ_COMM_PROCESSING;
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		fb->NextStep = Seq0600;
-		fb->seqSts1.bit.seq0610 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0610 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0610;
-		fb->seqSts1.bit.seq0610 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0610 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0610;
-		fb->seqSts1.bit.seq0610 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0610 = SEQ_COMM_UNPROCESSED;
 	}
 }
 
@@ -671,28 +672,28 @@ void funcSeq0620(strFC0740Info *fb)
 		if((fb->yardSwiSts.bit.dsx02 == YARD_SWITCH_STATUS_OPEN))
 		{
 			fb->NextStep = Seq0630;
-			fb->seqSts1.bit.seq0620 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0620 = SEQ_COMM_COMPLETE;
 		}
 		else
 		{
 			fb->NextStep = Seq0620;
-			fb->seqSts1.bit.seq0620 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0620 = SEQ_COMM_PROCESSING;
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		fb->NextStep = Seq0720;
-		fb->seqSts1.bit.seq0620 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0620 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0620;
-		fb->seqSts1.bit.seq0620 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0620 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0620;
-		fb->seqSts1.bit.seq0620 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0620 = SEQ_COMM_UNPROCESSED;
 	}
 }
 
@@ -703,28 +704,28 @@ void funcSeq0630(strFC0740Info *fb)
 		if((fb->yardSwiSts.bit.cbx91 == YARD_SWITCH_STATUS_CLOSE))
 		{
 			fb->NextStep = Seq0640;
-			fb->seqSts1.bit.seq0630 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0630 = SEQ_COMM_COMPLETE;
 		}
 		else
 		{
 			fb->NextStep = Seq0630;
-			fb->seqSts1.bit.seq0630 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0630 = SEQ_COMM_PROCESSING;
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		fb->NextStep = Seq0730;
-		fb->seqSts1.bit.seq0630 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0630 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0630;
-		fb->seqSts1.bit.seq0630 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0630 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0630;
-		fb->seqSts1.bit.seq0630 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0630 = SEQ_COMM_UNPROCESSED;
 	}
 }
 
@@ -737,28 +738,28 @@ void funcSeq0640(strFC0740Info *fb)
 		if((fb->yardSwiSts.bit.cbx01 == YARD_SWITCH_STATUS_CLOSE))
 		{
 			fb->NextStep = Seq0650;
-			fb->seqSts1.bit.seq0640 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0640 = SEQ_COMM_COMPLETE;
 		}
 		else
 		{
 			fb->NextStep = Seq0640;
-			fb->seqSts1.bit.seq0640 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0640 = SEQ_COMM_PROCESSING;
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		fb->NextStep = Seq0740;
-		fb->seqSts1.bit.seq0640 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0640 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0640;
-		fb->seqSts1.bit.seq0640 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0640 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0640;
-		fb->seqSts1.bit.seq0640 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0640 = SEQ_COMM_UNPROCESSED;
 	}
 }
 
@@ -770,28 +771,28 @@ void funcSeq0650(strFC0740Info *fb)
 		if((fb->sysSts.bit.passiveChg == SS_PASSIVECHG_COMPLETE))
 		{
 			fb->NextStep = Seq0660;
-			fb->seqSts1.bit.seq0650 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0650 = SEQ_COMM_COMPLETE;
 		}
 		else
 		{
 			fb->NextStep = Seq0650;
-			fb->seqSts1.bit.seq0650 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0650 = SEQ_COMM_PROCESSING;
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		fb->NextStep = Seq0740;
-		fb->seqSts1.bit.seq0650 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0650 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0650;
-		fb->seqSts1.bit.seq0650 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0650 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0650;
-		fb->seqSts1.bit.seq0650 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0650 = SEQ_COMM_UNPROCESSED;
 	}
 }
 
@@ -804,27 +805,28 @@ void funcSeq0660(strFC0740Info *fb)
 		if((fb->yardSwiSts.bit.dsx02 == YARD_SWITCH_STATUS_CLOSE))
 		{
 			fb->NextStep = Seq0670;
-			fb->seqSts1.bit.seq0660 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0660 = SEQ_COMM_COMPLETE;
 		}
 		else
 		{
 			fb->NextStep = Seq0660;
-			fb->seqSts1.bit.seq0660 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0660 = SEQ_COMM_PROCESSING;
+		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		fb->NextStep = Seq0760;
-		fb->seqSts1.bit.seq0660 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0660 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0660;
-		fb->seqSts1.bit.seq0660 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0660 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0660;
-		fb->seqSts1.bit.seq0660 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0660 = SEQ_COMM_UNPROCESSED;
 	}
 }
 
@@ -835,28 +837,28 @@ void funcSeq0670(strFC0740Info *fb)
 		if((fb->sysSts.bit.convActchgSeq == SS_ACTCHGSEQ_COMPLETE))
 		{
 			fb->NextStep = Seq0800;
-			fb->seqSts1.bit.seq0670 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0670 = SEQ_COMM_COMPLETE;
 		}
 		else
 		{
 			fb->NextStep = Seq0670;
-			fb->seqSts1.bit.seq0670 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0670 = SEQ_COMM_PROCESSING;
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		fb->NextStep = Seq0770;
-		fb->seqSts1.bit.seq0670 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0670 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0670;
-		fb->seqSts1.bit.seq0670 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0670 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0670;
-		fb->seqSts1.bit.seq0670 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0670 = SEQ_COMM_UNPROCESSED;
 	}
 }
 
@@ -865,7 +867,7 @@ void funcSeq0720(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		fb->NextStep = Seq0720;
-		fb->seqSts1.bit.seq0720 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0720 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
@@ -874,23 +876,23 @@ void funcSeq0720(strFC0740Info *fb)
 		if((fb->yardSwiSts.bit.ds3x1 == YARD_SWITCH_STATUS_CLOSE))
 		{
 			fb->NextStep = Seq0600;
-			fb->seqSts1.bit.seq0720 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0720 = SEQ_COMM_COMPLETE;
 		}
 		else
 		{
 			fb->NextStep = Seq0720;
-			fb->seqSts1.bit.seq0720 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0720 = SEQ_COMM_PROCESSING;
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0720;
-		fb->seqSts1.bit.seq0720 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0720 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0720;
-		fb->seqSts1.bit.seq0720 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0720 = SEQ_COMM_UNPROCESSED;
 	}	
 }
 
@@ -899,30 +901,30 @@ void funcSeq0730(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		fb->NextStep = Seq0730;
-		fb->seqSts1.bit.seq0730 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0730 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		if((fb->yardSwiSts.bit.cbx91 == YARD_SWITCH_STATUS_OPEN))
 		{
 			fb->NextStep = Seq0720;
-			fb->seqSts1.bit.seq0730 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0730 = SEQ_COMM_COMPLETE;
 		}
 		else
 		{			
 			fb->NextStep = Seq0730;
-			fb->seqSts1.bit.seq0730 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0730 = SEQ_COMM_PROCESSING;
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0730;
-		fb->seqSts1.bit.seq0730 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0730 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0730;
-		fb->seqSts1.bit.seq0730 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0730 = SEQ_COMM_UNPROCESSED;
 	}	
 }
 
@@ -931,7 +933,7 @@ void funcSeq0740(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		fb->NextStep = Seq0740;
-		fb->seqSts1.bit.seq0740 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0740 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
@@ -940,23 +942,23 @@ void funcSeq0740(strFC0740Info *fb)
 		if((fb->yardSwiSts.bit.cbx01 == YARD_SWITCH_STATUS_OPEN))
 		{
 			fb->NextStep = Seq0730;
-			fb->seqSts1.bit.seq0740 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0740 = SEQ_COMM_COMPLETE;
 		}
 		else
 		{
 			fb->NextStep = Seq0740;
-			fb->seqSts1.bit.seq0740 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0740 = SEQ_COMM_PROCESSING;
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0740;
-		fb->seqSts1.bit.seq0740 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0740 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0740;
-		fb->seqSts1.bit.seq0740 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0740 = SEQ_COMM_UNPROCESSED;
 	}	
 }
 
@@ -965,7 +967,7 @@ void funcSeq0760(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		fb->NextStep = Seq0760;
-		fb->seqSts1.bit.seq0760 = SEQ_COMM_UNPROCESSED; 
+		fb->seqSts2.bit.seq0760 = SEQ_COMM_UNPROCESSED; 
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
@@ -974,23 +976,23 @@ void funcSeq0760(strFC0740Info *fb)
 		if((fb->yardSwiSts.bit.dsx02 == YARD_SWITCH_STATUS_OPEN))
 		{
 			fb->NextStep = Seq0740;
-			fb->seqSts1.bit.seq0760 = SEQ_COMM_COMPLETE; 
+			fb->seqSts2.bit.seq0760 = SEQ_COMM_COMPLETE; 
 		}
 		else
 		{
 			fb->NextStep = Seq0760;
-			fb->seqSts1.bit.seq0760 = SEQ_COMM_PROCESSING; 
+			fb->seqSts2.bit.seq0760 = SEQ_COMM_PROCESSING; 
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0760;
-		fb->seqSts1.bit.seq0760 = SEQ_COMM_UNPROCESSED; 
+		fb->seqSts2.bit.seq0760 = SEQ_COMM_UNPROCESSED; 
 	}
 	else
 	{
 		fb->NextStep = Seq0760;
-		fb->seqSts1.bit.seq0760 = SEQ_COMM_UNPROCESSED; 
+		fb->seqSts2.bit.seq0760 = SEQ_COMM_UNPROCESSED; 
 	}	
 }
 
@@ -999,30 +1001,31 @@ void funcSeq0770(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		fb->NextStep = Seq0770;
-		fb->seqSts1.bit.seq0770 = SEQ_COMM_UNPROCESSED;
+
+		fb->seqSts2.bit.seq0770 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		if((fb->sysSts.bit.convBlkSeq == SS_CONVBLKSEQ_COMPLETE))
 		{
 			fb->NextStep = Seq0760;
-			fb->seqSts1.bit.seq0770 = SEQ_COMM_COMPLETE;
+			fb->seqSts2.bit.seq0770 = SEQ_COMM_COMPLETE;
 		}
 		else
 		{
 			fb->NextStep = Seq0770;
-			fb->seqSts1.bit.seq0770 = SEQ_COMM_PROCESSING;
+			fb->seqSts2.bit.seq0770 = SEQ_COMM_PROCESSING;
 		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0770;
-		fb->seqSts1.bit.seq0770 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0770 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0770;
-		fb->seqSts1.bit.seq0770 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0770 = SEQ_COMM_UNPROCESSED;
 	}	
 }
 
@@ -1031,21 +1034,21 @@ void funcSeq0800(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		fb->NextStep = Seq0800;
-		fb->seqSts1.bit.seq0800 = SEQ_COMM_COMPLETE;
+		fb->seqSts2.bit.seq0800 = SEQ_COMM_COMPLETE;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		fb->NextStep = Seq0770;
-		fb->seqSts1.bit.seq0800 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0800 = SEQ_COMM_UNPROCESSED;
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
 		fb->NextStep = Seq0800;
-		fb->seqSts1.bit.seq0800 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0800 = SEQ_COMM_UNPROCESSED;
 	}
 	else
 	{
 		fb->NextStep = Seq0800;
-		fb->seqSts1.bit.seq0800 = SEQ_COMM_UNPROCESSED;
+		fb->seqSts2.bit.seq0800 = SEQ_COMM_UNPROCESSED;
 	}
 }

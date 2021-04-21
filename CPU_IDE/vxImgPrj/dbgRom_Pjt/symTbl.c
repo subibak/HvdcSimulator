@@ -2,7 +2,7 @@
 
 /* CREATED BY D:/Tornado690/vxworks-6.9/host/resource/hutils/tcl/makeSymTbl.tcl
  *  WITH ARGS ppc tmp.o symTbl.c
- *         ON Fri Feb 19 13:58:44 +1000 2021
+ *         ON Mon Mar 15 14:15:06 +1000 2021
  */
 
 #include "vxWorks.h"
@@ -20,7 +20,6 @@ IMPORT int CYCLIC_FB_EXEC_TIME_BASE;
 IMPORT int CodeAccessCmdOPFuncList;
 IMPORT int CompareSafelyD ();
 IMPORT int CompareSafelyS ();
-IMPORT int ConvReset ();
 IMPORT int CtrlModeAccessCmdOPFuncList;
 IMPORT int DIU_FB_MEMORY_START_BUS_ADDR;
 IMPORT int DUAL_NET_DEV_NAME;
@@ -132,7 +131,6 @@ IMPORT int STANDARDRtnTbl;
 IMPORT int S_MEMORY_AREA_MAX_SIZE;
 IMPORT int S_MEMORY_AREA_START_OFFSET;
 IMPORT int SetNewSeedtoRandomGenerator ();
-IMPORT int SysReset ();
 IMPORT int TAPE;
 IMPORT int TON_Timer ();
 IMPORT int Tcp_AcceptForServer ();
@@ -3973,7 +3971,6 @@ IMPORT int fstatfs ();
 IMPORT int fstatfs64 ();
 IMPORT int fsync ();
 IMPORT int ftOverDetect ();
-IMPORT int ftOverDetect_t ();
 IMPORT int ftUnderDetect ();
 IMPORT int ftell ();
 IMPORT int ftpCommand ();
@@ -3998,6 +3995,37 @@ IMPORT int ftplDebug;
 IMPORT int ftplPasvModeDisable;
 IMPORT int ftplTransientMaxRetryCount;
 IMPORT int ftplTransientRetryInterval;
+IMPORT int funcSeq0000 ();
+IMPORT int funcSeq0200 ();
+IMPORT int funcSeq0210 ();
+IMPORT int funcSeq0220 ();
+IMPORT int funcSeq0230 ();
+IMPORT int funcSeq0240 ();
+IMPORT int funcSeq0250 ();
+IMPORT int funcSeq0260 ();
+IMPORT int funcSeq0320 ();
+IMPORT int funcSeq0330 ();
+IMPORT int funcSeq0340 ();
+IMPORT int funcSeq0350 ();
+IMPORT int funcSeq0360 ();
+IMPORT int funcSeq0400 ();
+IMPORT int funcSeq0410 ();
+IMPORT int funcSeq0510 ();
+IMPORT int funcSeq0520 ();
+IMPORT int funcSeq0600 ();
+IMPORT int funcSeq0610 ();
+IMPORT int funcSeq0620 ();
+IMPORT int funcSeq0630 ();
+IMPORT int funcSeq0640 ();
+IMPORT int funcSeq0650 ();
+IMPORT int funcSeq0660 ();
+IMPORT int funcSeq0670 ();
+IMPORT int funcSeq0720 ();
+IMPORT int funcSeq0730 ();
+IMPORT int funcSeq0740 ();
+IMPORT int funcSeq0760 ();
+IMPORT int funcSeq0770 ();
+IMPORT int funcSeq0800 ();
 IMPORT int funcXbdBlkCacheAttach;
 IMPORT int funcXbdBlkCacheDetach;
 IMPORT int funcXbdBlkCacheStrategy;
@@ -10384,7 +10412,7 @@ IMPORT int zbufSockSendto ();
 IMPORT int zbufSplit ();
 IMPORT int zbuf_free ();
 
-SYMBOL standTbl [10839] =
+SYMBOL standTbl [10867] =
     {
         {{NULL}, "AddSafelyD", (char*) AddSafelyD, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "AddSafelyS", (char*) AddSafelyS, 0, 0,  SYM_GLOBAL | SYM_TEXT},
@@ -10398,7 +10426,6 @@ SYMBOL standTbl [10839] =
         {{NULL}, "CodeAccessCmdOPFuncList", (char*) &CodeAccessCmdOPFuncList, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "CompareSafelyD", (char*) CompareSafelyD, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "CompareSafelyS", (char*) CompareSafelyS, 0, 0,  SYM_GLOBAL | SYM_TEXT},
-        {{NULL}, "ConvReset", (char*) ConvReset, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "CtrlModeAccessCmdOPFuncList", (char*) &CtrlModeAccessCmdOPFuncList, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "DIU_FB_MEMORY_START_BUS_ADDR", (char*) &DIU_FB_MEMORY_START_BUS_ADDR, 0, 0,  SYM_GLOBAL | SYM_BSS},
         {{NULL}, "DUAL_NET_DEV_NAME", (char*) &DUAL_NET_DEV_NAME, 0, 0,  SYM_GLOBAL | SYM_BSS},
@@ -10510,7 +10537,6 @@ SYMBOL standTbl [10839] =
         {{NULL}, "S_MEMORY_AREA_MAX_SIZE", (char*) &S_MEMORY_AREA_MAX_SIZE, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "S_MEMORY_AREA_START_OFFSET", (char*) &S_MEMORY_AREA_START_OFFSET, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "SetNewSeedtoRandomGenerator", (char*) SetNewSeedtoRandomGenerator, 0, 0,  SYM_GLOBAL | SYM_TEXT},
-        {{NULL}, "SysReset", (char*) SysReset, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "TAPE", (char*) &TAPE, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "TON_Timer", (char*) TON_Timer, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "Tcp_AcceptForServer", (char*) Tcp_AcceptForServer, 0, 0,  SYM_GLOBAL | SYM_TEXT},
@@ -14813,7 +14839,6 @@ SYMBOL standTbl [10839] =
         {{NULL}, "fstatfs64", (char*) fstatfs64, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "fsync", (char*) fsync, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "ftOverDetect", (char*) ftOverDetect, 0, 0,  SYM_GLOBAL | SYM_TEXT},
-        {{NULL}, "ftOverDetect_t", (char*) ftOverDetect_t, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "ftUnderDetect", (char*) ftUnderDetect, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "ftell", (char*) ftell, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "ftpCommand", (char*) ftpCommand, 0, 0,  SYM_GLOBAL | SYM_TEXT},
@@ -14838,6 +14863,37 @@ SYMBOL standTbl [10839] =
         {{NULL}, "ftplPasvModeDisable", (char*) &ftplPasvModeDisable, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "ftplTransientMaxRetryCount", (char*) &ftplTransientMaxRetryCount, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "ftplTransientRetryInterval", (char*) &ftplTransientRetryInterval, 0, 0,  SYM_GLOBAL | SYM_DATA},
+        {{NULL}, "funcSeq0000", (char*) funcSeq0000, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0200", (char*) funcSeq0200, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0210", (char*) funcSeq0210, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0220", (char*) funcSeq0220, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0230", (char*) funcSeq0230, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0240", (char*) funcSeq0240, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0250", (char*) funcSeq0250, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0260", (char*) funcSeq0260, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0320", (char*) funcSeq0320, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0330", (char*) funcSeq0330, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0340", (char*) funcSeq0340, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0350", (char*) funcSeq0350, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0360", (char*) funcSeq0360, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0400", (char*) funcSeq0400, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0410", (char*) funcSeq0410, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0510", (char*) funcSeq0510, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0520", (char*) funcSeq0520, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0600", (char*) funcSeq0600, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0610", (char*) funcSeq0610, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0620", (char*) funcSeq0620, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0630", (char*) funcSeq0630, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0640", (char*) funcSeq0640, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0650", (char*) funcSeq0650, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0660", (char*) funcSeq0660, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0670", (char*) funcSeq0670, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0720", (char*) funcSeq0720, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0730", (char*) funcSeq0730, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0740", (char*) funcSeq0740, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0760", (char*) funcSeq0760, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0770", (char*) funcSeq0770, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0800", (char*) funcSeq0800, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "funcXbdBlkCacheAttach", (char*) &funcXbdBlkCacheAttach, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "funcXbdBlkCacheDetach", (char*) &funcXbdBlkCacheDetach, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "funcXbdBlkCacheStrategy", (char*) &funcXbdBlkCacheStrategy, 0, 0,  SYM_GLOBAL | SYM_DATA},
@@ -21228,4 +21284,4 @@ SYMBOL standTbl [10839] =
     };
 
 
-ULONG standTblSize = 10839;
+ULONG standTblSize = 10867;

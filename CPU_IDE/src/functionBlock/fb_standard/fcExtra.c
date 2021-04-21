@@ -34,17 +34,14 @@ uint32	wrVarInitFunc
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= WRVAR_CODE;
-    paraInfoPtr->inputNo		= WRVAR_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= WRVAR_VAR_NUM;
+    paraInfoPtr->inputNo	= WRVAR_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= WRVAR_VAR_NUM;
     paraInfoPtr->outputNo	= WRVAR_OUTPUT_NUM;
 
 	
 	*specTypePtr++			= ANY_TYPE | SIZE32_TYPE ;	
 	*specTypePtr++			= ANY_TYPE | SIZE32_TYPE ;	
-
-			
-
-    
+   
 	*outputTypePtr++		= ANY_TYPE | SIZE32_TYPE ;	
 
     return(status);

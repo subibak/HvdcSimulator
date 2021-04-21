@@ -67,10 +67,10 @@ extern uint32	sysStaCpRunFunc(uint32, uint32);
 **	스테이션간 Ethernet 통신, 즉 Read/Write 통신 FB 	
 **
 **********************************************************************/
-#define	ETH_DATA_SEND_CODE			(302)
-#define	ETH_DATA_SEND_SPEC_NUM		(20)
-#define	ETH_DATA_SEND_VAR_NUM		(9)	
-#define	ETH_DATA_SEND_OUTPUT_NUM	(9)
+#define	ETH_SEND_CODE			(302)
+#define	ETH_SEND_SPEC_NUM		(20)
+#define	ETH_SEND_VAR_NUM		(9)	
+#define	ETH_SEND_OUTPUT_NUM		(9)
 
 typedef struct {				
 	/* 입력 변수 */			
@@ -125,10 +125,10 @@ typedef struct {
 **
 **********************************************************************/
 
-#define	ETH_DATA_BROAD_CODE			(303)
-#define	ETH_DATA_BROAD_SPEC_NUM		(12)
-#define	ETH_DATA_BROAD_VAR_NUM		(3)	
-#define	ETH_DATA_BROAD_OUTPUT_NUM	(4)
+#define	ETH_BROAD_CODE			(303)
+#define	ETH_BROAD_SPEC_NUM		(12)
+#define	ETH_BROAD_VAR_NUM		(3)	
+#define	ETH_BROAD_OUTPUT_NUM	(4)
 typedef struct {					
 					
 	uint32	deviceSelect;		/* 불필요 */	
