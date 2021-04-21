@@ -96,7 +96,15 @@ union UN_SS_STS
 {
 	uint32				all;
 	struct {
-		uint32			rsvd:19;		// Reserved
+		uint32			rsvd:11;		// Reserved
+		uint32			RampVacInit:1	// Ramp Vac Init(1:Complete,:Uncomplete)
+		uint32			RampQInit:1		// Ramp Q Init(1:Complete,:Uncomplete)
+		uint32			RampVdcInit:1	// Ramp Vdc Init(1:Complete,:Uncomplete)
+		uint32			RampPInit:1		// Ramp P Init(1:Complete,:Uncomplete)		
+		uint32			RampVacRated:1	// Ramp Vac Rated(1:Complete,:Uncomplete)
+		uint32			RampQRated:1	// Ramp Q Rated(1:Complete,:Uncomplete)
+		uint32			RampVdcRated:1	// Ramp Vdc Rated(1:Complete,:Uncomplete)
+		uint32			RampPRated:1	// Ramp P Rated(1:Complete,:Uncomplete)
 		uint32			convBlkSeq:2;	// Converter Block Sequence(3:Error, 2:Complete, 1:Processing, 0:Unprocessed)
 		uint32			convActchgSeq:2;// Converter Active Charging Sequence(3:Error, 2:Complete, 1:Processing, 0:Unprocessed)
 		uint32			passiveChg:1;	// Passive Charge(2:Error, 1:Complete, 0:Uncomplete)
@@ -147,9 +155,11 @@ union UN_TRIP
 	} bit;
 };
 
+/* Inner Variables */
 // Start/Stop Sequence 
 typedef enum {
     Seq0000     	= 0,        	// Undefined
+    SeqBypass		= 1,			// Sequence Bypass(No operation of Sequence in State Machine)
     Step_offset 	= 10,       	// Step Offset
     Dir_offset  	= 100,      	// Direction Offset
     Seq0200     	= 200,      	// Earthed
@@ -184,6 +194,11 @@ typedef enum {
     Seq0800     	= 800,  	    // In-Service or Coupled
 } SEQ_STEP;
 
+#define FLAG_SEQ_COMPLETE			1
+#define FLAG_SEQ_UNCOMPLETE			0
+
+#define FLAG_SEQ_START				1
+#define FLAG_SEQ_STOP				0
 
 /* Output Variables */
 #define SEQ_COMM_ALL_RESET			0 
@@ -237,7 +252,7 @@ union UN_SEQSTS2{
 	} bit;
 };
 
-// Output Variables
+
 #define ACT_CHARGE_COMM_STOP		0
 #define ACT_CHARGE_COMM_START		1
 #define ACT_CHARGE_COMM_HOLD		2
@@ -260,6 +275,7 @@ typedef struct {
 	SEQ_STEP			PrevStep;		// Previous Step
 	SEQ_STEP			CurrStep;		// Current Step
 	SEQ_STEP			NextStep;		// Next Step	
+	uint32				flagSeqComlete;	// Results of Sequence Process(1:Complete, 0:Uncomplete)
     
     // Output
 	union UN_SEQSTS1	seqSts1;		// Sequence Status1
