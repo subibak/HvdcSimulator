@@ -117,69 +117,20 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 	   	fb.yardSwiComm.bit.esx12_22 = YARD_SWITCH_COMM_CLOSE;
 
 	   	// Flag Sequence Process Initialization
-#if 0/*임시 */
 	   	fb.flagSeqStatus = FLAG_SEQ_UNCOMPLETE;
 
 	   	// Flag Sequence Opeation Initialization 
 	   	fb.flagSeqOp = FLAG_SEQ_STOP;
-#endif
 	}
 	else if(fb.sysMode.bit.status == SM_STS_READY)
 	{
-		// fb.CurrStep = fb.NextStep;
-		// if(fb.sysMode.bit.seqOp == SM_SEQOP_START)
-		// {
-		// 	// Active Power Mode(P Mode, Vdc Mode) 
-		// 	if(fb.sysMode.bit.actPwr == SM_ACTPWR_P) // P Mode
-		// 	{
-		// 		// Sequence Direction(Start, Stop, Hold)
-		// 		if(fb.sysMode.bit.seqDir == SM_SEQDIR_START)
-		// 		{
-		// 			// Opposite Converter Status
-		// 			if(fb.oSeqSts2.bit.seq0800 == SEQ_COMM_COMPLETE)
-		// 				fb.CurrStep = fb.NextStep;
-		// 			else
-		// 				fb.CurrStep = Seq0000;
-		// 		}
-		// 		else if(fb.sysMode.bit.seqDir == SM_SEQDIR_STOP)
-					
-		// 		else if(fb.sysMode.bit.seqDir == SM_SEQDIR_NODIR)
-		// 		else
-		// 			fb.CurrStep = Seq0000;
-				
-		// 	}	
-		// 	else // Vdc Mode
-		// 	{
-		// 		// Sequence Direction(Start, Stop, Hold)
-		// 		if(fb.sysMode.bit.seqDir == SM_SEQDIR_START)
-		// 		{
-		// 			fb.CurrStep = fb.NextStep;
-		// 		}
-		// 		else if(fb.sysMode.bit.seqDir == SM_SEQDIR_STOP)
-					
-		// 		else if(fb.sysMode.bit.seqDir == SM_SEQDIR_NODIR)
-		// 		else
-		// 	}
-
-		// System Mode Check
-		if(fb.sysMode.bit.operation == SM_OP_AUTOMATIC)
-		{
-			// Automatic
-			
-		}
-		else
-		{
-			// Manual
-
-		}
-
 		// Sequence Operation START/STOP/HOLD
 		if(fb.sysMode.bit.seqOp == SM_SEQOP_START)		// Sequence: Start
 		{
 			// System Mode Check
 			if(fb.sysMode.bit.operation == SM_OP_MANUAL)// Manual Mode
 			{			
-				if(fb.flagSeqComlete == FLAG_SEQ_COMPLETE)
+				if(fb.flagSeqComplete == FLAG_SEQ_COMPLETE)
 					fb.flagSeqOp = FLAG_SEQ_STOP;
 				else
 					fb.flagSeqOp = FLAG_SEQ_START;
@@ -187,9 +138,9 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 			else 										// Automatic Mode
 				fb.flagSeqOp = FLAG_SEQ_START;			
 		}
-
 		else if(fb.sysMode.bit.seqOp == SM_SEQOP_STOP)	// Sequence: Stop
 			fb.flagSeqOp = FLAG_SEQ_STOP;
+
 		if(fb.flagSeqOp == FLAG_SEQ_START)
 			fb.CurrStep = fb.NextStep;
 		else if(fb.flagSeqOp == FLAG_SEQ_STOP)
