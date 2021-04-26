@@ -148,6 +148,7 @@ void funcSeq0220(strFC0740Info *fb)
 				fb->NextStep = Seq0230;
 				fb->seqSts1.bit.seq0220 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts1.bit.seq0320 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -197,6 +198,7 @@ void funcSeq0230(strFC0740Info *fb)
 				fb->NextStep = Seq0240;
 				fb->seqSts1.bit.seq0230 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts1.bit.seq0330 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -247,6 +249,7 @@ void funcSeq0240(strFC0740Info *fb)
 				fb->NextStep = Seq0250;
 				fb->seqSts1.bit.seq0240 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts1.bit.seq0340 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -302,6 +305,7 @@ void funcSeq0250(strFC0740Info *fb)
 				fb->NextStep = Seq0260;
 				fb->seqSts1.bit.seq0250 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts1.bit.seq0350 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -350,6 +354,7 @@ void funcSeq0260(strFC0740Info *fb)
 				fb->NextStep = Seq0400;
 				fb->seqSts1.bit.seq0260 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts1.bit.seq0360 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -406,6 +411,8 @@ void funcSeq0320(strFC0740Info *fb)
 				fb->NextStep = Seq0200;
 				fb->seqSts1.bit.seq0320 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts1.bit.seq0220 = SEQ_COMM_UNPROCESSED;
+				fb->seqSts1.bit.seq0210 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -455,6 +462,7 @@ void funcSeq0330(strFC0740Info *fb)
 				fb->NextStep = Seq0320;
 				fb->seqSts1.bit.seq0330 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts1.bit.seq0230 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -504,6 +512,7 @@ void funcSeq0340(strFC0740Info *fb)
 				fb->NextStep = Seq0330;
 				fb->seqSts1.bit.seq0340 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts1.bit.seq0240 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -559,6 +568,7 @@ void funcSeq0350(strFC0740Info *fb)
 				fb->NextStep = Seq0340;
 				fb->seqSts1.bit.seq0350 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts1.bit.seq0250 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -608,6 +618,7 @@ void funcSeq0360(strFC0740Info *fb)
 				fb->NextStep = Seq0350;
 				fb->seqSts1.bit.seq0360 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts1.bit.seq0260 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -685,6 +696,8 @@ void funcSeq0410(strFC0740Info *fb)
 				fb->NextStep = Seq0600;
 				fb->seqSts1.bit.seq0410 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts2.bit.seq0510 = SEQ_COMM_UNPROCESSED;
+				fb->seqSts2.bit.seq0520 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -734,7 +747,8 @@ void funcSeq0510(strFC0740Info *fb)
 		{
 			fb->NextStep = Seq0400;
 			fb->seqSts2.bit.seq0510 = SEQ_COMM_COMPLETE;
-			fb->flagSeqComplete = FLAG_SEQ_UNCOMPLETE;			
+			fb->flagSeqComplete = FLAG_SEQ_UNCOMPLETE;	
+			fb->seqSts1.bit.seq0410 = SEQ_COMM_UNPROCESSED;		
 		}
 		else if((fb->sysMode.actPwr == SM_ACTPWR_VDC) & (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) &  (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE))
 		{
@@ -930,6 +944,7 @@ void funcSeq0620(strFC0740Info *fb)
 				fb->NextStep = Seq0630;
 				fb->seqSts2.bit.seq0620 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts2.bit.seq0720 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -977,6 +992,7 @@ void funcSeq0630(strFC0740Info *fb)
 				fb->NextStep = Seq0640;
 				fb->seqSts2.bit.seq0630 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts2.bit.seq0730 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -1026,6 +1042,7 @@ void funcSeq0640(strFC0740Info *fb)
 				fb->NextStep = Seq0650;
 				fb->seqSts2.bit.seq0640 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts2.bit.seq0740 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -1123,6 +1140,7 @@ void funcSeq0660(strFC0740Info *fb)
 				fb->NextStep = Seq0670;
 				fb->seqSts2.bit.seq0660 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts2.bit.seq0760 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -1170,6 +1188,7 @@ void funcSeq0670(strFC0740Info *fb)
 				fb->NextStep = Seq0800;
 				fb->seqSts2.bit.seq0670 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts2.bit.seq0770 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -1225,6 +1244,8 @@ void funcSeq0720(strFC0740Info *fb)
 				fb->NextStep = Seq0600;
 				fb->seqSts2.bit.seq0720 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts2.bit.seq0620 = SEQ_COMM_UNPROCESSED;
+				fb->seqSts2.bit.seq0610 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -1269,6 +1290,7 @@ void funcSeq0730(strFC0740Info *fb)
 			fb->NextStep = Seq0720;
 			fb->seqSts2.bit.seq0730 = SEQ_COMM_COMPLETE;
 			fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+			fb->seqSts2.bit.seq0630 = SEQ_COMM_UNPROCESSED;
 		}
 		else
 		{			
@@ -1311,6 +1333,7 @@ void funcSeq0740(strFC0740Info *fb)
 				fb->NextStep = Seq0730;
 				fb->seqSts2.bit.seq0740 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts2.bit.seq0640 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -1361,6 +1384,8 @@ void funcSeq0760(strFC0740Info *fb)
 				fb->NextStep = Seq0740;
 				fb->seqSts2.bit.seq0760 = SEQ_COMM_COMPLETE; 
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts2.bit.seq0660 = SEQ_COMM_UNPROCESSED;
+				fb->seqSts2.bit.seq0650 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
@@ -1408,6 +1433,7 @@ void funcSeq0770(strFC0740Info *fb)
 				fb->NextStep = Seq0760;
 				fb->seqSts2.bit.seq0770 = SEQ_COMM_COMPLETE;
 				fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+				fb->seqSts2.bit.seq0670 = SEQ_COMM_UNPROCESSED;
 			}
 			else
 			{
