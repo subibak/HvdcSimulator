@@ -125,7 +125,11 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 	else if(fb.sysMode.bit.status == SM_STS_READY)
 	{
 		// Sequence Operation START/STOP/HOLD
-		if(fb.sysMode.bit.seqOp == SM_SEQOP_START)		// Sequence: Start
+		if((fb.prevSysMode.bit.seqOp == SM_SEQOP_STOP) & (fb.sysMode.bit.seqOp == SM_SEQOP_START)) 
+		{
+			fb.flagSeqOp = FLAG_SEQ_START;
+		}
+		if((fb.prevSysMode.bit.seqOp == SM_SEQOP_STOP) & (fb.sysMode.bit.seqOp == SM_SEQOP_START))t
 		{
 			// System Mode Check
 			if(fb.sysMode.bit.operation == SM_OP_MANUAL)// Manual Mode
@@ -138,9 +142,10 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 			else 										// Automatic Mode
 				fb.flagSeqOp = FLAG_SEQ_START;			
 		}
-		else if(fb.sysMode.bit.seqOp == SM_SEQOP_STOP)	// Sequence: Stop
+		else if((fb.prevSysMode.bit.seqOp == SM_SEQOP_STOP) & (fb.sysMode.bit.seqOp == SM_SEQOP_STOP))	
 			fb.flagSeqOp = FLAG_SEQ_STOP;
-
+		else
+			fb.flagSeqOp = FLAG_SEQ_STOP;
 
 		if(fb.flagSeqOp == FLAG_SEQ_START)
 			fb.CurrStep = fb.NextStep;
@@ -214,8 +219,10 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 			case SeqBypass :		break;														
 			default : 				break;
 		}
-		fb.PrevStep = fb.CurrStep;		
 	}
+	
+	fb.PrevStep = fb.CurrStep;		
+	fb.prevSysMode = fb.sysMode;
 
 	/*  */   
     status = writeRuntimeFbData(taskId,

@@ -286,7 +286,8 @@ typedef struct {
     // Inner variable
 	SEQ_STEP			PrevStep;		// Previous Step
 	SEQ_STEP			CurrStep;		// Current Step
-	SEQ_STEP			NextStep;		// Next Step	
+	SEQ_STEP			NextStep;		// Next Step
+	union UN_SYS_MODE	prevSysMode;	// Previous Operation Mode
 	uint32				flagSeqComplete;// Flag Results of Sequence Process(1:Complete, 0:Uncomplete)
     uint32				flagSeqOp;		// Flag Sequence Operation(1:Start, 0:Stop)
     
