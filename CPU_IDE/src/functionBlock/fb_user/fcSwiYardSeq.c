@@ -141,6 +141,7 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 		else if(fb.sysMode.bit.seqOp == SM_SEQOP_STOP)	// Sequence: Stop
 			fb.flagSeqOp = FLAG_SEQ_STOP;
 
+
 		if(fb.flagSeqOp == FLAG_SEQ_START)
 			fb.CurrStep = fb.NextStep;
 		else if(fb.flagSeqOp == FLAG_SEQ_STOP)
