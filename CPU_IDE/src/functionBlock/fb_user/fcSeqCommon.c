@@ -1467,9 +1467,19 @@ void funcSeq0800(strFC0740Info *fb)
 {
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
-		fb->NextStep = Seq0800;
-		fb->seqSts2.bit.seq0800 = SEQ_COMM_COMPLETE;
-		fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+		if((fb->sysMode.actPwr == SM_ACTPWR_P) & (fb->sysSts.RampPRated == 1) \
+			| (fb->sysMode.actPwr == SM_ACTPWR_VDC) & (fb->sysSts.RampVdcRated == 1))
+		{
+			fb->NextStep = Seq0800;
+			fb->seqSts2.bit.seq0800 = SEQ_COMM_COMPLETE;
+			fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+		}
+		else
+		{
+			fb->NextStep = Seq0800;
+			fb->seqSts2.bit.seq0800 = SEQ_COMM_PROCESSING;
+			fb->flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
