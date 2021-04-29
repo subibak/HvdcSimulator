@@ -46,7 +46,7 @@ uint32	rampInitFunc
 	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
 	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
 	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr			= REAL_TYPE|SIZE32_TYPE;
+	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
 
 	/**************************************************
 	**	FB 내부 변수 타입 정의
@@ -56,7 +56,7 @@ uint32	rampInitFunc
 	**	FB 출력 타입 정의
 	**************************************************/
 	*outputTypePtr++		= BOOL_TYPE|SIZE32_TYPE;	
-	*outputTypePtr			= REAL_TYPE|SIZE32_TYPE;	
+	*outputTypePtr++		= REAL_TYPE|SIZE32_TYPE;	
 		
     return(status);
 }

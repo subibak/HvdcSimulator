@@ -20,7 +20,7 @@ extern uint32	stdZ4_SwiYardSeqRunFunc(uint32, uint32);
 
 /* Spec, Var, Output ¡Æ©ö¨ùo E¢çAI */
 #define	FC0740_SPEC_NUM				6
-#define	FC0740_VAR_NUM				5	
+#define	FC0740_VAR_NUM				6	
 #define	FC0740_OUTPUT_NUM			3
 
 
@@ -34,6 +34,7 @@ extern uint32	stdZ4_SwiYardSeqRunFunc(uint32, uint32);
 #define SM_SEQOP_HOLD				4
 #define SM_SEQOP_START				2
 #define SM_SEQOP_STOP				1
+#define SM_SEQOP_NULL				0
 #define SM_ACTPWR_P					2
 #define SM_ACTPWR_VDC				1
 #define SM_FREQ_EN					1
@@ -45,6 +46,8 @@ extern uint32	stdZ4_SwiYardSeqRunFunc(uint32, uint32);
 #define SM_SEQDIR_START				4
 #define SM_SEQDIR_STOP				2
 #define SM_SEQDIR_NODIR				1
+#define SM_ALLTRIP_RESET			1
+#define SM_CONVERTER_RESET			1
 
 union UN_SYS_MODE
 {
@@ -68,13 +71,22 @@ union UN_SYS_MODE
 		uint32			status:2;		// System Status(2:Error, 1:Ready, 0:Unready)	
 	}	bit;
 };
-
+#define	SS_610_COMPLETE				1
+#define SS_610_UNCOMPLETE			0
 #define SS_DOORINTLOCK_ERROR		2 
 #define SS_DOORINTLOCK_READY		1 
 #define SS_DOORINTLOCK_UNREADY		0 
 #define SS_SMSHORTSWI_ERROR			2
 #define SS_SMSHORTSWI_OPEN			1
 #define SS_SMSHORTSWI_CLOSE			0
+#define SS_TRCOOLING_ON				1
+#define SS_TRCOOLING_OFF			0
+#define SS_CPSYS_READY				1
+#define SS_CPSYS_UNREADY			0
+#define SS_TAPCHSPOS_INPOS			1
+#define SS_TAPCHSPOS_OUTPOS			0
+#define SS_NOEMY_ACTIVE				1
+#define SS_NOEMY_INACTIVE			0
 #define SS_CONVDISCHG_ERROR			2
 #define SS_CONVDISCHG_EXPIRED		1
 #define SS_CONVDISCHG_UNREADY		0
@@ -84,8 +96,8 @@ union UN_SYS_MODE
 #define SS_PASSIVECHG_ERROR			2
 #define SS_PASSIVECHG_COMPLETE		1
 #define SS_PASSIVECHG_UNCOMPLETE	0
-#define SS_ACTCHGSEQ_ERROR			2
-#define SS_ACTCHGSEQ_COMPLETE		1
+#define SS_ACTCHGSEQ_ERROR			3
+#define SS_ACTCHGSEQ_COMPLETE		2
 #define SS_ACTCHGSEQ_UNCOMPLETE		0
 #define SS_CONVBLKSEQ_ERROR			2
 #define SS_CONVBLKSEQ_COMPLETE		1
@@ -159,7 +171,6 @@ union UN_TRIP
 // Start/Stop Sequence 
 typedef enum {
     Seq0000     	= 0,        	// Undefined
-    SeqBypass		= 1,			// Sequence Bypass(No operation of Sequence in State Machine)
     Step_offset 	= 10,       	// Step Offset
     Dir_offset  	= 100,      	// Direction Offset
     Seq0200     	= 200,      	// Earthed
@@ -192,6 +203,7 @@ typedef enum {
     Seq0760     	= 760,	      	// Open Resistor Bypass Switch
     Seq0770     	= 770,      	// Converter Block Sequence
     Seq0800     	= 800,  	    // In-Service or Coupled
+    SeqBypass		= 1000			// Sequence Bypass(No operation of Sequence in State Machine)
 } SEQ_STEP;
 
 #define FLAG_SEQ_COMPLETE			1
@@ -207,16 +219,16 @@ typedef enum {
 #define SEQ_COMM_PROCESSING			1
 #define SEQ_COMM_UNPROCESSED		0
 
-#define STS1_STS1_UNDEFINED_COMPLETE	0x00000002
-#define STS1_EARTHED_STOPPED_COMPLETE	0x0800AAAA
+#define STS1_UNDEFINED_COMPLETE			0x00000002
+#define STS1_EARTHED_STOPPED_COMPLETE	0x1800AAAA
 #define STS1_EARTHED_STANDBY_COMPLETE	0x2800AAAA
-#define STS2_EARTHED_STANDBY_COMPLETE	0x00000020
+#define STS2_EARTHED_STANDBY_COMPLETE	0x00000060
 #define STS1_EARTHED_COUPLED_COMPLETE	0x2800AAAA  // STS1_EARTHED_STANDBY_COMPLETE IN SAME
 #define STS2_EARTHED_COUPLED_COMPLETE	0x800AAAA0
 
-#define STS2_COUPLED_STANDBY_COMPLETE 	0x2AA00000
+#define STS2_COUPLED_STANDBY_COMPLETE 	0x2AA00004
 #define STS2_COUPLED_STOPPED_COMPLETE	0x2AA0000A
-#define STS1_COUPLED_STOPPED_COMPLETE	0X0000AAAA
+#define STS1_COUPLED_STOPPED_COMPLETE	0X0100AAAA
 #define STS2_COUPLED_EARTHED_COMPLETE	0x2AA0000A	// STS2_COUPLED_STOPPED_COMPLETE IN SAME
 #define STS1_COUPLED_EARTHED_COMPLETE	0X02AA0000
 // HMI Status Command

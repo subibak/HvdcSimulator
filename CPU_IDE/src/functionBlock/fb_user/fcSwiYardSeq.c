@@ -49,7 +49,7 @@ uint32	stdZ4_SwiYardSeqInitFunc
 	*inputTypePtr++			= UINT_TYPE|SIZE32_TYPE;
 	*inputTypePtr++			= UINT_TYPE|SIZE32_TYPE;
 	*inputTypePtr++			= UINT_TYPE|SIZE32_TYPE;
-	*inputTypePtr			= UINT_TYPE|SIZE32_TYPE;
+	*inputTypePtr++			= UINT_TYPE|SIZE32_TYPE;
 
 	/**************************************************
 	**	FB 내부 변수 타입 정의
@@ -58,14 +58,15 @@ uint32	stdZ4_SwiYardSeqInitFunc
 	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
 	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
 	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr 		= UINT_TYPE|SIZE32_TYPE;
+	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
+	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
 	
 	/**************************************************
 	**	FB 출력 타입 정의
 	**************************************************/
 	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;
 	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;
-	*outputTypePtr			= UINT_TYPE|SIZE32_TYPE;		
+	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;		
 		
     return(status);
 }
@@ -93,7 +94,7 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 	sysStatus = 0x3 & fb.sysMode.bit.status;
 
 
-	if(fb.sysMode.bit.status == SM_STS_UNREADY | fb.sysMode.bit.status == SM_STS_ERROR)
+	if(fb.sysMode.bit.convReset == SM_CONVERTER_RESET || fb.sysMode.bit.status == SM_STS_UNREADY || fb.sysMode.bit.status == SM_STS_ERROR)
    	{
 	   	/* System Initialization */
 	   	// Step Initialization - Seq0000, 0200 ...
@@ -117,7 +118,7 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 	   	fb.yardSwiComm.bit.esx12_22 = YARD_SWITCH_COMM_CLOSE;
 
 	   	// Flag Sequence Process Initialization
-	   	fb.flagSeqStatus = FLAG_SEQ_UNCOMPLETE;
+	   	fb.flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
 
 	   	// Flag Sequence Opeation Initialization 
 	   	fb.flagSeqOp = FLAG_SEQ_STOP;
@@ -125,33 +126,31 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 	else if(fb.sysMode.bit.status == SM_STS_READY)
 	{
 		// Sequence Operation START/STOP/HOLD
-		if((fb.prevSysMode.bit.seqOp == SM_SEQOP_STOP) & (fb.sysMode.bit.seqOp == SM_SEQOP_START)) 
-		{
+		if(((fb.prevSysMode.bit.seqOp == SM_SEQOP_NULL) || (fb.prevSysMode.bit.seqOp == SM_SEQOP_STOP) || (fb.prevSysMode.bit.seqOp == SM_SEQOP_HOLD))
+		  && (fb.sysMode.bit.seqOp == SM_SEQOP_START))
 			fb.flagSeqOp = FLAG_SEQ_START;
-		}
-		if((fb.prevSysMode.bit.seqOp == SM_SEQOP_STOP) & (fb.sysMode.bit.seqOp == SM_SEQOP_START))t
+		else if(fb.sysMode.bit.seqOp == SM_SEQOP_STOP || fb.sysMode.bit.seqOp == SM_SEQOP_HOLD) 
+			fb.flagSeqOp = FLAG_SEQ_STOP;	
+
+		// System Mode Check
+		if(fb.sysMode.bit.operation == SM_OP_MANUAL)// Manual Mode
 		{
-			// System Mode Check
-			if(fb.sysMode.bit.operation == SM_OP_MANUAL)// Manual Mode
-			{			
-				if(fb.flagSeqComplete == FLAG_SEQ_COMPLETE)
-					fb.flagSeqOp = FLAG_SEQ_STOP;
-				else
-					fb.flagSeqOp = FLAG_SEQ_START;
-			}
-			else 										// Automatic Mode
-				fb.flagSeqOp = FLAG_SEQ_START;			
+			if(fb.flagSeqComplete == FLAG_SEQ_COMPLETE)
+				fb.flagSeqOp = FLAG_SEQ_STOP;
 		}
-		else if((fb.prevSysMode.bit.seqOp == SM_SEQOP_STOP) & (fb.sysMode.bit.seqOp == SM_SEQOP_STOP))	
-			fb.flagSeqOp = FLAG_SEQ_STOP;
-		else
-			fb.flagSeqOp = FLAG_SEQ_STOP;
+		
 
 		if(fb.flagSeqOp == FLAG_SEQ_START)
 			fb.CurrStep = fb.NextStep;
 		else if(fb.flagSeqOp == FLAG_SEQ_STOP)
-			fb.CurrStep = fb.PrevStep;
-
+		{
+			if(fb.NextStep == Seq0000)
+				fb.flagSeqOp = FLAG_SEQ_START;
+			
+			fb.CurrStep = SeqBypass;
+			fb.flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+		}
+		
 		switch(fb.CurrStep)
 		{
 			case Seq0000 : 	// Undefined
@@ -216,13 +215,14 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 				funcSeq0770(&fb);	break;
 			case Seq0800 :	//	
 				funcSeq0800(&fb);	break;	
-			case SeqBypass :		break;														
+			case SeqBypass :		
+									break;														
 			default : 				break;
 		}
 	}
 	
 	fb.PrevStep = fb.CurrStep;		
-	fb.prevSysMode = fb.sysMode;
+	fb.prevSysMode.all = fb.sysMode.all;
 
 	/*  */   
     status = writeRuntimeFbData(taskId,

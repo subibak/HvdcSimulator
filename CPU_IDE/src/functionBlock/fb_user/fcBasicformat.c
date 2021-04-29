@@ -49,7 +49,7 @@ uint32	stdxxxxxxInitFunc
 	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
 	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
 	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr			= REAL_TYPE|SIZE32_TYPE;
+	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
 
 	/**************************************************
 	**	FB 내부 변수 타입 정의
@@ -59,7 +59,7 @@ uint32	stdxxxxxxInitFunc
 	**	FB 출력 타입 정의
 	**************************************************/
 	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;	
-	*outputTypePtr			= UINT_TYPE|SIZE32_TYPE;	
+	*outputTypePtr++		= UINT_TYPE|SIZE32_TYPE;	
 		
     return(status);
 }

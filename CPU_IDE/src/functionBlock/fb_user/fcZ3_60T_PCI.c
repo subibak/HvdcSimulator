@@ -55,19 +55,19 @@ uint32	stdZ3_60T_PCIInitFunc
 	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
 	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
 	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
-	*inputTypePtr			= REAL_TYPE|SIZE32_TYPE;
+	*inputTypePtr++			= REAL_TYPE|SIZE32_TYPE;
 
 	/**************************************************
 	**	FB 내부 변수 타입 정의
 	**************************************************/
 	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
-	*intlVarTypePtr 		= REAL_TYPE|SIZE32_TYPE;
+	*intlVarTypePtr++ 		= REAL_TYPE|SIZE32_TYPE;
 	
 	/**************************************************
 	**	FB 출력 타입 정의
 	**************************************************/
 	*outputTypePtr++		= INT_TYPE|SIZE32_TYPE;
-	*outputTypePtr			= INT_TYPE|SIZE32_TYPE;	
+	*outputTypePtr++		= INT_TYPE|SIZE32_TYPE;	
 		
     return(status);
 }
