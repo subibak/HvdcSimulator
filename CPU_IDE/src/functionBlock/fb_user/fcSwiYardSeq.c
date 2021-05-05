@@ -145,10 +145,16 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 		else if(fb.flagSeqOp == FLAG_SEQ_STOP)
 		{
 			if(fb.NextStep == Seq0000)
+			{
 				fb.flagSeqOp = FLAG_SEQ_START;
-			
-			fb.CurrStep = SeqBypass;
-			fb.flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+				fb.CurrStep = Seq0000;
+				fb.fb.flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+			}
+			else
+			{
+				fb.CurrStep = SeqBypass;
+				fb.flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+			}
 		}
 		
 		switch(fb.CurrStep)

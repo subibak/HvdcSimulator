@@ -68,9 +68,19 @@ void funcSeq0200(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		fb->NextStep = Seq0200;
-		fb->seqSts1.bit.seq0200 = SEQ_COMM_COMPLETE;
-		fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE)) \
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE)))
+		{		
+			fb->NextStep = Seq0200;
+			fb->seqSts1.bit.seq0200 = SEQ_COMM_COMPLETE;
+			fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+		}
+		else
+		{
+			fb->NextStep = Seq0200;
+			fb->seqSts1.bit.seq0200 = SEQ_COMM_PROCESSING;
+			fb->flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
@@ -659,13 +669,29 @@ void funcSeq0400(strFC0740Info *fb)
 			fb->NextStep = Seq0410;
 			fb->seqSts1.bit.seq0400 = SEQ_COMM_COMPLETE;
 			fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+		}
+		else
+		{
+			fb->NextStep = Seq0400;
+			fb->seqSts1.bit.seq0400 = SEQ_COMM_PROCESSING;
+			fb->flagSeqComplete = FLAG_SEQ_COMPLETE;			
 		}	
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		fb->NextStep = Seq0360;
-		fb->seqSts1.bit.seq0400 = SEQ_COMM_COMPLETE;
-		fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) \
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) &  (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE)))
+		{
+			fb->NextStep = Seq0360;
+			fb->seqSts1.bit.seq0400 = SEQ_COMM_COMPLETE;
+			fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+		}
+		else
+		{
+			fb->NextStep = Seq0400;
+			fb->seqSts1.bit.seq0400 = SEQ_COMM_PROCESSING;
+			fb->flagSeqComplete = FLAG_SEQ_COMPLETE;			
+		}			
 
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
@@ -844,15 +870,35 @@ void funcSeq0600(strFC0740Info *fb)
 {
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
-		fb->NextStep = Seq0610;
-		fb->seqSts2.bit.seq0600 = SEQ_COMM_COMPLETE;
-		fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts1.all == STS1_EARTHED_STANDBY_COMPLETE) && (fb->oSeqSts2.all == STS2_EARTHED_STANDBY_COMPLETE)) \
+			|| ((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_EARTHED_STOPPED_COMPLETE)))
+		{
+			fb->NextStep = Seq0610;
+			fb->seqSts2.bit.seq0600 = SEQ_COMM_COMPLETE;
+			fb->flagSeqComplete = FLAG_SEQ_COMPLETE;
+		}
+		else
+		{
+			fb->NextStep = Seq0600;
+			fb->seqSts1.bit.seq0600 = SEQ_COMM_PROCESSING;
+			fb->flagSeqComplete = FLAG_SEQ_COMPLETE;			
+		}	
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		fb->NextStep = Seq0520;
-		fb->seqSts2.bit.seq0600 = SEQ_COMM_UNPROCESSED;
-		fb->flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_EARTHED_COUPLED_COMPLETE)) \
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) )
+		{
+			fb->NextStep = Seq0520;
+			fb->seqSts2.bit.seq0600 = SEQ_COMM_UNPROCESSED;
+			fb->flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+		}
+		else
+		{
+			fb->NextStep = Seq0600;
+			fb->seqSts1.bit.seq0600 = SEQ_COMM_PROCESSING;
+			fb->flagSeqComplete = FLAG_SEQ_COMPLETE;	
+		}
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
