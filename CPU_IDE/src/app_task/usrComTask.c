@@ -42,7 +42,8 @@
 /**************************************************************************
 **		사용자 정의
 **************************************************************************/
-#define MAX_SYS_MSG_QUEUE_COUNT     (512)
+/* [V108] : 통신 FB사용시 큐 full 발생 하여 큐 갯수 증가(512-->2048) */
+#define MAX_SYS_MSG_QUEUE_COUNT     (2048)
 
 #define DUAL_LINE_SRC_INCLUDE   (1)
 #define DUAL_LINE_DEBUGGING     (0)
@@ -2106,16 +2107,17 @@ uint32 commandProcess(strMsgQueData *recvPtr)
     systemCnfgInfoRead( (strSysConfigInfo   *) &sysCnfgInfo);
 
 	cmdCode = (uint32*)(netPtr->dataBuff);
- 	opCode = (*cmdCode)>>16;
-	optionCode = (*cmdCode)&0xffff;
+	
+ 	opCode 		= (*cmdCode)>>16;
+	optionCode 	= (*cmdCode)&0xffff;
 
 	
 	if( (status = appMsgProtocolHeadCheck(netPtr,recvPtr->protoData.numOfBytes) ) 
 			  !=   NO_ERROR)
 	{
         setErrorCodeWithVal( __FILE__,   __LINE__, __FUNCTION__, status,
-							   (uint8*)"OP CODE ", opCode, 
-							   (uint8*)"OPTION CODE ", optionCode,
+							   (uint8*)"GROUP CMD ", opCode, 
+							   (uint8*)"ACTION CODE ", optionCode,
 							   (uint8*)"SEQ ID", netPtr->sequenceID);
 		goto MODULE_END;
 	}
@@ -2897,17 +2899,22 @@ static uint32    appMsgProtocolHeadCheck(
         (msgPtr->dataLength > MAX_NET_MSG_LEN - MAX_NEW_FRAME_HEAD_LEN) 
                            ||
         (msgPtr->dataLength < 0 ) 
-     )
+     ){
 		status = MSG_LEN_EXCEED_ERR;
+        setErrorCodeWithVal   (
+                        __FILE__,__LINE__,__FUNCTION__, status,
+                        "Recv Data Len", netFlameLength,
+						"Header Data Len", MAX_NEW_FRAME_HEAD_LEN,
+					    "Msg Data Len ", msgPtr->dataLength
+                         );
 
-    
+	}
     else if (
         netFlameLength != (MAX_NEW_FRAME_HEAD_LEN + msgPtr->dataLength)
             ){
         status = L_NET_MSG_LEN_ERR;
         setErrorCodeWithVal   (
-                        __FILE__,__LINE__,
-                        "headFrameCheck",status,
+                        __FILE__,__LINE__,__FUNCTION__, status,
                         "Recv Data Len", netFlameLength,
 						"Header Data Len", MAX_NEW_FRAME_HEAD_LEN,
 					    "Msg Data Len ", msgPtr->dataLength

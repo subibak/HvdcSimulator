@@ -264,8 +264,8 @@ uint32	fbDbTableTypeInfoInit (void)
 		memoryClear ( 	(uint8 *)&outputType[0], 1024*4);
 
     	fbId 		= fbCodeInfo.fbId;
-	   	inputNo 		= fbCodeInfo.inputNo;
-   		intlVarNo 		= fbCodeInfo.intlVarNo;
+	   	inputNo 	= fbCodeInfo.inputNo;
+   		intlVarNo 	= fbCodeInfo.intlVarNo;
    		outputNo 	= fbCodeInfo.outputNo;
 
 		  
@@ -331,9 +331,9 @@ uint32	fbDbTableTypeInfoInit (void)
 					);
         
         
-        indexPtr->fbInfo.fbId 	= fbId;
+        indexPtr->fbInfo.fbId 		= fbId;
         indexPtr->fbInfo.inputNo 	= inputNo;
-        indexPtr->fbInfo.intlVarNo 		= intlVarNo;
+        indexPtr->fbInfo.intlVarNo 	= intlVarNo;
         indexPtr->fbInfo.outputNo 	= outputNo;
 
         indexPtr->specTypeIndex 	= specTypeIndex;

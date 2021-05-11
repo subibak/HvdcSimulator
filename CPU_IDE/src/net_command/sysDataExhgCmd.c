@@ -143,12 +143,14 @@ static uint32 sysRmtDataReadInSharedMemAndMakeResp
 		goto MODULE_END;
     }
 
+	/* [V107] : 통신 시 RW 메모리 변경(S_MEMORY-->M_MEMORY)에 따른 변수 변경 
+				MAX_SHARED_MEM_NUM-->MEM_MPU_MMEM_NUM */
 	if(reqInfoPtr->dataAccType == RMT_LONG_ACC) 
-		maxShrardMem = MAX_SHARED_MEM_NUM;
+		maxShrardMem = MEM_MPU_MMEM_NUM;
 	else if(reqInfoPtr->dataAccType== RMT_WORD_ACC) 
-		maxShrardMem = MAX_SHARED_MEM_NUM *2;
+		maxShrardMem = MEM_MPU_MMEM_NUM *2;
 	else if(reqInfoPtr->dataAccType== RMT_BYTE_ACC) 
-		maxShrardMem = MAX_SHARED_MEM_NUM *4;
+		maxShrardMem = MEM_MPU_MMEM_NUM *4;
 	else 
 	{
 	   	status = RMT_DATA_ACC_TYPE_ERR;
@@ -190,7 +192,9 @@ static uint32 sysRmtDataReadInSharedMemAndMakeResp
 	
 	specActionData.dataSize 	= (reqInfoPtr->dataAccType + 1);
 	specActionData.refType 		= 0x00; 
-	specActionData.memoryType 	= S_MEMORY;
+
+	/* [V107] : 통신 시 RW 메모리 변경, S_MEMORY-->M_MEMORY */
+	specActionData.memoryType 	= M_MEMORY;
 	specActionData.bitPosition 	= 0;
 	specActionData.bitposFlag 	= 0;
 
@@ -397,7 +401,8 @@ static uint32 sysRmtDataReadRespWriteToSharedMem(strNewNetProtocolInfo	*respMsgP
 				
 		specActionData.dataSize 	= (respInfoPtr->dataAccType + 1);
 		specActionData.refType 		= 0x00; 
-		specActionData.memoryType 	= S_MEMORY;
+		/* [V107] : 통신 시 RW 메모리 변경, S_MEMORY-->M_MEMORY */ 
+		specActionData.memoryType 	= M_MEMORY;
 		specActionData.bitPosition 	= 0;
 		specActionData.bitposFlag 	= 0;
 		
@@ -537,15 +542,17 @@ static uint32 sysRmtDataWriteToSharedMemqAndMakeResp
 		goto MODULE_END;
     }
 
-
+	/* [V107] : 통신 시 RW 메모리 변경(S_MEMORY-->M_MEMORY)에 따른 변수 변경 
+				MAX_SHARED_MEM_NUM-->MEM_MPU_MMEM_NUM */
+				
  	if(reqInfoPtr->dataAccType == RMT_LONG_ACC) 
- 		maxShrardMem = MAX_SHARED_MEM_NUM;
+ 		maxShrardMem = MEM_MPU_MMEM_NUM;
 
 	else if(reqInfoPtr->dataAccType == RMT_WORD_ACC) 
-		maxShrardMem = MAX_SHARED_MEM_NUM *2;
+		maxShrardMem = MEM_MPU_MMEM_NUM *2;
 
 	else if(reqInfoPtr->dataAccType == RMT_BYTE_ACC) 
-		maxShrardMem = MAX_SHARED_MEM_NUM *4;
+		maxShrardMem = MEM_MPU_MMEM_NUM *4;
 
 	else 
 		{
@@ -565,7 +572,11 @@ static uint32 sysRmtDataWriteToSharedMemqAndMakeResp
 	if( (reqInfoPtr->destFbBlockAddr<0) || (reqInfoPtr->destFbBlockAddr >= maxShrardMem) )
 	{
 		status = VARIABLE_ADDR_RANGE_ERR;
-		setErrorCode(	__FILE__, __LINE__, __FUNCTION__, status);
+		setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
+						   "Dest. FB Addr", reqInfoPtr->destFbBlockAddr,
+						   "Max Shared MEM", maxShrardMem,
+						   "MAX_SHARED_MEM_NUM", MAX_SHARED_MEM_NUM
+						);
 		goto MODULE_END;
 	}
 
@@ -589,7 +600,9 @@ static uint32 sysRmtDataWriteToSharedMemqAndMakeResp
 	
 	specActionData.dataSize 	= (reqInfoPtr->dataAccType + 1);
 	specActionData.refType 		= 0x00; 
-	specActionData.memoryType 	= S_MEMORY;
+	
+	/* [V107] : 통신 시 RW 메모리 변경, S_MEMORY-->M_MEMORY */ 
+	specActionData.memoryType 	= M_MEMORY;
 	specActionData.bitPosition 	= 0;
 	specActionData.bitposFlag 	= 0;
 
@@ -877,7 +890,9 @@ uint32 sysRmtDataBroadCastFunc(strNewNetProtocolInfo	*respMsgPtr)
 	
 	specActionData.dataSize 	= (respInfoPtr->dataAccType + 1);
 	specActionData.refType 		= 0x00; 
-	specActionData.memoryType 	= S_MEMORY;
+
+	/* [V107] : 통신 시 RW 메모리 변경, S_MEMORY-->M_MEMORY */ 
+	specActionData.memoryType 	= M_MEMORY;
 	specActionData.bitPosition 	= 0;
 	specActionData.bitposFlag 	= 0;
 

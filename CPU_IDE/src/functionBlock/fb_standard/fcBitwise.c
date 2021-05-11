@@ -34,8 +34,8 @@ uint32	stdAnd2InitFunc
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= AND2_CODE;
-    paraInfoPtr->inputNo		= AND2_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= AND2_VAR_NUM;
+    paraInfoPtr->inputNo	= AND2_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= AND2_VAR_NUM;
     paraInfoPtr->outputNo	= AND2_OUTPUT_NUM;
 
 	/* 스펙 - 2개 */
@@ -107,8 +107,8 @@ uint32	stdAnd4InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= AND4_CODE;
-    paraInfoPtr->inputNo		= AND4_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= AND4_VAR_NUM;
+    paraInfoPtr->inputNo	= AND4_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= AND4_VAR_NUM;
     paraInfoPtr->outputNo	= AND4_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -176,8 +176,8 @@ uint32	stdAnd8InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= AND8_CODE;
-    paraInfoPtr->inputNo		= AND8_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= AND8_VAR_NUM;
+    paraInfoPtr->inputNo	= AND8_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= AND8_VAR_NUM;
     paraInfoPtr->outputNo	= AND8_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -555,8 +555,8 @@ uint32	stdXor4InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	iLoop;
 
 	paraInfoPtr->fbId		= XOR4_CODE;
-    paraInfoPtr->inputNo		= XOR4_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= XOR4_VAR_NUM;
+    paraInfoPtr->inputNo	= XOR4_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= XOR4_VAR_NUM;
     paraInfoPtr->outputNo	= XOR4_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -620,8 +620,8 @@ uint32	stdXor8InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	iLoop;
 
 	paraInfoPtr->fbId		= XOR8_CODE;
-    paraInfoPtr->inputNo		= XOR8_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= XOR8_VAR_NUM;
+    paraInfoPtr->inputNo	= XOR8_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= XOR8_VAR_NUM;
     paraInfoPtr->outputNo	= XOR8_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -689,8 +689,8 @@ uint32	stdNotInitFunc
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= NOT_CODE;
-    paraInfoPtr->inputNo		= NOT_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= NOT_VAR_NUM;
+    paraInfoPtr->inputNo	= NOT_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= NOT_VAR_NUM;
     paraInfoPtr->outputNo	= NOT_OUTPUT_NUM;
 
 	/* 스펙 - 1개 */
@@ -787,8 +787,8 @@ uint32	stdBgetInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= BGET_CODE;
-    paraInfoPtr->inputNo		= BGET_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= BGET_VAR_NUM;
+    paraInfoPtr->inputNo	= BGET_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= BGET_VAR_NUM;
     paraInfoPtr->outputNo	= BGET_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -859,8 +859,8 @@ uint32	stdBitAndInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outpu
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= BITAND_CODE;
-    paraInfoPtr->inputNo		= BITAND_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= BITAND_VAR_NUM;
+    paraInfoPtr->inputNo	= BITAND_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= BITAND_VAR_NUM;
     paraInfoPtr->outputNo	= BITAND_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -921,8 +921,8 @@ uint32	stdBitOrInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *output
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= BITOR_CODE;
-    paraInfoPtr->inputNo		= BITOR_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= BITOR_VAR_NUM;
+    paraInfoPtr->inputNo	= BITOR_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= BITOR_VAR_NUM;
     paraInfoPtr->outputNo	= BITOR_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -983,8 +983,8 @@ uint32	stdBitSetInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outpu
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= BSET_CODE;
-    paraInfoPtr->inputNo		= BSET_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= BSET_VAR_NUM;
+    paraInfoPtr->inputNo	= BSET_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= BSET_VAR_NUM;
     paraInfoPtr->outputNo	= BSET_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -1063,8 +1063,8 @@ uint32	stdRegInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= REG_CODE;
-    paraInfoPtr->inputNo		= REG_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= REG_VAR_NUM;
+    paraInfoPtr->inputNo	= REG_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= REG_VAR_NUM;
     paraInfoPtr->outputNo	= REG_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -1142,8 +1142,8 @@ uint32	stdSrFfInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= SRFF_CODE;
-    paraInfoPtr->inputNo		= SRFF_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= SRFF_VAR_NUM;
+    paraInfoPtr->inputNo	= SRFF_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= SRFF_VAR_NUM;
     paraInfoPtr->outputNo	= SRFF_OUTPUT_NUM;
 
 	/* 입력 - ?개 */

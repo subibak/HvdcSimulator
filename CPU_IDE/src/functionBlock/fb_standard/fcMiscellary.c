@@ -34,6 +34,8 @@ extern uint32	M_MEMORY_AREA_START_OFFSET;
 extern uint32	readRuntimeFbData(uint32, uint32, uint32, uint32 *);
 extern uint32	writeRuntimeFbData(uint32, uint32, uint32, uint32 *);
 extern void 	setErrorCode(uint8 *, uint32,uint8 *,uint32);
+extern void		setErrorCodeWithVal(uint8 *, uint32, uint8 *, uint32,
+									uint8 *, uint32,uint8 *, uint32,uint8 *, uint32	);
 extern uint32	netDataSendInFbTask(strNewNetProtocolInfo	*);
 extern uint32	systemCnfgInfoRead( strSysConfigInfo *);
 extern uint32 	fbMemInfoRead(uint32, uint32, strFbMemInfo *);
@@ -82,7 +84,7 @@ uint32	ethDSndInitFunc
 	*specTypePtr++	= INT_TYPE|SIZE32_TYPE;	
 	*specTypePtr++	= INT_TYPE|SIZE32_TYPE;	
 	*specTypePtr++	= INT_TYPE|SIZE32_TYPE;	
-	*specTypePtr	= INT_TYPE|SIZE32_TYPE;	
+	*specTypePtr++	= INT_TYPE|SIZE32_TYPE;	
 	
 	*varTypePtr++	= INT_TYPE|SIZE32_TYPE;	
 	*varTypePtr++	= INT_TYPE|SIZE32_TYPE;	
@@ -92,17 +94,17 @@ uint32	ethDSndInitFunc
 	*varTypePtr++	= REAL_TYPE|SIZE32_TYPE; 
 	*varTypePtr++	= REAL_TYPE|SIZE32_TYPE;
 	*varTypePtr++	= INT_TYPE|SIZE32_TYPE;	
-	*varTypePtr		= INT_TYPE|SIZE32_TYPE;		
+	*varTypePtr++	= INT_TYPE|SIZE32_TYPE;		
     
-	*outputTypePtr++= INT_TYPE|SIZE32_TYPE;			
-	*outputTypePtr++= INT_TYPE|SIZE32_TYPE;			
-	*outputTypePtr++= INT_TYPE|SIZE32_TYPE;			
-	*outputTypePtr++= INT_TYPE|SIZE32_TYPE;			
-	*outputTypePtr++= INT_TYPE|SIZE32_TYPE;			
-	*outputTypePtr++= INT_TYPE|SIZE32_TYPE;			
-	*outputTypePtr++= INT_TYPE|SIZE32_TYPE;			
-	*outputTypePtr++= INT_TYPE|SIZE32_TYPE;			
-	*outputTypePtr  = INT_TYPE|SIZE32_TYPE;			
+	*outputTypePtr++	= INT_TYPE|SIZE32_TYPE;			
+	*outputTypePtr++	= INT_TYPE|SIZE32_TYPE;			
+	*outputTypePtr++	= INT_TYPE|SIZE32_TYPE;			
+	*outputTypePtr++	= INT_TYPE|SIZE32_TYPE;			
+	*outputTypePtr++	= INT_TYPE|SIZE32_TYPE;			
+	*outputTypePtr++	= INT_TYPE|SIZE32_TYPE;			
+	*outputTypePtr++	= INT_TYPE|SIZE32_TYPE;			
+	*outputTypePtr++	= INT_TYPE|SIZE32_TYPE;			
+	*outputTypePtr++	= INT_TYPE|SIZE32_TYPE;			
 	
     return(status);
 }
@@ -125,7 +127,8 @@ uint32	ethDSndRunFunc(uint32 taskId, uint32 fbBlockAddr)
 	uint8* write8Ptr; uint16* write16Ptr; uint32* write32Ptr;
 	uint32  tcpComShelf = ETH_MASTER_COM;
 
-    
+	memoryClear((uint8 *)&send_buff, sizeof(strNewNetProtocolInfo));
+	    
     status = readRuntimeFbData(	taskId,
     							LOGIC_ID,
                                 fbBlockAddr,
@@ -155,11 +158,9 @@ uint32	ethDSndRunFunc(uint32 taskId, uint32 fbBlockAddr)
 
  	
  	comDeviceType = fd.deviceSelect;	
- 
- 	
- 	
- 	comPeriod = fd.comPeriodNo * cycleTime;			
- 	respondDelay = fd.respondDelayNo * comPeriod * 2;	
+  	
+ 	comPeriod 		= fd.comPeriodNo * cycleTime;			
+ 	respondDelay 	= fd.respondDelayNo * comPeriod * 2;	
  
  	
  	masterALineIP 	= (fd.masterALineIP & 0xffffffff);
@@ -277,8 +278,9 @@ uint32	ethDSndRunFunc(uint32 taskId, uint32 fbBlockAddr)
 					tcpComShelf = ETH_SLAVE_COM;
             	}
             	
- 	    		tmp_buff[2] = fbBlockAddr;        
- 	    		tmp_buff[3] = fd.memoryAddress;   
+ 	    		tmp_buff[2] = fbBlockAddr;
+ 	    		/* [V107] : memoryAddress -->remoteMemAddr */       
+ 	    		tmp_buff[3] = fd.remoteMemAddr;   
  	    		tmp_buff[4] = comDeviceType;      
  	    		tmp_buff[5] = fd.dataType;        
  	    		tmp_buff[6] = fd.dataNumber;      
@@ -440,7 +442,8 @@ uint32	ethDSndRunFunc(uint32 taskId, uint32 fbBlockAddr)
             	}
 
  	    		tmp_buff[2] = fbBlockAddr;        
- 	    		tmp_buff[3] = fd.memoryAddress;   
+ 	    		/* [V107] : memoryAddress -->remoteMemAddr */       
+ 	    		tmp_buff[3] = fd.remoteMemAddr; 
  	    		tmp_buff[4] = comDeviceType;      
  	    		tmp_buff[5] = fd.dataType;        
  	    		tmp_buff[6] = fd.dataNumber;      
@@ -457,7 +460,11 @@ uint32	ethDSndRunFunc(uint32 taskId, uint32 fbBlockAddr)
     			{ 
 					for(i=0; i<fd.dataNumber; i++) 
 					{
-						write8Ptr = (uint8*) ((int8*)(memInfoPtr.stSharedMemPtr) + fd.srcSharedMemAddr+i);
+						/* [V107] : S영역에서 M 영역 변경에 따른 수정      
+							write8Ptr = (uint8*) ((int8*)(memInfoPtr.stSharedMemPtr) + fd.srcSharedMemAddr+i);
+						*/
+						write8Ptr = (uint8*) ((int8*)(memInfoPtr.flagMemPtr) + fd.localMemAddr+i);
+
 						dataBuf[i] = (uint32)(*write8Ptr);
 					}
     			}
@@ -466,7 +473,10 @@ uint32	ethDSndRunFunc(uint32 taskId, uint32 fbBlockAddr)
     			{
 					for(i=0; i<fd.dataNumber; i++) 
 					{
-						write16Ptr = (uint16*) ((int16*)(memInfoPtr.stSharedMemPtr) + fd.srcSharedMemAddr+i);
+						/* [V107] : S영역에서 M 영역 변경에 따른 수정      
+							write16Ptr = (uint16*) ((int16*)(memInfoPtr.stSharedMemPtr) + fd.srcSharedMemAddr+i);
+						*/
+						write16Ptr = (uint16*) ((int16*)(memInfoPtr.flagMemPtr) + fd.localMemAddr+i);
 						dataBuf[i] = (uint32)(*write16Ptr);
 					}
     			}
@@ -474,7 +484,10 @@ uint32	ethDSndRunFunc(uint32 taskId, uint32 fbBlockAddr)
     			{ 
 					for(i=0; i<fd.dataNumber; i++)
 					{
-						write32Ptr = (uint32*) ((int32*)(memInfoPtr.stSharedMemPtr) + fd.srcSharedMemAddr+i);
+						/* [V107] : S영역에서 M 영역 변경에 따른 수정      
+							write32Ptr = (uint32*) ((int32*)(memInfoPtr.stSharedMemPtr) + fd.srcSharedMemAddr+i);
+						*/
+						write32Ptr = (uint32*) ((int32*)(memInfoPtr.flagMemPtr) + fd.localMemAddr+i);
 						dataBuf[i] = (uint32)(*write32Ptr);
 					}
     			}
@@ -630,7 +643,7 @@ uint32	ethDBrdInitFunc
 	
 	*varTypePtr++	= REAL_TYPE|SIZE32_TYPE; 
 	*varTypePtr++	= INT_TYPE|SIZE32_TYPE;	
-	*varTypePtr		= INT_TYPE|SIZE32_TYPE;		
+	*varTypePtr++	= INT_TYPE|SIZE32_TYPE;		
 	
     
 	*outputTypePtr++= INT_TYPE|SIZE32_TYPE;			
@@ -846,26 +859,21 @@ uint32	pmc502RdRunFunc	(uint32 taskId, uint32 fbBlockAddr)
 	int i;
 	uint32  srcMemOffsetPtr = 0, busSrcMemOffsetPtr;
 	uint32  dstMemOffsetPtr, busDstMemOffsetPtr;
-	uint8   scanDataByte, oldScanDataByte;
-	uint16  scanDataWord, oldScanDataWord;
-	uint32  scanDataDword, oldScanDataDword;
+	uint32  scanDataDword;
 	
   	strMemPointerInfo memInfoPtr;
   	strMemPointerInfo busMemInfoPtr;
     
-    ushort	u16_data[512];
-
 	uint32  useDataNumber;
 	uint32  maxDataNumber, maxDataSize;
-	uint32	byte1, byte2, byte3;
-	uint32	word1, word2, word3;
 	
-	uint32	*gtx_rx_buf;
-	uint32 read_data, swap_data, read_dump[128], head_data, data_length, readCrc32, seqNo, preSeqNo;
-	static uint32 seqIncCnt=0, seqHoldCnt=0, headErrCnt=0, crcErrCnt=0;
+	uint32 read_data, swap_data;
+
 	uint8 rxStatus;
 	
 	uint32	factor;
+
+	strFiberComDataInfo	*fiberComDataInfoPtr;
 	
 	/***********************************************************************************
 	**	FB 파라미터 Read
@@ -980,7 +988,7 @@ uint32	pmc502RdRunFunc	(uint32 taskId, uint32 fbBlockAddr)
 	else if(fd.saveMemKindOfReadData == AIO_FB_MEM_M_REGION) 
 	{
 		dstMemOffsetPtr 	= memInfoPtr.flagMemPtr;
-		busDstMemOffsetPtr 	= busMemInfoPtr.stSharedMemPtr;
+		busDstMemOffsetPtr 	= busMemInfoPtr.flagMemPtr;
 	} 
 	else 
 	{
@@ -1018,36 +1026,63 @@ uint32	pmc502RdRunFunc	(uint32 taskId, uint32 fbBlockAddr)
 		break;
 	}
 				
+	/***********************************************************************************
+	**	PMC502 Data Read
+	**
+	**	프레임 Head 는 4DWORD (1.StartCode, 2.CRC, 3.Sequence Number, 4.Data 개수(바이트수 아님)
+	***********************************************************************************/
+
+	fiberComDataInfoPtr = (strFiberComDataInfo *)gtx_map_data[fd.opticPortId]->pRxSpace;
+	
+	/* 1. Start Code Check */
+	swap_data = SWAP_DWORD(fiberComDataInfoPtr->startCode);
+	
+	if(swap_data != PMC502_COM_START_CODE)
+	{
+	    fd.accErrId = PMC502_FRAME_ERR;
+	    
+	    status = FB_FIBER_COM_START_CODE_ERR;
+        setErrorCodeWithVal( 	__FILE__,
+	    						__LINE__,
+    	                		__FUNCTION__,
+        	            		status,
+                                (uint8 *)"DEFINED START CODE", PMC502_COM_START_CODE,
+                                (uint8 *)"Read Start Code", swap_data,
+                                (uint8 *)"Not Used" , 0
+							);
+
+		goto MODULE_END;		
+	} 
+	
+	/* 2. sequence number은 FB Code의 출력에 Set 함*/
+	swap_data = SWAP_DWORD(fiberComDataInfoPtr->sequenceNumber);
+	
+    fd.readComSeqNum = swap_data;
+    
+	/* 3. Data 갯수 Check */
+	swap_data = SWAP_DWORD(fiberComDataInfoPtr->numOfData);
+    
+	if(swap_data > MAX_PMC502_READ_DATA_NUM)
+	{
+	    fd.accErrId = PMC502_FRAME_ERR;
+	    
+	    status = FB_FIBER_COM_DATA_NUM_ERR;
+		setErrorCode(	__FILE__, __LINE__, __FUNCTION__, status);
+        setErrorCodeWithVal( 	__FILE__,
+	    						__LINE__,
+    	                		__FUNCTION__,
+        	            		status,
+                                (uint8 *)"MAX DATA NUMBER", MAX_PMC502_READ_DATA_NUM,
+                                (uint8 *)"Read Data Number", swap_data,
+                                (uint8 *)"Not Used" , 0
+							);
+		
+		goto MODULE_END;		
+	} 
+
 	useDataNumber = fd.numOfReadData;
 
-	if( (fd.saveMemKindOfReadData == AIO_FB_MEM_S_REGION )  &&
-	    ( (uint32)(memInfoPtr.flagMemPtr + maxDataNumber) > (uint32)(srcMemOffsetPtr + fd.startAddrOfMem + useDataNumber)  )
-	) {
-		dstMemOffsetPtr 	= memInfoPtr.stSharedMemPtr;
-		busDstMemOffsetPtr 	= busMemInfoPtr.stSharedMemPtr;
-	} 
-	else if( (fd.saveMemKindOfReadData == AIO_FB_MEM_M_REGION )  &&
-	    ( (uint32)(memInfoPtr.flagMemPtr + maxDataNumber) > (uint32)(srcMemOffsetPtr + fd.startAddrOfMem + useDataNumber)  )
-	) {
-		dstMemOffsetPtr 	= memInfoPtr.flagMemPtr;
-		busDstMemOffsetPtr 	= busMemInfoPtr.flagMemPtr;
-	}
-	else 
-	{
-		status = FB_INPUT_DATA_ERR;
-		setErrorCode(	__FILE__, __LINE__,__FUNCTION__, status);
-		return(status);
-	}
-	
-	/* PMC502 데이터 Read */
-	gtx_rx_buf	= (uint32 *)gtx_map_data[fd.opticPortId]->pRxSpace;
-	
-	fourBytesDataCopy(	(uint32*)read_dump, 
-						(uint32*)gtx_rx_buf,
-						fd.numOfReadData*factor
-					 ); 
-
-	for(i=0; i < useDataNumber; i++) 
+	for(i = 0; i < useDataNumber; i++) 
 	{
 		switch(fd.readDataType) 
 		{
@@ -1055,19 +1090,11 @@ uint32	pmc502RdRunFunc	(uint32 taskId, uint32 fbBlockAddr)
 			case ETH_WORD_TYPE:
 			break;
 			case ETH_LWORD_TYPE:
-				read_data 		= read_dump[i];
-				swap_data 		= SWAP_DWORD(read_data);
-				read_dump[i] 	= swap_data;
-				scanDataDword 	= read_dump[i];
+				swap_data 		= SWAP_DWORD(fiberComDataInfoPtr->comData[i]);
+				scanDataDword 	= swap_data;
 				    
 				*(uint32*)((int32*)(dstMemOffsetPtr) + fd.startAddrOfMem + i) 		= scanDataDword;
 				*(uint32*)((int32*)(busDstMemOffsetPtr) + fd.startAddrOfMem + i) 	= scanDataDword;
-				
-				if(i == 2)
-				    fd.readComSeqNum = scanDataDword;
-				    
-				if((i == 0) && (scanDataDword != PMC502_COM_START_CODE))
-				    fd.accErrId = PMC502_FRAME_ERR;
 			 
 			break;
 			default:

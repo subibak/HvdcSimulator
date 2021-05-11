@@ -128,7 +128,11 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 		// Sequence Operation START/STOP/HOLD
 		if(((fb.prevSysMode.bit.seqOp == SM_SEQOP_NULL) || (fb.prevSysMode.bit.seqOp == SM_SEQOP_STOP) || (fb.prevSysMode.bit.seqOp == SM_SEQOP_HOLD))
 		  && (fb.sysMode.bit.seqOp == SM_SEQOP_START))
+		{
 			fb.flagSeqOp = FLAG_SEQ_START;
+			fb.flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+			
+		}
 		else if(fb.sysMode.bit.seqOp == SM_SEQOP_STOP || fb.sysMode.bit.seqOp == SM_SEQOP_HOLD) 
 			fb.flagSeqOp = FLAG_SEQ_STOP;	
 
@@ -137,8 +141,7 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 		{
 			if(fb.flagSeqComplete == FLAG_SEQ_COMPLETE)
 				fb.flagSeqOp = FLAG_SEQ_STOP;
-		}
-		
+		}		
 
 		if(fb.flagSeqOp == FLAG_SEQ_START)
 			fb.CurrStep = fb.NextStep;
@@ -148,7 +151,7 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 			{
 				fb.flagSeqOp = FLAG_SEQ_START;
 				fb.CurrStep = Seq0000;
-				fb.fb.flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+				fb.flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
 			}
 			else
 			{

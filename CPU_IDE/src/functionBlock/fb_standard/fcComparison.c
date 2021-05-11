@@ -26,8 +26,8 @@ uint32	stdEq2InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	iLoop;
 
 	paraInfoPtr->fbId		= EQ2_CODE;
-    paraInfoPtr->inputNo		= EQ2_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= EQ2_VAR_NUM;
+    paraInfoPtr->inputNo	= EQ2_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= EQ2_VAR_NUM;
     paraInfoPtr->outputNo	= EQ2_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -751,8 +751,8 @@ uint32	stdLe4InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= LE4_CODE;
-    paraInfoPtr->inputNo		= LE4_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= LE4_VAR_NUM;
+    paraInfoPtr->inputNo	= LE4_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= LE4_VAR_NUM;
     paraInfoPtr->outputNo	= LE4_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -825,8 +825,8 @@ uint32	stdLe8InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= LE8_CODE;
-    paraInfoPtr->inputNo		= LE8_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= LE8_VAR_NUM;
+    paraInfoPtr->inputNo	= LE8_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= LE8_VAR_NUM;
     paraInfoPtr->outputNo	= LE8_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -898,8 +898,8 @@ uint32	stdLt2InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= LT2_CODE;
-    paraInfoPtr->inputNo		= LT2_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= LT2_VAR_NUM;
+    paraInfoPtr->inputNo	= LT2_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= LT2_VAR_NUM;
     paraInfoPtr->outputNo	= LT2_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -972,8 +972,8 @@ uint32	stdLt4InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32 	iLoop;
 
 	paraInfoPtr->fbId		= LT4_CODE;
-    paraInfoPtr->inputNo		= LT4_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= LT4_VAR_NUM;
+    paraInfoPtr->inputNo	= LT4_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= LT4_VAR_NUM;
     paraInfoPtr->outputNo	= LT4_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -1047,8 +1047,8 @@ uint32	stdLt8InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32 	iLoop;
 	
 	paraInfoPtr->fbId		= LT8_CODE;
-    paraInfoPtr->inputNo		= LT8_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= LT8_VAR_NUM;
+    paraInfoPtr->inputNo	= LT8_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= LT8_VAR_NUM;
     paraInfoPtr->outputNo	= LT8_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -1120,8 +1120,8 @@ uint32	stdNe2InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= NE2_CODE;
-    paraInfoPtr->inputNo		= NE2_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= NE2_VAR_NUM;
+    paraInfoPtr->inputNo	= NE2_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= NE2_VAR_NUM;
     paraInfoPtr->outputNo	= NE2_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -1197,8 +1197,8 @@ uint32	stdNe4InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= NE4_CODE;
-    paraInfoPtr->inputNo		= NE4_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= NE4_VAR_NUM;
+    paraInfoPtr->inputNo	= NE4_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= NE4_VAR_NUM;
     paraInfoPtr->outputNo	= NE4_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -1274,8 +1274,8 @@ uint32	stdNe8InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	iLoop;
 
 	paraInfoPtr->fbId		= NE8_CODE;
-    paraInfoPtr->inputNo		= NE8_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= NE8_VAR_NUM;
+    paraInfoPtr->inputNo	= NE8_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= NE8_VAR_NUM;
     paraInfoPtr->outputNo	= NE8_OUTPUT_NUM;
 
 	/* 입력 - ?개 */

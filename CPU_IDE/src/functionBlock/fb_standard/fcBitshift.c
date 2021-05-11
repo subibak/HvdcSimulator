@@ -27,8 +27,8 @@ uint32	stdRolInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= ROL_CODE;
-    paraInfoPtr->inputNo		= ROL_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= ROL_VAR_NUM;
+    paraInfoPtr->inputNo	= ROL_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= ROL_VAR_NUM;
     paraInfoPtr->outputNo	= ROL_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -155,8 +155,8 @@ uint32	stdRorInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= ROR_CODE;
-    paraInfoPtr->inputNo		= ROR_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= ROR_VAR_NUM;
+    paraInfoPtr->inputNo	= ROR_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= ROR_VAR_NUM;
     paraInfoPtr->outputNo	= ROR_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -284,8 +284,8 @@ uint32	stdShlInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= SHL_CODE;
-    paraInfoPtr->inputNo		= SHL_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= SHL_VAR_NUM;
+    paraInfoPtr->inputNo	= SHL_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= SHL_VAR_NUM;
     paraInfoPtr->outputNo	= SHL_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -354,8 +354,8 @@ uint32	stdShrInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= SHR_CODE;
-    paraInfoPtr->inputNo		= SHR_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= SHR_VAR_NUM;
+    paraInfoPtr->inputNo	= SHR_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= SHR_VAR_NUM;
     paraInfoPtr->outputNo	= SHR_OUTPUT_NUM;
 
 	/* 입력 - ?개 */

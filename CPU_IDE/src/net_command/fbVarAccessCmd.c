@@ -660,10 +660,10 @@ uint32 VarInfoDownloadReqAndRespFunc
 
 	memoryClear((uint8*)&sysVarExeInfo, sizeof(strVariableExecInfo )) ;
 
-    cmdCode = *reqDataPtr++;
-	memoryKind = *reqDataPtr++;
-	variableKind = *reqDataPtr++;
-	variableIndexNum = *reqDataPtr++;
+    cmdCode 			= *reqDataPtr++;
+	memoryKind 			= *reqDataPtr++;
+	variableKind 		= *reqDataPtr++;
+	variableIndexNum 	= *reqDataPtr++;
 
 	
 	
@@ -712,18 +712,22 @@ uint32 VarInfoDownloadReqAndRespFunc
 		variableIndex = *reqDataPtr++;
 
 		
-		if (variableKind == AUTO_VAR) {
-			if (variableIndex > MAX_MPU_AUTOVAR_NUM) {
-			 status = VARIABLE_INDEX_ERR;
-			setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
-								"Var Kind",variableKind,
-								"Var Index",variableIndex,
-								"Max Index",MAX_MPU_AUTOVAR_NUM);
+		if (variableKind == AUTO_VAR) 
+		{
+			if (variableIndex > MAX_MPU_AUTOVAR_NUM) 
+			{
+			 	status = VARIABLE_INDEX_ERR;
+				setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
+									"Var Kind",variableKind,
+									"Var Index",variableIndex,
+									"Max Index",MAX_MPU_AUTOVAR_NUM);
 			}
 		}
 		
-		else if (variableKind == MMEM_VAR)  {
-			if (variableIndex > MAX_MPU_MMEM_NUM) {
+		else if (variableKind == MMEM_VAR)  
+		{
+			if (variableIndex > MAX_MPU_MMEM_NUM) 
+			{
 				status = VARIABLE_INDEX_ERR;
 				setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
 									"Var Kind",variableKind,
@@ -731,10 +735,12 @@ uint32 VarInfoDownloadReqAndRespFunc
 									"Max Index",MAX_MPU_MMEM_NUM);
 			}
 		}
+		
 		if(status != NO_ERROR) 	goto RETAIN_END;
 
 		status = localVariableRetainInfoWrite(variableKind, variableIndex, EN_RETAIN);
-		if(status != NO_ERROR){ 
+		if(status != NO_ERROR)
+		{ 
 			setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
 								"Recv variable Index Num",variableIndexNum,
 								"Error Variable Index", i+1,
@@ -742,9 +748,11 @@ uint32 VarInfoDownloadReqAndRespFunc
 							);
 			break;
 		}
-		else {
+		else 
+		{
 			status = busVariableRetainInfoWrite(variableKind, variableIndex, EN_RETAIN);
-			if(status != NO_ERROR) {
+			if(status != NO_ERROR) 
+			{
 				setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
 									"Recv variable Index Num",variableIndexNum,
 									"Error Variable Index", i+1,

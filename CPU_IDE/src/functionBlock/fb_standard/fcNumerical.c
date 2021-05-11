@@ -155,8 +155,8 @@ uint32	stdSqrtInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= SQRT_CODE;
-    paraInfoPtr->inputNo		= SQRT_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= SQRT_VAR_NUM;
+    paraInfoPtr->inputNo	= SQRT_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= SQRT_VAR_NUM;
     paraInfoPtr->outputNo	= SQRT_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -225,8 +225,8 @@ uint32	stdExpInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= EXP_CODE;
-    paraInfoPtr->inputNo		= EXP_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= EXP_VAR_NUM;
+    paraInfoPtr->inputNo	= EXP_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= EXP_VAR_NUM;
     paraInfoPtr->outputNo	= EXP_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -286,8 +286,8 @@ uint32	stdLnInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTyp
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= LN_CODE;
-    paraInfoPtr->inputNo		= LN_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= LN_VAR_NUM;
+    paraInfoPtr->inputNo	= LN_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= LN_VAR_NUM;
     paraInfoPtr->outputNo	= LN_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -347,8 +347,8 @@ uint32	stdLogInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= LOG_CODE;
-    paraInfoPtr->inputNo		= LOG_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= LOG_VAR_NUM;
+    paraInfoPtr->inputNo	= LOG_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= LOG_VAR_NUM;
     paraInfoPtr->outputNo	= LOG_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -408,8 +408,8 @@ uint32	stdACosInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= ACOS_CODE;
-    paraInfoPtr->inputNo		= ACOS_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= ACOS_VAR_NUM;
+    paraInfoPtr->inputNo	= ACOS_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= ACOS_VAR_NUM;
     paraInfoPtr->outputNo	= ACOS_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -470,8 +470,8 @@ uint32	stdAsinInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= ASIN_CODE;
-    paraInfoPtr->inputNo		= ASIN_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= ASIN_VAR_NUM;
+    paraInfoPtr->inputNo	= ASIN_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= ASIN_VAR_NUM;
     paraInfoPtr->outputNo	= ASIN_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -531,8 +531,8 @@ uint32	stdAtanInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= ATAN_CODE;
-    paraInfoPtr->inputNo		= ATAN_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= ATAN_VAR_NUM;
+    paraInfoPtr->inputNo	= ATAN_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= ATAN_VAR_NUM;
     paraInfoPtr->outputNo	= ATAN_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -593,8 +593,8 @@ uint32	stdCosInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= COS_CODE;
-    paraInfoPtr->inputNo		= COS_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= COS_VAR_NUM;
+    paraInfoPtr->inputNo	= COS_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= COS_VAR_NUM;
     paraInfoPtr->outputNo	= COS_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -654,8 +654,8 @@ uint32	stdSinInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= SIN_CODE;
-    paraInfoPtr->inputNo		= SIN_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= SIN_VAR_NUM;
+    paraInfoPtr->inputNo	= SIN_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= SIN_VAR_NUM;
     paraInfoPtr->outputNo	= SIN_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -715,8 +715,8 @@ uint32	stdTanInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= TAN_CODE;
-    paraInfoPtr->inputNo		= TAN_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= TAN_VAR_NUM;
+    paraInfoPtr->inputNo	= TAN_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= TAN_VAR_NUM;
     paraInfoPtr->outputNo	= TAN_OUTPUT_NUM;
 
 	/* 입력 - ?개 */

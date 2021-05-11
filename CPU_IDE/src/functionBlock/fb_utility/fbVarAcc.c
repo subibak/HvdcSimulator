@@ -25,8 +25,8 @@
 
 #include	"debugInfo.h"
 
-
-#define	M_MEMORY_MAX_ADDR_DWORD		16384
+/*[V107] : M 메모리 매핑때문에 16K-->MEM_MPU_MMEM_NUM */  
+#define	M_MEMORY_MAX_ADDR_DWORD		MEM_MPU_MMEM_NUM
 #define	M_MEMORY_MAX_ADDR_BYTE		M_MEMORY_MAX_ADDR_DWORD*4
 #define	M_MEMORY_MAX_ADDR_WORD		M_MEMORY_MAX_ADDR_DWORD*2
 #define	M_MEMORY_MAX_ADDR_LWORD		M_MEMORY_MAX_ADDR_DWORD/2
@@ -583,7 +583,7 @@ uint32 refDataCopyFromMem	(	uint32	*retSpecDataPtr,
 
 	if(status != NO_ERROR)
 		return(status);
-		
+
 	if( CHK_IS_ANY_TYPE(specType) && (tcType==TYPECASTING_ENABLE) 
 						&&
 		( (GET_BASIC_DATA_TYPE(specActionData.dataType) != GET_BASIC_DATA_TYPE(specType)) 
@@ -690,7 +690,7 @@ uint32 refDataCopyFromMem	(	uint32	*retSpecDataPtr,
 				setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
 									"Type-Conversion From", GET_BASIC_DATA_TYPE(specActionData.dataType),
 									"Type-Conversion To", GET_BASIC_DATA_TYPE(specType),
-									"Not Using", 0
+									"kindTypeConversion", kindTypeConversion
 								);
 			break;
 		}
@@ -1822,7 +1822,7 @@ uint32  localVariableRetainInfoWrite(uint32 variableKind, uint32 variableIndex, 
 
 	if(variableKind == AUTO_VAR) 
 	{
-		
+		/* 자동 변수인 경우는 Index가 '1'부터 시작 */
 		variableIndex = variableIndex-1; 
 		retainIndexPtr = (uint32*)memPointer.retainMemPtr;
 
@@ -3801,140 +3801,140 @@ uint32 specActionDataCheck(uint32 *specActionPtr, uint32 specData )
 
 		switch(specActionData->dataSize) 
 		{
-		case SPEC_SIZE_BIT:
-			if( (specActionData->memoryType == I_MEMORY) ||
-				(specActionData->memoryType == Q_MEMORY) ||
-				(specActionData->memoryType == T_MEMORY) ||
-				(specActionData->memoryType == P_MEMORY)
-			) {
-				
-				if(	(specActionData->bitPosition < 0) || 
-					(specActionData->bitPosition > 31) 
+			case SPEC_SIZE_BIT:
+				if( (specActionData->memoryType == I_MEMORY) ||
+					(specActionData->memoryType == Q_MEMORY) ||
+					(specActionData->memoryType == T_MEMORY) ||
+					(specActionData->memoryType == P_MEMORY)
 				) {
-					status = FB_SPEC_ACTION_BITPOS_ERR;
-					setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
-									   "Bit Flag", specActionData->bitposFlag,
-									   "Bit Position", specActionData->bitPosition,
-									   "Data Size", specActionData->dataSize
-									);
+					
+					if(	(specActionData->bitPosition < 0) || 
+						(specActionData->bitPosition > 31) 
+					) {
+						status = FB_SPEC_ACTION_BITPOS_ERR;
+						setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
+										   "Bit Flag", specActionData->bitposFlag,
+										   "Bit Position", specActionData->bitPosition,
+										   "Data Size", specActionData->dataSize
+										);
+					}
+				} else {
+					if(specActionData->bitPosition !=  0) {
+						status = FB_SPEC_ACTION_BITPOS_ERR;
+						setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
+										   "Bit Flag", specActionData->bitposFlag,
+										   "Bit Position", specActionData->bitPosition,
+										   "Data Size", specActionData->dataSize
+										);
+					}
 				}
-			} else {
-				if(specActionData->bitPosition !=  0) {
-					status = FB_SPEC_ACTION_BITPOS_ERR;
-					setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
-									   "Bit Flag", specActionData->bitposFlag,
-									   "Bit Position", specActionData->bitPosition,
-									   "Data Size", specActionData->dataSize
-									);
-				}
-			}
-			
-		break;
-		case SPEC_SIZE_BYTE:
-			if( (specActionData->memoryType == I_MEMORY) ||
-				(specActionData->memoryType == Q_MEMORY) ||
-				(specActionData->memoryType == T_MEMORY) ||
-				(specActionData->memoryType == P_MEMORY)
-			) {
 				
-				if(	(specActionData->bitPosition < 0) || 
-					(specActionData->bitPosition > 24) 
+			break;
+			case SPEC_SIZE_BYTE:
+				if( (specActionData->memoryType == I_MEMORY) ||
+					(specActionData->memoryType == Q_MEMORY) ||
+					(specActionData->memoryType == T_MEMORY) ||
+					(specActionData->memoryType == P_MEMORY)
 				) {
-					status = FB_SPEC_ACTION_BITPOS_ERR;
-					setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
-									   "Bit Flag", specActionData->bitposFlag,
-									   "Bit Position", specActionData->bitPosition,
-									   "Data Size", specActionData->dataSize
-									);
+					
+					if(	(specActionData->bitPosition < 0) || 
+						(specActionData->bitPosition > 24) 
+					) {
+						status = FB_SPEC_ACTION_BITPOS_ERR;
+						setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
+										   "Bit Flag", specActionData->bitposFlag,
+										   "Bit Position", specActionData->bitPosition,
+										   "Data Size", specActionData->dataSize
+										);
+					}
+				} else {
+					if(specActionData->bitPosition >= 8) {
+						status = FB_SPEC_ACTION_BITPOS_ERR;
+						setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
+										   "Bit Flag", specActionData->bitposFlag,
+										   "Bit Position", specActionData->bitPosition,
+										   "Data Size", specActionData->dataSize
+										);
+					}
 				}
-			} else {
-				if(specActionData->bitPosition >= 8) {
-					status = FB_SPEC_ACTION_BITPOS_ERR;
-					setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
-									   "Bit Flag", specActionData->bitposFlag,
-									   "Bit Position", specActionData->bitPosition,
-									   "Data Size", specActionData->dataSize
-									);
-				}
-			}
-		break;
-		case SPEC_SIZE_WORD:
-			if( (specActionData->memoryType == I_MEMORY) ||
-				(specActionData->memoryType == Q_MEMORY) ||
-				(specActionData->memoryType == T_MEMORY) ||
-				(specActionData->memoryType == P_MEMORY)
-			) {
-				
-				if(	(specActionData->bitPosition < 0) || 
-					(specActionData->bitPosition > 16) 
+			break;
+			case SPEC_SIZE_WORD:
+				if( (specActionData->memoryType == I_MEMORY) ||
+					(specActionData->memoryType == Q_MEMORY) ||
+					(specActionData->memoryType == T_MEMORY) ||
+					(specActionData->memoryType == P_MEMORY)
 				) {
-					status = FB_SPEC_ACTION_BITPOS_ERR;
-					setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
-									   "Bit Flag", specActionData->bitposFlag,
-									   "Bit Position", specActionData->bitPosition,
-									   "Data Size", specActionData->dataSize
-									);
+					
+					if(	(specActionData->bitPosition < 0) || 
+						(specActionData->bitPosition > 16) 
+					) {
+						status = FB_SPEC_ACTION_BITPOS_ERR;
+						setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
+										   "Bit Flag", specActionData->bitposFlag,
+										   "Bit Position", specActionData->bitPosition,
+										   "Data Size", specActionData->dataSize
+										);
+					}
+				} else {
+					if(specActionData->bitPosition >= 16) {
+						status = FB_SPEC_ACTION_BITPOS_ERR;
+						setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
+										   "Bit Flag", specActionData->bitposFlag,
+										   "Bit Position", specActionData->bitPosition,
+										   "Data Size", specActionData->dataSize
+										);
+					}
 				}
-			} else {
-				if(specActionData->bitPosition >= 16) {
-					status = FB_SPEC_ACTION_BITPOS_ERR;
-					setErrorCodeWithVal(__FILE__, __LINE__, __FUNCTION__, status,
-									   "Bit Flag", specActionData->bitposFlag,
-									   "Bit Position", specActionData->bitPosition,
-									   "Data Size", specActionData->dataSize
-									);
+			break;
+			case SPEC_SIZE_DWORD:
+				if( (specActionData->memoryType != I_MEMORY) &&
+					(specActionData->memoryType != Q_MEMORY) &&
+					(specActionData->memoryType != T_MEMORY) &&
+					(specActionData->memoryType != P_MEMORY)) 
+				{				
+					if(specActionData->bitPosition >= 32) 
+					{
+						status = FB_SPEC_ACTION_BITPOS_ERR;
+						setErrorCodeWithVal(__FILE__,__LINE__,__FUNCTION__, status,
+										   "Bit Flag", specActionData->bitposFlag,
+										   "Bit Position", specActionData->bitPosition,
+										   "Data Size", specActionData->dataSize
+											);
+					}
 				}
-			}
-		break;
-		case SPEC_SIZE_DWORD:
-			if( (specActionData->memoryType != I_MEMORY) &&
-				(specActionData->memoryType != Q_MEMORY) &&
-				(specActionData->memoryType != T_MEMORY) &&
-				(specActionData->memoryType != P_MEMORY)) 
-			{				
-				if(specActionData->bitPosition >= 32) 
-				{
+			break;
+			case SPEC_SIZE_LWORD:
+				if( (specActionData->memoryType == I_MEMORY) ||
+					(specActionData->memoryType == Q_MEMORY) ||
+					(specActionData->memoryType == T_MEMORY) ||
+					(specActionData->memoryType == P_MEMORY)
+				) {
 					status = FB_SPEC_ACTION_BITPOS_ERR;
 					setErrorCodeWithVal(__FILE__,__LINE__,__FUNCTION__, status,
 									   "Bit Flag", specActionData->bitposFlag,
 									   "Bit Position", specActionData->bitPosition,
 									   "Data Size", specActionData->dataSize
 										);
+				} 
+				else 
+				{			
+					if(specActionData->bitPosition >= 64) {
+						setErrorCodeWithVal(__FILE__,__LINE__,__FUNCTION__, status,
+										   "Bit Flag", specActionData->bitposFlag,
+										   "Bit Position", specActionData->bitPosition,
+										   "Data Size", specActionData->dataSize
+											);
+					}
 				}
-			}
-		break;
-		case SPEC_SIZE_LWORD:
-			if( (specActionData->memoryType == I_MEMORY) ||
-				(specActionData->memoryType == Q_MEMORY) ||
-				(specActionData->memoryType == T_MEMORY) ||
-				(specActionData->memoryType == P_MEMORY)
-			) {
-				status = FB_SPEC_ACTION_BITPOS_ERR;
+			break;		
+			default:
+				status = FB_SPEC_ACTION_SIZE_ERR;
 				setErrorCodeWithVal(__FILE__,__LINE__,__FUNCTION__, status,
 								   "Bit Flag", specActionData->bitposFlag,
 								   "Bit Position", specActionData->bitPosition,
 								   "Data Size", specActionData->dataSize
 									);
-			} 
-			else 
-			{			
-				if(specActionData->bitPosition >= 64) {
-					setErrorCodeWithVal(__FILE__,__LINE__,__FUNCTION__, status,
-									   "Bit Flag", specActionData->bitposFlag,
-									   "Bit Position", specActionData->bitPosition,
-									   "Data Size", specActionData->dataSize
-										);
-				}
-			}
-		break;		
-		default:
-			status = FB_SPEC_ACTION_SIZE_ERR;
-			setErrorCodeWithVal(__FILE__,__LINE__,__FUNCTION__, status,
-							   "Bit Flag", specActionData->bitposFlag,
-							   "Bit Position", specActionData->bitPosition,
-							   "Data Size", specActionData->dataSize
-								);
-		break;
+			break;
 		}
 
 	}

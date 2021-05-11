@@ -309,8 +309,8 @@ uint32	dspRwInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTyp
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= IOB_CC_CODE;
-    paraInfoPtr->inputNo		= IOB_CC_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= IOB_CC_VAR_NUM;
+    paraInfoPtr->inputNo	= IOB_CC_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= IOB_CC_VAR_NUM;
     paraInfoPtr->outputNo	= IOB_CC_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -341,19 +341,15 @@ uint32	dspRwRunFunc	(uint32 taskId, uint32 fbBlockAddr)
 	
 	uint32  srcMemOffsetPtr, busSrcMemOffsetPtr;
 	uint32  dstMemOffsetPtr, busDstMemOffsetPtr;
-	uint8   scanDataByte, oldScanDataByte;
-	uint16  scanDataWord, oldScanDataWord;
 	uint32  scanDataDword, oldScanDataDword;
 	
 	strMemPointerInfo memInfoPtr;
 	strMemPointerInfo busMemInfoPtr;
-    uint32	addr;
+    uint32	addr, swapDword;
     uint16	u16_data[512];
 
 	uint32  useDataNumber;
 	uint32  maxDataNumber, maxDataSize;
-	uint32	byte1, byte2, byte3;
-	uint32	word1, word2, word3;
 
     /* 스펙과 내부변수 파라미터 읽기 */
     status = readRuntimeFbData(	taskId,
@@ -476,7 +472,7 @@ uint32	dspRwRunFunc	(uint32 taskId, uint32 fbBlockAddr)
 		else if(fd.readMemRegion == AIO_FB_MEM_M_REGION) 
 		{
 			dstMemOffsetPtr 	= memInfoPtr.flagMemPtr;
-			busDstMemOffsetPtr 	= busMemInfoPtr.stSharedMemPtr;
+			busDstMemOffsetPtr 	= busMemInfoPtr.flagMemPtr;
 		} 
 		else 
 		{
@@ -536,9 +532,12 @@ uint32	dspRwRunFunc	(uint32 taskId, uint32 fbBlockAddr)
 			        u16_data[1] 	= *((ADDRESS16) (addr+ (DSP_BRD_DATA_READ_MEM_OFFSET+2) + (i*4)));
 			        
 			        scanDataDword = (u16_data[0] << 16) + u16_data[1];
-			        
-					*(uint32*)((int32*)(dstMemOffsetPtr) + fd.startAddrOfReadMem + i) 		= scanDataDword;
-					*(uint32*)((int32*)(busDstMemOffsetPtr) + fd.startAddrOfReadMem + i) 	= scanDataDword;
+
+			        /* [V108] : swap 하여 CPU 보드의 메모리에 Write */
+   			        swapDword = SWAP_DWORD(scanDataDword);
+
+					*(uint32*)((int32*)(dstMemOffsetPtr) + fd.startAddrOfReadMem + i) 		= swapDword;
+					*(uint32*)((int32*)(busDstMemOffsetPtr) + fd.startAddrOfReadMem + i) 	= swapDword;
 				break;
 
 				default:
@@ -601,11 +600,15 @@ uint32	dspRwRunFunc	(uint32 taskId, uint32 fbBlockAddr)
 		            addr 			= mhcap_GetAIOVmeAddr (fd.brdSlotId);
 		            	
 			        scanDataDword 	= *(uint32*)((int32*)(srcMemOffsetPtr) + fd.startAddrOfWriteMem + i);
-		            u16_data[0] 	= (scanDataDword>>16)&0xFFFF;
-		            u16_data[1] 	= (scanDataDword)&0xFFFF;
+			        
+			        /* [V108] : swap 하여 DSP 보드에 전달 */
+			        swapDword = SWAP_DWORD(scanDataDword);
+			        
+		            u16_data[0] 	= (swapDword>>16)&0xFFFF;
+		            u16_data[1] 	= (swapDword)&0xFFFF;
 		            
-		            *((ADDRESS16) (addr+ DSP_BRD_DATA_WRITE_MEM_OFFSET 		+ (i*4))) = u16_data[0]; 
-		        	*((ADDRESS16) (addr+ (DSP_BRD_DATA_WRITE_MEM_OFFSET+2) 	+ (i*4))) = u16_data[1];
+		            *((ADDRESS16) (addr + DSP_BRD_DATA_WRITE_MEM_OFFSET 		+ (i*4))) = u16_data[0]; 
+		        	*((ADDRESS16) (addr + (DSP_BRD_DATA_WRITE_MEM_OFFSET+2) 	+ (i*4))) = u16_data[1];
 			        			
 				break;
 

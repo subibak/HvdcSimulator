@@ -50,14 +50,35 @@
 
 
 int8 *verDate      = __DATE__ "," __TIME__;
-uint32 romSwVersion	= 105;
-uint32 releaseDate	= 0x20210217;
+uint32 romSwVersion	= 107;
+uint32 releaseDate	= 0x20210421;
 	
 
 /*
 	======= ==========  =========================================================
     Version   날짜                          변경 이력
 	======= ==========  =========================================================
+	[V108]
+			21/04/28	1. 통신 FB 에서 데이터 Send 시 큐 Full 발생 하여 큐 갯수 증가 (512-->2048)
+							- 관련 변수 : MAX_SYS_MSG_QUEUE_COUNT
+			21/05/10	1. Measurement System과 통신 하는 FB Code 함수 변경
+						   지정된 메모리 영역에 통신 프레임 전체 => 순수한 데이터만 복사하는 것으로 변경	
+							- 관련 함수 : pmc502RdRunFunc()
+						2. FB Code에서 DSP 보드에 Read/Write 하는 경우 Swap하는 데이터 R/W 변경
+							- 관련 함수 : dspRwRunFunc()
+	[V107]
+			21/04/21	1. M 메모리 주소 변경(이유 : HMI에서 메모리 주소를 40000으로 시작해서임 
+							- 관련 변수 : M_MEMORY_MAX_ADDR_DWORD (16K-->80K)
+			21/04/22	1. 스테이션간 통신시 RW 메모리 영역 변경에 따른 수정(S_MEMORY-->M_MEMORY)
+							- 관련 함수 :  sysRmtDataWriteToSharedMemqAndMakeResp()
+										sysRmtDataReadInSharedMemAndMakeResp()
+										sysRmtDataReadRespWriteToSharedMem()
+										sysRmtDataBroadCastFunc()
+				
+						2. Station 통신 관련 구조체의 이름 및 소스 변경(구조체와 FB Code 입력 정의 matching 오류 
+							- 관련 구조체 : strFC0302Info
+							- 관련 함수 : ethDSndRunFunc
+
 	[V106]
 						1. AUTO 메모리 Size 변경(이유 : HMI에서 메모리 주소를 40000으로 시작해서임 
 							- 관련 변수 : MEM_MPU_AUTOVAR_NUM (16K-->80K)

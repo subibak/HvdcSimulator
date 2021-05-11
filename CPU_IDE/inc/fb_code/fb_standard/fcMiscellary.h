@@ -40,13 +40,6 @@
 #define FUNCTION_ENABLE		(1)
 
 /**************************************************************************
-**		SWAP 정의
-**************************************************************************/
-#define SWAP_WORD(WordData)		((((WordData)<<8)|(((WordData)>>8)&0xFF))&0xFFFF)
-#define SWAP_DWORD(DWordData)	((((DWordData)<<24)|(((DWordData)>>24)&0xFF)|((DWordData&0xFF00)<<8)|(((DWordData)>>8)&0xFF00))&0xFFFFFFFF)
-#define SWAP_DWORD16(DWordData)	((((DWordData)<<16)|(((DWordData)>>16)&0xFFFF))&0xFFFFFFFF)
-
-/**************************************************************************
 **		외부 함수 정의
 **************************************************************************/
 extern uint32	ethDSndInitFunc(uint32 *,uint32 *,uint32 *,strFbDefInfo *);
@@ -86,10 +79,10 @@ typedef struct {
 	uint32  runStatus;			
 	uint32	lineStatus;		
 	uint32	runMode;		
-	uint32	memoryTarget;		
-	uint32	memoryAddress;		
-	uint32	srcMemTarget;		
-	uint32  srcSharedMemAddr;			
+	uint32	localMemoryTarget;	/* [V107] : memoryTarget */		
+	uint32	localMemAddr;		/* [V107] : memoryAddress */		
+	uint32	remoteMemTarget;	/* [V107] : srcMemTarget */		
+	uint32  remoteMemAddr; 		/* [V107] : srcSharedMemAddr */			
 	uint32	dataType;		
 	uint32	dataNumber;		
 	uint32	op1;		
@@ -206,6 +199,15 @@ typedef struct {
 
 /* Optic 통신 Start Code */
 #define	PMC502_COM_START_CODE	0xaabbccdd
+
+/* 광통신 프레임 구조체 */
+typedef struct {
+	uint32	startCode;
+	uint32	checkSum;
+	uint32	sequenceNumber;
+	uint32	numOfData;	/* 바이트 수 아님 */	
+	uint32	comData[MAX_PMC502_READ_DATA_NUM];
+}strFiberComDataInfo;
 
 /*********************************************************************
 **	

@@ -772,8 +772,8 @@ void transDataInfoDisplay(strDebugDataInfo *dataPtr, uint8 *transMsg)
 		(int8 *)"IP ADDR",
 		(int8 *)"PORT",
 		(int8 *)"MSG KIND",
-		(int8 *)"OP CODE",
-		(int8 *)"OPTION CODE",
+		(int8 *)"GRP CMD",
+		(int8 *)"ACTION CODE",
 		(int8 *)NULL
     };
     
@@ -942,7 +942,7 @@ static void commandStringGet(strCommandListInfo *cmdPtr, uint32 opCode, uint32 o
 
     int8 *opCodeList[] =
     {
-        "UNKNOWN OP CODE",
+        "UNKNOWN GRP CMD",
         "SYS_DIAG_CMD", "MODE_ACC_CMD", "CODE_ACC_CMD", 
 		"FB_ONL_DWL_CMD", "VAR_ACC_CMD", "FRC_ACC_CMD",
 		"XR_BROD_CMD","TIME_ACC_CMD","ETH_DATA_CMD",
@@ -3219,8 +3219,8 @@ void dualTransDataInfoDisplay(strDebugDataInfo *dataPtr, uint8 *transMsg)
 		(int8 *)"IP ADDR",
 		(int8 *)"PORT",
 		(int8 *)"MSG KIND",
-		(int8 *)"OP CODE",
-		(int8 *)"OPTION CODE",
+		(int8 *)"GRP CMD",
+		(int8 *)"ACTION CMD",
 		(int8 *)NULL
     };
     int8 *msgKindStr[] = { 

@@ -2,7 +2,7 @@
 
 /* CREATED BY D:/Tornado690/vxworks-6.9/host/resource/hutils/tcl/makeSymTbl.tcl
  *  WITH ARGS ppc tmp.o symTbl.c
- *         ON Mon Dec 21 21:46:54 +1000 2020
+ *         ON Thu Apr 29 17:51:40 +1000 2021
  */
 
 #include "vxWorks.h"
@@ -3094,6 +3094,7 @@ IMPORT int bootLeaseExtract ();
 IMPORT int bootLogoPrint ();
 IMPORT int bootNetmaskExtract ();
 IMPORT int bootParaCheck ();
+IMPORT int bootParaConfig ();
 IMPORT int bootParaDisplay ();
 IMPORT int bootParaSequence ();
 IMPORT int bootParamsErrorPrint ();
@@ -3965,6 +3966,8 @@ IMPORT int fstat ();
 IMPORT int fstatfs ();
 IMPORT int fstatfs64 ();
 IMPORT int fsync ();
+IMPORT int ftOverDetect ();
+IMPORT int ftUnderDetect ();
 IMPORT int ftell ();
 IMPORT int ftpCommand ();
 IMPORT int ftpCommandEnhanced ();
@@ -3988,6 +3991,37 @@ IMPORT int ftplDebug;
 IMPORT int ftplPasvModeDisable;
 IMPORT int ftplTransientMaxRetryCount;
 IMPORT int ftplTransientRetryInterval;
+IMPORT int funcSeq0000 ();
+IMPORT int funcSeq0200 ();
+IMPORT int funcSeq0210 ();
+IMPORT int funcSeq0220 ();
+IMPORT int funcSeq0230 ();
+IMPORT int funcSeq0240 ();
+IMPORT int funcSeq0250 ();
+IMPORT int funcSeq0260 ();
+IMPORT int funcSeq0320 ();
+IMPORT int funcSeq0330 ();
+IMPORT int funcSeq0340 ();
+IMPORT int funcSeq0350 ();
+IMPORT int funcSeq0360 ();
+IMPORT int funcSeq0400 ();
+IMPORT int funcSeq0410 ();
+IMPORT int funcSeq0510 ();
+IMPORT int funcSeq0520 ();
+IMPORT int funcSeq0600 ();
+IMPORT int funcSeq0610 ();
+IMPORT int funcSeq0620 ();
+IMPORT int funcSeq0630 ();
+IMPORT int funcSeq0640 ();
+IMPORT int funcSeq0650 ();
+IMPORT int funcSeq0660 ();
+IMPORT int funcSeq0670 ();
+IMPORT int funcSeq0720 ();
+IMPORT int funcSeq0730 ();
+IMPORT int funcSeq0740 ();
+IMPORT int funcSeq0760 ();
+IMPORT int funcSeq0770 ();
+IMPORT int funcSeq0800 ();
 IMPORT int funcXbdBlkCacheAttach;
 IMPORT int funcXbdBlkCacheDetach;
 IMPORT int funcXbdBlkCacheStrategy;
@@ -7922,14 +7956,52 @@ IMPORT int stdZ2_50N51N_TEOCPInitFunc ();
 IMPORT int stdZ2_50N51N_TEOCPRunFunc ();
 IMPORT int stdZ2_87N_REFPInitFunc ();
 IMPORT int stdZ2_87N_REFPRunFunc ();
+IMPORT int stdZ2_87_TDPInitFunc ();
+IMPORT int stdZ2_87_TDPRunFunc ();
 IMPORT int stdZ2_DcSat_TDSPInitFunc ();
 IMPORT int stdZ2_DcSat_TDSPRunFunc ();
 IMPORT int stdZ3_27_UVInitFunc ();
 IMPORT int stdZ3_27_UVRunFunc ();
+IMPORT int stdZ3_49_PROPInitFunc ();
+IMPORT int stdZ3_49_PROPRunFunc ();
+IMPORT int stdZ3_50S51S_OCPInitFunc ();
+IMPORT int stdZ3_50S51S_OCPRunFunc ();
+IMPORT int stdZ3_51G_GOCPInitFunc ();
+IMPORT int stdZ3_51G_GOCPRunFunc ();
+IMPORT int stdZ3_51Tharm_AHCPInitFunc ();
+IMPORT int stdZ3_51Tharm_AHCPRunFunc ();
 IMPORT int stdZ3_59_OVInitFunc ();
 IMPORT int stdZ3_59_OVRunFunc ();
+IMPORT int stdZ3_60T_PCIInitFunc ();
+IMPORT int stdZ3_60T_PCIRunFunc ();
 IMPORT int stdZ3_64_GOVInitFunc ();
 IMPORT int stdZ3_64_GOVRunFunc ();
+IMPORT int stdZ3_87ST_TTDPInitFunc ();
+IMPORT int stdZ3_87ST_TTDPRunFunc ();
+IMPORT int stdZ3_87TA_TACDPInitFunc ();
+IMPORT int stdZ3_87TA_TACDPRunFunc ();
+IMPORT int stdZ4_27D_DUPInitFunc ();
+IMPORT int stdZ4_27D_DUPRunFunc ();
+IMPORT int stdZ4_51AharmInitFunc ();
+IMPORT int stdZ4_51AharmRunFunc ();
+IMPORT int stdZ4_51DharmInitFunc ();
+IMPORT int stdZ4_51DharmRunFunc ();
+IMPORT int stdZ4_59D_DOPInitFunc ();
+IMPORT int stdZ4_59D_DOPRunFunc ();
+IMPORT int stdZ4_60APNInitFunc ();
+IMPORT int stdZ4_60APNRunFunc ();
+IMPORT int stdZ4_60VPN_DVDPInitFunc ();
+IMPORT int stdZ4_60VPN_DVDPRunFunc ();
+IMPORT int stdZ4_76A_AOCPInitFunc ();
+IMPORT int stdZ4_76A_AOCPRunFunc ();
+IMPORT int stdZ4_76A_DOCPInitFunc ();
+IMPORT int stdZ4_76A_DOCPRunFunc ();
+IMPORT int stdZ4_87AD_ADCDPInitFunc ();
+IMPORT int stdZ4_87AD_ADCDPRunFunc ();
+IMPORT int stdZ4_87DPN_DCDPInitFunc ();
+IMPORT int stdZ4_87DPN_DCDPRunFunc ();
+IMPORT int stdZ4_SwiYardSeqInitFunc ();
+IMPORT int stdZ4_SwiYardSeqRunFunc ();
 IMPORT int stdioFp ();
 IMPORT int stdioFpCreate ();
 IMPORT int stdioFpDestroy ();
@@ -10290,7 +10362,7 @@ IMPORT int zbufSockSendto ();
 IMPORT int zbufSplit ();
 IMPORT int zbuf_free ();
 
-SYMBOL standTbl [10745] =
+SYMBOL standTbl [10817] =
     {
         {{NULL}, "AddSafelyD", (char*) AddSafelyD, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "AddSafelyS", (char*) AddSafelyS, 0, 0,  SYM_GLOBAL | SYM_TEXT},
@@ -13840,6 +13912,7 @@ SYMBOL standTbl [10745] =
         {{NULL}, "bootLogoPrint", (char*) bootLogoPrint, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "bootNetmaskExtract", (char*) bootNetmaskExtract, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "bootParaCheck", (char*) bootParaCheck, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "bootParaConfig", (char*) bootParaConfig, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "bootParaDisplay", (char*) bootParaDisplay, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "bootParaSequence", (char*) bootParaSequence, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "bootParamsErrorPrint", (char*) bootParamsErrorPrint, 0, 0,  SYM_GLOBAL | SYM_TEXT},
@@ -14711,6 +14784,8 @@ SYMBOL standTbl [10745] =
         {{NULL}, "fstatfs", (char*) fstatfs, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "fstatfs64", (char*) fstatfs64, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "fsync", (char*) fsync, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "ftOverDetect", (char*) ftOverDetect, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "ftUnderDetect", (char*) ftUnderDetect, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "ftell", (char*) ftell, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "ftpCommand", (char*) ftpCommand, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "ftpCommandEnhanced", (char*) ftpCommandEnhanced, 0, 0,  SYM_GLOBAL | SYM_TEXT},
@@ -14734,6 +14809,37 @@ SYMBOL standTbl [10745] =
         {{NULL}, "ftplPasvModeDisable", (char*) &ftplPasvModeDisable, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "ftplTransientMaxRetryCount", (char*) &ftplTransientMaxRetryCount, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "ftplTransientRetryInterval", (char*) &ftplTransientRetryInterval, 0, 0,  SYM_GLOBAL | SYM_DATA},
+        {{NULL}, "funcSeq0000", (char*) funcSeq0000, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0200", (char*) funcSeq0200, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0210", (char*) funcSeq0210, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0220", (char*) funcSeq0220, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0230", (char*) funcSeq0230, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0240", (char*) funcSeq0240, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0250", (char*) funcSeq0250, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0260", (char*) funcSeq0260, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0320", (char*) funcSeq0320, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0330", (char*) funcSeq0330, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0340", (char*) funcSeq0340, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0350", (char*) funcSeq0350, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0360", (char*) funcSeq0360, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0400", (char*) funcSeq0400, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0410", (char*) funcSeq0410, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0510", (char*) funcSeq0510, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0520", (char*) funcSeq0520, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0600", (char*) funcSeq0600, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0610", (char*) funcSeq0610, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0620", (char*) funcSeq0620, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0630", (char*) funcSeq0630, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0640", (char*) funcSeq0640, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0650", (char*) funcSeq0650, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0660", (char*) funcSeq0660, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0670", (char*) funcSeq0670, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0720", (char*) funcSeq0720, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0730", (char*) funcSeq0730, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0740", (char*) funcSeq0740, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0760", (char*) funcSeq0760, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0770", (char*) funcSeq0770, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "funcSeq0800", (char*) funcSeq0800, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "funcXbdBlkCacheAttach", (char*) &funcXbdBlkCacheAttach, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "funcXbdBlkCacheDetach", (char*) &funcXbdBlkCacheDetach, 0, 0,  SYM_GLOBAL | SYM_DATA},
         {{NULL}, "funcXbdBlkCacheStrategy", (char*) &funcXbdBlkCacheStrategy, 0, 0,  SYM_GLOBAL | SYM_DATA},
@@ -18668,14 +18774,52 @@ SYMBOL standTbl [10745] =
         {{NULL}, "stdZ2_50N51N_TEOCPRunFunc", (char*) stdZ2_50N51N_TEOCPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdZ2_87N_REFPInitFunc", (char*) stdZ2_87N_REFPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdZ2_87N_REFPRunFunc", (char*) stdZ2_87N_REFPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ2_87_TDPInitFunc", (char*) stdZ2_87_TDPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ2_87_TDPRunFunc", (char*) stdZ2_87_TDPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdZ2_DcSat_TDSPInitFunc", (char*) stdZ2_DcSat_TDSPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdZ2_DcSat_TDSPRunFunc", (char*) stdZ2_DcSat_TDSPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdZ3_27_UVInitFunc", (char*) stdZ3_27_UVInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdZ3_27_UVRunFunc", (char*) stdZ3_27_UVRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_49_PROPInitFunc", (char*) stdZ3_49_PROPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_49_PROPRunFunc", (char*) stdZ3_49_PROPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_50S51S_OCPInitFunc", (char*) stdZ3_50S51S_OCPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_50S51S_OCPRunFunc", (char*) stdZ3_50S51S_OCPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_51G_GOCPInitFunc", (char*) stdZ3_51G_GOCPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_51G_GOCPRunFunc", (char*) stdZ3_51G_GOCPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_51Tharm_AHCPInitFunc", (char*) stdZ3_51Tharm_AHCPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_51Tharm_AHCPRunFunc", (char*) stdZ3_51Tharm_AHCPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdZ3_59_OVInitFunc", (char*) stdZ3_59_OVInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdZ3_59_OVRunFunc", (char*) stdZ3_59_OVRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_60T_PCIInitFunc", (char*) stdZ3_60T_PCIInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_60T_PCIRunFunc", (char*) stdZ3_60T_PCIRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdZ3_64_GOVInitFunc", (char*) stdZ3_64_GOVInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdZ3_64_GOVRunFunc", (char*) stdZ3_64_GOVRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_87ST_TTDPInitFunc", (char*) stdZ3_87ST_TTDPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_87ST_TTDPRunFunc", (char*) stdZ3_87ST_TTDPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_87TA_TACDPInitFunc", (char*) stdZ3_87TA_TACDPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ3_87TA_TACDPRunFunc", (char*) stdZ3_87TA_TACDPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_27D_DUPInitFunc", (char*) stdZ4_27D_DUPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_27D_DUPRunFunc", (char*) stdZ4_27D_DUPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_51AharmInitFunc", (char*) stdZ4_51AharmInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_51AharmRunFunc", (char*) stdZ4_51AharmRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_51DharmInitFunc", (char*) stdZ4_51DharmInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_51DharmRunFunc", (char*) stdZ4_51DharmRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_59D_DOPInitFunc", (char*) stdZ4_59D_DOPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_59D_DOPRunFunc", (char*) stdZ4_59D_DOPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_60APNInitFunc", (char*) stdZ4_60APNInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_60APNRunFunc", (char*) stdZ4_60APNRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_60VPN_DVDPInitFunc", (char*) stdZ4_60VPN_DVDPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_60VPN_DVDPRunFunc", (char*) stdZ4_60VPN_DVDPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_76A_AOCPInitFunc", (char*) stdZ4_76A_AOCPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_76A_AOCPRunFunc", (char*) stdZ4_76A_AOCPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_76A_DOCPInitFunc", (char*) stdZ4_76A_DOCPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_76A_DOCPRunFunc", (char*) stdZ4_76A_DOCPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_87AD_ADCDPInitFunc", (char*) stdZ4_87AD_ADCDPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_87AD_ADCDPRunFunc", (char*) stdZ4_87AD_ADCDPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_87DPN_DCDPInitFunc", (char*) stdZ4_87DPN_DCDPInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_87DPN_DCDPRunFunc", (char*) stdZ4_87DPN_DCDPRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_SwiYardSeqInitFunc", (char*) stdZ4_SwiYardSeqInitFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
+        {{NULL}, "stdZ4_SwiYardSeqRunFunc", (char*) stdZ4_SwiYardSeqRunFunc, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdioFp", (char*) stdioFp, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdioFpCreate", (char*) stdioFpCreate, 0, 0,  SYM_GLOBAL | SYM_TEXT},
         {{NULL}, "stdioFpDestroy", (char*) stdioFpDestroy, 0, 0,  SYM_GLOBAL | SYM_TEXT},
@@ -21040,4 +21184,4 @@ SYMBOL standTbl [10745] =
     };
 
 
-ULONG standTblSize = 10745;
+ULONG standTblSize = 10817;

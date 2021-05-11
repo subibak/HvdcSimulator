@@ -84,4 +84,11 @@ extern void		fdprintf (int fd, const char *pFormat, ...);
 /* 64bit Access는 사용 안함 */
 #undef USED_BIT64
 
+/**************************************************************************
+**		SWAP 정의
+**************************************************************************/
+#define SWAP_WORD(WordData)		((((WordData)<<8)|(((WordData)>>8)&0xFF))&0xFFFF)
+#define SWAP_DWORD(DWordData)	((((DWordData)<<24)|(((DWordData)>>24)&0xFF)|((DWordData&0xFF00)<<8)|(((DWordData)>>8)&0xFF00))&0xFFFFFFFF)
+#define SWAP_DWORD16(DWordData)	((((DWordData)<<16)|(((DWordData)>>16)&0xFFFF))&0xFFFFFFFF)
+
 #endif 

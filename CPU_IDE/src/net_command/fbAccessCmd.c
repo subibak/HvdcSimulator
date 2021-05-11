@@ -3434,11 +3434,11 @@ CHECK_END:
 			fbCodePtr->fbFuncAddr   = fbBlockAddr;
             fbCodePtr->fbId			= fbId;
             fbCodePtr->inputNo		= fbCodeInfo.inputNo;
-            fbCodePtr->intlVarNo		= fbCodeInfo.intlVarNo;
+            fbCodePtr->intlVarNo	= fbCodeInfo.intlVarNo;
             fbCodePtr->outputNo		= fbCodeInfo.outputNo;
 			
-			fbCodePtr->inputSize		= fbCodeInfo.inputSize;
-            fbCodePtr->intlVarSize		= fbCodeInfo.intlVarSize;
+			fbCodePtr->inputSize	= fbCodeInfo.inputSize;
+            fbCodePtr->intlVarSize	= fbCodeInfo.intlVarSize;
             fbCodePtr->outputSize	= fbCodeInfo.outputSize;
 
 			fbCodePtr->fbRunStatus	= 0;
@@ -4135,11 +4135,11 @@ CHECK_END:
 			fbCodePtr->fbFuncAddr   = fbBlockAddr;
             fbCodePtr->fbId			= fbId;
             fbCodePtr->inputNo		= fbCodeInfo.inputNo;
-            fbCodePtr->intlVarNo		= fbCodeInfo.intlVarNo;
+            fbCodePtr->intlVarNo	= fbCodeInfo.intlVarNo;
             fbCodePtr->outputNo		= fbCodeInfo.outputNo;
 			
-			fbCodePtr->inputSize		= fbCodeInfo.inputSize;
-            fbCodePtr->intlVarSize		= fbCodeInfo.intlVarSize;
+			fbCodePtr->inputSize	= fbCodeInfo.inputSize;
+            fbCodePtr->intlVarSize	= fbCodeInfo.intlVarSize;
             fbCodePtr->outputSize	= fbCodeInfo.outputSize;
 
 			fbCodePtr->fbRunStatus	= 0;

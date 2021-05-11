@@ -283,8 +283,8 @@ uint32	stdAdd8InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= ADD8_CODE;
-    paraInfoPtr->inputNo		= ADD8_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= ADD8_VAR_NUM;
+    paraInfoPtr->inputNo	= ADD8_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= ADD8_VAR_NUM;
     paraInfoPtr->outputNo	= ADD8_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -476,8 +476,8 @@ uint32	stdMul4InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= MUL4_CODE;
-    paraInfoPtr->inputNo		= MUL4_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= MUL4_VAR_NUM;
+    paraInfoPtr->inputNo	= MUL4_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= MUL4_VAR_NUM;
     paraInfoPtr->outputNo	= MUL4_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -574,8 +574,8 @@ uint32	stdMul8InitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputT
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= MUL8_CODE;
-    paraInfoPtr->inputNo		= MUL8_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= MUL8_VAR_NUM;
+    paraInfoPtr->inputNo	= MUL8_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= MUL8_VAR_NUM;
     paraInfoPtr->outputNo	= MUL8_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -670,8 +670,8 @@ uint32	stdMulDivInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outpu
 	uint32	iLoop;
 	
 	paraInfoPtr->fbId		= MULDIV_CODE;
-    paraInfoPtr->inputNo		= MULDIV_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= MULDIV_VAR_NUM;
+    paraInfoPtr->inputNo	= MULDIV_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= MULDIV_VAR_NUM;
     paraInfoPtr->outputNo	= MULDIV_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -743,8 +743,8 @@ uint32	stdSubInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= SUB_CODE;
-    paraInfoPtr->inputNo		= SUB_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= SUB_VAR_NUM;
+    paraInfoPtr->inputNo	= SUB_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= SUB_VAR_NUM;
     paraInfoPtr->outputNo	= SUB_OUTPUT_NUM;
 
 	/* 입력 - ?개 */
@@ -839,8 +839,8 @@ uint32	stdDivInitFunc	(uint32 *specTypePtr, uint32 *varTypePtr, uint32 *outputTy
 	uint32	status = NO_ERROR;
 
 	paraInfoPtr->fbId		= DIV_CODE;
-    paraInfoPtr->inputNo		= DIV_SPEC_NUM;
-    paraInfoPtr->intlVarNo		= DIV_VAR_NUM;
+    paraInfoPtr->inputNo	= DIV_SPEC_NUM;
+    paraInfoPtr->intlVarNo	= DIV_VAR_NUM;
     paraInfoPtr->outputNo	= DIV_OUTPUT_NUM;
 
 	/* 스펙 - 2개 */
