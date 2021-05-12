@@ -20,8 +20,10 @@ extern uint32	stdZ4_SwiYardSeqRunFunc(uint32, uint32);
 
 /* Spec, Var, Output ¡Æ©ö¨ùo E¢çAI */
 #define	FC0740_SPEC_NUM				6
-#define	FC0740_VAR_NUM				6	
+#define	FC0740_VAR_NUM				8	
 #define	FC0740_OUTPUT_NUM			3
+
+#define SET_TIME_SEQ_DELAY			1.0f
 
 
 // Input Variable
@@ -108,7 +110,15 @@ union UN_SS_STS
 {
 	uint32				all;
 	struct {
-		uint32			rsvd:11;		// Reserved
+		uint32			rsvd:3;			// Reserved
+		uint32			oRampVacInit:1;	// Opposite Ramp Vac Init(1:Complete,:Uncomplete)
+		uint32			oRampQInit:1;	// Opposite Ramp Q Init(1:Complete,:Uncomplete)
+		uint32			oRampVdcInit:1;	// Opposite Ramp Vdc Init(1:Complete,:Uncomplete)
+		uint32			oRampPInit:1;	// Opposite Ramp P Init(1:Complete,:Uncomplete)		
+		uint32			oRampVacRated:1;// Opposite Ramp Vac Rated(1:Complete,:Uncomplete)
+		uint32			oRampQRated:1;	// Opposite Ramp Q Rated(1:Complete,:Uncomplete)
+		uint32			oRampVdcRated:1;// Opposite Ramp Vdc Rated(1:Complete,:Uncomplete)
+		uint32			oRampPRated:1;	// Opposite Ramp P Rated(1:Complete,:Uncomplete)			
 		uint32			RampVacInit:1;	// Ramp Vac Init(1:Complete,:Uncomplete)
 		uint32			RampQInit:1;	// Ramp Q Init(1:Complete,:Uncomplete)
 		uint32			RampVdcInit:1;	// Ramp Vdc Init(1:Complete,:Uncomplete)
@@ -219,6 +229,8 @@ typedef enum {
 #define SEQ_COMM_PROCESSING			1
 #define SEQ_COMM_UNPROCESSED		0
 
+
+
 #define STS1_UNDEFINED_COMPLETE				0x00000006
 #define STS1_EARTHED_STOPPED_COMPLETE		0x1800AAAA
 #define STS1_EARTHED_STANDBY_COMPLETE		0x2800AAAA
@@ -303,7 +315,9 @@ typedef struct {
 	union UN_SYS_MODE	prevSysMode;	// Previous Operation Mode
 	uint32				flagSeqComplete;// Flag Results of Sequence Process(1:Complete, 0:Uncomplete)
     uint32				flagSeqOp;		// Flag Sequence Operation(1:Start, 0:Stop)
-    
+    float				cycleT;			// Function Block Cycle time for Sequence Delay
+    float				t;				// Time for Sequence Delay
+        
     // Output
 	union UN_SEQSTS1	seqSts1;		// Sequence Status1
 	union UN_SEQSTS2	seqSts2;		// Sequence Status2

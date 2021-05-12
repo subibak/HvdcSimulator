@@ -60,6 +60,8 @@ uint32	stdZ4_SwiYardSeqInitFunc
 	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
 	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
 	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
+	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
+	*intlVarTypePtr++ 		= UINT_TYPE|SIZE32_TYPE;
 	
 	/**************************************************
 	**	FB 출력 타입 정의
@@ -75,6 +77,7 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 {
 	uint32	status = NO_ERROR;
 	uint32	sysStatus;
+	float	cycleTimeSec;
 
 	strFC0740Info	fb;
 	
@@ -89,6 +92,19 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 		setErrorCode(	__FILE__, __LINE__,__FUNCTION__, status);
 		return(status);
     }
+	
+	/* Cycle time(second) read */
+	status = getLogicTaskCycletime(	LOGIC_ID,
+									taskId,
+									(float *)&cycleTimeSec
+								   );
+								   
+	if(status) 
+	{
+		setErrorCode(	__FILE__, __LINE__,__FUNCTION__, status);
+		return(status);
+	}	
+	fb.cycleT = cycleTimeSec;
 
 	/* Yard Switch Sequcenc Algorithm */
 	sysStatus = 0x3 & fb.sysMode.bit.status;
@@ -122,6 +138,9 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 
 	   	// Flag Sequence Opeation Initialization 
 	   	fb.flagSeqOp = FLAG_SEQ_STOP;
+	   	
+	   	// Block Delay time Initialization
+	   	fb.t = 0.0f;	
 	}
 	else if(fb.sysMode.bit.status == SM_STS_READY)
 	{
@@ -130,8 +149,7 @@ uint32	stdZ4_SwiYardSeqRunFunc(uint32 taskId, uint32 fbMemAddr)
 		  && (fb.sysMode.bit.seqOp == SM_SEQOP_START))
 		{
 			fb.flagSeqOp = FLAG_SEQ_START;
-			fb.flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
-			
+			fb.flagSeqComplete = FLAG_SEQ_UNCOMPLETE;			
 		}
 		else if(fb.sysMode.bit.seqOp == SM_SEQOP_STOP || fb.sysMode.bit.seqOp == SM_SEQOP_HOLD) 
 			fb.flagSeqOp = FLAG_SEQ_STOP;	
