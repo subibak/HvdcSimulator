@@ -119,7 +119,7 @@ uint32	stdZ4_60VPN_DVDPRunFunc(uint32 taskId, uint32 fbMemAddr)
 			}		
 					
 			/* Fault Detection */
-			diff  = abs(fbInfo.vdc_up) - abs(fbInfo.vdc_low);
+			diff  = ABSt(fbInfo.vdc_up) - ABSt(fbInfo.vdc_low);
 
 			fbInfo.o1_alarm	 = ftOverDetect(diff, fbInfo.threshold1, fbInfo.setT1, &fbInfo.t1, cycleTimeSec);
 			fbInfo.o2_conBlk = ftOverDetect(diff, fbInfo.threshold2, fbInfo.setT2, &fbInfo.t2, cycleTimeSec);

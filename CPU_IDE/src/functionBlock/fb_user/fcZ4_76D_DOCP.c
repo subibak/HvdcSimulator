@@ -118,8 +118,8 @@ uint32	stdZ4_76A_DOCPRunFunc(uint32 taskId, uint32 fbMemAddr)
 			}		
 					
 			/* Fault Detection */
-			abs_idc_up  = abs(fbInfo.idc_up);
-			abs_idc_low = abs(fbInfo.idc_low);
+			abs_idc_up  = ABSt(fbInfo.idc_up);
+			abs_idc_low = ABSt(fbInfo.idc_low);
 
 			fbInfo.o1_emst_up	 = ftOverDetect(abs_idc_up,  fbInfo.threshold1, fbInfo.setT1, &fbInfo.t1_up,  cycleTimeSec);
 			fbInfo.o1_emst_low	 = ftOverDetect(abs_idc_low, fbInfo.threshold1, fbInfo.setT1, &fbInfo.t1_low, cycleTimeSec);

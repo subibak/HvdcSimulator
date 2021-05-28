@@ -33,8 +33,8 @@ typedef struct {
 	float					threshold2;			// Threshold 2	
 			
     // Output
-    float		  			o1_alarm;			// Out1 Alarm
-    float		  			o2_emst;			// Out2 EMST
+    uint32		  			o1_alarm;			// Out1 Alarm
+    uint32		  			o2_emst;			// Out2 EMST
 } strFC0718Info;
 
 #endif

@@ -39,8 +39,8 @@ typedef struct {
 	float  			t2;  				// Time 2 
 		
     // Output
-    float  			o1_alarm;			// Out1 Alarm
-    float 			o2_conBlk;			// Out2 Converter Block
+    uint32  		o1_alarm;			// Out1 Alarm
+    uint32 			o2_conBlk;			// Out2 Converter Block
 } strFC0722Info;
 
 #endif

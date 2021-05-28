@@ -42,10 +42,10 @@ typedef struct {
 	float 					t2_low;				// Time 2 Low
 	
     // Output
-    float  					o1_conBlk_up;		// Out1 conBlk Up
-    float  					o2_nmst_up;			// Out2 NMST Up
-    float  					o1_conBlk_low;		// Out1 conBlk Low
-    float  					o2_nmst_low;		// Out2 NMST Low
+    uint32  				o1_conBlk_up;		// Out1 conBlk Up
+    uint32  				o2_nmst_up;			// Out2 NMST Up
+    uint32  				o1_conBlk_low;		// Out1 conBlk Low
+    uint32  				o2_nmst_low;		// Out2 NMST Low
 } strFC0725Info;
 
 #endif

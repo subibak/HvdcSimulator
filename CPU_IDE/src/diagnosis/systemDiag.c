@@ -26,7 +26,9 @@
 #include    "..\MHCAP\project_def.h"
 #endif
 
-/* [V105] : SM의 CAP. 전압 및 상태 관련 정의 함수 */
+/*****************************************************
+** SM의 CAP. 전압 및 상태 관련 정의 
+******************************************************/
 #define	DSP_BOARD_START_VME_ADDR			0x82B00000
 #define	DSP_BOARD_VME_ADDR_OFFSET			0x00010000
 
@@ -41,6 +43,13 @@
 
 #define	M_REGION_SM_CAP_VLTG_START_INDEX	10000	/* A Phase */
 #define	M_REGION_SM_STATUS_START_INDEX		11000	/* A Phase */
+
+/*****************************************************
+**	SM Status를 M영역에 Write Enable/Disable
+**		- 0 : 시험 용도
+**		- 1 : RTDS에서 송신된 데이터가 HMI로 Update
+******************************************************/
+#define SM_STATUS_UPDATE_TO_HMI 1
 
 strSystemRunningStatusInfo	gSysRunningStatusInfo;
 strSysRunningConfigInfo		*gSysRunningInfoPtr =
@@ -1632,7 +1641,7 @@ void hvdcCcbBaseIoCheck(void)
 	
 	        if(gstVmeCtrl[slotIndex].slave_status != TRUE) 
 	        {
-	            gBio.ccb.errCode = 1; // 펑션블록 에러 (입력범위에러:-1/정상:0/ 보드접근에러:1/종류불일치:2,미준비상태:3,다운상태:4)
+	            gBio.ccb.errCode = 1; /*펑션블록 에러 (입력범위에러:-1/정상:0/ 보드접근에러:1/종류불일치:2,미준비상태:3,다운상태:4) */
 		        setErrorCodeWithVal( 	__FILE__,__LINE__,__FUNCTION__,1/*status*/,
 										"slotIndex",slotIndex,
 										"Not Using",0,
@@ -1797,7 +1806,7 @@ static uint32 subModuleInfoReadAndWriteToMregion(uint32 slotIndex)
 	
 	uint8	*vmeDataPtr;
 	uint32	*mRegionPtr;
-	float	readSMCapVltgData[MAX_SUB_MODULE_NUM_PER_ARM * 2]; 	/* upper and lower ARM */
+	uint32	readSMCapVltgData[MAX_SUB_MODULE_NUM_PER_ARM * 2]; 	/* upper and lower ARM */
 	uint32	readSMStatusData[MAX_SUB_MODULE_NUM_PER_ARM]; 		/* upper and lower ARM */
 
 	/******************************************************************
@@ -1866,11 +1875,12 @@ static uint32 subModuleInfoReadAndWriteToMregion(uint32 slotIndex)
 	vmeDataPtr += (DSP_BOARD_VME_ADDR_OFFSET * slotIndex);
 	vmeDataPtr += SUB_MODULE_STATUS_START_INDEX;
 	
+	/* Upper/Low Arm SM Status Read */
 	memoryCopy( (uint8 *) readSMStatusData,
 				(uint8 *) vmeDataPtr,
 				MAX_SUB_MODULE_NUM_PER_ARM * 4
 			  );
-	
+ 
 	/******************************************************************
 	**	4. Write Sub Module Status to M region
 	**
@@ -1885,13 +1895,15 @@ static uint32 subModuleInfoReadAndWriteToMregion(uint32 slotIndex)
 	/* A, B, C상 차례로 Upper, Lower ARM의 Status(2bytes/SM) 위치 함 */
 	mRegionPtr += (MAX_SUB_MODULE_NUM_PER_ARM * slotIndex);
 	
+#if SM_STATUS_UPDATE_TO_HMI
+
 	/* Swapping 함, 4바이트 단위로 */
 	shortDataConversion((uint16 *)mRegionPtr, 
 						(uint16 *)readSMStatusData,
 						MAX_SUB_MODULE_NUM_PER_ARM * 2 * 2 /* 바이트 단위 임 */
 					   );
+#endif
 
-	 
 	return(status);
 }	
 

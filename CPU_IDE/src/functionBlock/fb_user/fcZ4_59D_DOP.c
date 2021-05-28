@@ -128,8 +128,8 @@ uint32	stdZ4_59D_DOPRunFunc(uint32 taskId, uint32 fbMemAddr)
 			}		
 					
 			/* Fault Detection */
-			abs_vdc_up  = abs(fbInfo.vdc_up);
-			abs_vdc_low = abs(fbInfo.vdc_low);
+			abs_vdc_up  = ABSt(fbInfo.vdc_up);
+			abs_vdc_low = ABSt(fbInfo.vdc_low);
 
 			fbInfo.o1_conBlk_up	 = ftOverDetect(abs_vdc_up,  fbInfo.threshold1, fbInfo.setT1, &fbInfo.t1_up,  cycleTimeSec);
 			fbInfo.o2_nmst_up	 = ftOverDetect(abs_vdc_up,  fbInfo.threshold2, fbInfo.setT2, &fbInfo.t2_up,  cycleTimeSec);

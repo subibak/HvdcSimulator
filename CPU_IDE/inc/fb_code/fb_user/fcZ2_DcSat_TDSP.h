@@ -36,7 +36,7 @@ typedef struct {
 	float 					t1;  				// Time 1 
 		
     // Output
-    float  					o1_emst;			// Transformer DC Current EMST
+    uint32  					o1_emst;			// Transformer DC Current EMST
 } strFC0712Info;
 
 #endif

@@ -1092,7 +1092,7 @@ uint32	pmc502RdRunFunc	(uint32 taskId, uint32 fbBlockAddr)
 			case ETH_LWORD_TYPE:
 				swap_data 		= SWAP_DWORD(fiberComDataInfoPtr->comData[i]);
 				scanDataDword 	= swap_data;
-				    
+			    
 				*(uint32*)((int32*)(dstMemOffsetPtr) + fd.startAddrOfMem + i) 		= scanDataDword;
 				*(uint32*)((int32*)(busDstMemOffsetPtr) + fd.startAddrOfMem + i) 	= scanDataDword;
 			 

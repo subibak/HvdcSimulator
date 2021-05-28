@@ -40,8 +40,8 @@ typedef struct {
 	float 					t2;  				// Time 2 
 		
     // Output
-    float 					o1_emst;			// Out1 EMST
-    float					o2_emst;			// Out2 EMST
+    uint32 					o1_emst;			// Out1 EMST
+    uint32					o2_emst;			// Out2 EMST
 } strFC0707Info;
 
 #endif

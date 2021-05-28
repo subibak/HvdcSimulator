@@ -46,10 +46,10 @@ typedef struct {
 	STF_3P 			t_h2;			   	// Time_h2
 
     // Output
-    STF_3P  		o1_alarm;			// ithd Out1 Alarm
-    STF_3P  		o2_conBlk;			// ithd Out2 Converter Block
-	STF_3P  		o1_alarm_h;			// ih Out1 Alarm
-    STF_3P  		o2_conBlk_h;		// ih Out2 Converter Block	
+    STU_3P  		o1_alarm;			// ithd Out1 Alarm
+    STU_3P  		o2_conBlk;			// ithd Out2 Converter Block
+	STU_3P  		o1_alarm_h;			// ih Out1 Alarm
+    STU_3P  		o2_conBlk_h;		// ih Out2 Converter Block	
     
 } strFC0733Info;
 

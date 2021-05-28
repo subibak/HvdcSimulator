@@ -118,7 +118,8 @@ uint32	stdZ3_51G_GOCPRunFunc(uint32 taskId, uint32 fbMemAddr)
 			}		
 
 			/* Fault Calculation */
-			ABS_igr = abs(fbInfo.igr);				
+			//ABS_igr = abs(fbInfo.igr);	
+			ABS_igr = ABSt(fbInfo.igr);		
 
 			/* Fault Detection */
 			fbInfo.o1_emst	= ftOverDetect(ABS_igr, fbInfo.threshold1, fbInfo.setT1, &fbInfo.t1, cycleTimeSec);

@@ -39,7 +39,7 @@ typedef struct {
 	float					t1;  				// Time 1 
 				
     // Output
-    float		  			o1_alarm;			// Out1 Alarm
+    uint32		  			o1_alarm;			// Out1 Alarm
 } strFC0716Info;
 
 #endif

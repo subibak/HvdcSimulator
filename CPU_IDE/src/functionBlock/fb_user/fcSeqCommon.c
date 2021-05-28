@@ -94,7 +94,8 @@ void funcSeq0200(strFC0740Info *fb)
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		if((fb->sysMode.bit.actPwr == SM_ACTPWR_P) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE)))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND)))
 		{		
 			if(fb->t >=SET_TIME_SEQ_DELAY)
 			{	
@@ -138,7 +139,7 @@ void funcSeq0210(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts1.all == STS1_EARTHED_STOPPED_COMPLETE)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_UNDEFINED_COMPLETE)) )
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_UNDEFINED_COMPLETE)))
 		{
 			if(	(fb->sysSts.bit.doorIntLock == SS_DOORINTLOCK_READY) && \
 				(fb->sysSts.bit.smSrtCirSwi == SS_SMSHORTSWI_OPEN) )
@@ -182,7 +183,7 @@ void funcSeq0210(strFC0740Info *fb)
 	{
 		fb->NextStep = Seq0210;
 		fb->seqSts1.bit.seq0210 = SEQ_COMM_UNPROCESSED;
-		fb->flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+		fb->flagSeqComplete = FLAG_SEQ_UNCOMPLETE;	
 	}
 	else
 	{
@@ -197,7 +198,7 @@ void funcSeq0220(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts1.all == STS1_EARTHED_STOPPED_COMPLETE)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_UNDEFINED_COMPLETE)) )
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_UNDEFINED_COMPLETE)))
 		{
 			fb->yardSwiComm.bit.esx01_02 = YARD_SWITCH_COMM_OPEN;
 
@@ -258,7 +259,7 @@ void funcSeq0230(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts1.all == STS1_EARTHED_STOPPED_COMPLETE)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_UNDEFINED_COMPLETE)) )
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_UNDEFINED_COMPLETE)))
 		{
 			fb->yardSwiComm.bit.esx11_21 = YARD_SWITCH_COMM_OPEN;
 
@@ -320,7 +321,7 @@ void funcSeq0240(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts1.all == STS1_EARTHED_STOPPED_COMPLETE)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_UNDEFINED_COMPLETE)) )
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_UNDEFINED_COMPLETE)))
 		{
 			fb->yardSwiComm.bit.esx12_22 = YARD_SWITCH_COMM_OPEN;
 
@@ -399,7 +400,8 @@ void funcSeq0250(strFC0740Info *fb)
 				fb->t += fb->cycleT;			
 			}			
 		}
-		else if((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_UNDEFINED_COMPLETE))
+		else if((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_UNDEFINED_COMPLETE)
+		     ||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts1.all == TRIP_S1_UNDEFINED_COMPLETE)))
 		{
 			fb->yardSwiComm.bit.dsx02 = YARD_SWITCH_COMM_CLOSE;
 
@@ -459,7 +461,7 @@ void funcSeq0260(strFC0740Info *fb)
 	if(fb->sysMode.bit.seqDir == SM_SEQDIR_START)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts1.all == STS1_EARTHED_STOPPED_COMPLETE)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_UNDEFINED_COMPLETE)) )
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts1.all == STS1_UNDEFINED_COMPLETE)))
 		{
 			fb->yardSwiComm.bit.dsx01 = YARD_SWITCH_COMM_CLOSE;
 
@@ -526,8 +528,10 @@ void funcSeq0320(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE)))
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0510 == SEQ_COMM_PROCESSING))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND)))
 		{
 			fb->yardSwiComm.bit.esx01_02 = YARD_SWITCH_COMM_CLOSE;
 
@@ -588,8 +592,10 @@ void funcSeq0330(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE)))
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0510 == SEQ_COMM_PROCESSING))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND)))
 		{
 			fb->yardSwiComm.bit.esx11_21 = YARD_SWITCH_COMM_CLOSE;
 
@@ -649,8 +655,10 @@ void funcSeq0340(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE)))
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0510 == SEQ_COMM_PROCESSING))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND)))
 		{
 			fb->yardSwiComm.bit.esx12_22 = YARD_SWITCH_COMM_CLOSE;
 
@@ -711,7 +719,8 @@ void funcSeq0350(strFC0740Info *fb)
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{	
 		//Zig-Zag TR contributes to the system in Vdc mode		
-		if((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE))
+		if((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE)
+		||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0510 == SEQ_COMM_PROCESSING)))
 		{
 			if(fb->t >=SET_TIME_SEQ_DELAY)
 			{	
@@ -729,7 +738,8 @@ void funcSeq0350(strFC0740Info *fb)
 				fb->t += fb->cycleT;			
 			}			
 		}
-		else if((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE))
+		else if((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE)
+			 ||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND)))
 		{
 			fb->yardSwiComm.bit.dsx02 = YARD_SWITCH_COMM_OPEN;
 
@@ -789,8 +799,10 @@ void funcSeq0360(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE)))
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0510 == SEQ_COMM_PROCESSING))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_EARTHED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_EARTHED_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND)))
 		{
 			fb->yardSwiComm.bit.dsx01 = YARD_SWITCH_COMM_OPEN;
 
@@ -872,7 +884,8 @@ void funcSeq0400(strFC0740Info *fb)
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) &  (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE)))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts1.all == TRIP_S1_UNDEFINED_COMPLETE)))
 		{
 			if(fb->t >=SET_TIME_SEQ_DELAY)
 			{	
@@ -973,7 +986,7 @@ void funcSeq0410(strFC0740Info *fb)
 	{
 		fb->NextStep = Seq0510;
 		fb->seqSts1.bit.seq0410 = SEQ_COMM_UNPROCESSED;
-		fb->flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+		fb->flagSeqComplete = FLAG_SEQ_UNCOMPLETE;	
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_NODIR)
 	{
@@ -999,7 +1012,8 @@ void funcSeq0510(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
+		if((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)
+		||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0510 == SEQ_COMM_PROCESSING)))
 		{
 			if(fb->t >=SET_TIME_SEQ_DELAY)
 			{	
@@ -1017,7 +1031,8 @@ void funcSeq0510(strFC0740Info *fb)
 				fb->t += fb->cycleT;			
 			}				
 		}
-		else if((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) &  (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE))
+		else if((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) &  (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE)
+			 ||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts1.bit.seq0200 == SEQ_COMM_UNPROCESSED)))
 		{
 			fb->yardSwiComm.bit.ds3x1 = YARD_SWITCH_COMM_OPEN;
 
@@ -1078,7 +1093,8 @@ void funcSeq0520(strFC0740Info *fb)
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) &  (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE)))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) &  (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0510 == SEQ_COMM_PROCESSING)))
 		{
 			if((fb->sysSts.bit.convDischg == SS_CONVDISCHG_EXPIRED))
 			{
@@ -1158,7 +1174,8 @@ void funcSeq0600(strFC0740Info *fb)
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) )
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0510 == SEQ_COMM_PROCESSING)))
 		{
 			if(fb->t >=SET_TIME_SEQ_DELAY)
 			{	
@@ -1673,7 +1690,8 @@ void funcSeq0720(strFC0740Info *fb)
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) )
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) 
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0720 == SEQ_COMM_PROCESSING)))
 		{
 			fb->yardSwiComm.bit.dsx01 = YARD_SWITCH_COMM_CLOSE;
 
@@ -1735,7 +1753,8 @@ void funcSeq0730(strFC0740Info *fb)
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) )
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0720 == SEQ_COMM_PROCESSING)))
 		{
 			fb->yardSwiComm.bit.cbx91 = YARD_SWITCH_COMM_OPEN;	
 			
@@ -1796,7 +1815,8 @@ void funcSeq0740(strFC0740Info *fb)
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) )
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0720 == SEQ_COMM_PROCESSING)))
 		{
 			fb->yardSwiComm.bit.cbx01 = YARD_SWITCH_COMM_OPEN;		
 
@@ -1858,7 +1878,8 @@ void funcSeq0760(strFC0740Info *fb)
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) )
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0720 == SEQ_COMM_PROCESSING)))
 		{
 			fb->yardSwiComm.bit.dsx01 = YARD_SWITCH_COMM_OPEN;		
 
@@ -1920,7 +1941,8 @@ void funcSeq0770(strFC0740Info *fb)
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
 		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED)) \
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) )
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0720 == SEQ_COMM_PROCESSING)))
 		{
 			if((fb->sysSts.bit.convBlkSeq == SS_CONVBLKSEQ_COMPLETE))
 			{
@@ -2030,6 +2052,13 @@ void funcSeq0800(strFC0740Info *fb)
 		fb->NextStep = Seq0800;
 		fb->seqSts2.bit.seq0800 = SEQ_COMM_UNPROCESSED;
 		fb->flagSeqComplete = FLAG_SEQ_UNCOMPLETE;
+/*		
+		//fault case
+		if(fb->sysMode.bit.actPwr == SM_ACTPWR_VDC)
+		{
+			fb->seqSts2.all = STS2_STOP_EARTHED_COUPLED;
+		}		
+	*/
 	}
 	else
 	{

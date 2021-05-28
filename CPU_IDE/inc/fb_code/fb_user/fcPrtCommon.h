@@ -8,7 +8,7 @@
 #define NORMAL					0
 #define ZERO					0
 
-#define	FB_CYCLE_TIME			0.0001
+#define ABSt(var)				(var > 0 ? var : -var) 
 
 /*********************************************************************
 **	

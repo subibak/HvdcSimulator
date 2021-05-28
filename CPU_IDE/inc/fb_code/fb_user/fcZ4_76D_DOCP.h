@@ -38,8 +38,8 @@ typedef struct {
 	float		 			t1_low;				// Time 1 Low
 	
     // Output
-    float  					o1_emst_up;			// Out1 EMST Up
-    float  					o1_emst_low;		// Out1 EMST Low
+    uint32  				o1_emst_up;			// Out1 EMST Up
+    uint32  				o1_emst_low;		// Out1 EMST Low
 } strFC0728Info;
 
 #endif
