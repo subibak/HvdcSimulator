@@ -883,7 +883,8 @@ void funcSeq0400(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) \
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0510 == SEQ_COMM_PROCESSING))
 			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) && (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE))
 			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts1.all == TRIP_S1_UNDEFINED_COMPLETE)))
 		{
@@ -1092,7 +1093,8 @@ void funcSeq0520(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) \
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0600 == SEQ_COMM_PROCESSING))
 			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STOPPED_COMPLETE) &  (fb->oSeqSts1.all == STS1_COUPLED_STOPPED_COMPLETE))
 			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0510 == SEQ_COMM_PROCESSING)))
 		{
@@ -1173,7 +1175,8 @@ void funcSeq0600(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED)) \
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0600 == SEQ_COMM_PROCESSING))
 			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
 			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0510 == SEQ_COMM_PROCESSING)))
 		{
@@ -1689,9 +1692,10 @@ void funcSeq0720(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED)) \
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND))
 			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE)) 
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0720 == SEQ_COMM_PROCESSING)))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0600 == SEQ_COMM_PROCESSING)))
 		{
 			fb->yardSwiComm.bit.dsx01 = YARD_SWITCH_COMM_CLOSE;
 
@@ -1752,9 +1756,10 @@ void funcSeq0730(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED)) \
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND))
 			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0720 == SEQ_COMM_PROCESSING)))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0600 == SEQ_COMM_PROCESSING)))
 		{
 			fb->yardSwiComm.bit.cbx91 = YARD_SWITCH_COMM_OPEN;	
 			
@@ -1814,9 +1819,10 @@ void funcSeq0740(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED)) \
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND))
 			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0720 == SEQ_COMM_PROCESSING)))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0600 == SEQ_COMM_PROCESSING)))
 		{
 			fb->yardSwiComm.bit.cbx01 = YARD_SWITCH_COMM_OPEN;		
 
@@ -1877,9 +1883,10 @@ void funcSeq0760(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED)) \
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND))
 			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0720 == SEQ_COMM_PROCESSING)))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0600 == SEQ_COMM_PROCESSING)))
 		{
 			fb->yardSwiComm.bit.dsx01 = YARD_SWITCH_COMM_OPEN;		
 
@@ -1940,9 +1947,10 @@ void funcSeq0770(strFC0740Info *fb)
 	}
 	else if(fb->sysMode.bit.seqDir == SM_SEQDIR_STOP)
 	{
-		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED)) \
+		if(((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->oSeqSts2.all == STS2_STOP_EARTHED_COUPLED))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_P) && (fb->trip.all > TRIP_BAND))
 			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->oSeqSts2.all == STS2_COUPLED_STANDBY_COMPLETE))
-			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0720 == SEQ_COMM_PROCESSING)))
+			||((fb->sysMode.bit.actPwr == SM_ACTPWR_VDC) && (fb->trip.all > TRIP_BAND) && (fb->oSeqSts2.bit.seq0600 == SEQ_COMM_PROCESSING)))
 		{
 			if((fb->sysSts.bit.convBlkSeq == SS_CONVBLKSEQ_COMPLETE))
 			{
